@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="353656a9-22f1-4dcb-a3c1-c32ec031f85e" name="Changes" comment="Agregados los Historiales.&#10;Ejemplo conexion con base de datos y look and feel swing.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/cuentas/Cuenta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/cuentas/GestorCuentas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/HistorialFactor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Localidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Localidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DeclaracionHijo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DeclaracionHijo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DerechoEmision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DerechoEmision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Descuentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Descuentos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/MedidaDeSeguridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/MedidaDeSeguridad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/NumeroSiniestros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/NumeroSiniestros.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/TipoCobertura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/TipoCobertura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/KmPorAnio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/KmPorAnio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Modelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,28 +32,26 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2V7Y8siy6NJ5gSlH4tS4am4UXtV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Ale/Desktop/UTN 2023/3ro - Diseño de Sistemas/TP/TPDisenio/pom.xml",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,6 +77,17 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit Inicial" />

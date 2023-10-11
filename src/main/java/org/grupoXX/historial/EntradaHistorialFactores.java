@@ -13,7 +13,7 @@ public class EntradaHistorialFactores{
     public Instant fecha(){return fecha;}
     private Cuenta cuenta;
     public Cuenta cuenta(){return cuenta;}
-    public EntradaHistorialFactores(float valorFactor, Instant fecha){//TODO cada clase tendria que tener un campo estatico para guardar sus ids ocupadas? O deberia usar un manager?
+    public EntradaHistorialFactores(float valorFactor, Instant fecha){//hola TODO cada clase tendria que tener un campo estatico para guardar sus ids ocupadas? O deberia usar un manager?
         this.valorFactor=valorFactor;
         this.fecha=fecha;
         this.cuenta=GestorCuentas.getCuentaActiva();
