@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="353656a9-22f1-4dcb-a3c1-c32ec031f85e" name="Changes" comment="Agregados los Historiales.&#10;Ejemplo conexion con base de datos y look and feel swing.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="353656a9-22f1-4dcb-a3c1-c32ec031f85e" name="Changes" comment="prueba">
+      <change afterPath="$PROJECT_DIR$/src/main/java/prueba.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +19,8 @@
       <list>
         <option value="Record" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,7 +76,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694195794129</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="prueba">
+      <option name="closed" value="true" />
+      <created>1696987749161</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696987749161</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,7 +102,8 @@
     <MESSAGE value="Commit Inicial" />
     <MESSAGE value="Conversion directamente del diagrama de clases. Faltan los historiales." />
     <MESSAGE value="Agregados los Historiales.&#10;Ejemplo conexion con base de datos y look and feel swing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregados los Historiales.&#10;Ejemplo conexion con base de datos y look and feel swing." />
+    <MESSAGE value="prueba" />
+    <option name="LAST_COMMIT_MESSAGE" value="prueba" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
