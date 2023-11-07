@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="152.0" fitWidth="496.0" layoutX="305.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Desktop/UTN%202023/3ro%20-%20Diseño%20de%20Sistemas/TP/zTP2023%20-%20Grupo%202B/zImagenesParaInterfaces/banner.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="234.0" fitWidth="236.0" layoutX="570.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Desktop/UTN%202023/3ro%20-%20Diseño%20de%20Sistemas/TP/zTP2023%20-%20Grupo%202B/zImagenesParaInterfaces/logo.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="305.0" layoutY="173.0" prefHeight="234.0" prefWidth="101.0">
+         <children>
+            <Text strokeType="INSIDE" strokeWidth="0.0" text="Primero las personas." wrappingWidth="252.0">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="INSIDE" strokeWidth="0.0" text="Nos comprometemos con nuestra comunidad a través de programas y acciones que refuerzan nuestros valores cooperativos." wrappingWidth="252.0">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Text>
+            <Text strokeType="INSIDE" strokeWidth="0.0" text="Educación vial" wrappingWidth="252.0">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="INSIDE" strokeWidth="0.0" text="Construimos conciencia vial desde un enfoque preventivo." wrappingWidth="252.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="INSIDE" strokeWidth="0.0" text="Valores que transforman" wrappingWidth="252.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="INSIDE" strokeWidth="0.0" text="Fundamos la Escuela de Valores para desarrollar acciones de impacto social." wrappingWidth="252.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <MenuButton mnemonicParsing="false" prefHeight="28.0" prefWidth="252.0" text="MENÚ">
+        <items>
+          <MenuItem mnemonicParsing="false" text="ALTA PÓLIZA" />
+            <MenuItem mnemonicParsing="false" text="CONSULTAR PÓLIZA" />
+            <MenuItem mnemonicParsing="false" text="ALTA CLIENTE" />
+            <MenuItem mnemonicParsing="false" text="CONSULTAR CLIENTE" />
+            <MenuItem mnemonicParsing="false" text="ACTUALIZAR FACTORES" />
+            <MenuItem mnemonicParsing="false" text="GENERAR PROPUESTAS RENOVACIÓN" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
