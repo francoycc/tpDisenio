@@ -10,7 +10,6 @@ public class Localidad {
     private int id;
     @Column(length = 20)
     private String nombre;
-    @Column
     private int codigoPostal;
     @ManyToOne(cascade = CascadeType.ALL)
     private Provincia provincia;
@@ -20,8 +19,10 @@ public class Localidad {
 
 
     public Localidad(){}
-    public Localidad(int id, String nombre, int codigoPostal, Provincia provincia, HistorialFactor historialFactor) {
-        this.id = id;
+    public Localidad(int id){
+        this.id=id;
+    }
+    public Localidad(String nombre, int codigoPostal, Provincia provincia, HistorialFactor historialFactor) {
         this.nombre = nombre;
         this.codigoPostal = codigoPostal;
         this.provincia = provincia;

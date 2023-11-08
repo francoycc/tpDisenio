@@ -8,17 +8,17 @@ public class Descuento {
     @Id
     @GeneratedValue
     private int id;
-    @Column(length = 20)
+    @Column(length = 20,name = "nombre_descuento")
     private String nombreDescuento;
     @OneToOne(cascade = CascadeType.ALL)
-    private HistorialFactor historialFactor;
+    private HistorialFactor historial;
 
 
     public Descuento(){}
     public Descuento(int id, String nombreDescuento, HistorialFactor historialFactor) {
         this.id = id;
         this.nombreDescuento = nombreDescuento;
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 
 
@@ -35,9 +35,9 @@ public class Descuento {
         this.nombreDescuento = nombreDescuento;
     }
     public HistorialFactor getHistorialFactor() {
-        return historialFactor;
+        return historial;
     }
     public void setHistorialFactor(HistorialFactor historialFactor) {
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 }

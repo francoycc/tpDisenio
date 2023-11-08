@@ -6,17 +6,16 @@ import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
+import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
+import org.grupo2b.proyectodisenio.logica.enums.Sexo;
 import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
-import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
+import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
+import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 public class TestTemporalDB {
 
@@ -38,7 +37,7 @@ public class TestTemporalDB {
         marca.setNombre("Toyotita");
         AnioFabricacion anio = new AnioFabricacion();
         anio.setAnioModelo(2021);
-        Set<AnioFabricacion> anios = HashSet.newHashSet(1);
+        List<AnioFabricacion> anios = new ArrayList<>();
         anios.add(anio);
 
         modelo.setMarca(marca);
@@ -81,4 +80,40 @@ public class TestTemporalDB {
         return doc;
     }
 
+
+
+    public static Vehiculo getVehiculo(){
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setChasis("ab4lhba8");
+        vehiculo.setDireccion(new Direccion("Mendoza", 2089, 4, 2, new Localidad("Santa Fe", 4000, new Provincia("Santa fe", new Pais("Argentina")), TestTemporalDB.getHistorial())));
+        vehiculo.setModelo(TestTemporalDB.getModelo());
+        vehiculo.setMotor("0fghspidug");
+        vehiculo.setPatente("11aaa11");
+        vehiculo.setSumaAsegurada(1);
+        vehiculo.setKmPorAnio(new KmPorAnio(15000, TestTemporalDB.getHistorial()));
+        return vehiculo;
+    }
+
+
+    public static Cliente getCliente(){
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+        vehiculos.add(getVehiculo());
+        Cliente cliente = new Cliente();
+        cliente.setCondicionCliente(CondicionCliente.ACTIVO);
+        cliente.setApellido("Perez");
+        cliente.setNombre("Rodrigueño");
+        cliente.setCuil(99999999999L);
+        cliente.setDocumento(TestTemporalDB.getDocumento());
+        cliente.setAnioRegistro(2019);
+        cliente.setSexo(Sexo.MASCULINO);
+        cliente.setProfesion("Incompetente");
+        cliente.setDomicilio(new Direccion("Mendoza", 2089, 4, 2, new Localidad("Santa Fe", 4000, new Provincia("Santa fe", new Pais("Argentina")), TestTemporalDB.getHistorial())));
+        cliente.setCorreoElectronico("lerodrigueño@hotmail.com");
+        cliente.setEstadoCivil(new EstadoCivil("Casado"));
+        cliente.setFechaNacimiento(new Date(1990, Calendar.JANUARY, 6));
+        cliente.setDocumento(TestTemporalDB.getDocumento());
+        cliente.setVehiculos(vehiculos);
+        cliente.setCondicionIva(new CondicionIva("Monotributista"));
+        return cliente;
+    }
 }

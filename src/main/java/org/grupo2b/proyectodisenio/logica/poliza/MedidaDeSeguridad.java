@@ -12,14 +12,14 @@ public class MedidaDeSeguridad {
     @Column(length = 20)
     private String nombre;
     @OneToOne(cascade = CascadeType.ALL)
-    private HistorialFactor historialFactor;
+    private HistorialFactor historial;
 
 
     public MedidaDeSeguridad(){}
     public MedidaDeSeguridad(int id, String nombre, HistorialFactor historialFactor) {
         this.id = id;
         this.nombre = nombre;
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 
 
@@ -36,9 +36,9 @@ public class MedidaDeSeguridad {
         this.nombre = nombre;
     }
     public HistorialFactor getHistorialFactor() {
-        return historialFactor;
+        return historial;
     }
     public void setHistorialFactor(HistorialFactor historialFactor) {
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 }

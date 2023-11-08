@@ -12,10 +12,7 @@ import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
-import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
-import org.grupo2b.proyectodisenio.logica.vehiculo.KmPorAnio;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
+import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 import org.hibernate.Session;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -61,7 +58,14 @@ public class DAOManager {
                 .addAnnotatedClass(TipoDocumento.class)
                 .addAnnotatedClass(Documento.class)
                 .addAnnotatedClass(CondicionIva.class)
-                .addAnnotatedClass(Cliente.class);
+                .addAnnotatedClass(Cliente.class)
+                .addAnnotatedClass(EstadoCivil.class)
+                .addAnnotatedClass(Vehiculo.class)
+                .addAnnotatedClass(DeclaracionHijo.class)
+                .addAnnotatedClass(Poliza.class)
+                .addAnnotatedClass(DatosParaRenovacion.class)
+                .addAnnotatedClass(Cuota.class)
+                .addAnnotatedClass(Recibo.class);
         ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(properties).build();
         session = con.buildSessionFactory(reg).openSession();
     }

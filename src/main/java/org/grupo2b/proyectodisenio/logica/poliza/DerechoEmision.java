@@ -10,13 +10,13 @@ public class DerechoEmision {
     @GeneratedValue
     private int id;
     @OneToOne(cascade = CascadeType.ALL)
-    private HistorialFactor historialFactor;
+    private HistorialFactor historial;
 
 
     public DerechoEmision(){}
     public DerechoEmision(int id, HistorialFactor historialFactor) {
         this.id = id;
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 
 
@@ -27,9 +27,9 @@ public class DerechoEmision {
         this.id = id;
     }
     public HistorialFactor getHistorialFactor() {
-        return historialFactor;
+        return historial;
     }
     public void setHistorialFactor(HistorialFactor historialFactor) {
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 }

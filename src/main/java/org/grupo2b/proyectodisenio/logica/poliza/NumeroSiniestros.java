@@ -10,17 +10,17 @@ public class NumeroSiniestros {
     @Id
     @GeneratedValue
     private int id;
-    @Column
+    @Column(name = "cantidad_siniestros")
     private int cantSiniestros;
     @OneToOne(cascade = CascadeType.ALL)
-    private HistorialFactor historialFactor;
+    private HistorialFactor historial;
 
 
     public NumeroSiniestros(){}
     public NumeroSiniestros(int id, int cantSiniestros, HistorialFactor historialFactor) {
         this.id = id;
         this.cantSiniestros = cantSiniestros;
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 
 
@@ -37,9 +37,9 @@ public class NumeroSiniestros {
         this.cantSiniestros = cantSiniestros;
     }
     public HistorialFactor getHistorialFactor() {
-        return historialFactor;
+        return historial;
     }
     public void setHistorialFactor(HistorialFactor historialFactor) {
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 }

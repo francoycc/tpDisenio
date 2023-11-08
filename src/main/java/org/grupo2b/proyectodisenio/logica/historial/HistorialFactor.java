@@ -15,11 +15,7 @@ public class HistorialFactor {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "historial_id")
     private List<EntradaHistorialFactores> entradas = new LinkedList<>();
-    @Column
     private float valorActualFactor;
-    @Column
-    private float ultimoValor;
-    @Column
     private LocalDateTime ultimaFecha;
 
 

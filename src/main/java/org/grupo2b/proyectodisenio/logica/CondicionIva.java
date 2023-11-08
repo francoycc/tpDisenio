@@ -13,8 +13,10 @@ public class CondicionIva {
 
 
     public CondicionIva(){}
-    public CondicionIva(int id, String nombre) {
+    public CondicionIva(int id) {
         this.id = id;
+    }
+    public CondicionIva(String nombre) {
         this.nombre = nombre;
     }
 

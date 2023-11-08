@@ -9,11 +9,8 @@ public class Direccion {
     private int id;
     @Column(length = 20)
     private String calle;
-    @Column
     private int numero;
-    @Column
     private int piso;
-    @Column
     private int departamento;
     @ManyToOne(cascade = CascadeType.ALL)
     private Localidad localidad;
@@ -21,8 +18,10 @@ public class Direccion {
 
 
     public Direccion(){}
-    public Direccion(int id, String calle, int numero, int piso, int departamento, Localidad localidad) {
-        this.id = id;
+    public Direccion(int id){
+        this.id=id;
+    }
+    public Direccion(String calle, int numero, int piso, int departamento, Localidad localidad) {
         this.calle = calle;
         this.numero = numero;
         this.piso = piso;

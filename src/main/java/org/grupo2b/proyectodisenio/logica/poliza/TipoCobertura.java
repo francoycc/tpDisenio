@@ -12,7 +12,7 @@ public class TipoCobertura {
     @Column(length = 30)
     private String nombre;
     @OneToOne(cascade = CascadeType.ALL)
-    HistorialFactor historialFactor;
+    HistorialFactor historial;
 
 
     public TipoCobertura(){}
@@ -34,9 +34,9 @@ public class TipoCobertura {
         this.nombre = nombre;
     }
     public HistorialFactor getHistorialFactor() {
-        return historialFactor;
+        return historial;
     }
     public void setHistorialFactor(HistorialFactor historialFactor) {
-        this.historialFactor = historialFactor;
+        this.historial = historialFactor;
     }
 }

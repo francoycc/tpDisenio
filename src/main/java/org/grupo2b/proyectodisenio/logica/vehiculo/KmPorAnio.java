@@ -3,6 +3,8 @@ package org.grupo2b.proyectodisenio.logica.vehiculo;
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 
+@Entity
+@Table(name = "KM_POR_ANIO")
 public class KmPorAnio {
     @Id
     @GeneratedValue
@@ -15,8 +17,10 @@ public class KmPorAnio {
 
 
     public KmPorAnio(){}
-    public KmPorAnio(int id, float kmRealizados, HistorialFactor historialFactor) {
+    public KmPorAnio(int id) {
         this.id = id;
+    }
+    public KmPorAnio(float kmRealizados, HistorialFactor historialFactor) {
         this.kmRealizados = kmRealizados;
         this.historialFactor = historialFactor;
     }

@@ -10,29 +10,27 @@ import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Cliente {
     @Id
+    @GeneratedValue
     private int nroCliente;
     @Column(length = 40)
     private String nombre;
     @Column(length = 40)
     private String apellido;
-    @Column
-    private int cuil;
-    //TODO ????????????????
+    private long cuil;
+    @Enumerated(EnumType.STRING)
     private Sexo sexo;
-    @Column
     private Date fechaNacimiento;
     @Column(length = 40)
     private String correoElectronico;
     @Column(length = 30)
     private String profesion;
-    @Column
     private int anioRegistro;
-    //TODO ????????????????????????
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private CondicionCliente condicionCliente;
     @OneToOne(cascade = CascadeType.ALL)
     private Documento documento;
@@ -41,14 +39,15 @@ public class Cliente {
     @ManyToOne(cascade = CascadeType.ALL)
     private Direccion domicilio;
     @OneToMany(cascade = CascadeType.ALL)
-    private ArrayList<Vehiculo> vehiculos;
+    @JoinColumn(name = "cliente_id")
+    private List<Vehiculo> vehiculos;
     @ManyToOne(cascade = CascadeType.ALL)
     private EstadoCivil estadoCivil;
 
 
 
     public Cliente(){}
-    public Cliente(int nroCliente, String nombre, String apellido, int cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, ArrayList<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
+    public Cliente(int nroCliente, String nombre, String apellido, int cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
         this.nroCliente = nroCliente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -93,11 +92,11 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public int getCuil() {
+    public long getCuil() {
         return cuil;
     }
 
-    public void setCuil(int cuil) {
+    public void setCuil(long cuil) {
         this.cuil = cuil;
     }
 
@@ -173,11 +172,11 @@ public class Cliente {
         this.domicilio = domicilio;
     }
 
-    public ArrayList<Vehiculo> getVehiculos() {
+    public List<Vehiculo> getVehiculos() {
         return vehiculos;
     }
 
-    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
+    public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
     }
 

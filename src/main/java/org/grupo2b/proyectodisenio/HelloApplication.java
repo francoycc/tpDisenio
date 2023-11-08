@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.CondicionIva;
 import org.grupo2b.proyectodisenio.logica.TestTemporalDB;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
@@ -13,11 +14,16 @@ import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
+import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
+import org.grupo2b.proyectodisenio.logica.enums.Sexo;
+import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
+import org.grupo2b.proyectodisenio.logica.vehiculo.KmPorAnio;
+import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class HelloApplication extends Application {
     @Override
@@ -32,30 +38,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         Transaction tx = DAOManager.getSession().beginTransaction();
-
-
-
-
-
-        Documento doc = DAOManager.getSession().get(Documento.class, 99999999);
-        DAOManager.getSession().detach(doc);
-
-
-
-
-        DAOManager.getSession().persist(TestTemporalDB.getDocumento());
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         tx.commit();
