@@ -14,7 +14,6 @@ import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.*;
 
 public class TestTemporalDB {

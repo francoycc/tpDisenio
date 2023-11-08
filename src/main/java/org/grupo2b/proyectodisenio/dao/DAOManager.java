@@ -27,7 +27,7 @@ public class DAOManager {
         Properties properties = new Properties();
         properties.put("hibernate.connection.driver_class","org.postgresql.Driver");
         properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.connection.url","jdbc:postgresql://localhost:5432/proyecto");
+        properties.put("hibernate.connection.url","jdbc:postgresql://190.7.1.188:5432/proyecto");
         properties.put("hibernate.connection.username","postgres");
         properties.put("hibernate.connection.password","postgres");
         properties.put("show_sql","true");
