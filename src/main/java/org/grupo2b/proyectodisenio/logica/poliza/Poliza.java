@@ -17,7 +17,7 @@ public class Poliza {
     EstadoPoliza estadoPoliza;
     float premio;
     DerechoEmision derechoEmision;
-    Descuentos descuentos;
+    Descuento descuentos;
     TipoCobertura tipoCobertura;
     ArrayList<Cuota> cuotas;
     ArrayList<MedidaDeSeguridad> medidasDeSeguridad;

@@ -5,6 +5,7 @@ import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
 import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "entrada_historial")
@@ -15,14 +16,14 @@ public class EntradaHistorialFactores{
     @Column(nullable = false)
     private float valorFactor;
     @Column(nullable = false)
-    private Instant fechaInicio;
+    private LocalDateTime fechaInicio;
     @Column(nullable = false)
-    private Instant fechaFin;
+    private LocalDateTime fechaFin;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Cuenta cuenta;
 
     public EntradaHistorialFactores(){};
-    public EntradaHistorialFactores(float valorFactor, Instant fechaInicio, Instant fechaFin){
+    public EntradaHistorialFactores(float valorFactor, LocalDateTime fechaInicio, LocalDateTime fechaFin){
         this.valorFactor=valorFactor;
         this.fechaFin=fechaFin;
         this.fechaInicio=fechaInicio;
@@ -50,16 +51,16 @@ public class EntradaHistorialFactores{
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
-    public Instant getFechaInicio() {
+    public LocalDateTime getFechaInicio() {
         return fechaInicio;
     }
-    public void setFechaInicio(Instant fechaInicio) {
+    public void setFechaInicio(LocalDateTime fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-    public Instant getFechaFin() {
+    public LocalDateTime getFechaFin() {
         return fechaFin;
     }
-    public void setFechaFin(Instant fechaFin) {
+    public void setFechaFin(LocalDateTime fechaFin) {
         this.fechaFin = fechaFin;
     }
 }

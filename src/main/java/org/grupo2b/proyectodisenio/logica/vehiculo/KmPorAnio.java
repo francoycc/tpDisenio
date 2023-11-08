@@ -1,9 +1,43 @@
 package org.grupo2b.proyectodisenio.logica.vehiculo;
 
+import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 
 public class KmPorAnio {
-    int id;
-    float kmRealizados;
-    HistorialFactor historialFactor;
+    @Id
+    @GeneratedValue
+    private int id;
+    @Column
+    private float kmRealizados;
+    @OneToOne(cascade = CascadeType.ALL)
+    private HistorialFactor historialFactor;
+
+
+
+    public KmPorAnio(){}
+    public KmPorAnio(int id, float kmRealizados, HistorialFactor historialFactor) {
+        this.id = id;
+        this.kmRealizados = kmRealizados;
+        this.historialFactor = historialFactor;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public float getKmRealizados() {
+        return kmRealizados;
+    }
+    public void setKmRealizados(float kmRealizados) {
+        this.kmRealizados = kmRealizados;
+    }
+    public HistorialFactor getHistorialFactor() {
+        return historialFactor;
+    }
+    public void setHistorialFactor(HistorialFactor historialFactor) {
+        this.historialFactor = historialFactor;
+    }
 }

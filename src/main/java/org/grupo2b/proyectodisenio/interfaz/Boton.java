@@ -1,4 +1,4 @@
-package org.grupo2b.proyectodisenio.logica.interfaz;
+package org.grupo2b.proyectodisenio.interfaz;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

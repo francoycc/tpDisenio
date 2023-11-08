@@ -4,107 +4,58 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/aaaaaa/InicioVista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/hibernate.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/Cuenta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/GestorCuentas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/historial/EntradaHistorialFactores.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/historial/HistorialFactor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/interfaz/Boton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/interfaz/Knob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/EstadoCivil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/TipoCobertura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/CobradorVentanaPrincipal.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/GerenciaVentanaPrincipal.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/ProdSegurosVentanaPrincipal.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/logica/interfaz/botonCustom.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/logica/interfaz/menuLateral.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/logica/interfaz/switch.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_10_2023_20_49_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_10_2023_20_49__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Hibernate test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/historial/HistorialDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/historial/HistorialDAOPSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/TestTemporalDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/ValorFactorPorHijo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/CondicionIva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/CondicionIva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/cuentas/Cuenta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/cuentas/GestorCuentas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Direccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Direccion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Localidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Localidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Pais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Pais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Provincia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Provincia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/documento/Documento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/documento/Documento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/documento/TipoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/documento/TipoDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/CondicionCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/enums/CondicionCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/EstadoCuota.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/enums/EstadoCuota.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/EstadoPoliza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/enums/EstadoPoliza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/FormaPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/enums/FormaPago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/Sexo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/enums/Sexo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/historial/EntradaHistorialFactores.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/historial/HistorialFactor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/interfaz/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Cuota.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Cuota.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DatosParaRenovacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DatosParaRenovacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DeclaracionHijo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DeclaracionHijo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DerechoEmision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DerechoEmision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Descuentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Descuentos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/EstadoCivil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/MedidaDeSeguridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/MedidaDeSeguridad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/NumeroSiniestros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/NumeroSiniestros.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Poliza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Poliza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Recibo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Recibo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/TipoCobertura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/AnioFabricacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/AnioFabricacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/KmPorAnio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/KmPorAnio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Marca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Marca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Modelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Vehiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/Cliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/CondicionIva.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/cuentas/Cuenta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/cuentas/GestorCuentas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Direccion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Localidad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Pais.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Provincia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/documento/Documento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/documento/TipoDocumento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/CondicionCliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/EstadoCuota.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/EstadoPoliza.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/FormaPago.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/Sexo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/HistorialFactor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Cuota.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DatosParaRenovacion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DeclaracionHijo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DerechoEmision.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Descuentos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/EstadoCivil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/MedidaDeSeguridad.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/NumeroSiniestros.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Poliza.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Recibo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/TipoCobertura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/AnioFabricacion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/KmPorAnio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Marca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Modelo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Vehiculo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/prueba.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/aaaaaa/InicioVista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/CondicionIva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/CondicionIva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Direccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Direccion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Localidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Localidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Pais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Pais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Provincia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Provincia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/documento/Documento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/documento/Documento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/documento/TipoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/documento/TipoDocumento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/historial/EntradaHistorialFactores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/historial/EntradaHistorialFactores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/historial/HistorialFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/historial/HistorialFactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/interfaz/Boton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/Boton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/interfaz/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/interfaz/Knob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/Knob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DeclaracionHijo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DeclaracionHijo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DerechoEmision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/DerechoEmision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Descuentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Descuento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/MedidaDeSeguridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/MedidaDeSeguridad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/NumeroSiniestros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/NumeroSiniestros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Poliza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Poliza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/AnioFabricacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/AnioFabricacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/KmPorAnio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/KmPorAnio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Marca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Marca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Modelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/logica/interfaz/botonCustom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/botonCustom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/logica/interfaz/menuLateral.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/menuLateral.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/logica/interfaz/switch.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/switch.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -128,18 +79,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Me/Documents/IntelliJ/TPDISENIOEJ1/pom.xml",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Me/Documents/IntelliJ/TPDISENIOEJ1/pom.xml&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Me\Documents\IntelliJ\ProyectoDisenio\src\main\java\org\grupo2b\proyectodisenio" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.grupo2b.proyectodisenio" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -151,6 +106,30 @@
       <option name="presentableId" value="Default" />
       <updated>1699222538662</updated>
     </task>
+    <task id="LOCAL-00001" summary="Hibernate test">
+      <option name="closed" value="true" />
+      <created>1699323738395</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699323738395</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Hibernate test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hibernate test" />
   </component>
 </project>

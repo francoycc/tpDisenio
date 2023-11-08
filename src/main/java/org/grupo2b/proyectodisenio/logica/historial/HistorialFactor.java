@@ -2,6 +2,7 @@ package org.grupo2b.proyectodisenio.logica.historial;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class HistorialFactor {
     private List<EntradaHistorialFactores> entradas = new LinkedList<>();
     @Column
     private float valorActualFactor;
+    @Column
+    private float ultimoValor;
+    @Column
+    private LocalDateTime ultimaFecha;
 
 
 

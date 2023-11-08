@@ -1,4 +1,4 @@
-package org.grupo2b.proyectodisenio.logica.interfaz;
+package org.grupo2b.proyectodisenio.interfaz;
 
 import javafx.animation.FillTransition;
 import javafx.animation.Interpolator;
