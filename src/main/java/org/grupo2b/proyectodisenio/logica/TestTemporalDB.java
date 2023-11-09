@@ -79,6 +79,15 @@ public class TestTemporalDB {
         return doc;
     }
 
+    public static Documento getDocumento2(){
+        Documento doc = new Documento();
+        TipoDocumento tipoDoc = new TipoDocumento();
+        tipoDoc.setNombre("PT");
+        doc.setNumero(22222222);
+        doc.setTipoDocumento(tipoDoc);
+        return doc;
+    }
+
 
 
     public static Vehiculo getVehiculo(){
@@ -88,6 +97,18 @@ public class TestTemporalDB {
         vehiculo.setModelo(TestTemporalDB.getModelo());
         vehiculo.setMotor("0fghspidug");
         vehiculo.setPatente("11aaa11");
+        vehiculo.setSumaAsegurada(1);
+        vehiculo.setKmPorAnio(new KmPorAnio(15000, TestTemporalDB.getHistorial()));
+        return vehiculo;
+    }
+
+    public static Vehiculo getVehiculo2(){
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setChasis("ab4lhba8");
+        vehiculo.setDireccion(new Direccion("Mendoza", 2089, 4, 2, new Localidad("Santa Fe", 4000, new Provincia("Santa fe", new Pais("Argentina")), TestTemporalDB.getHistorial())));
+        vehiculo.setModelo(TestTemporalDB.getModelo());
+        vehiculo.setMotor("0hgsijbg");
+        vehiculo.setPatente("11bbb11");
         vehiculo.setSumaAsegurada(1);
         vehiculo.setKmPorAnio(new KmPorAnio(15000, TestTemporalDB.getHistorial()));
         return vehiculo;
@@ -111,6 +132,29 @@ public class TestTemporalDB {
         cliente.setEstadoCivil(new EstadoCivil("Casado"));
         cliente.setFechaNacimiento(new Date(90, Calendar.JANUARY, 6));
         cliente.setDocumento(TestTemporalDB.getDocumento());
+        cliente.setVehiculos(vehiculos);
+        cliente.setCondicionIva(new CondicionIva("Monotributista"));
+        return cliente;
+    }
+
+
+    public static Cliente getCliente2(){
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+        vehiculos.add(getVehiculo2());
+        Cliente cliente = new Cliente();
+        cliente.setCondicionCliente(CondicionCliente.ACTIVO);
+        cliente.setApellido("jose");
+        cliente.setNombre("jose");
+        cliente.setCuil(99999999999L);
+        cliente.setDocumento(TestTemporalDB.getDocumento2());
+        cliente.setAnioRegistro(2019);
+        cliente.setSexo(Sexo.MASCULINO);
+        cliente.setProfesion("Incompetente");
+        cliente.setDomicilio(new Direccion("Mendoza", 2089, 4, 2, new Localidad("Santa Fe", 4000, new Provincia("Santa fe", new Pais("Argentina")), TestTemporalDB.getHistorial())));
+        cliente.setCorreoElectronico("lerodrigueño@hotmail.com");
+        cliente.setEstadoCivil(new EstadoCivil("Casado"));
+        cliente.setFechaNacimiento(new Date(90, Calendar.JANUARY, 6));
+        cliente.setDocumento(TestTemporalDB.getDocumento2());
         cliente.setVehiculos(vehiculos);
         cliente.setCondicionIva(new CondicionIva("Monotributista"));
         return cliente;
