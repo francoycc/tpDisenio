@@ -13,7 +13,7 @@ public class HistorialFactor {
     @GeneratedValue
     private int id;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "historial_id")
+    @JoinColumn(name = "historial_id",foreignKey = @ForeignKey(name = "fk_historial_id"))
     private List<EntradaHistorialFactores> entradas = new LinkedList<>();
     private float valorActualFactor;
     private LocalDateTime ultimaFecha;

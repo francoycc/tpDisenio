@@ -1,5 +1,4 @@
 package org.grupo2b.proyectodisenio.dao.historial;
 
-public class HistorialDAOPSQL {
-
+public class EntradaHistorialDAOPSQL {
 }
