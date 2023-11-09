@@ -5,6 +5,4 @@ open module org.grupo2b.proyectodisenio {
     requires org.postgresql.jdbc;
     requires jakarta.persistence;
     requires java.naming;
-
-
 }

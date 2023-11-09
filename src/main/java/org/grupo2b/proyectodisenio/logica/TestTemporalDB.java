@@ -109,7 +109,7 @@ public class TestTemporalDB {
         cliente.setDomicilio(new Direccion("Mendoza", 2089, 4, 2, new Localidad("Santa Fe", 4000, new Provincia("Santa fe", new Pais("Argentina")), TestTemporalDB.getHistorial())));
         cliente.setCorreoElectronico("lerodrigueño@hotmail.com");
         cliente.setEstadoCivil(new EstadoCivil("Casado"));
-        cliente.setFechaNacimiento(new Date(1990, Calendar.JANUARY, 6));
+        cliente.setFechaNacimiento(new Date(90, Calendar.JANUARY, 6));
         cliente.setDocumento(TestTemporalDB.getDocumento());
         cliente.setVehiculos(vehiculos);
         cliente.setCondicionIva(new CondicionIva("Monotributista"));

@@ -14,6 +14,7 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -77,6 +78,23 @@ public class DAOManager {
     public static void setSession(Session session) {
         DAOManager.session = session;
     }
+
+
+
+    public static void save(Object o) {
+        Transaction tx = session.beginTransaction();
+        session.persist(o);
+        tx.commit();
+    }
+
+    public static <T> T recover(Class<T> o, int id) {
+        Transaction tx = session.beginTransaction();
+        T obj = session.get(o, 1);
+        tx.commit();
+        return obj;
+    }
+
+
 
 
     //TODO DEBERIAMOS USAR CASCADE, QUE HACE A LOS DAO REDUNDANTES O NO

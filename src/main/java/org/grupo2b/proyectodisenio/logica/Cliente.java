@@ -2,6 +2,7 @@ package org.grupo2b.proyectodisenio.logica;
 
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
+import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
@@ -16,7 +17,13 @@ import java.util.List;
 public class Cliente {
     @Id
     @GeneratedValue
-    private int nroCliente;
+    private int id;
+    private String nroCliente;
+    @PrePersist
+    private void ensureId(){
+        nroCliente = domicilio.getLocalidad().getProvincia().getPais().getId()+ "-"+id;
+        //TODO CODIGO DE PAIS? NORMALIZAR
+    }
     @Column(length = 40)
     private String nombre;
     @Column(length = 40)
@@ -47,8 +54,10 @@ public class Cliente {
 
 
     public Cliente(){}
-    public Cliente(int nroCliente, String nombre, String apellido, int cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
-        this.nroCliente = nroCliente;
+    public Cliente(int id){
+        this.id=id;
+    }
+    public Cliente(String nombre, String apellido, int cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuil = cuil;
@@ -66,13 +75,33 @@ public class Cliente {
     }
 
 
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nroCliente='" + nroCliente + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", cuil=" + cuil +
+                ", sexo=" + sexo +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", correoElectronico='" + correoElectronico + '\'' +
+                ", profesion='" + profesion + '\'' +
+                ", anioRegistro=" + anioRegistro +
+                ", condicionCliente=" + condicionCliente +
+                ", documento=" + documento +
+                ", condicionIva=" + condicionIva +
+                ", domicilio=" + domicilio +
+                ", vehiculos=" + vehiculos +
+                ", estadoCivil=" + estadoCivil +
+                '}';
+    }
 
-
-    public int getNroCliente() {
+    public String getNroCliente() {
         return nroCliente;
     }
 
-    public void setNroCliente(int nroCliente) {
+    public void setNroCliente(String nroCliente) {
         this.nroCliente = nroCliente;
     }
 

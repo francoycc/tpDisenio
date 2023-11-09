@@ -13,7 +13,7 @@ public class Pais {
     @Column(length = 20)
     private String nombre;
 
-
+//TODO CODIGO DE PAIS?
 
     public Pais() {}
     public Pais(int id) {

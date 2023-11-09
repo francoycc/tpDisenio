@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.TestTemporalDB;
+import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
@@ -21,10 +24,13 @@ public class HelloApplication extends Application {
 
 
     public static void main(String[] args) {
-        Transaction tx = DAOManager.getSession().beginTransaction();
 
+        //TipoDocumento tipoDoc = DAOManager.recover(TipoDocumento.class, 1);
 
-        tx.commit();
+        DAOManager.save(TestTemporalDB.getCliente());
+        Cliente c = DAOManager.recover(Cliente.class, 1);
+        System.out.println(c);
+
         //launch();
     }
 
