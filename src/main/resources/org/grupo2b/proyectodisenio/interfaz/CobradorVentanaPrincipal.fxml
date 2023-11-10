@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="152.0" fitWidth="496.0" layoutX="305.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/UTN%202023/3ro%20-%20Diseño%20de%20Sistemas/TP/zTP2023%20-%20Grupo%202B/zImagenesParaInterfaces/banner.jpg" />
+            <Image url="@zImagenesParaInterfaces/banner.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="234.0" fitWidth="236.0" layoutX="570.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Desktop/UTN%202023/3ro%20-%20Diseño%20de%20Sistemas/TP/zTP2023%20-%20Grupo%202B/zImagenesParaInterfaces/logo.jpg" />
+            <Image url="@zImagenesParaInterfaces/logo.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="305.0" layoutY="173.0" prefHeight="234.0" prefWidth="101.0">
@@ -57,7 +57,8 @@
       </VBox>
       <MenuButton mnemonicParsing="false" prefHeight="28.0" prefWidth="252.0" text="MENÚ">
          <items>
-            <MenuItem mnemonicParsing="false" text="CONSULTAR PÓLIZAS" />
+            <MenuItem mnemonicParsing="false" text="GENERAR LISTADO DE PROPUESTAS DE RENOVACIÓN" />
+            <MenuItem mnemonicParsing="false" text="GENERAR INFORMES DE RESULTADO MENSUAL" />
          </items>
       </MenuButton>
    </children>
