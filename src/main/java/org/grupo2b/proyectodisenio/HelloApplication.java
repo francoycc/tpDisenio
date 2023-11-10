@@ -38,7 +38,7 @@ public class HelloApplication extends Application {
             System.out.println(o);
         }*/
 
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        /*CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
         Root<Cliente> root = cr.from(Cliente.class);
 
@@ -61,7 +61,7 @@ public class HelloApplication extends Application {
         System.out.println("Numero Cliente | Nombre | Apellido | TipoDoc | Nro Doc");
         for (Cliente c : results){
             System.out.println(""+c.getNroCliente()+"|"+c.getNombre()+"|"+c.getApellido()+"|"+c.getDocumento().getTipoDocumento().getNombre()+"|"+c.getDocumento().getNumero());
-        }
+        }*/
 
         //launch();
     }
