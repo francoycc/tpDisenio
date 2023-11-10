@@ -33,6 +33,7 @@ public class Poliza {
     @JoinColumn(name = "id_poliza")
     private List<Cuota> cuotas;
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "RELACION_MEDIDAS_POLIZA", joinColumns = @JoinColumn(name = "id_poliza"), inverseJoinColumns = @JoinColumn(name = "id_seguridad"))
     private List<MedidaDeSeguridad> medidasDeSeguridad;
     @OneToOne(cascade = CascadeType.ALL)
     private DatosParaRenovacion datosRenovacion;

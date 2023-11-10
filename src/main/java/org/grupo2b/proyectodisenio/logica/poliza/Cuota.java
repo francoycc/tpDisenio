@@ -9,13 +9,17 @@ import java.util.Date;
 public class Cuota {
     @Id
     @GeneratedValue
+    @Column(name = "id_cuota")
     private int id;
+    @Column(name = "fecha_vencimiento")
     private Date fechaVencimiento;
     private float monto;
     private EstadoCuota estado;
-    private float recargoMora;
+    @Column(name = "recarga_mora")
+    private float recargaMora;
     private float bonificacion;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_recibo")
     private Recibo recibo;
 
 
@@ -25,11 +29,11 @@ public class Cuota {
     public Cuota(int id){
         this.id=id;
     }
-    public Cuota(Date fechaVencimiento, float monto, EstadoCuota estado, float recargoMora, float bonificacion, Recibo recibo) {
+    public Cuota(Date fechaVencimiento, float monto, EstadoCuota estado, float recargaMora, float bonificacion, Recibo recibo) {
         this.fechaVencimiento = fechaVencimiento;
         this.monto = monto;
         this.estado = estado;
-        this.recargoMora = recargoMora;
+        this.recargaMora = recargaMora;
         this.bonificacion = bonificacion;
         this.recibo = recibo;
     }
@@ -62,11 +66,11 @@ public class Cuota {
     public void setEstado(EstadoCuota estado) {
         this.estado = estado;
     }
-    public float getRecargoMora() {
-        return recargoMora;
+    public float getRecargaMora() {
+        return recargaMora;
     }
-    public void setRecargoMora(float recargoMora) {
-        this.recargoMora = recargoMora;
+    public void setRecargaMora(float recargaMora) {
+        this.recargaMora = recargaMora;
     }
     public float getBonificacion() {
         return bonificacion;

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class AnioFabricacion {
     @Id
     @GeneratedValue
+    @Column(name = "id_anioFabricacion")
     private int id;
     @Column
     private int anioModelo;

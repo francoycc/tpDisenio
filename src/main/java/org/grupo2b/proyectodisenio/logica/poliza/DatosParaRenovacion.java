@@ -15,24 +15,33 @@ import java.util.List;
 public class DatosParaRenovacion {
     @Id
     @GeneratedValue
+    @Column(name = "id_renovacion")
     private int id;
     @Enumerated(EnumType.STRING)
+    @Column(name = "forma_pago")
     private FormaPago formaPago;
+    @Column(name = "fecha_renovacion")
     private Date fechaRenovacion;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_tipo_cobertura")
     private TipoCobertura tipoCobertura;
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "RELACION_MEDIDAS_RENOVACION", joinColumns = @JoinColumn(name = "id_renovacion"), inverseJoinColumns = @JoinColumn(name = "id_seguridad"))
     private ArrayList<MedidaDeSeguridad> medidasDeSeguridad;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_anioFabricacion")
     private AnioFabricacion anioFabricacion;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_vehiculo")
     private Vehiculo vehiculo;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_poliza")
     private Poliza poliza;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_datos_renovacion")
     private ArrayList<DeclaracionHijo> declaracionesHijos;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_nro_siniestros")
     private NumeroSiniestros nroSiniestros;
 
 

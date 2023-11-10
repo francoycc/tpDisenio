@@ -31,24 +31,31 @@ public class Cliente {
     private long cuil;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
-    @Column(length = 40)
+    @Column(name = "correo", length = 40)
     private String correoElectronico;
     @Column(length = 30)
     private String profesion;
+    @Column(name = "anio_registro")
     private int anioRegistro;
     @Enumerated(EnumType.STRING)
+    @Column(name = "condicion_cliente")
     private CondicionCliente condicionCliente;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "numero_documento")
     private Documento documento;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_condicion_iva")
     private CondicionIva condicionIva;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_domicilio")
     private Direccion domicilio;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
     private List<Vehiculo> vehiculos;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_estado_civil")
     private EstadoCivil estadoCivil;
 
 

@@ -48,7 +48,10 @@ public class HelloApplication extends Application {
                 cb.and(
                         cb.like(root.get("nroCliente"),"%"),
                         cb.like(root.get("nombre"),"%"),
-                        cb.like(root.get("apellido"),"%")));
+                        cb.like(root.get("apellido"),"%"),
+                        cb.gt(root.join("documento").get("numero"), 22222223)));
+
+        System.out.println(cr.toString());
 
 
 
