@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="aa">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/LoginControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/ProdSegurosVentanaPrincipalControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPoliza.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/ProdSegurosVentanaPrincipal.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces/banner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces/logo.jpg" afterDir="false" />
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Hibernate mapping 2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Objetos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/CobradorVentanaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/CobradorVentanaPrincipal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/GerenciaVentanaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/GerenciaVentanaPrincipal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/ProdSegurosVentanaPrincipal.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Poliza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Poliza.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,30 +41,25 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2Xm7jSpmhxBXOm7mhR7h3LtpuQl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Ale/Desktop/UTN 2023/3ro - Diseño de Sistemas/TP/TPDisenio/src/main/resources/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Me/Documents/IntelliJ/TPDISENIOEJ1/pom.xml&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ale\Desktop\UTN 2023\3ro - Diseño de Sistemas\TP\TPDisenio\src\main\resources\org\grupo2b\proyectodisenio\interfaz\zImagenesParaInterfaces" />
-      <recent name="C:\Users\Ale\Desktop\UTN 2023\3ro - Diseño de Sistemas\TP\TPDisenio\src\main\java\org\grupo2b\proyectodisenio\interfaz" />
-      <recent name="C:\Users\Ale\Desktop\UTN 2023\3ro - Diseño de Sistemas\TP\TPDisenio\src\main\resources\org\grupo2b\proyectodisenio\interfaz" />
-      <recent name="C:\Users\Ale\Desktop\UTN 2023\3ro - Diseño de Sistemas\TP\TPDisenio\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ale\Desktop\UTN 2023\3ro - Diseño de Sistemas\TP\TPDisenio\src\main\resources\org\grupo2b\proyectodisenio\interfaz" />
       <recent name="C:\Users\Me\Documents\IntelliJ\ProyectoDisenio\src\main\java\org\grupo2b\proyectodisenio" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -115,39 +99,7 @@
       <option name="project" value="LOCAL" />
       <updated>1699419362931</updated>
     </task>
-    <task id="LOCAL-00004" summary="Cambiada ip de base de datos de localhost a remota">
-      <option name="closed" value="true" />
-      <created>1699419608758</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1699419608759</updated>
-    </task>
-    <task id="LOCAL-00005" summary="a">
-      <option name="closed" value="true" />
-      <created>1699495820914</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1699495820914</updated>
-    </task>
-    <task id="LOCAL-00006" summary="aa">
-      <option name="closed" value="true" />
-      <created>1699499059919</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1699499059919</updated>
-    </task>
-    <task id="LOCAL-00007" summary="aa">
-      <option name="closed" value="true" />
-      <created>1699504165897</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1699504165897</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,9 +117,6 @@
     <MESSAGE value="Hibernate test" />
     <MESSAGE value="Hibernate mapping 1" />
     <MESSAGE value="Hibernate mapping 2" />
-    <MESSAGE value="Cambiada ip de base de datos de localhost a remota" />
-    <MESSAGE value="a" />
-    <MESSAGE value="aa" />
-    <option name="LAST_COMMIT_MESSAGE" value="aa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hibernate mapping 2" />
   </component>
 </project>

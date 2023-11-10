@@ -64,7 +64,7 @@ public class Cliente {
     public Cliente(int id){
         this.id=id;
     }
-    public Cliente(String nombre, String apellido, int cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
+    public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuil = cuil;

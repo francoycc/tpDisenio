@@ -6,7 +6,6 @@ import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +13,14 @@ import java.util.List;
 public class Poliza {
     @Id
     @GeneratedValue//TODO CUSTOM GENERATOR
-    private int nroPoliza;
+    private int id;
+
+    private String nroPoliza;
+
+    @PrePersist
+    private void ensureId(){
+        nroPoliza = "" + id;
+    }
     private Date inicioVigencia;
     private Date finVigencia;
     private Date fechaRegistro;
@@ -50,12 +56,11 @@ public class Poliza {
 
 
 
-    public Poliza(){}
-    public Poliza(int nroPoliza){
-        this.nroPoliza=nroPoliza;
-    }
-    public Poliza(int nroPoliza, Date inicioVigencia, Date finVigencia, Date fechaRegistro, FormaPago formaPago, EstadoPoliza estadoPoliza, float premio, DerechoEmision derechoEmision, Descuento descuentos, TipoCobertura tipoCobertura, List<Cuota> cuotas, List<MedidaDeSeguridad> medidasDeSeguridad, DatosParaRenovacion datosRenovacion, Vehiculo vehiculo, List<DeclaracionHijo> declaracionesHijos, Cliente cliente, NumeroSiniestros nroSiniestros) {
-        this.nroPoliza = nroPoliza;
+    public Poliza(Date date, Date date1, Date date2, FormaPago semestral, EstadoPoliza vigente, int i, int i1, TipoCobertura tipoCobertura, Cuota cuota1, List<MedidaDeSeguridad> medidas1, DeclaracionHijo declaracionHijos1, Cliente cliente1, NumeroSiniestros numeroSiniestros){}
+
+    public Poliza(Date inicioVigencia, Date finVigencia, Date fechaRegistro, FormaPago formaPago, EstadoPoliza estadoPoliza,
+                  float premio, DerechoEmision derechoEmision, Descuento descuentos, TipoCobertura tipoCobertura, List<Cuota> cuotas,
+                  List<MedidaDeSeguridad> medidasDeSeguridad, Vehiculo vehiculo, List<DeclaracionHijo> declaracionesHijos, Cliente cliente, NumeroSiniestros nroSiniestros){
         this.inicioVigencia = inicioVigencia;
         this.finVigencia = finVigencia;
         this.fechaRegistro = fechaRegistro;
@@ -75,13 +80,18 @@ public class Poliza {
     }
 
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-
-    public int getNroPoliza() {
+    public String getNroPoliza() {
         return nroPoliza;
     }
-    public void setNroPoliza(int nroPoliza) {
+    public void setNroPoliza(String nroPoliza) {
         this.nroPoliza = nroPoliza;
     }
     public Date getInicioVigencia() {

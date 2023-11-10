@@ -30,9 +30,8 @@ public class DAOManager {
         properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
         properties.put("hibernate.connection.url","jdbc:postgresql://190.7.1.188:5432/proyecto_disenio");
         properties.put("hibernate.connection.username","Manager");
-        properties.put("hibernate.connection.password","s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;\";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[");
-        properties.put("show_sql","true");
-        properties.put("hibernate.hbm2ddl.auto","update");
+        properties.put("hibernate.connection.password","s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;\";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[");        properties.put("show_sql","true");
+        properties.put("hibernate.hbm2ddl.auto","create");
         properties.put("hibernate.jdbc.time_zone","UTC");
         return properties;
         //];4A9LPW(+rxm.ohTz&(8ruB6V?rUJQgcMQVt~I782'cq]ha8C72xHRGzK_+fc)&B__Yp5kIj/m*hfUzwO'PNcZEI4#z10}8p
