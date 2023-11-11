@@ -82,7 +82,7 @@ public class TestTemporalDB {
     public static Documento getDocumento2(){
         Documento doc = new Documento();
         TipoDocumento tipoDoc = new TipoDocumento();
-        tipoDoc.setNombre("PT");
+        tipoDoc.setNombre("PASAPORTE");
         doc.setNumero(22222222);
         doc.setTipoDocumento(tipoDoc);
         return doc;

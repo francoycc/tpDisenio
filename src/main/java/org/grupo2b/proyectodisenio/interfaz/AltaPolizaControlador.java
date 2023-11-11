@@ -83,7 +83,7 @@ public class AltaPolizaControlador {
         String apellido;
         String tipoDoc;
         int nroDocumento;
-
+        public datosClienteTabla(){}
         public datosClienteTabla(String nroCliente, String nombre, String apellido, String tipoDoc, int nroDocumento) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
@@ -167,6 +167,9 @@ public class AltaPolizaControlador {
         } else {
             errorApellido.setText("");
         }
+        if (tipoDocumento.getValue()==null) {
+            tipoDocumento.setValue("DNI");
+        }
         if (!nroDocumento.getText().matches("\\d+") && !nroDocumento.getText().isEmpty()) {
             errorNroDocumento.setText("Ingrese un Nro de Documento válido.");
             flag = 1;
@@ -175,8 +178,10 @@ public class AltaPolizaControlador {
         }
 
         if (flag == 0) {
+            tablaMostrarClientes.getItems().clear();
+            tablaMostrarClientes.setVisible(true);
             int flag2 = buscarYmostrarClientes(nroCliente.getText(), nombre.getText(), apellido.getText(), tipoDocumento.getValue(), nroDocumento.getText());
-            if (!(flag2 ==0)) {
+            if (flag2 == 0) {
                 Alert messageWindows = new Alert(Alert.AlertType.ERROR);
                 messageWindows.setTitle("ERROR");      // DE ESTA FORMA SE ESCRIBEN
                 messageWindows.setHeaderText("");                   // TODOS LOS MENSAJES DE
@@ -185,18 +190,6 @@ public class AltaPolizaControlador {
             }
         }
     }
-
-    public void insertarEnLaTabla() {
-        tablaMostrarClientes = new TableView();
-        botonesElegirCliente = new TableColumn<>("");
-        nroClienteColumna = new TableColumn("Nro Cliente");
-        apellidoColumna = new TableColumn("Apellido");
-        nombreColumna = new TableColumn("Nombre");
-        tipoDocColumna = new TableColumn("Tipo Documento");
-        nroDocColumna = new TableColumn("Nro Documento");
-        tablaMostrarClientes.getColumns().addAll(botonesElegirCliente, nroClienteColumna, apellidoColumna, nombreColumna, tipoDocColumna, nroDocColumna);
-    }
-
     public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, String tipoDoc, String nroDocumento) {
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
@@ -207,13 +200,21 @@ public class AltaPolizaControlador {
                         cb.like(root.get("nroCliente"),nroCliente+"%"),
                         cb.like(root.get("nombre"),nombre+"%"),
                         cb.like(root.get("apellido"),apellido+"%"),
-                        cb.like(cb.concat("", root.get("documento")), tipoDoc+"%"),
-                        cb.equal(root.join("documento").join("tipoDocumento").get("nombre"), nroDocumento)));
+                        cb.like(root.join("documento").get("numero").as(String.class),nroDocumento+"%"),
+                        cb.equal(root.join("documento").join("tipoDocumento").get("nombre"), tipoDoc)));
 
         Query<Cliente> query = DAOManager.getSession().createQuery(cr);
         List<Cliente> results = query.getResultList();
 
-        insertarEnLaTabla();
+        tablaMostrarClientes = new TableView();
+        botonesElegirCliente = new TableColumn<>("");
+        nroClienteColumna = new TableColumn("Nro Cliente");
+        apellidoColumna = new TableColumn("Apellido");
+        nombreColumna = new TableColumn("Nombre");
+        tipoDocColumna = new TableColumn("Tipo Documento");
+        nroDocColumna = new TableColumn("Nro Documento");
+        tablaMostrarClientes.getColumns().addAll(botonesElegirCliente, nroClienteColumna, apellidoColumna, nombreColumna, tipoDocColumna, nroDocColumna);
+
         for (Cliente c : results){
             datosClienteTabla cliente = new datosClienteTabla(
                     c.getNroCliente(),
@@ -226,7 +227,6 @@ public class AltaPolizaControlador {
         }
         return results.size();
     }
-
     @FXML
     void cancelar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
@@ -237,20 +237,20 @@ public class AltaPolizaControlador {
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML
     void limpiar(ActionEvent event) {
         nroCliente.setText("");
         nombre.setText("");
         apellido.setText("");
         nroDocumento.setText("");
-        tipoDocumento.setValue("DNI");
+        tipoDocumento.setValue(null);
         errorNroCliente.setText("");
         errorNombre.setText("");
         errorApellido.setText("");
         errorNroDocumento.setText("");
+        tablaMostrarClientes.getItems().clear();
+        tablaMostrarClientes.setVisible(false);
     }
-
     public static boolean validarFormato(String cadena) {
         // Definir la expresión regular para el formato "99-99999999"
         String regex = "\\d{2}-\\d{8}";
@@ -264,7 +264,6 @@ public class AltaPolizaControlador {
         // Verificar si la cadena coincide con el patrón
         return matcher.matches();
     }
-
     @FXML
     void initialize() {
         assert apellido != null : "fx:id=\"apellido\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
@@ -283,17 +282,18 @@ public class AltaPolizaControlador {
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
         tipoDocumento.getItems().addAll("DNI", "PASAPORTE", "LU", "LE");
-        tipoDocumento.setValue("DNI");
 
-        /*botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>(""));
+        botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>(""));
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));
         apellidoColumna.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         nombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tipoDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoDoc"));
-        nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDoc"));
+        nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDocumento"));
 
-        datosClienteTabla cliente = new datosClienteTabla("11-22334455", "Ale", "Jandro", "DNI", 12345678);
+        tablaMostrarClientes.setVisible(false);
+
+        datosClienteTabla cliente = new datosClienteTabla();
         clientesList.add(cliente);
-        tablaMostrarClientes.setItems(clientesList);*/
+        tablaMostrarClientes.setItems(clientesList);
     }
 }

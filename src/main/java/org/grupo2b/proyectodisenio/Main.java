@@ -16,8 +16,6 @@ import org.hibernate.query.Query;
 import org.hibernate.sql.ast.tree.Statement;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-            AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+            AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("interfaz/Login.fxml")));
             Scene scene = new Scene(root);
             stage.setTitle("EL ASEGURADO");
             stage.setResizable(false);
@@ -39,16 +37,11 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
 
         //TipoDocumento tipoDoc = DAOManager.recover(TipoDocumento.class, 1);
-        //DAOManager.save(TestTemporalDB.getCliente());
-        //DAOManager.save(TestTemporalDB.getCliente2());
-
-        /*for(Cliente o:DAOManager.getSession().createNativeQuery("select * from cliente", Cliente.class).list()){
-            System.out.println(o);
-        }*/
-
+        DAOManager.save(TestTemporalDB.getCliente());
+        DAOManager.save(TestTemporalDB.getCliente2());
 
         launch();
     }

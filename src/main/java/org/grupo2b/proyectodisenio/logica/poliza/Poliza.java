@@ -53,10 +53,7 @@ public class Poliza {
     @ManyToOne(cascade = CascadeType.ALL)
     private NumeroSiniestros nroSiniestros;
 
-
-
-
-    public Poliza(Date date, Date date1, Date date2, FormaPago semestral, EstadoPoliza vigente, int i, int i1, TipoCobertura tipoCobertura, Cuota cuota1, List<MedidaDeSeguridad> medidas1, DeclaracionHijo declaracionHijos1, Cliente cliente1, NumeroSiniestros numeroSiniestros){}
+    public Poliza() {}
 
     public Poliza(Date inicioVigencia, Date finVigencia, Date fechaRegistro, FormaPago formaPago, EstadoPoliza estadoPoliza,
                   float premio, DerechoEmision derechoEmision, Descuento descuentos, TipoCobertura tipoCobertura, List<Cuota> cuotas,
