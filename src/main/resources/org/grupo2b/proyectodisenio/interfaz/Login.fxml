@@ -3,18 +3,20 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.Login">
-   <VBox alignment="CENTER" layoutX="204.0" layoutY="77.0" prefHeight="272.0" prefWidth="446.0" spacing="20.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.grupo2b.proyectodisenio.interfaz.LoginControlador">
+   <VBox alignment="CENTER" layoutX="440.0" layoutY="210.0" maxHeight="300.0" maxWidth="400.0" minHeight="300.0" minWidth="400.0" prefHeight="300.0" prefWidth="400.0" spacing="20.0">
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
-      <TextField fx:id="idusuario" text="Usuario (*)" />
-      <TextField fx:id="idcontrasenia" prefHeight="26.0" prefWidth="256.0" text="Contraseña (*)" />
+      <TextField fx:id="idusuario" prefWidth="0.0" promptText="Usuario (*)" />
+      <PasswordField fx:id="idcontrasenia" promptText="Contraseña(*)" />
       <Label fx:id="textoDeError" textFill="#f40000" />
       <Button fx:id="idbotonlogin" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="180.0" style="-fx-background-color: #0000cd;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
          <font>
