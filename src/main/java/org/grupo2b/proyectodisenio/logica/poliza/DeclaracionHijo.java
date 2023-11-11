@@ -11,11 +11,14 @@ import java.util.Date;
 public class DeclaracionHijo {
     @Id
     @GeneratedValue
+    @Column(name = "id_declaracion")
     private int id;
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_estado_civil")
     private EstadoCivil estadoCivilHijo;
 
 

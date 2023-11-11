@@ -38,7 +38,7 @@ public class DatosParaRenovacion {
     @JoinColumn(name = "id_poliza")
     private Poliza poliza;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_datos_renovacion")
+    @JoinTable(name = "RELACION_RENOVACION_DECLARACION", joinColumns = @JoinColumn(name = "id_renovacion"), inverseJoinColumns = @JoinColumn(name = "id_declaracion"))
     private ArrayList<DeclaracionHijo> declaracionesHijos;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_nro_siniestros")
