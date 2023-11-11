@@ -17,8 +17,7 @@ public class Descuento {
 
 
     public Descuento(){}
-    public Descuento(int id, String nombreDescuento, HistorialFactor historialFactor) {
-        this.id = id;
+    public Descuento(String nombreDescuento, HistorialFactor historialFactor) {
         this.nombreDescuento = nombreDescuento;
         this.historial = historialFactor;
     }

@@ -19,8 +19,7 @@ public class NumeroSiniestros {
 
 
     public NumeroSiniestros(){}
-    public NumeroSiniestros(int id, int cantSiniestros, HistorialFactor historialFactor) {
-        this.id = id;
+    public NumeroSiniestros(int cantSiniestros, HistorialFactor historialFactor) {
         this.cantSiniestros = cantSiniestros;
         this.historial = historialFactor;
     }

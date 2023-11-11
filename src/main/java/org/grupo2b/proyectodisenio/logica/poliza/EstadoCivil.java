@@ -15,9 +15,6 @@ public class EstadoCivil {
 
 
     public EstadoCivil(){}
-    public EstadoCivil(int id) {
-        this.id = id;
-    }
     public EstadoCivil(String tipo) {
         this.tipo = tipo;
     }

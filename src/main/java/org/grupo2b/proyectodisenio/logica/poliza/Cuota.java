@@ -26,9 +26,6 @@ public class Cuota {
 
 
     public Cuota(){}
-    public Cuota(int id){
-        this.id=id;
-    }
     public Cuota(Date fechaVencimiento, float monto, EstadoCuota estado, float recargaMora, float bonificacion, Recibo recibo) {
         this.fechaVencimiento = fechaVencimiento;
         this.monto = monto;

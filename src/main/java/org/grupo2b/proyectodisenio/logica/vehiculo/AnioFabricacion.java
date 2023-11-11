@@ -14,8 +14,7 @@ public class AnioFabricacion {
 
 
     public AnioFabricacion(){}
-    public AnioFabricacion(int id, int anioModelo) {
-        this.id = id;
+    public AnioFabricacion(int anioModelo) {
         this.anioModelo = anioModelo;
     }
 

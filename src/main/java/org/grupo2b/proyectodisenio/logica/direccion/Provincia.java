@@ -6,18 +6,17 @@ import jakarta.persistence.*;
 public class Provincia {
     @Id
     @GeneratedValue
+    @Column(name = "id_provincia")
     private int id;
     @Column(length = 20)
     private String nombre;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_pais")
     private Pais pais;
 
 
 
     public Provincia(){}
-    public Provincia(int id){
-        this.id=id;
-    }
     public Provincia(String nombre, Pais pais) {
         this.nombre = nombre;
         this.pais = pais;

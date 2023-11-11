@@ -2,14 +2,12 @@ package org.grupo2b.proyectodisenio.logica;
 
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
-import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
 import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -61,9 +59,6 @@ public class Cliente {
 
 
     public Cliente(){}
-    public Cliente(int id){
-        this.id=id;
-    }
     public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -219,8 +214,13 @@ public class Cliente {
     public EstadoCivil getEstadoCivil() {
         return estadoCivil;
     }
-
     public void setEstadoCivil(EstadoCivil estadoCivil) {
         this.estadoCivil = estadoCivil;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }

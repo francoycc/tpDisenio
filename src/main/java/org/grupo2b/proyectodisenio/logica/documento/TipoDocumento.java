@@ -7,14 +7,14 @@ import jakarta.persistence.*;
 public class TipoDocumento {
     @Id
     @GeneratedValue
+    @Column(name = "id_tipoDocumento")
     private int id;
     @Column(length = 20)
     private String nombre;
 
 
     public TipoDocumento(){}
-    public TipoDocumento(int id, String nombre) {
-        this.id = id;
+    public TipoDocumento(String nombre) {
         this.nombre = nombre;
     }
 

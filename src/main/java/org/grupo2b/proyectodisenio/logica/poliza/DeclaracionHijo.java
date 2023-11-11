@@ -25,11 +25,7 @@ public class DeclaracionHijo {
 
 
     public DeclaracionHijo(){}
-    public DeclaracionHijo(int id){
-        this.id=id;
-    }
-    public DeclaracionHijo(int id, Date fechaNacimiento, Sexo sexo, EstadoCivil estadoCivilHijo) {
-        this.id = id;
+    public DeclaracionHijo(Date fechaNacimiento, Sexo sexo, EstadoCivil estadoCivilHijo) {
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.estadoCivilHijo = estadoCivilHijo;

@@ -19,8 +19,7 @@ public class Cuenta {
 
 
     public Cuenta(){}
-    public Cuenta(int id, String nombre, String clave) {
-        this.id = id;
+    public Cuenta(String nombre, String clave) {
         this.nombre = nombre;
         this.clave = clave;
     }

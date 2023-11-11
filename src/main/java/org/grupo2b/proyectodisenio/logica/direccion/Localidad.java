@@ -22,9 +22,6 @@ public class Localidad {
 
 
     public Localidad(){}
-    public Localidad(int id){
-        this.id=id;
-    }
     public Localidad(String nombre, int codigoPostal, Provincia provincia, HistorialFactor historialFactor) {
         this.nombre = nombre;
         this.codigoPostal = codigoPostal;

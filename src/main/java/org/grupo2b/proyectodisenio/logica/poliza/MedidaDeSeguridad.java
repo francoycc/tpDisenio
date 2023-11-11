@@ -18,8 +18,7 @@ public class MedidaDeSeguridad {
 
 
     public MedidaDeSeguridad(){}
-    public MedidaDeSeguridad(int id, String nombre, HistorialFactor historialFactor) {
-        this.id = id;
+    public MedidaDeSeguridad(String nombre, HistorialFactor historialFactor) {
         this.nombre = nombre;
         this.historial = historialFactor;
     }

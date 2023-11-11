@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 public class Pais {
     @Id
     @GeneratedValue
+    @Column(name = "id_pais")
     private int id;
     @Column(length = 20)
     private String nombre;
@@ -16,9 +17,6 @@ public class Pais {
 //TODO CODIGO DE PAIS?
 
     public Pais() {}
-    public Pais(int id) {
-        this.id = id;
-    }
     public Pais(String nombre) {
         this.nombre = nombre;
     }

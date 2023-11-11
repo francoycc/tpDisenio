@@ -13,27 +13,36 @@ import java.util.List;
 public class Poliza {
     @Id
     @GeneratedValue//TODO CUSTOM GENERATOR
+    @Column(name = "id_poliza")
     private int id;
-
+    @Column(name = "nro_poliza")
     private String nroPoliza;
 
     @PrePersist
     private void ensureId(){
         nroPoliza = "" + id;
     }
+    @Column(name = "inicio_vigencia")
     private Date inicioVigencia;
+    @Column(name = "fin_vigencia")
     private Date finVigencia;
+    @Column(name = "fecha_registro")
     private Date fechaRegistro;
     @Enumerated(EnumType.STRING)
+    @Column(name = "forma_pago")
     private FormaPago formaPago;
     @Enumerated(EnumType.STRING)
+    @Column(name = "estado_poliza")
     private EstadoPoliza estadoPoliza;
     private float premio;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_derecho_emision")
     private DerechoEmision derechoEmision;
     @ManyToOne(cascade = CascadeType.ALL)
-    private Descuento descuentos;
+    @JoinColumn(name = "id_descuento")
+    private Descuento descuento;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo_cobertura")
     private TipoCobertura tipoCobertura;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_poliza")
@@ -42,21 +51,23 @@ public class Poliza {
     @JoinTable(name = "RELACION_MEDIDAS_POLIZA", joinColumns = @JoinColumn(name = "id_poliza"), inverseJoinColumns = @JoinColumn(name = "id_seguridad"))
     private List<MedidaDeSeguridad> medidasDeSeguridad;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_renovacion")
     private DatosParaRenovacion datosRenovacion;
     @OneToOne(cascade = CascadeType.ALL)
     private Vehiculo vehiculo;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_poliza")
+    @JoinTable(name = "RELACION_POLIZA_DECLARACION", joinColumns = @JoinColumn(name = "id_poliza"), inverseJoinColumns = @JoinColumn(name = "id_declaracion"))
     private List<DeclaracionHijo> declaracionesHijos;
     @ManyToOne(cascade = CascadeType.ALL)
     private Cliente cliente;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_nro_siniestros")
     private NumeroSiniestros nroSiniestros;
 
-    public Poliza() {}
 
+    public Poliza() {}
     public Poliza(Date inicioVigencia, Date finVigencia, Date fechaRegistro, FormaPago formaPago, EstadoPoliza estadoPoliza,
-                  float premio, DerechoEmision derechoEmision, Descuento descuentos, TipoCobertura tipoCobertura, List<Cuota> cuotas,
+                  float premio, DerechoEmision derechoEmision, Descuento descuento, TipoCobertura tipoCobertura, List<Cuota> cuotas,
                   List<MedidaDeSeguridad> medidasDeSeguridad, Vehiculo vehiculo, List<DeclaracionHijo> declaracionesHijos, Cliente cliente, NumeroSiniestros nroSiniestros){
         this.inicioVigencia = inicioVigencia;
         this.finVigencia = finVigencia;
@@ -65,7 +76,7 @@ public class Poliza {
         this.estadoPoliza = estadoPoliza;
         this.premio = premio;
         this.derechoEmision = derechoEmision;
-        this.descuentos = descuentos;
+        this.descuento = descuento;
         this.tipoCobertura = tipoCobertura;
         this.cuotas = cuotas;
         this.medidasDeSeguridad = medidasDeSeguridad;
@@ -134,10 +145,10 @@ public class Poliza {
         this.derechoEmision = derechoEmision;
     }
     public Descuento getDescuentos() {
-        return descuentos;
+        return descuento;
     }
-    public void setDescuentos(Descuento descuentos) {
-        this.descuentos = descuentos;
+    public void setDescuentos(Descuento descuento) {
+        this.descuento = descuento;
     }
     public TipoCobertura getTipoCobertura() {
         return tipoCobertura;

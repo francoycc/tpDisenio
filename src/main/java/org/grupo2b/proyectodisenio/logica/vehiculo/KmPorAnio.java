@@ -19,9 +19,6 @@ public class KmPorAnio {
 
 
     public KmPorAnio(){}
-    public KmPorAnio(int id) {
-        this.id = id;
-    }
     public KmPorAnio(float kmRealizados, HistorialFactor historialFactor) {
         this.kmRealizados = kmRealizados;
         this.historialFactor = historialFactor;

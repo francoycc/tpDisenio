@@ -48,11 +48,7 @@ public class DatosParaRenovacion {
 
 
     public DatosParaRenovacion(){}
-    public DatosParaRenovacion(int id){
-        this.id=id;
-    }
-    public DatosParaRenovacion(int id, FormaPago formaPago, Date fechaRenovacion, TipoCobertura tipoCobertura, ArrayList<MedidaDeSeguridad> medidasDeSeguridad, AnioFabricacion anioFabricacion, Vehiculo vehiculo, Poliza poliza, ArrayList<DeclaracionHijo> declaracionesHijos, NumeroSiniestros nroSiniestros) {
-        this.id = id;
+    public DatosParaRenovacion(FormaPago formaPago, Date fechaRenovacion, TipoCobertura tipoCobertura, ArrayList<MedidaDeSeguridad> medidasDeSeguridad, AnioFabricacion anioFabricacion, Vehiculo vehiculo, Poliza poliza, ArrayList<DeclaracionHijo> declaracionesHijos, NumeroSiniestros nroSiniestros) {
         this.formaPago = formaPago;
         this.fechaRenovacion = fechaRenovacion;
         this.tipoCobertura = tipoCobertura;

@@ -16,8 +16,7 @@ public class DerechoEmision {
 
 
     public DerechoEmision(){}
-    public DerechoEmision(int id, HistorialFactor historialFactor) {
-        this.id = id;
+    public DerechoEmision(HistorialFactor historialFactor) {
         this.historial = historialFactor;
     }
 

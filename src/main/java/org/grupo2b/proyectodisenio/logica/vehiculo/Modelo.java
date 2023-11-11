@@ -25,8 +25,7 @@ public class Modelo{
 
 
     public Modelo(){}
-    public Modelo(int id, String nombre, Marca marca, HistorialFactor historialFactor, List<AnioFabricacion> aniosFabricacion) {
-        this.id = id;
+    public Modelo(String nombre, Marca marca, HistorialFactor historialFactor, List<AnioFabricacion> aniosFabricacion) {
         this.nombre = nombre;
         this.marca = marca;
         this.historialFactor = historialFactor;

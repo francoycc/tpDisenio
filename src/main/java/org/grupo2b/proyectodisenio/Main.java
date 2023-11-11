@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.TestTemporalDB;
 import org.grupo2b.proyectodisenio.logica.Objetos;
+import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        //TipoDocumento tipoDoc = DAOManager.recover(TipoDocumento.class, 1);
+        TipoDocumento tipoDoc = DAOManager.recover(TipoDocumento.class, 1);
         DAOManager.save(TestTemporalDB.getCliente());
         DAOManager.save(TestTemporalDB.getCliente2());
         DAOManager.save(Objetos.getCliente2());
@@ -32,9 +33,9 @@ public class Main extends Application {
         DAOManager.save(Objetos.getPoliza3());
         DAOManager.save(Objetos.getPoliza4());
         DAOManager.save(Objetos.getPoliza5());
-        DAOManager.save(Objetos.getPoliza61());
+        //DAOManager.save(Objetos.getPoliza61());
         DAOManager.save(Objetos.getPoliza62());
-        DAOManager.save(Objetos.getPoliza7());
+        //DAOManager.save(Objetos.getPoliza7());
         DAOManager.save(Objetos.getPoliza8());
 
 

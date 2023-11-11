@@ -20,8 +20,7 @@ public class ValorFactorPorHijo {
 
     
     public ValorFactorPorHijo(){}
-    public ValorFactorPorHijo(int id, int cantidadHijos, HistorialFactor historial) {
-        this.id = id;
+    public ValorFactorPorHijo(int cantidadHijos, HistorialFactor historial) {
         this.cantidadHijos = cantidadHijos;
         this.historial = historial;
     }

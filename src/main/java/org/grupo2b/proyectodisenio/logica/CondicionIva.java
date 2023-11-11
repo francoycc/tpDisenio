@@ -9,14 +9,11 @@ public class CondicionIva {
     @GeneratedValue
     @Column(name = "id_condicionIVA")
     private int id;
-    @Column(length = 20)
+    @Column(length = 30)
     private String tipo;
 
 
     public CondicionIva(){}
-    public CondicionIva(int id) {
-        this.id = id;
-    }
     public CondicionIva(String tipo) {
         this.tipo = tipo;
     }

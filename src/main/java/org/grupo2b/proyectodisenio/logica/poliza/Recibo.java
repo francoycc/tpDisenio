@@ -10,21 +10,22 @@ import java.util.List;
 public class Recibo {
     @Id
     @GeneratedValue
+    @Column(name = "id_recibo")
     private int id;
     private Date fecha;
     @ManyToOne(cascade = CascadeType.ALL)
     private Cuenta operador;
+    @Column(name = "numero_recibo")
     private int nroRecibo;
+    @Column(name = "mes")
     private int nroMes;
+    @Column(name = "anio")
     private int nroAnio;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "recibo")
     private List<Cuota> cuotas;
 
 
     public Recibo(){}
-    public Recibo(int id){
-        this.id=id;
-    }
     public Recibo(Date fecha, Cuenta operador, int nroRecibo, int nroMes, int nroAnio, List<Cuota> cuotas) {
         this.fecha = fecha;
         this.operador = operador;

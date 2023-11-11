@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.dao;
 
+import jakarta.persistence.Entity;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.CondicionIva;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
@@ -87,9 +88,10 @@ public class DAOManager {
 
     public static void save(Object o) {
         Transaction tx = session.beginTransaction();
-        session.persist(o);
+        session.merge(o);
         tx.commit();
     }
+
 
     public static <T> T recover(Class<T> o, int id) {
         Transaction tx = session.beginTransaction();
@@ -97,6 +99,7 @@ public class DAOManager {
         tx.commit();
         return obj;
     }
+
 
 
 
