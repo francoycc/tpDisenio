@@ -7,13 +7,16 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 public class Localidad {
     @Id
     @GeneratedValue
+    @Column(name = "id_localidad")
     private int id;
     @Column(length = 20)
     private String nombre;
     private int codigoPostal;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_provincia")
     private Provincia provincia;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historialFactor;
 
 

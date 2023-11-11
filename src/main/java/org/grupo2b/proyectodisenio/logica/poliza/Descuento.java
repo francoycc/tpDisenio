@@ -7,10 +7,12 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 public class Descuento {
     @Id
     @GeneratedValue
+    @Column(name = "id_descuento")
     private int id;
     @Column(length = 20,name = "nombre_descuento")
     private String nombreDescuento;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
 

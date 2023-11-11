@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Direccion {
     @Id
     @GeneratedValue
+    @Column(name = "id_direccion")
     private int id;
     @Column(length = 20)
     private String calle;
@@ -13,6 +14,7 @@ public class Direccion {
     private int piso;
     private int departamento;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_localidad")
     private Localidad localidad;
 
 

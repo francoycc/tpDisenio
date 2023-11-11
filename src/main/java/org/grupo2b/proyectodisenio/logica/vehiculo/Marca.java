@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 public class Marca {
     @Id
     @GeneratedValue
+    @Column(name = "id_marca")
     private int id;
     @Column(length = 30)
     private String nombre;

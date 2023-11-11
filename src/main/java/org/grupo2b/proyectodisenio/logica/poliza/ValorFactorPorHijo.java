@@ -9,10 +9,12 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 public class ValorFactorPorHijo {
     @Id
     @GeneratedValue
+    @Column(name = "id_factor_por_hijo")
     private int id;
-    @Column
+    @Column(name = "cantidad_hijos")
     private int cantidadHijos;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
 

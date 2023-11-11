@@ -8,8 +8,10 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 public class DerechoEmision {
     @Id
     @GeneratedValue
+    @Column(name = "id_derechoEmision")
     private int id;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
 

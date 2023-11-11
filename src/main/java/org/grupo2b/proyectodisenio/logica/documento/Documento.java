@@ -7,6 +7,7 @@ public class Documento {
     @Id
     private int numero;
     @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "id_tipoDocumento")
     private TipoDocumento tipoDocumento;
 
 

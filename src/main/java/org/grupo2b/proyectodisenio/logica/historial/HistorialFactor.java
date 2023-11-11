@@ -11,10 +11,12 @@ import java.util.List;
 public class HistorialFactor {
     @Id
     @GeneratedValue
+    @Column(name = "id_historial")
     private int id;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "historial_id",foreignKey = @ForeignKey(name = "fk_historial_id"))
+    @JoinColumn(name = "id_historial",foreignKey = @ForeignKey(name = "fk_id_historial"))
     private List<EntradaHistorialFactores> entradas = new LinkedList<>();
+    @Column(name = "ultimoValor")
     private float valorActualFactor;
     private LocalDateTime ultimaFecha;
 

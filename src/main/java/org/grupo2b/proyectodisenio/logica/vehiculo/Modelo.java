@@ -10,12 +10,15 @@ import java.util.Set;
 public class Modelo{
     @Id
     @GeneratedValue
+    @Column(name = "id_modelo")
     private int id;
     @Column(length = 30)
     private String nombre;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_marca")
     private Marca marca;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historialFactor;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<AnioFabricacion> aniosFabricacion;

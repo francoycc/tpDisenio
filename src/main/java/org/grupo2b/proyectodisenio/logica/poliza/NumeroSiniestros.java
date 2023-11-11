@@ -9,10 +9,12 @@ public class NumeroSiniestros {
 
     @Id
     @GeneratedValue
+    @Column(name = "id_numeroSiniestros")
     private int id;
     @Column(name = "cantidad_siniestros")
     private int cantSiniestros;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
 

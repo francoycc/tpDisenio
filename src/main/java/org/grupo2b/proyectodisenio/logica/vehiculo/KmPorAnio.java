@@ -8,10 +8,12 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 public class KmPorAnio {
     @Id
     @GeneratedValue
+    @Column(name = "id_kmAnio")
     private int id;
-    @Column
+    @Column(name = "km_realizados")
     private float kmRealizados;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historialFactor;
 
 

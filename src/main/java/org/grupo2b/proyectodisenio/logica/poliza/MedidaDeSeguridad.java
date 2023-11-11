@@ -8,10 +8,12 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 public class MedidaDeSeguridad {
     @Id
     @GeneratedValue
+    @Column(name = "id_seguridad")
     private int id;
     @Column(length = 20)
     private String nombre;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
 

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class EstadoCivil {
     @Id
     @GeneratedValue
+    @Column(name = "id_estado_civil")
     private int id;
     @Column(length = 30)
     private String tipo;
