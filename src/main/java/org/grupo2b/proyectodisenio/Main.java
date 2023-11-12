@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.grupo2b.proyectodisenio.dao.DAO;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.TestTemporalDB;
 import org.grupo2b.proyectodisenio.logica.Objetos;
@@ -24,19 +25,17 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        TipoDocumento tipoDoc = DAOManager.recover(TipoDocumento.class, 1);
-        DAOManager.save(TestTemporalDB.getCliente());
-        DAOManager.save(TestTemporalDB.getCliente2());
-        DAOManager.save(Objetos.getCliente2());
-        DAOManager.save(Objetos.getPoliza1());
-        DAOManager.save(Objetos.getPoliza2());
-        DAOManager.save(Objetos.getPoliza3());
-        DAOManager.save(Objetos.getPoliza4());
-        DAOManager.save(Objetos.getPoliza5());
-        //DAOManager.save(Objetos.getPoliza61());
-        DAOManager.save(Objetos.getPoliza62());
-        //DAOManager.save(Objetos.getPoliza7());
-        DAOManager.save(Objetos.getPoliza8());
+        DAOManager.save(Objetos.CLIENTE1);
+        DAOManager.save(Objetos.CLIENTE2);
+        DAOManager.save(Objetos.POLIZA1);
+        DAOManager.save(Objetos.POLIZA2);
+        DAOManager.save(Objetos.POLIZA3);
+        DAOManager.save(Objetos.POLIZA4);
+        DAOManager.save(Objetos.POLIZA5);
+        DAOManager.save(Objetos.POLIZA61);
+        DAOManager.save(Objetos.POLIZA62);
+        DAOManager.save(Objetos.POLIZA8);
+        DAOManager.save(Objetos.POLIZA7);
 
 
 
@@ -68,6 +67,10 @@ public class Main extends Application {
         for (Cliente c : results){
             System.out.println(""+c.getNroCliente()+"|"+c.getNombre()+"|"+c.getApellido()+"|"+c.getDocumento().getTipoDocumento().getNombre()+"|"+c.getDocumento().getNumero());
         }*/
+
+
+        //TestTemporalDB.metodoPruebas();
+
 
         //launch();
     }

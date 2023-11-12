@@ -86,10 +86,11 @@ public class DAOManager {
 
 
 
-    public static void save(Object o) {
+    public static <T> T save(T o) {
         Transaction tx = session.beginTransaction();
-        session.merge(o);
+        T o2 = session.merge(o);
         tx.commit();
+        return o2;
     }
 
 

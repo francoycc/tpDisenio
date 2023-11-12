@@ -18,148 +18,109 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Objetos{
+    public static TipoDocumento TIPO_DOCUMENTO_DNI = new TipoDocumento("DNI");
+    public static Documento DOCUMENTO1 = new Documento(22648593, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO2 = new Documento(39045632, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO3 = new Documento(35602143, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO4 = new Documento(34156247, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO5 = new Documento(27685432, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO6 = new Documento(24675890, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO7 = new Documento(36151123, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO8 = new Documento(32654112, TIPO_DOCUMENTO_DNI);
+    public static CondicionIva CONDICION_IVA1 = new CondicionIva("Monotributista");
+    public static CondicionIva CONDICION_IVA2 = new CondicionIva("Responsable Inscripto");
+    public static CondicionIva CONDICION_IVA3 = new CondicionIva("Consumidor Final");
+    public static Pais PAIS1 = new Pais("Argentina");
+    public static Provincia PROVINCIA1 = new Provincia("Santa Fe", PAIS1);
+    public static Provincia PROVINCIA2 = new Provincia("Cordoba", PAIS1);
+    public static Localidad LOCALIDAD1 = new Localidad("Santa Fe", 3000, PROVINCIA1, Objetos.getHistorial());
+    public static Localidad LOCALIDAD2 = new Localidad("Rosario", 2000, PROVINCIA1, Objetos.getHistorial());
+    public static Localidad LOCALIDAD3 = new Localidad("Cordoba", 5000, PROVINCIA2, Objetos.getHistorial());
+    public static Localidad LOCALIDAD4 = new Localidad("Santo Tome", 3016, PROVINCIA1, Objetos.getHistorial());
+    public static Direccion DIRECCION1 = new Direccion("Javier de la Rosa", 1560, 0, 0, LOCALIDAD1);
+    public static Direccion DIRECCION2 = new Direccion("Echague", 6504, 1, 1, LOCALIDAD1);
+    public static Direccion DIRECCION3 = new Direccion("Las Rosas", 683, 4, 4, LOCALIDAD2);
+    public static Direccion DIRECCION4 = new Direccion("Avenida Lujan", 6665, 0, 0, LOCALIDAD4);
+    public static Direccion DIRECCION5 = new Direccion("Riobamba", 7981, 0, 0, LOCALIDAD1);
+    public static Direccion DIRECCION6 = new Direccion("Chacabuco", 772, 0, 0, LOCALIDAD1);
+    public static Direccion DIRECCION7 = new Direccion("Jujuy", 3122, 3, 6, LOCALIDAD3);
+    public static Direccion DIRECCION8 = new Direccion("Salta", 1546, 0, 0, LOCALIDAD1);
+    public static Vehiculo VEHICULO1;
+    public static Vehiculo VEHICULO2;
+    public static Vehiculo VEHICULO3;
+    public static Vehiculo VEHICULO4;
+    public static Vehiculo VEHICULO5;
+    public static Vehiculo VEHICULO6;
+    public static Vehiculo VEHICULO71;
+    public static Vehiculo VEHICULO72;
+    public static Vehiculo VEHICULO8;
+    public static Vehiculo VEHICULO9;
+    public static Cliente CLIENTE1;
+    public static Cliente CLIENTE2;
+    public static Cliente CLIENTE3;
+    public static Cliente CLIENTE4;
+    public static Cliente CLIENTE5;
+    public static Cliente CLIENTE6;
+    public static Cliente CLIENTE7;
+    public static Cliente CLIENTE8;
+    public static Poliza POLIZA1;
+    public static Poliza POLIZA2;
+    public static Poliza POLIZA3;
+    public static Poliza POLIZA4;
+    public static Poliza POLIZA5;
+    public static Poliza POLIZA61;
+    public static Poliza POLIZA62;
+    public static Poliza POLIZA7;
+    public static Poliza POLIZA8;
 
-    public static HistorialFactor getHistorial() {
-        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33));
-        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1));
-        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33));
-        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33));
-        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12));
-        HistorialFactor historial = new HistorialFactor();
-        LinkedList<EntradaHistorialFactores> entradasList = new LinkedList<>();
-        entradasList.add(entrada1);
-        entradasList.add(entrada2);
-        entradasList.add(entrada3);
-        entradasList.add(entrada4);
-        entradasList.add(entrada5);
-        historial.setEntradas(entradasList);
-        return historial;
-    }
-
-    public static Documento getDocumento1() {
-        TipoDocumento tipodoc1 = new TipoDocumento("DNI");
-        Documento doc1 = new Documento(22648593, tipodoc1);
-        return doc1;
-    }
-    public static Documento getDocumento2() {
-        TipoDocumento tipodoc2 = new TipoDocumento("DNI");
-        Documento doc2 = new Documento(39045632,tipodoc2);
-        return doc2;
-    }
-    public static Documento getDocumento3() {
-        TipoDocumento tipodoc3 = new TipoDocumento("DNI");
-        Documento doc3 = new Documento(35602143,tipodoc3);
-        return doc3;
-    }
-    public static Documento getDocumento4() {
-        TipoDocumento tipodoc4 = new TipoDocumento("DNI");
-        Documento doc4 = new Documento(34156247,tipodoc4);
-        return doc4;
-    }
-    public static Documento getDocumento5() {
-        TipoDocumento tipodoc5 = new TipoDocumento("DNI");
-        Documento doc5 = new Documento(27685432,tipodoc5);
-        return doc5;
-    }
-    public static Documento getDocumento6() {
-        TipoDocumento tipodoc6 = new TipoDocumento("DNI");
-        Documento doc6 = new Documento(24675890,tipodoc6);
-        return doc6;
-    }
-    public static Documento getDocumento7() {
-        TipoDocumento tipodoc7 = new TipoDocumento("DNI");
-        Documento doc7 = new Documento(36151123,tipodoc7);
-        return doc7;
-    }
-    public static Documento getDocumento8() {
-        TipoDocumento tipodoc8 = new TipoDocumento("DNI");
-        Documento doc8 = new Documento(32654112,tipodoc8);
-        return doc8;
-    }
-    public static CondicionIva getCondicionIVA1() {
-        CondicionIva condIva1 = new CondicionIva("Monotributista");
-            return condIva1;
-        }
-    public static CondicionIva getCondicionIVA2() {
-        CondicionIva condIva2 = new CondicionIva("Responsable Inscripto");
-        return condIva2;
-    }
-
-    public static CondicionIva getCondicionIVA3() {
-        CondicionIva condIva3 = new CondicionIva("Consumidor Final");
-        return condIva3;
-    }
-
-    public static Provincia getProvincia() {
-        Provincia provinciaSantaFe = new Provincia("Santa Fe", new Pais("Argentina"));
-        return provinciaSantaFe;
-    }
-
-    public static Localidad getSantaFe() {
-        Localidad ciudadSantaFe = new Localidad("Santa Fe", 3000, Objetos.getProvincia(), Objetos.getHistorial());
-        return ciudadSantaFe;
-    }
-    public static Localidad getRosario() {
-        Localidad ciudadRosario = new Localidad("Rosario", 2000, Objetos.getProvincia(), Objetos.getHistorial());
-        return ciudadRosario;
-    }
-    public static Localidad getSantoTome() {
-        Localidad ciudadSantoTome = new Localidad("Santo Tome", 3016, Objetos.getProvincia(), Objetos.getHistorial());
-        return ciudadSantoTome;
-    }
-    public static Localidad getCordoba() {
-        Localidad cordoba = new Localidad("Córdoba", 5000, new Provincia("Córdoba", new Pais("Argentina")), Objetos.getHistorial());
-        return cordoba;
-    }
-
-    public static Direccion getDireccion1() {
-        Direccion direccion1 = new Direccion("Javier de la Rosa", 1560, 0, 0, Objetos.getSantaFe());
-        return direccion1;
-    }
-    public static Direccion getDireccion3(){
-        Direccion direccion3 = new Direccion("Las Rosas", 683, 4, 4, Objetos.getRosario());
-        return direccion3;
-    }
-    public static Direccion getDireccion4(){
-        Direccion direccion4 = new Direccion("Avenida Lujan", 6665, 0, 0, Objetos.getSantoTome());
-        return direccion4;
-    }
-    public static Direccion getDireccion5(){
-        Direccion direccion5 = new Direccion("Riobamba", 7981, 0, 0, Objetos.getSantaFe());
-        return direccion5;
-    }
-    public static Direccion getDireccion6(){
-        Direccion direccion6 = new Direccion("Chacabuco", 772, 0, 0, Objetos.getSantaFe());
-        return direccion6;
-    }
-    public static Direccion getDireccion7(){
-        Direccion direccion7 = new Direccion("Jujuy", 3122, 3, 6, Objetos.getCordoba());
-        return direccion7;
-    }
-    public static Direccion getDireccion8(){
-        Direccion direccion8 = new Direccion("Salta", 1546, 0, 0, Objetos.getSantaFe());
-        return direccion8;
-    }
+    static {
+        VEHICULO1 = getVehiculo1();
+        VEHICULO2 = getVehiculo2();
+        VEHICULO3 = getVehiculo3();
+        VEHICULO4 = getVehiculo4();
+        VEHICULO5 = getVehiculo5();
+        VEHICULO6 = getVehiculo6();
+        VEHICULO71 = getVehiculo72();
+        VEHICULO72 = getVehiculo71();
+        VEHICULO8 = getVehiculo8();
+        VEHICULO9 = getVehiculo9();
 
 
+        CLIENTE1 = getCliente1();
+        CLIENTE2 = getCliente2();
+        CLIENTE3 = getCliente3();
+        CLIENTE4 = getCliente4();
+        CLIENTE5 = getCliente5();
+        CLIENTE6 = getCliente6();
+        CLIENTE7 = getCliente7();
+        CLIENTE8 = getCliente8();
+
+        POLIZA1 = getPoliza1();
+        POLIZA2 = getPoliza2();
+        POLIZA3 = getPoliza3();
+        POLIZA4 = getPoliza4();
+        POLIZA5 = getPoliza5();
+        POLIZA61 = getPoliza61();
+        POLIZA62 = getPoliza62();
+        POLIZA7 = getPoliza7();
+        POLIZA8 = getPoliza8();
+    }
     public static Vehiculo getVehiculo1() {
         List<AnioFabricacion> anios1 = new ArrayList<>();
         AnioFabricacion anio1 = new AnioFabricacion(2016);
         anios1.add(anio1);
         Modelo modelo1 = new Modelo("Gol Trend", new Marca("Volkswagen"), Objetos.getHistorial(), anios1);
-        Vehiculo vehiculo1 = new Vehiculo(1780000, "1.8L", "9BWFA18U61M200000", "OBG182", modelo1, new KmPorAnio(17000.0f, Objetos.getHistorial()), Objetos.getDireccion1());
+        Vehiculo vehiculo1 = new Vehiculo(1780000, "1.8L", "9BWFA18U61M200000", "OBG182", modelo1, new KmPorAnio(17000.0f, Objetos.getHistorial()), DIRECCION1);
         return vehiculo1;
     }
-
     public static Cliente getCliente1() {
         List<Vehiculo> vehiculos1 = new ArrayList<>();
         vehiculos1.add(Objetos.getVehiculo1());
         Cliente cliente1 = new Cliente("Beatriz", "Salomon", 20226485935L, Sexo.FEMENINO, new Date(1985, Calendar.OCTOBER, 15),
-                "beatrizsalo@gmail.com", "Docente", 2011, CondicionCliente.ACTIVO, Objetos.getDocumento1(), Objetos.getCondicionIVA1(), Objetos.getDireccion1(),
+                "beatrizsalo@gmail.com", "Docente", 2011, CondicionCliente.ACTIVO, DOCUMENTO1, CONDICION_IVA1, DIRECCION1,
                 vehiculos1, new EstadoCivil("Casado"));
         return cliente1;
     }
-
     public static Poliza getPoliza1() {
         MedidaDeSeguridad medida11 = new MedidaDeSeguridad("Alarma", Objetos.getHistorial());
         MedidaDeSeguridad medida12 = new MedidaDeSeguridad("Garage", Objetos.getHistorial());
@@ -184,13 +145,11 @@ public class Objetos{
         recibo1.setCuotas(cuotas1);
         Poliza poliza1 = new Poliza(new Date(2023, Calendar.OCTOBER, 2), new Date(2024, Calendar.APRIL, 2), new Date(2011, Calendar.OCTOBER, 10),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), new TipoCobertura("Responsabilidad Civil"),
-                cuotas1, medidas1, Objetos.getVehiculo1(), declaracionHijos1, Objetos.getCliente1(), new NumeroSiniestros(2, Objetos.getHistorial()));
+                cuotas1, medidas1, VEHICULO1, declaracionHijos1, CLIENTE1, new NumeroSiniestros(2, Objetos.getHistorial()));
         return poliza1;
     }
-    public static Direccion getDireccion2(){
-        Direccion direccion2 = new Direccion("Echague", 6504, 1, 1, Objetos.getSantaFe());
-        return direccion2;
-    }
+
+
     public static Vehiculo getVehiculo2() {
         List<AnioFabricacion> anios2 = new ArrayList<>();
         AnioFabricacion anio21 = new AnioFabricacion(2018);
@@ -198,23 +157,17 @@ public class Objetos{
         anios2.add(anio21);
         anios2.add(anio22);
         Modelo modelo2 = new Modelo("Prisma", new Marca("Chevrolet"), Objetos.getHistorial(),anios2);
-        Vehiculo vehiculo2 = new Vehiculo(2506000,"1.4L","9CDGA11U65X600000","AB322CC", modelo2 ,new KmPorAnio(25000.0f, Objetos.getHistorial()), Objetos.getDireccion2());
+        Vehiculo vehiculo2 = new Vehiculo(2506000,"1.4L","9CDGA11U65X600000","AB322CC", modelo2 ,new KmPorAnio(25000.0f, Objetos.getHistorial()), DIRECCION2);
         return vehiculo2;
     }
     public static Cliente getCliente2() {
         List<Vehiculo> vehiculos2 = new ArrayList<>();
-        vehiculos2.add(Objetos.getVehiculo2());
+        vehiculos2.add(VEHICULO2);
         Cliente cliente2 = new Cliente( "Carlos", "Zapata",23390456329L, Sexo.MASCULINO, new Date(1997, Calendar.JANUARY,10),
-                "carloszpt@hotmail.com", "Empleado", 2023, CondicionCliente.NORMAL, Objetos.getDocumento2(), Objetos.getCondicionIVA1(), Objetos.getDireccion2(),
+                "carloszpt@hotmail.com", "Empleado", 2023, CondicionCliente.NORMAL, DOCUMENTO2, CONDICION_IVA1, DIRECCION2,
                 vehiculos2, new EstadoCivil("Soltero"));
         return cliente2;
     }
-
-
-
-
-
-
 
 
 
@@ -223,14 +176,14 @@ public class Objetos{
         AnioFabricacion anio3 = new AnioFabricacion(2016);
         anios3.add(anio3);
         Modelo modelo3 = new Modelo("Duster", new Marca("Renault"), Objetos.getHistorial(), anios3);
-        Vehiculo vehiculo3 = new Vehiculo(1800000, "1.4L", "1CDGB32C65X550000", "LHI992", modelo3, new KmPorAnio(80000.0f, Objetos.getHistorial()), Objetos.getDireccion3());
+        Vehiculo vehiculo3 = new Vehiculo(1800000, "1.4L", "1CDGB32C65X550000", "LHI992", modelo3, new KmPorAnio(80000.0f, Objetos.getHistorial()), DIRECCION3);
         return vehiculo3;
     }
     public static Cliente getCliente3() {
         List<Vehiculo> vehiculos3 = new ArrayList<>();
-        vehiculos3.add(Objetos.getVehiculo3());
+        vehiculos3.add(VEHICULO3);
         Cliente cliente3 = new Cliente("Alejo", "Varchi", 23356021439L, Sexo.MASCULINO, new Date(1989, Calendar.MARCH, 22),
-                "varchialejo@gmail.com", "Contador", 2018, CondicionCliente.PLATA, Objetos.getDocumento3(), Objetos.getCondicionIVA2(), Objetos.getDireccion3(),
+                "varchialejo@gmail.com", "Contador", 2018, CondicionCliente.PLATA, DOCUMENTO3, CONDICION_IVA2, DIRECCION3,
                 vehiculos3, new EstadoCivil("Casado"));
         return cliente3;
     }
@@ -262,9 +215,10 @@ public class Objetos{
         recibo2.setCuotas(cuotas2);
         Poliza poliza2 = new Poliza(new Date(2023, Calendar.SEPTEMBER, 11), new Date(2024, Calendar.MARCH, 15), new Date(2011, Calendar.OCTOBER, 10),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_5000, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), new TipoCobertura("Terceros Completos"),
-                cuotas2, medidas2, Objetos.getVehiculo3(), declaracionHijos2, Objetos.getCliente3(), new NumeroSiniestros(0, Objetos.getHistorial()));
+                cuotas2, medidas2, VEHICULO3, declaracionHijos2, CLIENTE3, new NumeroSiniestros(0, Objetos.getHistorial()));
         return poliza2;
     }
+
 
     public static Vehiculo getVehiculo4() {
         List<AnioFabricacion> anios4 = new ArrayList<>();
@@ -275,14 +229,14 @@ public class Objetos{
         anios4.add(anio42);
         anios4.add(anio43);
         Modelo modelo4 = new Modelo("Celta", new Marca("Chevrolet"), Objetos.getHistorial(), anios4);
-        Vehiculo vehiculo4 = new Vehiculo(1020100, "1.2L", "9CDSC11B15X620000", "OAC157", modelo4, new KmPorAnio(30000.0f, Objetos.getHistorial()), Objetos.getDireccion4());
+        Vehiculo vehiculo4 = new Vehiculo(1020100, "1.2L", "9CDSC11B15X620000", "OAC157", modelo4, new KmPorAnio(30000.0f, Objetos.getHistorial()), DIRECCION4);
         return vehiculo4;
     }
     public static Cliente getCliente4() {
         List<Vehiculo> vehiculos4 = new ArrayList<>();
-        vehiculos4.add(Objetos.getVehiculo4());
+        vehiculos4.add(VEHICULO4);
         Cliente cliente4 = new Cliente("Sandra", "Barbieri", 20341562475L, Sexo.FEMENINO, new Date(1985, Calendar.FEBRUARY, 12),
-                "sandrabarbieri@gmail.com", "Abogada", 2015, CondicionCliente.ACTIVO, Objetos.getDocumento4(), Objetos.getCondicionIVA2(), Objetos.getDireccion4(),
+                "sandrabarbieri@gmail.com", "Abogada", 2015, CondicionCliente.ACTIVO, DOCUMENTO4, CONDICION_IVA2, DIRECCION4,
                 vehiculos4, new EstadoCivil("Casado"));
         return cliente4;
     }
@@ -333,29 +287,28 @@ public class Objetos{
         recibo33.setNroAnio(2023);
         recibo33.setNroMes(9);
         recibo33.setCuotas(cuotas3);
-        Poliza poliza3 = new Poliza(new Date(2023, Calendar.JUNE, 11), new Date(2023, Calendar.NOVEMBER, 15), new Date(2015, Calendar.OCTOBER, 23), FormaPago.MENSUAL, EstadoPoliza.SUSPENDIDA, 1_500, new DerechoEmision(Objetos.getHistorial()), null, new TipoCobertura("Todo Total"), cuotas3, medidas3, Objetos.getVehiculo4(), null, Objetos.getCliente4(), new NumeroSiniestros(10, Objetos.getHistorial()));
+        Poliza poliza3 = new Poliza(new Date(2023, Calendar.JUNE, 11), new Date(2023, Calendar.NOVEMBER, 15), new Date(2015, Calendar.OCTOBER, 23), FormaPago.MENSUAL, EstadoPoliza.SUSPENDIDA, 1_500, new DerechoEmision(Objetos.getHistorial()), null, new TipoCobertura("Todo Total"), cuotas3, medidas3, VEHICULO4, null, CLIENTE4, new NumeroSiniestros(10, Objetos.getHistorial()));
         return poliza3;
     }
+
+
     public static Vehiculo getVehiculo5() {
         List<AnioFabricacion> anios5 = new ArrayList<>();
         AnioFabricacion anio5 = new AnioFabricacion(2020);
         anios5.add(anio5);
         Modelo modelo5 = new Modelo("Etios", new Marca("Toyota"), Objetos.getHistorial(), anios5);
-        Vehiculo vehiculo5 = new Vehiculo(2300000, "1.6L", "3XCFA45V61M200000", "OQP336", modelo5, new KmPorAnio(21000.0f, Objetos.getHistorial()), Objetos.getDireccion5());
+        Vehiculo vehiculo5 = new Vehiculo(2300000, "1.6L", "3XCFA45V61M200000", "OQP336", modelo5, new KmPorAnio(21000.0f, Objetos.getHistorial()), DIRECCION5);
         return vehiculo5;
     }
-
     public static Cliente getCliente5() {
         List<Vehiculo> vehiculos5 = new ArrayList<>();
-        vehiculos5.add(Objetos.getVehiculo5());
+        vehiculos5.add(VEHICULO5);
 
         Cliente cliente5 = new Cliente("Marcos", "Sosa", 20276854321L, Sexo.MASCULINO, new Date(1979, Calendar.JUNE, 17),
-                "marcossosa@gmail.com", "Veterinario", 2011, CondicionCliente.ACTIVO, Objetos.getDocumento5(), Objetos.getCondicionIVA3(), Objetos.getDireccion5(),
+                "marcossosa@gmail.com", "Veterinario", 2011, CondicionCliente.ACTIVO, DOCUMENTO5, CONDICION_IVA3, DIRECCION5,
                 vehiculos5, new EstadoCivil("Soltero"));
         return cliente5;
     }
-
-
     public static Poliza getPoliza4() {
         MedidaDeSeguridad medida41 = new MedidaDeSeguridad("Alarma", new HistorialFactor());
         MedidaDeSeguridad medida42 = new MedidaDeSeguridad("Garage", new HistorialFactor());
@@ -378,23 +331,24 @@ public class Objetos{
         recibo4.setCuotas(cuotas4);
         Poliza poliza4 = new Poliza(new Date(2022, Calendar.SEPTEMBER, 11), new Date(2023, Calendar.FEBRUARY, 10), new Date(2015, Calendar.DECEMBER, 3),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), new TipoCobertura("Todo Riesgo con Franquicia"),
-                cuotas4, medidas4, Objetos.getVehiculo5(), declaracionHijos4, Objetos.getCliente5(), new NumeroSiniestros(1, Objetos.getHistorial()));
+                cuotas4, medidas4, VEHICULO5, declaracionHijos4, CLIENTE5, new NumeroSiniestros(1, Objetos.getHistorial()));
         return poliza4;
     }
+
+
     public static Vehiculo getVehiculo6() {
         List<AnioFabricacion> anios6 = new ArrayList<>();
         AnioFabricacion anio6 = new AnioFabricacion(2013);
         anios6.add(anio6);
         Modelo modelo6 = new Modelo("C4", new Marca("Citroen"), Objetos.getHistorial(), anios6);
-        Vehiculo vehiculo6 = new Vehiculo(1890000, "1.6L", "8NMKA78U91N500000", "KKA890", modelo6, new KmPorAnio(30000.0f, Objetos.getHistorial()), Objetos.getDireccion6());
+        Vehiculo vehiculo6 = new Vehiculo(1890000, "1.6L", "8NMKA78U91N500000", "KKA890", modelo6, new KmPorAnio(30000.0f, Objetos.getHistorial()), DIRECCION6);
         return vehiculo6;
     }
-
     public static Cliente getCliente6() {
         List<Vehiculo> vehiculos6 = new ArrayList<>();
-        vehiculos6.add(Objetos.getVehiculo6());
+        vehiculos6.add(VEHICULO6);
         Cliente cliente6 = new Cliente("Gabriela", "Ramos", 27246758903L, Sexo.FEMENINO, new Date(1975, Calendar.JANUARY, 12),
-                "gabiramos@gmail.com", "Peluquera", 2014, CondicionCliente.ACTIVO, Objetos.getDocumento6(), Objetos.getCondicionIVA2(), Objetos.getDireccion6(),
+                "gabiramos@gmail.com", "Peluquera", 2014, CondicionCliente.ACTIVO, DOCUMENTO6, CONDICION_IVA2, DIRECCION6,
                 vehiculos6, new EstadoCivil("Casado"));
         return cliente6;
     }
@@ -418,20 +372,20 @@ public class Objetos{
         recibo5.setCuotas(cuotas5);
         Poliza poliza5 = new Poliza(new Date(2023, Calendar.OCTOBER, 26), new Date(2024, Calendar.APRIL, 26), new Date(2011, Calendar.OCTOBER, 25),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 2_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), new TipoCobertura("Responsabilidad Civil"),
-                cuotas5, medidas5, Objetos.getVehiculo6(), declaracionHijos5, Objetos.getCliente6(), new NumeroSiniestros(6, Objetos.getHistorial()));
+                cuotas5, medidas5, VEHICULO6, declaracionHijos5, CLIENTE6, new NumeroSiniestros(6, Objetos.getHistorial()));
 
         return poliza5;
     }
+
 
     public static Vehiculo getVehiculo71() {
         List<AnioFabricacion> anios71 = new ArrayList<>();
         AnioFabricacion anio71 = new AnioFabricacion(2020);
         anios71.add(anio71);
         Modelo modelo71 = new Modelo("C4", new Marca("Citroen"), Objetos.getHistorial(), anios71);
-        Vehiculo vehiculo71 = new Vehiculo(3300000,"1.8L","9VVAD19U21M550000","AA156VV", modelo71 ,new KmPorAnio(26000.0f, Objetos.getHistorial()), Objetos.getDireccion7());
+        Vehiculo vehiculo71 = new Vehiculo(3300000,"1.8L","9VVAD19U21M550000","AA156VV", modelo71 ,new KmPorAnio(26000.0f, Objetos.getHistorial()), DIRECCION7);
         return vehiculo71;
     }
-
     public static Vehiculo getVehiculo72() {
         List<AnioFabricacion> anios72 = new ArrayList<>();
         AnioFabricacion anio72a = new AnioFabricacion(2020);
@@ -439,21 +393,18 @@ public class Objetos{
         anios72.add(anio72a);
         anios72.add(anio72b);
         Modelo modelo72 = new Modelo("Clio", new Marca("Renault"), Objetos.getHistorial(), anios72);
-        Vehiculo vehiculo72 = new Vehiculo(2100000,"1.4L","9CLPO26I39A530000","AA246CB", modelo72 ,new KmPorAnio(15000.0f, Objetos.getHistorial()), Objetos.getDireccion7());
+        Vehiculo vehiculo72 = new Vehiculo(2100000,"1.4L","9CLPO26I39A530000","AA246CB", modelo72 ,new KmPorAnio(15000.0f, Objetos.getHistorial()), DIRECCION7);
         return vehiculo72;
     }
-
-
     public static Cliente getCliente7() {
         List<Vehiculo> vehiculos7 = new ArrayList<>();
-        vehiculos7.add(Objetos.getVehiculo71());
-        vehiculos7.add(Objetos.getVehiculo72());
+        vehiculos7.add(VEHICULO71);
+        vehiculos7.add(VEHICULO72);
         Cliente cliente7 = new Cliente("Lorena", "Abila", 20364511235L, Sexo.FEMENINO, new Date(1987, Calendar.FEBRUARY, 7),
-                "loreabila@gmail.com", "Abogada", 2016, CondicionCliente.ACTIVO, Objetos.getDocumento7(), Objetos.getCondicionIVA3(), Objetos.getDireccion7(),
+                "loreabila@gmail.com", "Abogada", 2016, CondicionCliente.ACTIVO, DOCUMENTO7, CONDICION_IVA3, DIRECCION7,
                 vehiculos7, new EstadoCivil("Casado"));
         return cliente7;
     }
-
     public static Poliza getPoliza61() {
         MedidaDeSeguridad medida61a = new MedidaDeSeguridad("Alarma", new HistorialFactor());
         MedidaDeSeguridad medida61b = new MedidaDeSeguridad("Garage", new HistorialFactor());
@@ -473,10 +424,9 @@ public class Objetos{
         recibo61.setCuotas(cuotas61);
         Poliza poliza61 = new Poliza(new Date(2023, Calendar.MARCH, 2), new Date(2024, Calendar.SEPTEMBER, 10), new Date(2017, Calendar.OCTOBER, 16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_700, new DerechoEmision(Objetos.getHistorial()), new Descuento("Doble Unidad", Objetos.getHistorial()), new TipoCobertura("Responsabilidad Civil"),
-                cuotas61, medidas61, Objetos.getVehiculo71(), null, Objetos.getCliente7(), new NumeroSiniestros(1, Objetos.getHistorial()));
+                cuotas61, medidas61, VEHICULO71, null, CLIENTE7, new NumeroSiniestros(1, Objetos.getHistorial()));
         return poliza61;
     }
-
     public static Poliza getPoliza62() {
         MedidaDeSeguridad medida62a = new MedidaDeSeguridad("Alarma", new HistorialFactor());
         MedidaDeSeguridad medida62b = new MedidaDeSeguridad("Garage", new HistorialFactor());
@@ -495,7 +445,7 @@ public class Objetos{
         recibo62.setCuotas(cuotas62);
         Poliza poliza62 = new Poliza(new Date(2023, Calendar.MARCH,2),new Date(2024, Calendar.SEPTEMBER,10), new Date(2017, Calendar.OCTOBER,16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_600, new DerechoEmision(Objetos.getHistorial()), new Descuento("Doble Unidad", Objetos.getHistorial()), new TipoCobertura("Responsabilidad Civil"),
-                cuotas62, medidas62, Objetos.getVehiculo72(), null, Objetos.getCliente7(), new NumeroSiniestros(3, Objetos.getHistorial()));
+                cuotas62, medidas62, VEHICULO72, null, CLIENTE7, new NumeroSiniestros(3, Objetos.getHistorial()));
         return poliza62;
     }
 
@@ -506,7 +456,7 @@ public class Objetos{
         AnioFabricacion anio8 = new AnioFabricacion(2014);
         anios8.add(anio8);
         Modelo modelo8 = new Modelo("Corsa", new Marca("Chevrolet"), Objetos.getHistorial(), anios8);
-        Vehiculo vehiculo8 = new Vehiculo(2650000, "1.4L", "6VWAE19C55A150000", "PRC153", modelo8, new KmPorAnio(21000.0f, Objetos.getHistorial()), Objetos.getDireccion8());
+        Vehiculo vehiculo8 = new Vehiculo(2650000, "1.4L", "6VWAE19C55A150000", "PRC153", modelo8, new KmPorAnio(21000.0f, Objetos.getHistorial()), DIRECCION8);
         return vehiculo8;
     }
     public static Vehiculo getVehiculo9() {
@@ -514,19 +464,18 @@ public class Objetos{
         AnioFabricacion anio8 = new AnioFabricacion(2014);
         anios8.add(anio8);
         Modelo modelo8 = new Modelo("Corso", new Marca("Chevroletti"), Objetos.getHistorial(), anios8);
-        Vehiculo vehiculo8 = new Vehiculo(2650000, "2.0L", "IUDAISBDY55A150000", "12PXC13", modelo8, new KmPorAnio(21000.0f, Objetos.getHistorial()), Objetos.getDireccion8());
+        Vehiculo vehiculo8 = new Vehiculo(2650000, "2.0L", "IUDAISBDY55A150000", "12PXC13", modelo8, new KmPorAnio(21000.0f, Objetos.getHistorial()), DIRECCION8);
         return vehiculo8;
     }
-
     public static Cliente getCliente8() {
         List<Vehiculo> vehiculos8 = new ArrayList<>();
-        vehiculos8.add(Objetos.getVehiculo8());
+        vehiculos8.add(VEHICULO8);
+        vehiculos8.add(VEHICULO9);
         Cliente cliente8 = new Cliente("Camila", "Ibarra", 20326541125L, Sexo.FEMENINO, new Date(1991, Calendar.APRIL, 21),
-                "camiibarra@gmail.com", "Secretaria", 2018, CondicionCliente.ACTIVO, Objetos.getDocumento8(), Objetos.getCondicionIVA1(), Objetos.getDireccion8(),
+                "camiibarra@gmail.com", "Secretaria", 2018, CondicionCliente.ACTIVO, DOCUMENTO8, CONDICION_IVA1, DIRECCION8,
                 vehiculos8, new EstadoCivil("Soltero"));
         return cliente8;
     }
-
     public static Poliza getPoliza7() {
         MedidaDeSeguridad medida71 = new MedidaDeSeguridad("Alarma", new HistorialFactor());
         MedidaDeSeguridad medida72 = new MedidaDeSeguridad("Garage", new HistorialFactor());
@@ -545,11 +494,9 @@ public class Objetos{
         recibo7.setCuotas(cuotas7);
         Poliza poliza7 = new Poliza(new Date(2023, Calendar.JANUARY, 12), new Date(2024, Calendar.JULY, 15), new Date(2019, Calendar.OCTOBER, 16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), new TipoCobertura("Terceros Completo"),
-                cuotas7, medidas7, Objetos.getVehiculo8(), null, Objetos.getCliente8(), new NumeroSiniestros(2, Objetos.getHistorial()));
+                cuotas7, medidas7, VEHICULO8, null, CLIENTE8, new NumeroSiniestros(2, Objetos.getHistorial()));
         return poliza7;
     }
-
-
     public static Poliza getPoliza8() {
         MedidaDeSeguridad medida81 = new MedidaDeSeguridad("Alarma", new HistorialFactor());
         MedidaDeSeguridad medida82 = new MedidaDeSeguridad("Garage", new HistorialFactor());
@@ -568,8 +515,26 @@ public class Objetos{
         recibo8.setCuotas(cuotas8);
         Poliza poliza8 = new Poliza(new Date(2022, Calendar.AUGUST, 11), new Date(2023, Calendar.JANUARY, 14), new Date(2019, Calendar.OCTOBER, 16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_600, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), new TipoCobertura("Terceros Completo"),
-                cuotas8, medidas8, Objetos.getVehiculo9(), null, Objetos.getCliente8(), new NumeroSiniestros(1, Objetos.getHistorial()));
+                cuotas8, medidas8, VEHICULO9, null, CLIENTE8, new NumeroSiniestros(1, Objetos.getHistorial()));
         return poliza8;
+    }
+
+
+    public static HistorialFactor getHistorial() {
+        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33));
+        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1));
+        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33));
+        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33));
+        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12));
+        HistorialFactor historial = new HistorialFactor();
+        LinkedList<EntradaHistorialFactores> entradasList = new LinkedList<>();
+        entradasList.add(entrada1);
+        entradasList.add(entrada2);
+        entradasList.add(entrada3);
+        entradasList.add(entrada4);
+        entradasList.add(entrada5);
+        historial.setEntradas(entradasList);
+        return historial;
     }
 }
 

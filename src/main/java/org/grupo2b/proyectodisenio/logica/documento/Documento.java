@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Documento {
     @Id
     private int numero;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_tipoDocumento")
     private TipoDocumento tipoDocumento;
 

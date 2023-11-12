@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.logica;
 
+import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
@@ -12,6 +13,7 @@ import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
+import org.hibernate.Transaction;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -158,5 +160,17 @@ public class TestTemporalDB {
         cliente.setVehiculos(vehiculos);
         cliente.setCondicionIva(new CondicionIva("Monotributista"));
         return cliente;
+    }
+
+
+
+    public static void  metodoPruebas(){
+        Transaction tx = DAOManager.getSession().beginTransaction();
+        Cliente cliente = getCliente();
+        DAOManager.getSession().merge(cliente);
+        Cliente cliente2 = getCliente();
+        cliente2.setCorreoElectronico("otrocorreo@gmail.com");
+        DAOManager.getSession().merge(cliente2);
+        tx.commit();
     }
 }

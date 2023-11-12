@@ -6,9 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "TIPO_DOCUMENTO")
 public class TipoDocumento {
     @Id
-    @GeneratedValue
-    @Column(name = "id_tipoDocumento")
-    private int id;
     @Column(length = 20)
     private String nombre;
 
@@ -19,12 +16,6 @@ public class TipoDocumento {
     }
 
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getNombre() {
         return nombre;
     }
