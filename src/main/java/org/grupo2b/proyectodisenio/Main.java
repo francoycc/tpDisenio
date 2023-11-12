@@ -4,18 +4,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.dao.DAO;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.logica.TestTemporalDB;
 import org.grupo2b.proyectodisenio.logica.Objetos;
-import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.io.IOException;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("interfaz/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -36,6 +33,8 @@ public class Main extends Application {
         DAOManager.save(Objetos.POLIZA62);
         DAOManager.save(Objetos.POLIZA8);
         DAOManager.save(Objetos.POLIZA7);
+
+
 
 
 
@@ -71,8 +70,7 @@ public class Main extends Application {
 
         //TestTemporalDB.metodoPruebas();
 
-
-        //launch();
+        launch();
     }
 
 

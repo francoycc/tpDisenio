@@ -6,10 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "ANIO_FABRICACION")
 public class AnioFabricacion {
     @Id
-    @GeneratedValue
-    @Column(name = "id_anioFabricacion")
-    private int id;
-    @Column
     private int anioModelo;
 
 
@@ -20,13 +16,6 @@ public class AnioFabricacion {
 
 
 
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public int getAnioModelo() {
         return anioModelo;
     }

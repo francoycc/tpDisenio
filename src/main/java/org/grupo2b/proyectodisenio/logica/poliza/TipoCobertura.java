@@ -10,7 +10,7 @@ public class TipoCobertura {
     @GeneratedValue
     @Column(name = "id_tipoCobertura")
     private int id;
-    @Column(length = 30)
+    @Column(length = 40)
     private String nombre;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_historial")
