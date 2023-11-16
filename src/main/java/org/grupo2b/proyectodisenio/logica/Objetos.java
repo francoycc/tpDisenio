@@ -16,7 +16,6 @@ import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Objetos{
     //TIPOS DE DOCUMENTO
@@ -84,14 +83,14 @@ public class Objetos{
     public static AnioFabricacion ANIO_2019 = new AnioFabricacion(2019);
     public static AnioFabricacion ANIO_2020 = new AnioFabricacion(2020);
     //MODELOS
-    public static Modelo MODELO_GOL_TREND = new Modelo("Gol Trend", MARCA_VOLKSWAGEN, Objetos.getHistorial(), Stream.of(ANIO_2016).toList());
-    public static Modelo MODELO_PRISMA = new Modelo("Prisma", MARCA_CHEVROLET, Objetos.getHistorial(),Stream.of(ANIO_2017, ANIO_2018).toList());
-    public static Modelo MODELO_DUSTER = new Modelo("Duster", MARCA_RENAULT, Objetos.getHistorial(), Stream.of(ANIO_2016).toList());
-    public static Modelo MODELO_CELTA = new Modelo("Celta", MARCA_CHEVROLET, Objetos.getHistorial(), Stream.of(ANIO_2016, ANIO_2017, ANIO_2019).toList());
-    public static Modelo MODELO_ETIOS = new Modelo("Etios", MARCA_TOYOTA, Objetos.getHistorial(), Stream.of(ANIO_2020).toList());
-    public static Modelo MODELO_C4 = new Modelo("C4", MARCA_CITROEN, Objetos.getHistorial(), Stream.of(ANIO_2013, ANIO_2020).toList());
-    public static Modelo MODELO_CLIO = new Modelo("Clio", MARCA_RENAULT, Objetos.getHistorial(), Stream.of(ANIO_2018, ANIO_2020).toList());
-    public static Modelo MODELO_CORSA = new Modelo("Corsa", MARCA_CHEVROLET, Objetos.getHistorial(), Stream.of(ANIO_2014).toList());
+    public static Modelo MODELO_GOL_TREND = new Modelo("Gol Trend", MARCA_VOLKSWAGEN, Objetos.getHistorial(), List.of(ANIO_2016));
+    public static Modelo MODELO_PRISMA = new Modelo("Prisma", MARCA_CHEVROLET, Objetos.getHistorial(),List.of(ANIO_2017, ANIO_2018));
+    public static Modelo MODELO_DUSTER = new Modelo("Duster", MARCA_RENAULT, Objetos.getHistorial(), List.of(ANIO_2016));
+    public static Modelo MODELO_CELTA = new Modelo("Celta", MARCA_CHEVROLET, Objetos.getHistorial(), List.of(ANIO_2016, ANIO_2017, ANIO_2019));
+    public static Modelo MODELO_ETIOS = new Modelo("Etios", MARCA_TOYOTA, Objetos.getHistorial(), List.of(ANIO_2020));
+    public static Modelo MODELO_C4 = new Modelo("C4", MARCA_CITROEN, Objetos.getHistorial(), List.of(ANIO_2013, ANIO_2020));
+    public static Modelo MODELO_CLIO = new Modelo("Clio", MARCA_RENAULT, Objetos.getHistorial(), List.of(ANIO_2018, ANIO_2020));
+    public static Modelo MODELO_CORSA = new Modelo("Corsa", MARCA_CHEVROLET, Objetos.getHistorial(), List.of(ANIO_2014));
     //VEHICULOS
     public static Vehiculo VEHICULO1 = new Vehiculo(1780000, "1.8L", "9BWFA18U61M200000", "OBG182", MODELO_GOL_TREND, new KmPorAnio(17000.0f, Objetos.getHistorial()), DIRECCION1);
     public static Vehiculo VEHICULO2 = new Vehiculo(2506000,"1.4L","9CDGA11U65X600000","AB322CC", MODELO_PRISMA ,new KmPorAnio(25000.0f, Objetos.getHistorial()), DIRECCION2);
@@ -106,28 +105,28 @@ public class Objetos{
     //CLIENTES
     public static Cliente CLIENTE1 = new Cliente("Beatriz", "Salomon", 20226485935L, Sexo.FEMENINO, new Date(1985, Calendar.OCTOBER, 15),
             "beatrizsalo@gmail.com", "Docente", 2011, CondicionCliente.ACTIVO, DOCUMENTO1, CONDICION_IVA1, DIRECCION1,
-            Stream.of(VEHICULO1).toList(), ESTADO_CIVIL_CASADO);
+            List.of(VEHICULO1), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE2 = new Cliente( "Carlos", "Zapata",23390456329L, Sexo.MASCULINO, new Date(1997, Calendar.JANUARY,10),
             "carloszpt@hotmail.com", "Empleado", 2023, CondicionCliente.NORMAL, DOCUMENTO2, CONDICION_IVA1, DIRECCION2,
-            Stream.of(VEHICULO2).toList(), ESTADO_CIVIL_SOLTERO);
+            List.of(VEHICULO2), ESTADO_CIVIL_SOLTERO);
     public static Cliente CLIENTE3 = new Cliente("Alejo", "Varchi", 23356021439L, Sexo.MASCULINO, new Date(1989, Calendar.MARCH, 22),
             "varchialejo@gmail.com", "Contador", 2018, CondicionCliente.PLATA, DOCUMENTO3, CONDICION_IVA2, DIRECCION3,
-            Stream.of(VEHICULO3).toList(), ESTADO_CIVIL_CASADO);
-    public static Cliente CLIENTE4 = new Cliente("Sandra", "Barbieri", 20341562475L, Sexo.FEMENINO, new Date(1985, Calendar.FEBRUARY, 12),
+            List.of(VEHICULO3), ESTADO_CIVIL_CASADO);
+    public static Cliente CLIENTE4 = new Cliente("Sandra", "Barbieri", 20341562475L,Sexo.FEMENINO, new Date(1985, Calendar.FEBRUARY, 12),
             "sandrabarbieri@gmail.com", "Abogada", 2015, CondicionCliente.ACTIVO, DOCUMENTO4, CONDICION_IVA2, DIRECCION4,
-            Stream.of(VEHICULO4).toList(), ESTADO_CIVIL_DIVORCIADO);
+            List.of(VEHICULO4), ESTADO_CIVIL_DIVORCIADO);
     public static Cliente CLIENTE5 = new Cliente("Marcos", "Sosa", 20276854321L, Sexo.MASCULINO, new Date(1979, Calendar.JUNE, 17),
             "marcossosa@gmail.com", "Veterinario", 2011, CondicionCliente.ACTIVO, DOCUMENTO5, CONDICION_IVA3, DIRECCION5,
-            Stream.of(VEHICULO5).toList(), ESTADO_CIVIL_VIUDO);
+            List.of(VEHICULO5), ESTADO_CIVIL_VIUDO);
     public static Cliente CLIENTE6 = new Cliente("Gabriela", "Ramos", 27246758903L, Sexo.FEMENINO, new Date(1975, Calendar.JANUARY, 12),
             "gabiramos@gmail.com", "Peluquera", 2014, CondicionCliente.ACTIVO, DOCUMENTO6, CONDICION_IVA2, DIRECCION6,
-            Stream.of(VEHICULO6).toList(), ESTADO_CIVIL_CASADO);
+            List.of(VEHICULO6), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE7 = new Cliente("Lorena", "Abila", 20364511235L, Sexo.FEMENINO, new Date(1987, Calendar.FEBRUARY, 7),
             "loreabila@gmail.com", "Abogada", 2016, CondicionCliente.ACTIVO, DOCUMENTO7, CONDICION_IVA3, DIRECCION7,
-            Stream.of(VEHICULO71, VEHICULO72).toList(), ESTADO_CIVIL_CASADO);
+            List.of(VEHICULO71, VEHICULO72), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE8 = new Cliente("Camila", "Ibarra", 20326541125L, Sexo.FEMENINO, new Date(1991, Calendar.APRIL, 21),
             "camiibarra@gmail.com", "Secretaria", 2018, CondicionCliente.ACTIVO, DOCUMENTO8, CONDICION_IVA1, DIRECCION8,
-            Stream.of(VEHICULO8, VEHICULO9).toList(), ESTADO_CIVIL_SOLTERO);
+            List.of(VEHICULO8, VEHICULO9), ESTADO_CIVIL_SOLTERO);
     //POLIZAS
     public static Poliza POLIZA1;
     public static Poliza POLIZA2;
