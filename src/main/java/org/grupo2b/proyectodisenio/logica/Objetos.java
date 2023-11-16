@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.logica;
 
+import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
 import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
@@ -18,6 +19,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Objetos{
+    //CUENTAS
+    public static Cuenta CUENTA_ADMIN = new Cuenta("admin", "1234");
     //TIPOS DE DOCUMENTO
     public static TipoDocumento TIPO_DOCUMENTO_DNI = new TipoDocumento("DNI");
     //TODO DerechoEmision, Descuento y NumeroSiniestros
@@ -378,11 +381,11 @@ public class Objetos{
 
 
     public static HistorialFactor getHistorial() {
-        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33));
-        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1));
-        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33));
-        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33));
-        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12));
+        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CUENTA_ADMIN);
+        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1), CUENTA_ADMIN);
+        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CUENTA_ADMIN);
+        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33), CUENTA_ADMIN);
+        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12), CUENTA_ADMIN);
         HistorialFactor historial = new HistorialFactor();
         LinkedList<EntradaHistorialFactores> entradasList = new LinkedList<>();
         entradasList.add(entrada1);
@@ -392,6 +395,19 @@ public class Objetos{
         entradasList.add(entrada5);
         historial.setEntradas(entradasList);
         return historial;
+    }
+
+
+    public static void save(){
+        DAOManager.save(Objetos.POLIZA1);
+        DAOManager.save(Objetos.POLIZA2);
+        DAOManager.save(Objetos.POLIZA3);
+        DAOManager.save(Objetos.POLIZA4);
+        DAOManager.save(Objetos.POLIZA5);
+        DAOManager.save(Objetos.POLIZA61);
+        DAOManager.save(Objetos.POLIZA62);
+        DAOManager.save(Objetos.POLIZA8);
+        DAOManager.save(Objetos.POLIZA7);
     }
 }
 

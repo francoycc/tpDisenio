@@ -31,6 +31,12 @@ public class EntradaHistorialFactores{
         this.fechaInicio=fechaInicio;
         this.cuenta=GestorCuentas.getCuentaActiva();
     }
+    public EntradaHistorialFactores(float valorFactor, LocalDateTime fechaInicio, LocalDateTime fechaFin, Cuenta cuenta){
+        this.valorFactor=valorFactor;
+        this.fechaFin=fechaFin;
+        this.fechaInicio=fechaInicio;
+        this.cuenta=cuenta;
+    }
 
 
 

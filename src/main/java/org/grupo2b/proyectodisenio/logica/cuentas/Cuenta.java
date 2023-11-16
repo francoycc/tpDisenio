@@ -11,17 +11,17 @@ public class Cuenta {
     @GeneratedValue
     @Column(name = "idUsuario")
     private int id;
-    @Column(length = 30)
+    @Column(length = 32, unique = true)
     private String nombre;
-    @Column(length = 30)
-    private String clave;
+    @Column(length = 64)
+    private String claveHash;
 
 
 
     public Cuenta(){}
     public Cuenta(String nombre, String clave) {
         this.nombre = nombre;
-        this.clave = clave;
+        this.claveHash = PasswordHasher.hash(clave);
     }
 
 
@@ -37,10 +37,13 @@ public class Cuenta {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public String getClave() {
-        return clave;
+    public String getClaveHash() {
+        return claveHash;
+    }
+    public void setClaveHash(String claveHash) {
+        this.claveHash = claveHash;
     }
     public void setClave(String clave) {
-        this.clave = clave;
+        this.claveHash = PasswordHasher.hash(clave);
     }
 }
