@@ -40,11 +40,11 @@ public class Objetos{
     public static MedidaDeSeguridad MEDIDASEGURIDAD_TUERCAS = new MedidaDeSeguridad("Tuercas Antirrobo", new HistorialFactor());
     public static MedidaDeSeguridad MEDIDASEGURIDAD_RASTREO = new MedidaDeSeguridad("Rastreo", new HistorialFactor());
     //TIPOS COBERTURA
-    public static TipoCobertura COBERTURA_RESP_CIVIL = new TipoCobertura("Responsabilidad Civil");
-    public static TipoCobertura COBERTURA_TERCEROS = new TipoCobertura("Terceros Completos");
-    public static TipoCobertura COBERTURA_RESP_TOTAL = new TipoCobertura("Resp. Civil, Robo o incendio total");
-    public static TipoCobertura COBERTURA_TODO_TOTAL = new TipoCobertura("Todo Total");
-    public static TipoCobertura COBERTURA_TODO_RIESGO = new TipoCobertura("Todo riesgo con franquicia");
+    public static TipoCobertura COBERTURA_RESP_CIVIL = new TipoCobertura("Responsabilidad Civil", "Dirigida hacia terceros transportados y no transportados, con límite de $23.000.000, en la Argentina y $3.200.000 para países limítrofes", 999999);
+    public static TipoCobertura COBERTURA_RESP_TOTAL = new TipoCobertura("Resp. Civil, Robo o incendio total", "Resp. Civil + Robo Total (apoderamiento ilegítimo del vehículo con violencia) + Incendio Total (daños provocados por incendio o explosión interna o externa, siempre que haya fuego)", 10);
+    public static TipoCobertura COBERTURA_TODO_TOTAL = new TipoCobertura("Todo Total", "Resp. Civil + Robo Total, Hurto Total (apoderamiento ilegítimo del vehículo sin violencia) + Incendio Total + Destrucción Total (los restos no deben superar el 20% del valor del vehículo)", 10);
+    public static TipoCobertura COBERTURA_TERCEROS = new TipoCobertura("Terceros Completos", "Resp. Civil + Robo Parcial, Hurto Total y Parcial (incluye partes integrantes del vehículo Ej.: partes fijas y accesorios) + Incendio Total y Parcial + Destrucción Total", 10);
+    public static TipoCobertura COBERTURA_TODO_RIESGO = new TipoCobertura("Todo riesgo con franquicia", "Resp. Civil + Robo, Hurto e Incendio Total y Parcial + Daños Totales y Parciales ( incluye daños parciales con una franquicia a cargo del asegurado)", 10);
     //ESTADOS CIVILES
     public static EstadoCivil ESTADO_CIVIL_SOLTERO = new EstadoCivil("Soltero");
     public static EstadoCivil ESTADO_CIVIL_CASADO = new EstadoCivil("Casado");
@@ -333,7 +333,7 @@ public class Objetos{
         recibo62.setNroMes(6);
         recibo62.setCuotas(cuotas62);
         Poliza poliza62 = new Poliza(new Date(2023, Calendar.MARCH,2),new Date(2024, Calendar.SEPTEMBER,10), new Date(2017, Calendar.OCTOBER,16),
-                FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_600, new DerechoEmision(Objetos.getHistorial()), new Descuento("Doble Unidad", Objetos.getHistorial()), COBERTURA_RESP_CIVIL,
+                FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_600, new DerechoEmision(Objetos.getHistorial()), new Descuento("Doble Unidad", Objetos.getHistorial()), COBERTURA_TODO_RIESGO,
                 cuotas62, medidas62, VEHICULO72, null, CLIENTE7, new NumeroSiniestros(3, Objetos.getHistorial()));
         return poliza62;
     }
