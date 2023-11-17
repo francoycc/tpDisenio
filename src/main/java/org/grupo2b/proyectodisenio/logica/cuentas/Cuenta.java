@@ -12,7 +12,7 @@ public class Cuenta {
     private String nombre;
     @Column(length = 64, nullable = false)
     private String claveHash;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private TipoCuenta tipoCuenta;
 
 

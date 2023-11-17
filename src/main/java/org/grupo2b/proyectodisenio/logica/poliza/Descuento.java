@@ -6,7 +6,7 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 @Entity
 public class Descuento {
     @Id
-    @Column(length = 20,name = "nombre_descuento", nullable = false)
+    @Column(length = 20,name = "nombre_descuento")
     private String nombreDescuento;
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")

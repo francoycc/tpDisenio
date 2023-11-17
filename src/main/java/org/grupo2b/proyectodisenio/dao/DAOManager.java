@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.CondicionIva;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
+import org.grupo2b.proyectodisenio.logica.cuentas.TipoCuenta;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
@@ -71,7 +72,8 @@ public class DAOManager {
                 .addAnnotatedClass(Poliza.class)
                 .addAnnotatedClass(DatosParaRenovacion.class)
                 .addAnnotatedClass(Cuota.class)
-                .addAnnotatedClass(Recibo.class);
+                .addAnnotatedClass(Recibo.class)
+                .addAnnotatedClass(TipoCuenta.class);
         ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(properties).build();
         session = con.buildSessionFactory(reg).openSession();
     }
