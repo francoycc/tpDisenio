@@ -502,12 +502,12 @@
                            </ComboBox>
                         </children>
                      </VBox>
-                     <TableView fx:id="tablaHijos" minHeight="150.0" minWidth="750.0" prefHeight="150.0" prefWidth="750.0">
-                       <columns>
-                         <TableColumn fx:id="fechaNacimientoColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Fecha de Nacimiento" />
-                         <TableColumn fx:id="sexoColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Sexo" />
+                     <TableView fx:id="tablaHijos" minHeight="150.0" minWidth="750.0" onMouseClicked="#seleccionar" prefHeight="150.0" prefWidth="750.0">
+                        <columns>
+                           <TableColumn fx:id="fechaNacimientoColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Fecha de Nacimiento" />
+                           <TableColumn fx:id="sexoColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Sexo" />
                            <TableColumn fx:id="estadoCivilColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Estado Civil" />
-                       </columns>
+                        </columns>
                         <HBox.margin>
                            <Insets top="20.0" />
                         </HBox.margin>

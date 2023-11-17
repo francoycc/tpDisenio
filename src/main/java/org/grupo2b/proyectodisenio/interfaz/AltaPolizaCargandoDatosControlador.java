@@ -1,5 +1,12 @@
 package org.grupo2b.proyectodisenio.interfaz;
 
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,12 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class AltaPolizaCargandoDatosControlador {
     @FXML private ResourceBundle resources;
@@ -62,11 +65,11 @@ public class AltaPolizaCargandoDatosControlador {
     @FXML private TextField idKmRealizados;
     @FXML private TextField idPatente;
 
-    @FXML private TableView<datosTablaHijos> tablaHijos;
-    @FXML private TableColumn<datosTablaHijos, String> estadoCivilColumna;
-    @FXML private TableColumn<datosTablaHijos, String> fechaNacimientoColumna;
-    @FXML private TableColumn<datosTablaHijos, String> sexoColumna;
-    private final ObservableList<datosTablaHijos> hijosList = FXCollections.observableArrayList();
+    @FXML private TableView<TablaHijos> tablaHijos;
+    @FXML private TableColumn<TablaHijos,String> estadoCivilColumna;
+    @FXML private TableColumn<TablaHijos,String> fechaNacimientoColumna;
+    @FXML private TableColumn<TablaHijos,String> sexoColumna;
+    private ObservableList<TablaHijos> hijosList = FXCollections.observableArrayList();
 
     @FXML private TableView<datosClienteTabla> tablaMostrarClientes;
     @FXML private TableColumn<datosClienteTabla, String> nroClienteColumna;
@@ -93,36 +96,72 @@ public class AltaPolizaCargandoDatosControlador {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML void agregarHijo(ActionEvent event) {
-        /*String fechaNacimiento = ""+datePickerFechaNacimiento.getValue();
-        String sexo = ""+comboBoxSexo.getValue();
-        String estadoCivil = ""+comboBoxEstadoCivil.getValue();*/
-        datosTablaHijos hijo = new datosTablaHijos("fechaNacimiento","sexo","estadoCivil");
-        hijosList.add(hijo);
-        tablaHijos.setItems(hijosList);
-        /*try {
-            // Compruebo si la persona esta en el lista
-            if (!hijosList.contains(hijo)) {
+    public static int calcularEdad(LocalDate fechaNacimiento) {
+        LocalDate fechaActual = LocalDate.now();
+        return Period.between(fechaNacimiento, fechaActual).getYears();
+    }
+    @FXML private void agregarHijo(ActionEvent event) {
+        try {
+            // Obtengo los datos del formulario
+            LocalDate fc = datePickerFechaNacimiento.getValue();
+            String s = this.comboBoxSexo.getValue();
+            String ec = this.comboBoxEstadoCivil.getValue();
+            // Creo una persona
+            TablaHijos hijo = new TablaHijos(fc, s, ec);
+            // Compruebo si la persona esta en la lista
+            if (!hijosList.contains(hijo) && !(fc==null || s==null || ec==null) && (calcularEdad(fc)>=18 && calcularEdad(fc)<=30)) {
                 // Lo añado a la lista
                 hijosList.add(hijo);
                 // Seteo los items
-                idTablaHijos.setItems(hijosList);
+                tablaHijos.setItems(hijosList);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Info");
+                alert.setContentText("Hijo añadido");
+                alert.showAndWait();
+                datePickerFechaNacimiento.setValue(null);
+                comboBoxSexo.setValue(null);
+                comboBoxEstadoCivil.setValue(null);
+            } else if (fc==null || s==null || ec==null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("Complete todos los campos");
+                alert.showAndWait();
+            } else if(!(calcularEdad(fc)>=18 && calcularEdad(fc)<=30)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("La edad del hijo debe ser entre 18 y 30 años");
+                alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setTitle("Error");
-                alert.setContentText("El hijo ya existe");
+                alert.setContentText("El hijo existe");
                 alert.showAndWait();
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }*/
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Formato incorrecto");
+            alert.showAndWait();
+        }
     }
-    @FXML void modificarHijo(ActionEvent event) {}
-    @FXML void eliminarHijo(ActionEvent event) {}
-    /*@FXML void eliminarHijo(ActionEvent event) {
+    @FXML private void seleccionar(MouseEvent event) {
         // Obtengo la persona seleccionada
-        datosTablaHijos hijo = this.idTablaHijos.getSelectionModel().getSelectedItem();
+        TablaHijos hijo = this.tablaHijos.getSelectionModel().getSelectedItem();
+        // Si no es nula seteo los campos
+        if (hijo != null) {
+            this.datePickerFechaNacimiento.setValue(hijo.getFechaNacimiento());
+            this.comboBoxSexo.setValue(hijo.getSexo());
+            this.comboBoxEstadoCivil.setValue(hijo.getEstadoCivil());
+        }
+    }
+    @FXML private void modificarHijo(ActionEvent event) {
+        // Obtengo la persona seleccionada
+        TablaHijos hijo = this.tablaHijos.getSelectionModel().getSelectedItem();
         // Si la persona es nula, lanzo error
         if (hijo == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -131,41 +170,21 @@ public class AltaPolizaCargandoDatosControlador {
             alert.setContentText("Debes seleccionar un hijo");
             alert.showAndWait();
         } else {
-            // La elimino de la lista
-            this.hijosList.remove(hijo);
-            // Refresco la lista
-            this.idTablaHijos.refresh();
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setTitle("Info");
-            alert.setContentText("Hijo eliminada");
-            alert.showAndWait();
-        }
-    }
-    @FXML void modificarHijo(ActionEvent event) {
-        // Obtengo la persona seleccionada
-        datosTablaHijos hijo = this.idTablaHijos.getSelectionModel().getSelectedItem();
-        // Si la persona es nula, lanzo error
-        if (hijo == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Debes seleccionar una persona");
-            alert.showAndWait();
-        } else {
-
             try {
-                datosTablaHijos hijo2 =
-                        new datosTablaHijos(datePickerFechaNacimiento.getId(),comboBoxSexo.getValue(),comboBoxEstadoCivil.getValue());
+                // Obtengo los datos del formulario
+                LocalDate fc = datePickerFechaNacimiento.getValue();
+                String s = this.comboBoxSexo.getValue();
+                String ec = this.comboBoxEstadoCivil.getValue();
+                // Creo una persona
+                TablaHijos aux = new TablaHijos(fc, s, ec);
                 // Compruebo si la persona esta en el lista
-                if (!this.hijosList.contains(hijo2)) {
+                if (!this.hijosList.contains(aux)) {
                     // Modifico el objeto
-                    hijo.setIdFechaNacimiento(hijo2.getIdFechaNacimiento());
-                    hijo.setIdSexo(hijo2.getIdSexo());
-                    hijo.setIdEstadoCivil(hijo2.getIdEstadoCivil());
+                    hijo.setFechaNacimiento(aux.getFechaNacimiento());
+                    hijo.setSexo(aux.getSexo());
+                    hijo.setEstadoCivil(aux.getEstadoCivil());
                     // Refresco la tabla
-                    this.idTablaHijos.refresh();
+                    this.tablaHijos.refresh();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setTitle("Info");
@@ -175,7 +194,7 @@ public class AltaPolizaCargandoDatosControlador {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
                     alert.setTitle("Error");
-                    alert.setContentText("El hijo ya existe");
+                    alert.setContentText("El hijo existe");
                     alert.showAndWait();
                 }
             } catch (NumberFormatException e) {
@@ -186,18 +205,29 @@ public class AltaPolizaCargandoDatosControlador {
                 alert.showAndWait();
             }
         }
-    }*/
-    /*@FXML private void seleccionar(MouseEvent event) {
+    }
+    @FXML private void eliminarHijo(ActionEvent event) {
         // Obtengo la persona seleccionada
-        datosTablaHijos hijo = this.idTablaHijos.getSelectionModel().getSelectedItem();
-        // Sino es nula seteo los campos
-        if (hijo != null) {
-            this.datePickerFechaNacimiento.getValue(hijo.getIdFechaNacimiento());
-            this.comboBoxSexo.getValue(hijo.getIdSexo());
-            this.comboBoxEstadoCivil.getValue(hijo.getIdEstadoCivil() + "");
+        TablaHijos p = this.tablaHijos.getSelectionModel().getSelectedItem();
+        // Si la persona es nula, lanzo error
+        if (p == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Debes seleccionar un hijo");
+            alert.showAndWait();
+        } else {
+            // La elimino de la lista
+            this.hijosList.remove(p);
+            // Refresco la lista
+            this.tablaHijos.refresh();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Info");
+            alert.setContentText("Hijo eliminado");
+            alert.showAndWait();
         }
-    }*/
-
+    }
     @FXML void cancelar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -209,16 +239,54 @@ public class AltaPolizaCargandoDatosControlador {
     }
     AltaPolizaCargandoDatosControlador instanciaCargandoDatos;
     @FXML void siguiente(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = (AltaPolizaEligiendoPolizaControlador)loader.getController();
-        //instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, txt_stage2.getText());
-        stage.setTitle("EL ASEGURADO");
-        Scene scene = new Scene(root, 1280, 720);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        faltaProvincia.setVisible(false);
+        faltaCiudad.setVisible(false);
+        faltaMarca.setVisible(false);
+        faltaModelo.setVisible(false);
+        faltaAnio.setVisible(false);
+        faltaMotor.setVisible(false);
+        faltaChasis.setVisible(false);
+        faltaKmRealizados.setVisible(false);
+        faltaGarage.setVisible(false);
+        faltaDispositivoRastreo.setVisible(false);
+        faltaAlarma.setVisible(false);
+        faltaTuercaAntirrobo.setVisible(false);
+        faltaNroSiniestros.setVisible(false);
+        //verificando datos
+        int flag = 0;
+        if(idProvincia.getValue()==null) { faltaProvincia.setVisible(true); flag = 1;}
+        if(idCiudad.getValue()==null) { faltaCiudad.setVisible(true); flag = 1;}
+        if(idMarca.getValue()==null) { faltaMarca.setVisible(true); flag = 1;}
+        if(idModelo.getValue()==null) { faltaModelo.setVisible(true); flag = 1;}
+        if(idAnio.getValue()==null) { faltaAnio.setVisible(true); flag = 1;}
+        if(idMotor.getText().isEmpty()) { faltaMotor.setVisible(true); flag = 1;}
+        if(idChasis.getText().isEmpty()) { faltaChasis.setVisible(true); flag = 1;}
+        if(idKmRealizados.getText().isEmpty()) { faltaKmRealizados.setVisible(true); flag = 1;}
+        if(idGarage.getValue()==null) { faltaGarage.setVisible(true); flag = 1;}
+        if(idDispositivoRastreo.getValue()==null) { faltaDispositivoRastreo.setVisible(true); flag = 1;}
+        if(idAlarma.getValue()==null) { faltaAlarma.setVisible(true); flag = 1;}
+        if(idTuercaAntirrobo.getValue()==null) { faltaTuercaAntirrobo.setVisible(true); flag = 1;}
+        if(idNroSiniestros.getValue()==null) { faltaNroSiniestros.setVisible(true); flag = 1;}
+        //flag = 0;
+        if(flag == 0) {
+            FXMLLoader loader = new FXMLLoader();
+            ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = (AltaPolizaEligiendoPolizaControlador)loader.getController();
+            //instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, txt_stage2.getText());
+            stage.setTitle("EL ASEGURADO");
+            Scene scene = new Scene(root, 1280, 720);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            Alert messageWindows = new Alert(Alert.AlertType.ERROR);
+            messageWindows.setTitle("Advertencia");
+            messageWindows.setHeaderText("");
+            messageWindows.setContentText("Complete todos los campos");
+            messageWindows.showAndWait();
+        }
+
     }
     AltaPolizaControlador instanciaBuscandoCliente_en_instanciaCargadoDatos;
     public void recibeParametros(AltaPolizaControlador instanciaCargandoDatos, AltaPolizaControlador.datosClienteTabla c) {
@@ -265,41 +333,35 @@ public class AltaPolizaCargandoDatosControlador {
             this.domicilio = domicilio;
         }
     }
-    public class datosTablaHijos {
-        String fechaNacimiento;
+    public class TablaHijos {
+        LocalDate fechaNacimiento;
         String sexo;
-        String estadoCivil;;
-        public datosTablaHijos(String idFechaNacimiento, String idSexo, String idEstadoCivil) {
-            this.fechaNacimiento = idFechaNacimiento;
-            this.sexo = idSexo;
-            this.estadoCivil = idEstadoCivil;
+        String estadoCivil;
+        public TablaHijos(LocalDate fechaNacimiento, String sexo, String estadoCivil) {
+            this.fechaNacimiento = fechaNacimiento;
+            this.sexo = sexo;
+            this.estadoCivil = estadoCivil;
+        }
+        public LocalDate getFechaNacimiento() {return fechaNacimiento;}
+        public void setFechaNacimiento(LocalDate fechaNacimiento) {this.fechaNacimiento = fechaNacimiento;}
+        public String getSexo() {return sexo;}
+        public void setSexo(String sexo) {this.sexo = sexo;}
+        public String getEstadoCivil() {return estadoCivil;}
+        public void setEstadoCivil(String estadoCivil) {this.estadoCivil = estadoCivil;}
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            TablaHijos hijos = (TablaHijos) o;
+            return Objects.equals(fechaNacimiento, hijos.fechaNacimiento) && Objects.equals(sexo, hijos.sexo) && Objects.equals(estadoCivil, hijos.estadoCivil);
         }
 
-        public String getIdFechaNacimiento() {
-            return fechaNacimiento;
-        }
-
-        public void setIdFechaNacimiento(String idFechaNacimiento) {
-            this.fechaNacimiento = idFechaNacimiento;
-        }
-
-        public String getIdSexo() {
-            return sexo;
-        }
-
-        public void setIdSexo(String idSexo) {
-            this.sexo = idSexo;
-        }
-
-        public String getIdEstadoCivil() {
-            return estadoCivil;
-        }
-
-        public void setIdEstadoCivil(String idEstadoCivil) {
-            this.estadoCivil = idEstadoCivil;
+        @Override
+        public int hashCode() {
+            return Objects.hash(fechaNacimiento, sexo, estadoCivil);
         }
     }
-
     @FXML void initialize() {
         instanciaCargandoDatos=this;
         assert apellidoYnombreColumna != null : "fx:id=\"apellidoYnombreColumna\" was not injected: check your FXML file 'AltaPolizaCargandoDatos.fxml'.";
@@ -350,6 +412,20 @@ public class AltaPolizaCargandoDatosControlador {
         assert tablaMostrarClientes != null : "fx:id=\"tablaMostrarClientes\" was not injected: check your FXML file 'AltaPolizaCargandoDatos.fxml'.";
         assert tipoYNroDocColumna != null : "fx:id=\"tipoYNroDocColumna\" was not injected: check your FXML file 'AltaPolizaCargandoDatos.fxml'.";
 
+        faltaProvincia.setVisible(false);
+        faltaCiudad.setVisible(false);
+        faltaMarca.setVisible(false);
+        faltaModelo.setVisible(false);
+        faltaAnio.setVisible(false);
+        faltaMotor.setVisible(false);
+        faltaChasis.setVisible(false);
+        faltaKmRealizados.setVisible(false);
+        faltaGarage.setVisible(false);
+        faltaDispositivoRastreo.setVisible(false);
+        faltaAlarma.setVisible(false);
+        faltaTuercaAntirrobo.setVisible(false);
+        faltaNroSiniestros.setVisible(false);
+
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));
         tipoYNroDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoynroDoc"));
         apellidoYnombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombreyapellido"));
@@ -369,14 +445,9 @@ public class AltaPolizaCargandoDatosControlador {
         comboBoxSexo.getItems().addAll("MASCULINO","FEMENINO");
         comboBoxEstadoCivil.getItems().addAll("SOLTERO","CASADO","DIVORCIADO","VIUDO"); //PARA ESTO PEDIR CONSULTA A LEO
 
-        fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory<>("fechaNacimiento"));
-        sexoColumna.setCellValueFactory(new PropertyValueFactory<>("sexo"));
-        estadoCivilColumna.setCellValueFactory(new PropertyValueFactory<>("estadoCivil"));
-
-        /*datosTablaHijos hijo =
-                new datosTablaHijos("fechaNacimiento","sexo","estadoCivil");
-        hijosList.add(hijo);
-        tablaHijos.setItems(hijosList);*/
+        this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
+        this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));
+        this.estadoCivilColumna.setCellValueFactory(new PropertyValueFactory("estadoCivil"));
     }
 
 }

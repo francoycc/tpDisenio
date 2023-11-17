@@ -28,11 +28,11 @@
             </font>
          </Label>
          <Button fx:id="botonVolver" layoutX="1144.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="VOLVER" />
-         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" prefHeight="60.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" maxHeight="300.0" maxWidth="1015.0" minHeight="60.0" minWidth="1015.0" prefWidth="1015.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
             <columns>
-               <TableColumn fx:id="columnaCheck" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-               <TableColumn fx:id="columnaTipoCobertura" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Tipo Cobertura" />
-               <TableColumn fx:id="columnaDescripcion" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" text="Descripción" />
+               <TableColumn fx:id="columnaCheck" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" style="-fx-alignment: CENTER;" />
+               <TableColumn fx:id="columnaTipoCobertura" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" style="-fx-alignment: CENTER;" text="Tipo Cobertura" />
+               <TableColumn fx:id="columnaDescripcion" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" sortType="DESCENDING" style="-fx-alignment: CENTER;" text="Descripción" />
             </columns>
             <columnResizePolicy>
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
