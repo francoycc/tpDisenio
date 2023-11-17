@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ds.tp2023.AltaPolizaEligiendoPolizaControlador">
+<ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaEligiendoPolizaControlador">
    <content>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0">
          <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">

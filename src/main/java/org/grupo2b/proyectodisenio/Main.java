@@ -30,7 +30,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         Objetos.save();
 
-        GestorCuentas.login("admin", "1234");
+        //GestorCuentas.login("admin", "1234");
 
         launch();
     }
