@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="cambiosVarios">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPoliza.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPoliza.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatos.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPoliza.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPoliza.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/ProdSegurosVentanaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/ProdSegurosVentanaPrincipal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaControlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700188772602</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="cambiosVarios">
+      <option name="closed" value="true" />
+      <created>1700189215424</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700189215424</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

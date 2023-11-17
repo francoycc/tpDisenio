@@ -291,5 +291,9 @@ public class AltaPolizaControlador {
         nombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tipoDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoDoc"));
         nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDocumento"));
+
+        datosClienteTabla cliente = new datosClienteTabla("", "","","",1);
+        clientesList.add(cliente);
+        tablaMostrarClientes.setItems(clientesList);
     }
 }
