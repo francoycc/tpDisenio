@@ -9,6 +9,7 @@ import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
 import org.hibernate.query.Query;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class MarcaDAOPSQL {
@@ -22,6 +23,13 @@ public class MarcaDAOPSQL {
 
         Query<Marca> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();
+    }
+
+    public static List<String> getStringsMarcas(){
+        List<String> marcas = new LinkedList<>();
+        for (Marca m : getMarcas())
+            marcas.add(m.getNombre());
+        return marcas;
     }
 
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -27,7 +28,8 @@ public class LoginControlador {
         UsuarioField = idusuario.getText();
         ContraseniaField = idcontrasenia.getText();
 
-        if ((Objects.equals(UsuarioField, "admin")) && (Objects.equals(ContraseniaField, "1234"))) {
+
+        if (GestorCuentas.login(UsuarioField, ContraseniaField)) {
             cargarPantalla("ProdSegurosVentanaPrincipal.fxml", actionEvent);
         } else {
             textoDeError.setText("Usuario o Contraseña no válidos, Por favor, inténtalo de nuevo.");

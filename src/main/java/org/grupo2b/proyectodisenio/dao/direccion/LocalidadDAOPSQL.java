@@ -5,6 +5,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
+import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -25,5 +26,10 @@ public class LocalidadDAOPSQL {
         Query<Localidad> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();
     }
+
+    /*public static List<String> getStringLocalidadesFromIdProvincia(int id){
+        for (Localidad p : getLocalidadesFromIdProvincia())
+            strings.add(p.getNombre());
+    }*/
 
 }
