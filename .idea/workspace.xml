@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Tipo de cuenta">
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Hibernate mapping 3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/direccion/LocalidadDAOPSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/direccion/PaisDAOPSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/direccion/ProvinciaDAOPSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/AnioFabricacionDAOPSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/MarcaDAOPSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/ModeloDAOPSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/Cuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/Cuenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/TipoCuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/TipoCuenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Descuento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/Descuento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Objetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Objetos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/TipoCobertura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/TipoCobertura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/AnioFabricacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/AnioFabricacion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,16 +60,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Me/Documents/IntelliJ/TPDISENIOEJ1/pom.xml&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Me/Documents/IntelliJ/TPDISENIOEJ1/pom.xml",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Me\Documents\IntelliJ\ProyectoDisenio\src\main\java\org\grupo2b\proyectodisenio" />
@@ -129,55 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1699739321504</updated>
     </task>
-    <task id="LOCAL-00007" summary="Metodos DAO">
-      <option name="closed" value="true" />
-      <created>1699821987243</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1699821987243</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Metodo DAO TipoCobertura y mejora Objetos">
-      <option name="closed" value="true" />
-      <created>1700103842808</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1700103842808</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Actualizado TipoCobertura para agregar numero de años maximos y descripciones.">
-      <option name="closed" value="true" />
-      <created>1700104656941</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1700104656941</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Agregado sistema cuentas &#10;Query clientes">
-      <option name="closed" value="true" />
-      <created>1700174086845</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1700174086845</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Los mappings ahora tienen requerimientos de no nulidad">
-      <option name="closed" value="true" />
-      <created>1700180092379</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1700180092379</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Tipo de cuenta">
-      <option name="closed" value="true" />
-      <created>1700181122984</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1700181122984</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,12 +154,6 @@
     <MESSAGE value="Hibernate mapping 1" />
     <MESSAGE value="Hibernate mapping 2" />
     <MESSAGE value="Hibernate mapping 3" />
-    <MESSAGE value="Metodos DAO" />
-    <MESSAGE value="Metodo DAO TipoCobertura y mejora Objetos" />
-    <MESSAGE value="Actualizado TipoCobertura para agregar numero de años maximos y descripciones." />
-    <MESSAGE value="Agregado sistema cuentas &#10;Query clientes" />
-    <MESSAGE value="Los mappings ahora tienen requerimientos de no nulidad" />
-    <MESSAGE value="Tipo de cuenta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tipo de cuenta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hibernate mapping 3" />
   </component>
 </project>

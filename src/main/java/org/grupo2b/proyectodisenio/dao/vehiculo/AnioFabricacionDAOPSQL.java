@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AnioFabricacionDAOPSQL {
 
-    public static List<AnioFabricacion> getModelosFromMarca(Modelo m){
+    public static List<AnioFabricacion> getAnioFromModelo(Modelo m){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<AnioFabricacion> criteriaQuery = cb.createQuery(AnioFabricacion.class);
 

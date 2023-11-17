@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ds.tp2023.AltaPolizaEligiendoPolizaControlador">
+   <content>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0">
+         <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="INICIO" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="ALTA PÓLIZA" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA CLIENTE" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR CLIENTE" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="GENERAR PROPUESTAS RENOVACIÓN" />
+         </VBox>
+         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="490.0" text="Seleccione el Tipo de Cobertura que se asociará a la Póliza" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="0.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Button fx:id="botonVolver" layoutX="1144.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="VOLVER" />
+         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" prefHeight="60.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+            <columns>
+               <TableColumn fx:id="columnaCheck" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+               <TableColumn fx:id="columnaTipoCobertura" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Tipo Cobertura" />
+               <TableColumn fx:id="columnaDescripcion" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" text="Descripción" />
+            </columns>
+            <columnResizePolicy>
+               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+         </TableView>
+      </AnchorPane>
+   </content>
+</ScrollPane>

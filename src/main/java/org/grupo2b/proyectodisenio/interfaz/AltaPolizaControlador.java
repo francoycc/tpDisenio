@@ -6,6 +6,7 @@ import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,67 +23,44 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AltaPolizaControlador {
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
-    @FXML
-    private Button botonBuscar;
-    @FXML
-    private Button botonCancelar;
-    @FXML
-    private Button botonLimpiar;
-    @FXML
-    private Label errorApellido;
-    @FXML
-    private Label errorNombre;
-    @FXML
-    private Label errorNroCliente;
-    @FXML
-    private Label errorNroDocumento;
-    @FXML
-    private Label errorTipoDocumento;
-    @FXML
-    private Button idBotonInicio;
-    @FXML
-    private TextField nombre;
-    @FXML
-    private TextField apellido;
-    @FXML
-    private TextField nroCliente;
-    @FXML
-    private TextField nroDocumento;
-    @FXML
-    private ComboBox<String> tipoDocumento;
+    @FXML private ResourceBundle resources;
+    @FXML private URL location;
+    @FXML private Button botonBuscar;
+    @FXML private Button botonCancelar;
+    @FXML private Button botonLimpiar;
+    @FXML private Label errorApellido;
+    @FXML private Label errorNombre;
+    @FXML private Label errorNroCliente;
+    @FXML private Label errorNroDocumento;
+    @FXML private Label errorTipoDocumento;
+    @FXML private Button idBotonInicio;
+    @FXML private TextField nombre;
+    @FXML private TextField apellido;
+    @FXML private TextField nroCliente;
+    @FXML private TextField nroDocumento;
+    @FXML private ComboBox<String> tipoDocumento;
 
-
-    @FXML
-    private TableView<datosClienteTabla> tablaMostrarClientes;
-    @FXML
-    private TableColumn<datosClienteTabla, String> botonesElegirCliente;
-    @FXML
-    private TableColumn<datosClienteTabla, String> nroClienteColumna;
-    @FXML
-    private TableColumn<datosClienteTabla, String> apellidoColumna;
-    @FXML
-    private TableColumn<datosClienteTabla, String> nombreColumna;
-    @FXML
-    private TableColumn<datosClienteTabla, String> tipoDocColumna;
-    @FXML
-    private TableColumn<datosClienteTabla, String> nroDocColumna;
+    @FXML private TableView<datosClienteTabla> tablaMostrarClientes;
+    @FXML private TableColumn<datosClienteTabla, Hyperlink> botonesElegirCliente;
+    @FXML private TableColumn<datosClienteTabla, String> nroClienteColumna;
+    @FXML private TableColumn<datosClienteTabla, String> apellidoColumna;
+    @FXML private TableColumn<datosClienteTabla, String> nombreColumna;
+    @FXML private TableColumn<datosClienteTabla, String> tipoDocColumna;
+    @FXML private TableColumn<datosClienteTabla, String> nroDocColumna;
     private final ObservableList<datosClienteTabla> clientesList = FXCollections.observableArrayList();
-
-    public class datosClienteTabla {
+    public static class datosClienteTabla {
         String nroCliente;
         String nombre;
         String apellido;
         String tipoDoc;
         int nroDocumento;
+        Hyperlink botonSelect;
         public datosClienteTabla(){}
         public datosClienteTabla(String nroCliente, String nombre, String apellido, String tipoDoc, int nroDocumento) {
             this.nroCliente = nroCliente;
@@ -90,51 +68,44 @@ public class AltaPolizaControlador {
             this.apellido = apellido;
             this.tipoDoc = tipoDoc;
             this.nroDocumento = nroDocumento;
+            this.botonSelect = new Hyperlink("Select");
         }
-
+        public datosClienteTabla(String nroCliente, String tipoDoc, String nombre, String apellido) {
+            this.nroCliente = nroCliente;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.tipoDoc = tipoDoc;
+        }
+        public Hyperlink getBotonSelect() { return botonSelect; }
+        public void setBotonSelect(Hyperlink botonSelect) { this.botonSelect = botonSelect; }
         public String getNroCliente() {
             return nroCliente;
         }
-
-        public void setNroCliente(String nroCliente) {
-            this.nroCliente = nroCliente;
-        }
-
+        public void setNroCliente(String nroCliente) { this.nroCliente = nroCliente; }
         public String getNombre() {
             return nombre;
         }
-
         public void setNombre(String nombre) {
             this.nombre = nombre;
         }
-
         public String getApellido() {
             return apellido;
         }
-
         public void setApellido(String apellido) {
             this.apellido = apellido;
         }
-
         public String getTipoDoc() {
             return tipoDoc;
         }
-
         public void setTipoDoc(String tipoDoc) {
             this.tipoDoc = tipoDoc;
         }
-
         public int getNroDocumento() {
             return nroDocumento;
         }
-
-        public void setNroDocumento(int nroDocumento) {
-            this.nroDocumento = nroDocumento;
-        }
+        public void setNroDocumento(int nroDocumento) { this.nroDocumento = nroDocumento; }
     }
-
-    @FXML
-    void irInterfazInicio(ActionEvent event) throws IOException {
+    @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("EL ASEGURADO");
@@ -143,9 +114,7 @@ public class AltaPolizaControlador {
         stage.setScene(scene);
         stage.show();
     }
-
-    @FXML
-    void buscar(ActionEvent event) {
+    @FXML void buscar(ActionEvent event) {
         int flag = 0;
 
         //validaciones de formato
@@ -190,6 +159,7 @@ public class AltaPolizaControlador {
             }
         }
     }
+    AltaPolizaControlador instanciaBuscandoCliente;
     public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, String tipoDoc, String nroDocumento) {
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
@@ -225,10 +195,42 @@ public class AltaPolizaControlador {
             clientesList.add(cliente);
             tablaMostrarClientes.setItems(clientesList);
         }
+        for (datosClienteTabla c: clientesList) {
+            c.getBotonSelect().setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent event) {
+                    Alert messageWindows = new Alert(Alert.AlertType.CONFIRMATION);
+                    messageWindows.setTitle("Confirmación");
+                    messageWindows.setHeaderText("");
+                    messageWindows.setContentText("¿Desea dar de Alta la Póliza para el cliente seleccionado?");
+                    // Agrega los botones OK y Cancelar al diálogo
+                    ButtonType botonCancelar = new ButtonType("Cancelar");
+                    ButtonType botonConfirmar = new ButtonType("Confirmar");
+                    messageWindows.getButtonTypes().setAll(botonCancelar, botonConfirmar);
+                    // Muestra el diálogo y captura la respuesta del usuario
+                    Optional<ButtonType> result = messageWindows.showAndWait();
+                    // Maneja la respuesta del usuario
+                    if (result.isPresent() && result.get() == botonConfirmar) {
+                        try {
+                            FXMLLoader loader = new FXMLLoader();
+                            ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaCargandoDatos.fxml")).openStream());
+                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            AltaPolizaCargandoDatosControlador instanciaCargandoDatos = (AltaPolizaCargandoDatosControlador) loader.getController();
+                            instanciaCargandoDatos.recibeParametros(instanciaBuscandoCliente, c);
+                            stage.setTitle("EL ASEGURADO");
+                            Scene scene = new Scene(root, 1280, 720);
+                            stage.setResizable(false);
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            });
+        }
         return results.size();
     }
-    @FXML
-    void cancelar(ActionEvent event) throws IOException {
+    @FXML void cancelar(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("EL ASEGURADO");
@@ -237,13 +239,12 @@ public class AltaPolizaControlador {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
-    void limpiar(ActionEvent event) {
+    @FXML void limpiar(ActionEvent event) {
         nroCliente.setText("");
         nombre.setText("");
         apellido.setText("");
         nroDocumento.setText("");
-        tipoDocumento.setValue(null);
+        tipoDocumento.setValue("Tipo Documento");
         errorNroCliente.setText("");
         errorNombre.setText("");
         errorApellido.setText("");
@@ -264,8 +265,8 @@ public class AltaPolizaControlador {
         // Verificar si la cadena coincide con el patrón
         return matcher.matches();
     }
-    @FXML
-    void initialize() {
+    @FXML void initialize() {
+        instanciaBuscandoCliente=this;
         assert apellido != null : "fx:id=\"apellido\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
         assert botonBuscar != null : "fx:id=\"botonBuscar\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
         assert botonCancelar != null : "fx:id=\"botonCancelar\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
@@ -281,19 +282,14 @@ public class AltaPolizaControlador {
         assert nroDocumento != null : "fx:id=\"nroDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
+        tablaMostrarClientes.setVisible(false);
         tipoDocumento.getItems().addAll("DNI", "PASAPORTE", "LU", "LE");
 
-        botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>(""));
+        botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>("botonSelect"));
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));
         apellidoColumna.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         nombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tipoDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoDoc"));
         nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDocumento"));
-
-        tablaMostrarClientes.setVisible(false);
-
-        datosClienteTabla cliente = new datosClienteTabla();
-        clientesList.add(cliente);
-        tablaMostrarClientes.setItems(clientesList);
     }
 }
