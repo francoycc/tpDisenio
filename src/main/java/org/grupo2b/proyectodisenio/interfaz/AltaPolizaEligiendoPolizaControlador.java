@@ -26,12 +26,14 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private URL location;
     @FXML private Button botonVolver;
     @FXML private Button idBotonInicio;
+    @FXML private Button botonCancelar;
+    @FXML private Button botonConfirmar;
+
     @FXML private TableView<tablaTipoCobertura> tablaConTipoCobertura;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaCheck;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaDescripcion;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaTipoCobertura;
     private final ObservableList<tablaTipoCobertura> tipoCoberturaList = FXCollections.observableArrayList();
-
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -41,6 +43,9 @@ public class AltaPolizaEligiendoPolizaControlador {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML void volver(ActionEvent event) {}
+    @FXML void cancelar(ActionEvent event) {}
+    @FXML void confirmar(ActionEvent event) {}
     @FXML void initialize() {
         assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'AltaPolizaEligiendoPoliza.fxml'.";
         assert columnaCheck != null : "fx:id=\"columnaCheck\" was not injected: check your FXML file 'AltaPolizaEligiendoPoliza.fxml'.";

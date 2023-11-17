@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaEligiendoPolizaControlador">
    <content>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0">
-         <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+         <VBox prefHeight="356.0" prefWidth="260.0" AnchorPane.bottomAnchor="594.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
             <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="INICIO" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="ALTA PÓLIZA" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
@@ -28,7 +34,7 @@
             </font>
          </Label>
          <Button fx:id="botonVolver" layoutX="1144.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="VOLVER" />
-         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" maxHeight="300.0" maxWidth="1015.0" minHeight="60.0" minWidth="1015.0" prefWidth="1015.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
+         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" maxHeight="230.0" maxWidth="1015.0" minHeight="60.0" minWidth="1015.0" prefWidth="1015.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
             <columns>
                <TableColumn fx:id="columnaCheck" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" style="-fx-alignment: CENTER;" />
                <TableColumn fx:id="columnaTipoCobertura" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" style="-fx-alignment: CENTER;" text="Tipo Cobertura" />
@@ -38,6 +44,70 @@
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
          </TableView>
+         <HBox layoutX="250.0" layoutY="261.0" prefHeight="100.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="260.0">
+            <children>
+               <VBox prefHeight="200.0" prefWidth="515.0">
+                  <children>
+                     <Label text="Fecha Inicio Vigencia de Póliza">
+                        <VBox.margin>
+                           <Insets left="20.0" top="20.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Line endX="370.0" endY="-0.4141647517681122" startX="-100.0">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="20.0" top="5.0" />
+                        </VBox.margin>
+                     </Line>
+                     <DatePicker fx:id="fechaInicioVigencia" prefHeight="30.0" prefWidth="470.0">
+                        <VBox.margin>
+                           <Insets left="20.0" />
+                        </VBox.margin>
+                     </DatePicker>
+                  </children>
+               </VBox>
+               <VBox prefHeight="200.0" prefWidth="515.0">
+                  <children>
+                     <Label text="Forma de Pago">
+                        <VBox.margin>
+                           <Insets left="20.0" top="20.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Line endX="370.0" startX="-100.0">
+                        <VBox.margin>
+                           <Insets bottom="10.0" left="20.0" top="5.0" />
+                        </VBox.margin>
+                     </Line>
+                     <ComboBox fx:id="comboBoxFormaPago" prefHeight="30.0" prefWidth="470.0">
+                        <VBox.margin>
+                           <Insets left="20.0" />
+                        </VBox.margin>
+                     </ComboBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <Pane layoutX="260.0" layoutY="371.0" prefHeight="40.0" prefWidth="1010.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="375.0">
+            <children>
+               <Button fx:id="botonCancelar" layoutX="339.0" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="150.0" text="CANCELAR">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Button>
+               <Button fx:id="botonConfirmar" layoutX="519.0" layoutY="1.0" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="40.0" prefWidth="150.0" text="CONFIRMAR">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Button>
+            </children>
+         </Pane>
+         <Line endX="910.0" layoutX="395.0" layoutY="443.0" startX="-100.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="990.0" />
+         <Line endX="-97.13333129882812" endY="-122.20001220703125" layoutX="343.0" layoutY="475.0" startX="-97.13333129882812" startY="-31.5333251953125" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="352.0" />
       </AnchorPane>
    </content>
 </ScrollPane>
