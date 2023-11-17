@@ -1,9 +1,6 @@
 package org.grupo2b.proyectodisenio.logica.cuentas;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Cuenta {
@@ -15,13 +12,16 @@ public class Cuenta {
     private String nombre;
     @Column(length = 64, nullable = false)
     private String claveHash;
+    @ManyToOne(optional = false)
+    private TipoCuenta tipoCuenta;
 
 
 
     public Cuenta(){}
-    public Cuenta(String nombre, String clave) {
+    public Cuenta(String nombre, String clave, TipoCuenta tipoCuenta) {
         this.nombre = nombre;
         this.claveHash = PasswordHasher.hash(clave);
+        this.tipoCuenta = tipoCuenta;
     }
 
 
@@ -45,5 +45,11 @@ public class Cuenta {
     }
     public void setClave(String clave) {
         this.claveHash = PasswordHasher.hash(clave);
+    }
+    public TipoCuenta getTipoCuenta() {
+        return tipoCuenta;
+    }
+    public void setTipoCuenta(TipoCuenta tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
     }
 }

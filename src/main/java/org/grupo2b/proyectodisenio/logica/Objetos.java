@@ -2,7 +2,7 @@ package org.grupo2b.proyectodisenio.logica;
 
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
-import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
+import org.grupo2b.proyectodisenio.logica.cuentas.TipoCuenta;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
@@ -19,8 +19,12 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Objetos{
+    //TIPO CUENTAS
+    public static TipoCuenta TIPOCUENTA_GERENTE= new TipoCuenta("Gerente");
+    public static TipoCuenta TIPOCUENTA_COBRADOR= new TipoCuenta("Cobrador");
+    public static TipoCuenta TIPOCUENTA_PRODUCTOR_SEGUROS= new TipoCuenta("ProductorSeguros");
     //CUENTAS
-    public static Cuenta CUENTA_ADMIN = new Cuenta("admin", "1234");
+    public static Cuenta CUENTA_ADMIN = new Cuenta("admin", "1234", TIPOCUENTA_PRODUCTOR_SEGUROS);
     //TIPOS DE DOCUMENTO
     public static TipoDocumento TIPO_DOCUMENTO_DNI = new TipoDocumento("DNI");
     //TODO DerechoEmision, Descuento y NumeroSiniestros
