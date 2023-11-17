@@ -13,11 +13,12 @@ public class DeclaracionHijo {
     @GeneratedValue
     @Column(name = "id_declaracion")
     private int id;
-    @Column(name = "fecha_nacimiento")
+    @Column(name = "fecha_nacimiento", nullable = false)
     private Date fechaNacimiento;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Sexo sexo;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_estado_civil")
     private EstadoCivil estadoCivilHijo;
 

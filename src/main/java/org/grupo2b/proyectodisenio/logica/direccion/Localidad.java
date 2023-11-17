@@ -9,13 +9,14 @@ public class Localidad {
     @GeneratedValue
     @Column(name = "id_localidad")
     private int id;
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String nombre;
+    @Column(nullable = false)
     private int codigoPostal;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_provincia")
     private Provincia provincia;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historialFactor;
 

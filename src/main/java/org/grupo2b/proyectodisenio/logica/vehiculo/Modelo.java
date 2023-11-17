@@ -12,12 +12,12 @@ public class Modelo{
     @GeneratedValue
     @Column(name = "id_modelo")
     private int id;
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String nombre;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_marca")
     private Marca marca;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historialFactor;
     @ManyToMany(cascade = CascadeType.ALL)

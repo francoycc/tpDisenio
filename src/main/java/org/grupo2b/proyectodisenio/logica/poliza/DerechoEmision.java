@@ -10,7 +10,7 @@ public class DerechoEmision {
     @GeneratedValue
     @Column(name = "id_derechoEmision")
     private int id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 

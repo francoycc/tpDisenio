@@ -6,9 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "ESTADO_CIVIL")
 public class EstadoCivil {
     @Id
-    @GeneratedValue
-    @Column(name = "id_estado_civil")
-    private int id;
     @Column(length = 30)
     private String tipo;
 
@@ -20,12 +17,6 @@ public class EstadoCivil {
     }
 
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getTipo() {
         return tipo;
     }

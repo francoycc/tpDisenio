@@ -8,12 +8,13 @@ public class Direccion {
     @GeneratedValue
     @Column(name = "id_direccion")
     private int id;
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String calle;
+    @Column(nullable = false)
     private int numero;
     private int piso;
     private int departamento;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_localidad")
     private Localidad localidad;
 

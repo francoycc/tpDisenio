@@ -8,9 +8,9 @@ public class Provincia {
     @GeneratedValue
     @Column(name = "id_provincia")
     private int id;
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String nombre;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_pais")
     private Pais pais;
 

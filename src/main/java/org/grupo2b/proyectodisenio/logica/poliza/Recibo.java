@@ -12,14 +12,15 @@ public class Recibo {
     @GeneratedValue
     @Column(name = "id_recibo")
     private int id;
+    @Column(nullable = false)
     private Date fecha;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Cuenta operador;
-    @Column(name = "numero_recibo")
+    @Column(name = "numero_recibo", nullable = false)
     private int nroRecibo;
-    @Column(name = "mes")
+    @Column(name = "mes", nullable = false)
     private int nroMes;
-    @Column(name = "anio")
+    @Column(name = "anio", nullable = false)
     private int nroAnio;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "recibo")
     private List<Cuota> cuotas;

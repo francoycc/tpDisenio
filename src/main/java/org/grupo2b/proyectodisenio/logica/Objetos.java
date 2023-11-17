@@ -38,16 +38,16 @@ public class Objetos{
     public static CondicionIva CONDICION_IVA2 = new CondicionIva("Responsable Inscripto");
     public static CondicionIva CONDICION_IVA3 = new CondicionIva("Consumidor Final");
     //MEDIDAS DE SEGURIDAD
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_ALARMA = new MedidaDeSeguridad("Alarma", new HistorialFactor());
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_GARAGE = new MedidaDeSeguridad("Garage", new HistorialFactor());
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_TUERCAS = new MedidaDeSeguridad("Tuercas Antirrobo", new HistorialFactor());
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_RASTREO = new MedidaDeSeguridad("Rastreo", new HistorialFactor());
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_ALARMA = new MedidaDeSeguridad("Alarma", getHistorial());
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_GARAGE = new MedidaDeSeguridad("Garage", getHistorial());
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_TUERCAS = new MedidaDeSeguridad("Tuercas Antirrobo", getHistorial());
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_RASTREO = new MedidaDeSeguridad("Rastreo", getHistorial());
     //TIPOS COBERTURA
-    public static TipoCobertura COBERTURA_RESP_CIVIL = new TipoCobertura("Responsabilidad Civil", "Dirigida hacia terceros transportados y no transportados, con límite de $23.000.000, en la Argentina y $3.200.000 para países limítrofes", 999999);
-    public static TipoCobertura COBERTURA_RESP_TOTAL = new TipoCobertura("Resp. Civil, Robo o incendio total", "Resp. Civil + Robo Total (apoderamiento ilegítimo del vehículo con violencia) + Incendio Total (daños provocados por incendio o explosión interna o externa, siempre que haya fuego)", 10);
-    public static TipoCobertura COBERTURA_TODO_TOTAL = new TipoCobertura("Todo Total", "Resp. Civil + Robo Total, Hurto Total (apoderamiento ilegítimo del vehículo sin violencia) + Incendio Total + Destrucción Total (los restos no deben superar el 20% del valor del vehículo)", 10);
-    public static TipoCobertura COBERTURA_TERCEROS = new TipoCobertura("Terceros Completos", "Resp. Civil + Robo Parcial, Hurto Total y Parcial (incluye partes integrantes del vehículo Ej.: partes fijas y accesorios) + Incendio Total y Parcial + Destrucción Total", 10);
-    public static TipoCobertura COBERTURA_TODO_RIESGO = new TipoCobertura("Todo riesgo con franquicia", "Resp. Civil + Robo, Hurto e Incendio Total y Parcial + Daños Totales y Parciales ( incluye daños parciales con una franquicia a cargo del asegurado)", 10);
+    public static TipoCobertura COBERTURA_RESP_CIVIL = new TipoCobertura("Responsabilidad Civil", "Dirigida hacia terceros transportados y no transportados, con límite de $23.000.000, en la Argentina y $3.200.000 para países limítrofes", 999999, getHistorial());
+    public static TipoCobertura COBERTURA_RESP_TOTAL = new TipoCobertura("Resp. Civil, Robo o incendio total", "Resp. Civil + Robo Total (apoderamiento ilegítimo del vehículo con violencia) + Incendio Total (daños provocados por incendio o explosión interna o externa, siempre que haya fuego)", 10, getHistorial());
+    public static TipoCobertura COBERTURA_TODO_TOTAL = new TipoCobertura("Todo Total", "Resp. Civil + Robo Total, Hurto Total (apoderamiento ilegítimo del vehículo sin violencia) + Incendio Total + Destrucción Total (los restos no deben superar el 20% del valor del vehículo)", 10, getHistorial());
+    public static TipoCobertura COBERTURA_TERCEROS = new TipoCobertura("Terceros Completos", "Resp. Civil + Robo Parcial, Hurto Total y Parcial (incluye partes integrantes del vehículo Ej.: partes fijas y accesorios) + Incendio Total y Parcial + Destrucción Total", 10, getHistorial());
+    public static TipoCobertura COBERTURA_TODO_RIESGO = new TipoCobertura("Todo riesgo con franquicia", "Resp. Civil + Robo, Hurto e Incendio Total y Parcial + Daños Totales y Parciales ( incluye daños parciales con una franquicia a cargo del asegurado)", 10, getHistorial());
     //ESTADOS CIVILES
     public static EstadoCivil ESTADO_CIVIL_SOLTERO = new EstadoCivil("Soltero");
     public static EstadoCivil ESTADO_CIVIL_CASADO = new EstadoCivil("Casado");
@@ -106,28 +106,28 @@ public class Objetos{
     public static Vehiculo VEHICULO8 = new Vehiculo(2650000, "1.4L", "6VWAE19C55A150000", "PRC153", MODELO_CORSA, new KmPorAnio(21000.0f, Objetos.getHistorial()), DIRECCION8);
     public static Vehiculo VEHICULO9 = new Vehiculo(2650000, "2.0L", "IUDAISBDY55A150000", "12PXC13", MODELO_CORSA, new KmPorAnio(21000.0f, Objetos.getHistorial()), DIRECCION8);
     //CLIENTES
-    public static Cliente CLIENTE1 = new Cliente("Beatriz", "Salomon", 20226485935L, Sexo.FEMENINO, new Date(1985, Calendar.OCTOBER, 15),
+    public static Cliente CLIENTE1 = new Cliente("Beatriz", "Salomon", 20226485935L, Sexo.FEMENINO, new Date(85, Calendar.OCTOBER, 15),
             "beatrizsalo@gmail.com", "Docente", 2011, CondicionCliente.ACTIVO, DOCUMENTO1, CONDICION_IVA1, DIRECCION1,
             List.of(VEHICULO1), ESTADO_CIVIL_CASADO);
-    public static Cliente CLIENTE2 = new Cliente( "Carlos", "Zapata",23390456329L, Sexo.MASCULINO, new Date(1997, Calendar.JANUARY,10),
+    public static Cliente CLIENTE2 = new Cliente( "Carlos", "Zapata",23390456329L, Sexo.MASCULINO, new Date(87, Calendar.JANUARY,10),
             "carloszpt@hotmail.com", "Empleado", 2023, CondicionCliente.NORMAL, DOCUMENTO2, CONDICION_IVA1, DIRECCION2,
             List.of(VEHICULO2), ESTADO_CIVIL_SOLTERO);
-    public static Cliente CLIENTE3 = new Cliente("Alejo", "Varchi", 23356021439L, Sexo.MASCULINO, new Date(1989, Calendar.MARCH, 22),
+    public static Cliente CLIENTE3 = new Cliente("Alejo", "Varchi", 23356021439L, Sexo.MASCULINO, new Date(89, Calendar.MARCH, 22),
             "varchialejo@gmail.com", "Contador", 2018, CondicionCliente.PLATA, DOCUMENTO3, CONDICION_IVA2, DIRECCION3,
             List.of(VEHICULO3), ESTADO_CIVIL_CASADO);
-    public static Cliente CLIENTE4 = new Cliente("Sandra", "Barbieri", 20341562475L,Sexo.FEMENINO, new Date(1985, Calendar.FEBRUARY, 12),
+    public static Cliente CLIENTE4 = new Cliente("Sandra", "Barbieri", 20341562475L,Sexo.FEMENINO, new Date(85, Calendar.FEBRUARY, 12),
             "sandrabarbieri@gmail.com", "Abogada", 2015, CondicionCliente.ACTIVO, DOCUMENTO4, CONDICION_IVA2, DIRECCION4,
             List.of(VEHICULO4), ESTADO_CIVIL_DIVORCIADO);
-    public static Cliente CLIENTE5 = new Cliente("Marcos", "Sosa", 20276854321L, Sexo.MASCULINO, new Date(1979, Calendar.JUNE, 17),
+    public static Cliente CLIENTE5 = new Cliente("Marcos", "Sosa", 20276854321L, Sexo.MASCULINO, new Date(79, Calendar.JUNE, 17),
             "marcossosa@gmail.com", "Veterinario", 2011, CondicionCliente.ACTIVO, DOCUMENTO5, CONDICION_IVA3, DIRECCION5,
             List.of(VEHICULO5), ESTADO_CIVIL_VIUDO);
-    public static Cliente CLIENTE6 = new Cliente("Gabriela", "Ramos", 27246758903L, Sexo.FEMENINO, new Date(1975, Calendar.JANUARY, 12),
+    public static Cliente CLIENTE6 = new Cliente("Gabriela", "Ramos", 27246758903L, Sexo.FEMENINO, new Date(75, Calendar.JANUARY, 12),
             "gabiramos@gmail.com", "Peluquera", 2014, CondicionCliente.ACTIVO, DOCUMENTO6, CONDICION_IVA2, DIRECCION6,
             List.of(VEHICULO6), ESTADO_CIVIL_CASADO);
-    public static Cliente CLIENTE7 = new Cliente("Lorena", "Abila", 20364511235L, Sexo.FEMENINO, new Date(1987, Calendar.FEBRUARY, 7),
+    public static Cliente CLIENTE7 = new Cliente("Lorena", "Abila", 20364511235L, Sexo.FEMENINO, new Date(87, Calendar.FEBRUARY, 7),
             "loreabila@gmail.com", "Abogada", 2016, CondicionCliente.ACTIVO, DOCUMENTO7, CONDICION_IVA3, DIRECCION7,
             List.of(VEHICULO71, VEHICULO72), ESTADO_CIVIL_CASADO);
-    public static Cliente CLIENTE8 = new Cliente("Camila", "Ibarra", 20326541125L, Sexo.FEMENINO, new Date(1991, Calendar.APRIL, 21),
+    public static Cliente CLIENTE8 = new Cliente("Camila", "Ibarra", 20326541125L, Sexo.FEMENINO, new Date(91, Calendar.APRIL, 21),
             "camiibarra@gmail.com", "Secretaria", 2018, CondicionCliente.ACTIVO, DOCUMENTO8, CONDICION_IVA1, DIRECCION8,
             List.of(VEHICULO8, VEHICULO9), ESTADO_CIVIL_SOLTERO);
     //POLIZAS
@@ -164,12 +164,11 @@ public class Objetos{
         declaracionHijos1.add(declaracionHijo10);
 
         Recibo recibo1 = new Recibo();
-        Cuenta cuenta1 = GestorCuentas.getCuentaActiva();
         Cuota cuota1 = new Cuota(new Date(2023, Calendar.OCTOBER, 17), 10000.0f, EstadoCuota.PENDIENTE, 0.0f, 0.0f, recibo1);
         List<Cuota> cuotas1 = new ArrayList<>();
         cuotas1.add(cuota1);
         recibo1.setFecha(new Date(2023, Calendar.OCTOBER, 17));
-        recibo1.setOperador(cuenta1);
+        recibo1.setOperador(CUENTA_ADMIN);
         recibo1.setNroRecibo(136542);
         recibo1.setNroAnio(2023);
         recibo1.setNroMes(4);
@@ -191,12 +190,11 @@ public class Objetos{
         declaracionHijos2.add(declaracionHijos21);
         declaracionHijos2.add(declaracionHijos22);
         Recibo recibo2 = new Recibo();
-        Cuenta cuenta2 = GestorCuentas.getCuentaActiva();
         Cuota cuota2 = new Cuota(new Date(2023, Calendar.OCTOBER, 12), 12000.0f, EstadoCuota.PAGADA, 0.0f, 1000.0f, recibo2);
         List<Cuota> cuotas2 = new ArrayList<>();
         cuotas2.add(cuota2);
         recibo2.setFecha(new Date(2023, Calendar.OCTOBER, 12));
-        recibo2.setOperador(cuenta2);
+        recibo2.setOperador(CUENTA_ADMIN);
         recibo2.setNroRecibo(134655);
         recibo2.setNroAnio(2023);
         recibo2.setNroMes(8);
@@ -214,7 +212,6 @@ public class Objetos{
         Recibo recibo31 = new Recibo();
         Recibo recibo32 = new Recibo();
         Recibo recibo33 = new Recibo();
-        Cuenta cuenta3 = GestorCuentas.getCuentaActiva();
         Cuota cuota30 = new Cuota(new Date(2023, Calendar.JUNE, 17), 12000.0f, EstadoCuota.PAGADA, 0.0f, 1000.0f, recibo30);
         Cuota cuota31 = new Cuota(new Date(2023, Calendar.JULY, 17), 12000.0f, EstadoCuota.PAGADA, 0.0f, 1000.0f, recibo31);
         Cuota cuota32 = new Cuota(new Date(2023, Calendar.AUGUST, 17), 13000.0f, EstadoCuota.PAGADA, 0.0f, 1000.0f, recibo32);
@@ -229,25 +226,25 @@ public class Objetos{
         cuotas3.add(cuota34);
         cuotas3.add(cuota35);
         recibo30.setFecha(new Date(2023, Calendar.JUNE, 17));
-        recibo30.setOperador(cuenta3);
+        recibo30.setOperador(CUENTA_ADMIN);
         recibo30.setNroRecibo(136545);
         recibo30.setNroAnio(2023);
         recibo30.setNroMes(8);
         recibo30.setCuotas(cuotas3);
         recibo31.setFecha(new Date(2023, Calendar.JULY, 17));
-        recibo31.setOperador(cuenta3);
+        recibo31.setOperador(CUENTA_ADMIN);
         recibo31.setNroRecibo(145135);
         recibo31.setNroAnio(2023);
         recibo31.setNroMes(7);
         recibo31.setCuotas(cuotas3);
         recibo32.setFecha(new Date(2023, Calendar.AUGUST, 17));
-        recibo32.setOperador(cuenta3);
+        recibo32.setOperador(CUENTA_ADMIN);
         recibo32.setNroRecibo(141323);
         recibo32.setNroAnio(2023);
         recibo32.setNroMes(8);
         recibo32.setCuotas(cuotas3);
         recibo33.setFecha(new Date(2023, Calendar.SEPTEMBER, 17));
-        recibo33.setOperador(cuenta3);
+        recibo33.setOperador(CUENTA_ADMIN);
         recibo33.setNroRecibo(141324);
         recibo33.setNroAnio(2023);
         recibo33.setNroMes(9);
@@ -263,12 +260,11 @@ public class Objetos{
         DeclaracionHijo declaracionHijo40 = new DeclaracionHijo(new Date(1999, Calendar.OCTOBER, 5), Sexo.FEMENINO, ESTADO_CIVIL_SOLTERO);
         declaracionHijos4.add(declaracionHijo40);
         Recibo recibo4 = new Recibo();
-        Cuenta cuenta4 = GestorCuentas.getCuentaActiva();
         Cuota cuota4 = new Cuota(new Date(2022, Calendar.SEPTEMBER, 11), 10000.0f, EstadoCuota.PENDIENTE, 0.0f, 0.0f, recibo4);
         List<Cuota> cuotas4 = new ArrayList();
         cuotas4.add(cuota4);
         recibo4.setFecha(new Date(2022, Calendar.SEPTEMBER, 11));
-        recibo4.setOperador(cuenta4);
+        recibo4.setOperador(CUENTA_ADMIN);
         recibo4.setNroRecibo(211345);
         recibo4.setNroAnio(2022);
         recibo4.setNroMes(5);
@@ -285,12 +281,11 @@ public class Objetos{
         DeclaracionHijo declaracionHijo5 = new DeclaracionHijo(new Date(2002, Calendar.NOVEMBER, 3), Sexo.FEMENINO, ESTADO_CIVIL_SOLTERO);
         declaracionHijos5.add(declaracionHijo5);
         Recibo recibo5 = new Recibo();
-        Cuenta cuenta5 = GestorCuentas.getCuentaActiva();
         Cuota cuota5 = new Cuota(new Date(2023, Calendar.OCTOBER, 10), 9000.0f, EstadoCuota.PAGADA, 1000.0f, 660.0f, recibo5);
         List<Cuota> cuotas5 = new ArrayList();
         cuotas5.add(cuota5);
         recibo5.setFecha(new Date(2023, Calendar.OCTOBER, 25));
-        recibo5.setOperador(cuenta5);
+        recibo5.setOperador(CUENTA_ADMIN);
         recibo5.setNroRecibo(141378);
         recibo5.setNroAnio(2023);
         recibo5.setNroMes(10);
@@ -311,7 +306,7 @@ public class Objetos{
         List<Cuota> cuotas61 = new ArrayList<>();
         cuotas61.add(cuota61);
         recibo61.setFecha(new Date(2023, Calendar.OCTOBER, 17));
-        recibo61.setOperador(GestorCuentas.getCuentaActiva());
+        recibo61.setOperador(CUENTA_ADMIN);
         recibo61.setNroRecibo(131345);
         recibo61.setNroAnio(2023);
         recibo61.setNroMes(6);
@@ -330,7 +325,7 @@ public class Objetos{
         List<Cuota> cuotas62 = new ArrayList<>();
         cuotas62.add(cuota62);
         recibo62.setFecha(new Date(2023, Calendar.OCTOBER, 17));
-        recibo62.setOperador(GestorCuentas.getCuentaActiva());
+        recibo62.setOperador(CUENTA_ADMIN);
         recibo62.setNroRecibo(131346);
         recibo62.setNroAnio(2023);
         recibo62.setNroMes(6);
@@ -349,7 +344,7 @@ public class Objetos{
         List<Cuota> cuotas7 = new ArrayList<>();
         cuotas7.add(cuota7);
         recibo7.setFecha(new Date(2023, Calendar.JANUARY, 17));
-        recibo7.setOperador(GestorCuentas.getCuentaActiva());
+        recibo7.setOperador(CUENTA_ADMIN);
         recibo7.setNroRecibo(131655);
         recibo7.setNroAnio(2023);
         recibo7.setNroMes(1);
@@ -368,7 +363,7 @@ public class Objetos{
         List<Cuota> cuotas8 = new ArrayList<>();
         cuotas8.add(cuota8);
         recibo8.setFecha(new Date(2022, Calendar.AUGUST, 11));
-        recibo8.setOperador(GestorCuentas.getCuentaActiva());
+        recibo8.setOperador(CUENTA_ADMIN);
         recibo8.setNroRecibo(131656);
         recibo8.setNroAnio(2023);
         recibo8.setNroMes(9);
@@ -394,6 +389,8 @@ public class Objetos{
         entradasList.add(entrada4);
         entradasList.add(entrada5);
         historial.setEntradas(entradasList);
+        historial.setValorActualFactor(2f);
+        historial.setUltimaFecha(LocalDateTime.of(2023, 11, 12, 8, 48));
         return historial;
     }
 
@@ -406,8 +403,8 @@ public class Objetos{
         DAOManager.save(Objetos.POLIZA5);
         DAOManager.save(Objetos.POLIZA61);
         DAOManager.save(Objetos.POLIZA62);
-        DAOManager.save(Objetos.POLIZA8);
-        DAOManager.save(Objetos.POLIZA7);
+        /*DAOManager.save(Objetos.POLIZA8);
+        DAOManager.save(Objetos.POLIZA7);*/
     }
 }
 

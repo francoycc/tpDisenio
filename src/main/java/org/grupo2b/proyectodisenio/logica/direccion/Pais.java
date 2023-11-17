@@ -11,7 +11,7 @@ public class Pais {
     @GeneratedValue
     @Column(name = "id_pais")
     private int id;
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String nombre;
 
 //TODO CODIGO DE PAIS?

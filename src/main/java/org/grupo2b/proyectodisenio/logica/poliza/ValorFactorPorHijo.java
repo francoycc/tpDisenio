@@ -6,14 +6,14 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 
 @Entity
 @Table(name = "FACTOR_POR_HIJO")
-public class ValorFactorPorHijo {
+public class ValorFactorPorHijo {//TOOO ARREGLAR ESTA CAGADA, MISMO PROBLEMA QUE NRO SINIESTROS
     @Id
     @GeneratedValue
     @Column(name = "id_factor_por_hijo")
     private int id;
-    @Column(name = "cantidad_hijos")
+    @Column(name = "cantidad_hijos", nullable = false)
     private int cantidadHijos;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 

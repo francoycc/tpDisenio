@@ -11,7 +11,7 @@ public class Marca {
     @GeneratedValue
     @Column(name = "id_marca")
     private int id;
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String nombre;
 
 

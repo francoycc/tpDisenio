@@ -11,9 +11,9 @@ public class Cuenta {
     @GeneratedValue
     @Column(name = "idUsuario")
     private int id;
-    @Column(length = 32, unique = true)
+    @Column(length = 32, unique = true, nullable = false)
     private String nombre;
-    @Column(length = 64)
+    @Column(length = 64, nullable = false)
     private String claveHash;
 
 

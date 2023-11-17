@@ -18,29 +18,29 @@ public class DatosParaRenovacion {
     @Column(name = "id_renovacion")
     private int id;
     @Enumerated(EnumType.STRING)
-    @Column(name = "forma_pago")
+    @Column(name = "forma_pago", nullable = false)
     private FormaPago formaPago;
-    @Column(name = "fecha_renovacion")
+    @Column(name = "fecha_renovacion", nullable = false)
     private Date fechaRenovacion;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_tipo_cobertura")
     private TipoCobertura tipoCobertura;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "RELACION_MEDIDAS_RENOVACION", joinColumns = @JoinColumn(name = "id_renovacion"), inverseJoinColumns = @JoinColumn(name = "id_seguridad"))
     private ArrayList<MedidaDeSeguridad> medidasDeSeguridad;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_anioFabricacion")
     private AnioFabricacion anioFabricacion;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_vehiculo")
     private Vehiculo vehiculo;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_poliza")
     private Poliza poliza;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "RELACION_RENOVACION_DECLARACION", joinColumns = @JoinColumn(name = "id_renovacion"), inverseJoinColumns = @JoinColumn(name = "id_declaracion"))
     private ArrayList<DeclaracionHijo> declaracionesHijos;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_nro_siniestros")
     private NumeroSiniestros nroSiniestros;
 

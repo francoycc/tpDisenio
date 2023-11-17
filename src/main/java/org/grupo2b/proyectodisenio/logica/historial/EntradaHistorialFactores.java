@@ -20,7 +20,7 @@ public class EntradaHistorialFactores{
     private LocalDateTime fechaInicio;
     @Column(name = "fecha_hasta", nullable = false)
     private LocalDateTime fechaFin;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_cuenta", foreignKey = @ForeignKey(name = "fk_cuenta"))
     private Cuenta cuenta;
 

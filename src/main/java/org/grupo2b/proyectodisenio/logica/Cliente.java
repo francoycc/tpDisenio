@@ -16,49 +16,53 @@ public class Cliente {
     @Id
     @GeneratedValue
     private int id;
+    @Column(nullable = false, unique = true)
     private String nroCliente;
     @PrePersist
+    @PreUpdate
     private void ensureId(){
-        nroCliente = domicilio.getLocalidad().getProvincia().getPais().getId()+ "-"+id;
-        //TODO CODIGO DE PAIS? NORMALIZAR
+        nroCliente = String.format("%02d", domicilio.getLocalidad().getProvincia().getPais().getId())+ "-"+String.format("%08d", id);
     }
-    @Column(length = 40)
+    @Column(length = 40, nullable = false)
     private String nombre;
-    @Column(length = 40)
+    @Column(length = 40, nullable = false)
     private String apellido;
+    @Column(nullable = false)//TODO Long o String
     private long cuil;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Sexo sexo;
-    @Column(name = "fecha_nacimiento")
+    @Column(name = "fecha_nacimiento", nullable = false)
     private Date fechaNacimiento;
-    @Column(name = "correo", length = 40)
+    @Column(name = "correo", length = 40, nullable = false)
     private String correoElectronico;
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String profesion;
-    @Column(name = "anio_registro")
+    @Column(name = "anio_registro", nullable = false)
     private int anioRegistro;
     @Enumerated(EnumType.STRING)
-    @Column(name = "condicion_cliente")
+    @Column(name = "condicion_cliente", nullable = false)
     private CondicionCliente condicionCliente;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "numero_documento")
     private Documento documento;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_condicion_iva")
     private CondicionIva condicionIva;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_domicilio")
     private Direccion domicilio;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", nullable = false)
     private List<Vehiculo> vehiculos;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_estado_civil")
     private EstadoCivil estadoCivil;
 
 
 
     public Cliente(){}
+
     public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -75,7 +79,6 @@ public class Cliente {
         this.vehiculos = vehiculos;
         this.estadoCivil = estadoCivil;
     }
-
 
     @Override
     public String toString() {

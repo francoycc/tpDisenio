@@ -11,12 +11,15 @@ public class Cuota {
     @GeneratedValue
     @Column(name = "id_cuota")
     private int id;
-    @Column(name = "fecha_vencimiento")
+    @Column(name = "fecha_vencimiento", nullable = false)
     private Date fechaVencimiento;
+    @Column(nullable = false)
     private float monto;
+    @Column(nullable = false)
     private EstadoCuota estado;
-    @Column(name = "recarga_mora")
+    @Column(name = "recarga_mora", nullable = false)
     private float recargaMora;
+    @Column(nullable = false)
     private float bonificacion;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_recibo")

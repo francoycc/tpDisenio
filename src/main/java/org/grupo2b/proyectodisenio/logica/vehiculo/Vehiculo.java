@@ -9,22 +9,22 @@ public class Vehiculo {
     @GeneratedValue
     @Column(name = "id_vehiculo")
     private int id;
-    @Column(name = "suma_asegurada")
+    @Column(name = "suma_asegurada", nullable = false)
     private int sumaAsegurada;
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String motor;
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String chasis;
-    @Column(length = 10)
+    @Column(length = 10,nullable = false)
     private String patente;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_modelo")
     private Modelo modelo;
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_kmAnio")
-    @ManyToOne(cascade = CascadeType.ALL)
     private KmPorAnio kmPorAnio;
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_direccion")
-    @ManyToOne(cascade = CascadeType.ALL)
     private Direccion direccion;
 
 

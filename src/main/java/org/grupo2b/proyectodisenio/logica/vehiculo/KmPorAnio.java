@@ -5,14 +5,14 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 
 @Entity
 @Table(name = "KM_POR_ANIO")
-public class KmPorAnio {
+public class KmPorAnio {//TODO ARREGLAR ESTA CAGADA, MISMO PROBLEMA QUE NRO SINIESTROS
     @Id
     @GeneratedValue
     @Column(name = "id_kmAnio")
     private int id;
-    @Column(name = "km_realizados")
+    @Column(name = "km_realizados", nullable = false)
     private float kmRealizados;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historialFactor;
 

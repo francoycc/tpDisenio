@@ -12,40 +12,42 @@ import java.util.List;
 @Entity
 public class Poliza {
     @Id
-    @GeneratedValue//TODO CUSTOM GENERATOR
+    @GeneratedValue
     @Column(name = "id_poliza")
     private int id;
-    @Column(name = "nro_poliza")
+    @Column(name = "nro_poliza", nullable = false)
     private String nroPoliza;
 
     @PrePersist
-    private void ensureId(){
+    @PreUpdate
+    private void ensureId(){//TODO 4 digitos para la sucursal, 7 digitos para una secuencia de asociacion del auto con el cliente (Solicitud de Poliza), 2 digitos para una secuencia para la renovacion de la poliza
         nroPoliza = "" + id;
     }
-    @Column(name = "inicio_vigencia")
+    @Column(name = "inicio_vigencia", nullable = false)
     private Date inicioVigencia;
-    @Column(name = "fin_vigencia")
+    @Column(name = "fin_vigencia", nullable = false)
     private Date finVigencia;
-    @Column(name = "fecha_registro")
+    @Column(name = "fecha_registro", nullable = false)
     private Date fechaRegistro;
     @Enumerated(EnumType.STRING)
-    @Column(name = "forma_pago")
+    @Column(name = "forma_pago", nullable = false)
     private FormaPago formaPago;
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado_poliza")
+    @Column(name = "estado_poliza", nullable = false)
     private EstadoPoliza estadoPoliza;
+    @Column(nullable = false)
     private float premio;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_derecho_emision")
     private DerechoEmision derechoEmision;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_descuento")
     private Descuento descuento;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "tipo_cobertura")
     private TipoCobertura tipoCobertura;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_poliza")
+    @JoinColumn(name = "id_poliza", nullable = false)
     private List<Cuota> cuotas;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "RELACION_MEDIDAS_POLIZA", joinColumns = @JoinColumn(name = "id_poliza"), inverseJoinColumns = @JoinColumn(name = "id_seguridad"))
@@ -53,14 +55,14 @@ public class Poliza {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_renovacion")
     private DatosParaRenovacion datosRenovacion;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     private Vehiculo vehiculo;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "RELACION_POLIZA_DECLARACION", joinColumns = @JoinColumn(name = "id_poliza"), inverseJoinColumns = @JoinColumn(name = "id_declaracion"))
     private List<DeclaracionHijo> declaracionesHijos;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Cliente cliente;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_nro_siniestros")
     private NumeroSiniestros nroSiniestros;
 

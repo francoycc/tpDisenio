@@ -4,10 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Objetos;
 import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
-import org.grupo2b.proyectodisenio.logica.cuentas.PasswordHasher;
 
 import java.io.IOException;
 

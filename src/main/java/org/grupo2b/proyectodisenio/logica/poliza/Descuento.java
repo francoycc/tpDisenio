@@ -6,12 +6,9 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 @Entity
 public class Descuento {
     @Id
-    @GeneratedValue
-    @Column(name = "id_descuento")
-    private int id;
-    @Column(length = 20,name = "nombre_descuento")
+    @Column(length = 20,name = "nombre_descuento", nullable = false)
     private String nombreDescuento;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
@@ -23,12 +20,6 @@ public class Descuento {
     }
 
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getNombreDescuento() {
         return nombreDescuento;
     }

@@ -10,23 +10,25 @@ public class TipoCobertura {
     @GeneratedValue
     @Column(name = "id_tipoCobertura")
     private int id;
-    @Column(length = 40)
+    @Column(length = 40, nullable = false)
     private String nombre;
-    @Column(length = 1000)
+    @Column(length = 1000, nullable = false)
     private String descripcion;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     HistorialFactor historial;
+    @Column(nullable = false)
     int maxAniosVehiculo;
 
 
 
 
     public TipoCobertura(){}
-    public TipoCobertura(String nombre, String descripcion, int maxAniosVehiculo) {
+    public TipoCobertura(String nombre, String descripcion, int maxAniosVehiculo, HistorialFactor historial) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.maxAniosVehiculo = maxAniosVehiculo;
+        this.historial = historial;
     }
 
 
