@@ -1,11 +1,14 @@
-package org.grupo2b.proyectodisenio.logica.cuentas;
+package org.grupo2b.proyectodisenio.dao.cuentas;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 public class PasswordHasher {
-    private static MessageDigest digest;
+    private static final MessageDigest digest;
+    private static final String allowedSaltCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz0123456789";
+    private static final int saltLength = 16;
 
     static {
         try {
@@ -15,8 +18,8 @@ public class PasswordHasher {
         }
     }
 
-    public static String hash(String pass){
-        final byte[] hashbytes = digest.digest(pass.getBytes(StandardCharsets.UTF_8));
+    public static String hash(String pass, String salt){
+        final byte[] hashbytes = digest.digest((salt+pass).getBytes(StandardCharsets.UTF_8));
         return bytesToHex(hashbytes);
     }
 
@@ -30,5 +33,14 @@ public class PasswordHasher {
             hexString.append(hex);
         }
         return hexString.toString();
+    }
+
+    public static String generateSalt(){
+        Random r = new Random();
+        StringBuilder s = new StringBuilder();
+        for (int i=0;i<saltLength;i++){
+            s.append(allowedSaltCharacters.charAt(Math.abs(r.nextInt())%allowedSaltCharacters.length()));
+        }
+        return s.toString();
     }
 }
