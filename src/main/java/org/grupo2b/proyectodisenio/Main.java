@@ -5,9 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
+import org.grupo2b.proyectodisenio.logica.Objetos;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -25,9 +24,7 @@ public class Main extends Application {
         }
     }
     public static void main(String[] args) {
-        //Objetos.save();
-
-        System.out.println(GestorCuentas.login("admin", "1234"));
+        Objetos.save();
 
         launch();
     }
