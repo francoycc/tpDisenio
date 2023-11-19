@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -407,6 +408,37 @@ public class AltaPolizaEligiendoPolizaControlador {
         fechaInicioVigencia.setValue(LocalDate.now().plusDays(1));
         premio.setText("0");
         importePorDescuentos.setText("0");
+
+        fechaInicioVigencia.setValue(LocalDate.now().plusDays(1));
+        premio.setText("0");
+        importePorDescuentos.setText("0");
+
+        titularDelSeguro.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        marcaDelVehículo.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        modeloDelVehículo.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        motor.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        chasis.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        patente.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        fechaFin.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        fechaInicio.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        sumaAsegurada.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        premio.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        importePorDescuentos.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes1.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes2.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes3.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes4.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes5.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes6.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalPorMes7.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiaDePago1.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiaDePago2.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiaDePago3.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiaDePago4.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiaDePago5.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiaDePago6.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        montoTotalSemestral.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        ultimoDiadePagoSemestral.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
     }
     boolean seEligioTipoCobertura = false;
     AltaPolizaCargandoDatosControlador instancia_1_en_2;
