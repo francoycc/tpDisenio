@@ -27,11 +27,14 @@ public class Objetos{
     public static Cuenta CUENTA_ADMIN = new Cuenta("admin", "1234", TIPOCUENTA_PRODUCTOR_SEGUROS);
     //TIPOS DE DOCUMENTO
     public static TipoDocumento TIPO_DOCUMENTO_DNI = new TipoDocumento("DNI");
+    public static TipoDocumento TIPO_DOCUMENTO_PASAPORTE = new TipoDocumento("PASAPORTE");
+    public static TipoDocumento TIPO_DOCUMENTO_LU = new TipoDocumento("LU");
+    public static TipoDocumento TIPO_DOCUMENTO_LE = new TipoDocumento("LE");
     //TODO DerechoEmision, Descuento y NumeroSiniestros
     //DOCUMENTOS
-    public static Documento DOCUMENTO1 = new Documento(22648593, TIPO_DOCUMENTO_DNI);
-    public static Documento DOCUMENTO2 = new Documento(39045632, TIPO_DOCUMENTO_DNI);
-    public static Documento DOCUMENTO3 = new Documento(35602143, TIPO_DOCUMENTO_DNI);
+    public static Documento DOCUMENTO1 = new Documento(22648593, TIPO_DOCUMENTO_PASAPORTE);
+    public static Documento DOCUMENTO2 = new Documento(39045632, TIPO_DOCUMENTO_LE);
+    public static Documento DOCUMENTO3 = new Documento(35602143, TIPO_DOCUMENTO_LU);
     public static Documento DOCUMENTO4 = new Documento(34156247, TIPO_DOCUMENTO_DNI);
     public static Documento DOCUMENTO5 = new Documento(27685432, TIPO_DOCUMENTO_DNI);
     public static Documento DOCUMENTO6 = new Documento(24675890, TIPO_DOCUMENTO_DNI);
@@ -400,15 +403,16 @@ public class Objetos{
 
 
     public static void save(){
-        DAOManager.save(Objetos.POLIZA1);
-        DAOManager.save(Objetos.POLIZA2);
-        DAOManager.save(Objetos.POLIZA3);
-        DAOManager.save(Objetos.POLIZA4);
-        DAOManager.save(Objetos.POLIZA5);
-        DAOManager.save(Objetos.POLIZA61);
-        DAOManager.save(Objetos.POLIZA62);
-        /*DAOManager.save(Objetos.POLIZA8);
-        DAOManager.save(Objetos.POLIZA7);*/
+        DAOManager.save(CLIENTE2);
+        DAOManager.save(POLIZA1);
+        DAOManager.save(POLIZA2);
+        DAOManager.save(POLIZA3);
+        DAOManager.save(POLIZA4);
+        DAOManager.save(POLIZA5);
+        DAOManager.save(POLIZA61);
+        DAOManager.save(POLIZA62);
+        DAOManager.save(POLIZA8);
+        DAOManager.save(POLIZA7);
     }
 }
 

@@ -29,7 +29,6 @@ public class Cuenta {
     public Cuenta(){}
     public Cuenta(String nombre, String clave, TipoCuenta tipoCuenta) {
         generateSalt();
-        System.out.println(salt);
         this.nombre = nombre;
         this.claveHash = PasswordHasher.hash(clave, salt);
         this.tipoCuenta = tipoCuenta;

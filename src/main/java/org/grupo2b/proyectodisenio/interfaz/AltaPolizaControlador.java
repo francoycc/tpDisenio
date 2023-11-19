@@ -16,7 +16,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxFactory;
 import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.hibernate.query.Query;
 
 import java.io.IOException;
@@ -44,7 +46,7 @@ public class AltaPolizaControlador {
     @FXML private TextField apellido;
     @FXML private TextField nroCliente;
     @FXML private TextField nroDocumento;
-    @FXML private ComboBox<String> tipoDocumento;
+    @FXML private ComboBox<TipoDocumento> tipoDocumento;
 
     @FXML private TableView<datosClienteTabla> tablaMostrarClientes;
     @FXML private TableColumn<datosClienteTabla, Hyperlink> botonesElegirCliente;
@@ -153,7 +155,7 @@ public class AltaPolizaControlador {
             errorApellido.setText("");
         }
         if (tipoDocumento.getValue()==null) {
-            tipoDocumento.setValue("DNI");
+            tipoDocumento.setValue(DAOManager.tipoDocumentoDAO().getTipoDocumentoFromName("DNI").get());
         }
         if (!nroDocumento.getText().matches("\\d+") && !nroDocumento.getText().isEmpty()) {
             errorNroDocumento.setText("Ingrese un Nro de Documento válido.");
@@ -177,22 +179,9 @@ public class AltaPolizaControlador {
         }
     }
     AltaPolizaControlador instanciaBuscandoCliente;
-    public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, String tipoDoc, String nroDocumento) {
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
-        CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
-        Root<Cliente> root = cr.from(Cliente.class);
+    public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, String nroDocumento) {
 
-        cr.select(root).where(
-                cb.and(
-                        cb.like(root.get("nroCliente"),nroCliente+"%"),
-                        cb.like(root.get("nombre"),nombre+"%"),
-                        cb.like(root.get("apellido"),apellido+"%"),
-                        cb.like(root.join("documento").get("numero").as(String.class),nroDocumento+"%"),
-                        cb.equal(root.join("documento").join("tipoDocumento").get("nombre"), tipoDoc)));
-
-        Query<Cliente> query = DAOManager.getSession().createQuery(cr);
-        List<Cliente> results = query.getResultList();
-
+        List<Cliente> results = DAOManager.clienteDAO().getClientes(nombre,apellido,nroCliente,nroDocumento,tipoDoc);
         for (Cliente c : results){
             datosClienteTabla cliente = new datosClienteTabla(
                     c.getNroCliente(),
@@ -268,7 +257,8 @@ public class AltaPolizaControlador {
         nombre.setText("");
         apellido.setText("");
         nroDocumento.setText("");
-        tipoDocumento.setValue("Tipo Documento");
+        tipoDocumento.setValue(null);
+        tipoDocumento.setPromptText("Tipo Documento");
         errorNroCliente.setText("");
         errorNombre.setText("");
         errorApellido.setText("");
@@ -307,7 +297,10 @@ public class AltaPolizaControlador {
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
         tablaMostrarClientes.setVisible(false);
-        tipoDocumento.getItems().addAll("DNI", "PASAPORTE", "LU", "LE");
+        ComboBoxFactory<TipoDocumento> factory = new ComboBoxFactory<>();
+        tipoDocumento.setButtonCell(factory.call(null));
+        tipoDocumento.setCellFactory(factory);
+        tipoDocumento.getItems().addAll(DAOManager.tipoDocumentoDAO().getTiposDocumento());
 
         botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>("botonSelect"));
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));

@@ -30,13 +30,16 @@ public class LoginControlador {
 
 
         if (GestorCuentas.login(UsuarioField, ContraseniaField)) {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("EL ASEGURADO");
-            Scene scene = new Scene(root);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+            if (GestorCuentas.getTipoCuenta().getNombre().equals("ProductorSeguros")) {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            }else
+                throw new RuntimeException("No Implementado");
         } else {
             textoDeError.setText("Usuario o Contraseña no válidos, Por favor, inténtalo de nuevo.");
         }

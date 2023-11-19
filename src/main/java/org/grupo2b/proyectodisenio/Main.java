@@ -27,7 +27,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         DAOManager.init();
 
-        //Objetos.save();
+        Objetos.save();
 
         launch();
     }
