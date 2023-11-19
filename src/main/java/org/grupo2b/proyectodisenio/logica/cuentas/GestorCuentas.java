@@ -12,7 +12,7 @@ public class GestorCuentas {
     }
 
     public static boolean login(String nombre, String contra){
-        Optional<Cuenta> cuentaOPT = CuentaDAOPSQL.getCuentaWithLoginInfo(nombre, PasswordHasher.hash(contra));
+        Optional<Cuenta> cuentaOPT = CuentaDAOPSQL.getCuentaWithLoginInfo(nombre,contra);
         if(cuentaOPT.isEmpty())
             return false;
 

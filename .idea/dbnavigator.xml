@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes />
   </component>
+=======
+>>>>>>> origin/master
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
@@ -161,7 +164,10 @@
       <confirmations>
         <save-changes value="false" />
         <revert-changes value="true" />
+<<<<<<< HEAD
         <exit-on-changes value="ASK" />
+=======
+>>>>>>> origin/master
       </confirmations>
     </code-editor-settings>
     <code-completion-settings>
