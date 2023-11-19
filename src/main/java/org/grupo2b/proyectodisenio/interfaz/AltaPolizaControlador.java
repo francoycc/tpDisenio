@@ -106,13 +106,29 @@ public class AltaPolizaControlador {
         public void setNroDocumento(int nroDocumento) { this.nroDocumento = nroDocumento; }
     }
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("EL ASEGURADO");
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Alert messageWindows = new Alert(Alert.AlertType.WARNING);
+        messageWindows.setTitle("Advertencia");
+        messageWindows.setHeaderText("");
+        messageWindows.setContentText("¿Desea cancelar el Alta de Póliza?");
+        // Agrega los botones OK y Cancelar al diálogo
+        ButtonType botonCancelar = new ButtonType("Continuar Alta Póliza");
+        ButtonType botonConfirmar = new ButtonType("Cancelar Alta Póliza");
+        messageWindows.getButtonTypes().setAll(botonCancelar, botonConfirmar);
+        // Muestra el diálogo y captura la respuesta del usuario
+        Optional<ButtonType> result = messageWindows.showAndWait();
+        if (result.isPresent() && result.get() == botonConfirmar) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     @FXML void buscar(ActionEvent event) {
         int flag = 0;
@@ -145,6 +161,7 @@ public class AltaPolizaControlador {
         } else {
             errorNroDocumento.setText("");
         }
+        tablaMostrarClientes.setVisible(true);
 
         if (flag == 0) {
             tablaMostrarClientes.getItems().clear();
@@ -175,15 +192,6 @@ public class AltaPolizaControlador {
 
         Query<Cliente> query = DAOManager.getSession().createQuery(cr);
         List<Cliente> results = query.getResultList();
-
-        tablaMostrarClientes = new TableView();
-        botonesElegirCliente = new TableColumn<>("");
-        nroClienteColumna = new TableColumn("Nro Cliente");
-        apellidoColumna = new TableColumn("Apellido");
-        nombreColumna = new TableColumn("Nombre");
-        tipoDocColumna = new TableColumn("Tipo Documento");
-        nroDocColumna = new TableColumn("Nro Documento");
-        tablaMostrarClientes.getColumns().addAll(botonesElegirCliente, nroClienteColumna, apellidoColumna, nombreColumna, tipoDocColumna, nroDocColumna);
 
         for (Cliente c : results){
             datosClienteTabla cliente = new datosClienteTabla(
@@ -231,13 +239,29 @@ public class AltaPolizaControlador {
         return results.size();
     }
     @FXML void cancelar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("EL ASEGURADO");
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Alert messageWindows = new Alert(Alert.AlertType.WARNING);
+        messageWindows.setTitle("Advertencia");
+        messageWindows.setHeaderText("");
+        messageWindows.setContentText("¿Desea cancelar el Alta de Póliza?");
+        // Agrega los botones OK y Cancelar al diálogo
+        ButtonType botonCancelar = new ButtonType("Continuar Alta Póliza");
+        ButtonType botonConfirmar = new ButtonType("Cancelar Alta Póliza");
+        messageWindows.getButtonTypes().setAll(botonCancelar, botonConfirmar);
+        // Muestra el diálogo y captura la respuesta del usuario
+        Optional<ButtonType> result = messageWindows.showAndWait();
+        if (result.isPresent() && result.get() == botonConfirmar) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     @FXML void limpiar(ActionEvent event) {
         nroCliente.setText("");

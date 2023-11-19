@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -15,26 +16,29 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+<ScrollPane fx:id="idScrollPane" hbarPolicy="NEVER" maxHeight="1200.0" minHeight="-Infinity" prefHeight="1850.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaEligiendoPolizaControlador">
    <content>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0">
-         <VBox prefHeight="356.0" prefWidth="260.0" AnchorPane.bottomAnchor="594.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="idAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1850.0" prefWidth="1280.0">
+         <VBox prefHeight="356.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
             <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="INICIO" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="ALTA PÓLIZA" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA CLIENTE" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR CLIENTE" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" VBox.vgrow="NEVER" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="GENERAR PROPUESTAS RENOVACIÓN" />
          </VBox>
-         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="490.0" text="Seleccione el Tipo de Cobertura que se asociará a la Póliza" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #CDCDCD;" text="Seleccione el Tipo de Cobertura que se asociará a la Póliza" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
             <font>
                <Font size="16.0" />
             </font>
+            <padding>
+               <Insets left="10.0" />
+            </padding>
          </Label>
-         <Button fx:id="botonVolver" layoutX="1144.0" layoutY="1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="VOLVER" />
-         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" maxHeight="230.0" maxWidth="1015.0" minHeight="60.0" minWidth="1015.0" prefWidth="1015.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
+         <Button fx:id="botonVolver" layoutX="1090.0" mnemonicParsing="false" onAction="#volver" prefHeight="30.0" prefWidth="150.0" text="VOLVER" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0" />
+         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" prefHeight="230.0" prefWidth="1015.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
             <columns>
                <TableColumn fx:id="columnaCheck" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" style="-fx-alignment: CENTER;" />
                <TableColumn fx:id="columnaTipoCobertura" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" style="-fx-alignment: CENTER;" text="Tipo Cobertura" />
@@ -83,7 +87,7 @@
                            <Insets bottom="10.0" left="20.0" top="5.0" />
                         </VBox.margin>
                      </Line>
-                     <ComboBox fx:id="comboBoxFormaPago" prefHeight="30.0" prefWidth="470.0">
+                     <ComboBox fx:id="comboBoxFormaPago" prefHeight="30.0" prefWidth="470.0" promptText="Seleccionar">
                         <VBox.margin>
                            <Insets left="20.0" />
                         </VBox.margin>
@@ -99,15 +103,579 @@
                      <Font size="16.0" />
                   </font>
                </Button>
-               <Button fx:id="botonConfirmar" layoutX="519.0" layoutY="1.0" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#confirmar" prefHeight="40.0" prefWidth="150.0" text="CONFIRMAR">
+               <Button fx:id="botonConfirmar" layoutX="519.0" layoutY="1.0" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#confirmarTipoPoliza" prefHeight="40.0" prefWidth="150.0" text="CONFIRMAR">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Button>
             </children>
          </Pane>
-         <Line endX="910.0" layoutX="395.0" layoutY="443.0" startX="-100.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="990.0" />
-         <Line endX="-97.13333129882812" endY="-122.20001220703125" layoutX="343.0" layoutY="475.0" startX="-97.13333129882812" startY="-31.5333251953125" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="352.0" />
+         <Line endX="1012.0" layoutX="395.0" layoutY="443.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="1010.0" AnchorPane.topAnchor="440.0" />
+         <Line endY="440.0" layoutX="343.0" layoutY="475.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="0.0" />
+         <Line endY="440.0" layoutX="175.0" layoutY="358.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
+         <Pane fx:id="anchorPaneLuegoQpresioneConfirmar" layoutX="33.0" layoutY="499.0" prefHeight="1400.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="470.0">
+            <children>
+               <Label prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #CDCDCD;" text="PÓLIZA A GENERAR">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+                  <padding>
+                     <Insets left="10.0" />
+                  </padding>
+               </Label>
+               <Line endX="1012.0" />
+               <Line endY="1330.0" />
+               <Line endY="1330.0" layoutX="1012.0" />
+               <VBox prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <Label text="Titular de Seguro">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" top="20.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Line endX="970.0">
+                        <VBox.margin>
+                           <Insets left="20.0" />
+                        </VBox.margin>
+                     </Line>
+                     <TextField fx:id="titularDelSeguro">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" right="20.0" top="10.0" />
+                        </VBox.margin>
+                     </TextField>
+                     <Label text="Datos de Vehículo">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" top="10.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Line endX="970.0">
+                        <VBox.margin>
+                           <Insets left="20.0" />
+                        </VBox.margin>
+                     </Line>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Marca del Vehículo">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="365.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Modelo del Vehículo">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="10.0" />
+                        </VBox.margin>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="marcaDelVehículo" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="modeloDelVehículo" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Motor">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="455.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Chasis">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="motor" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="chasis" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <Label text="Patente del Vehículo">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" top="10.0" />
+                        </VBox.margin>
+                     </Label>
+                     <TextField fx:id="patente">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" right="20.0" />
+                        </VBox.margin>
+                     </TextField>
+                     <Label text="Vigencia">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" top="20.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Line endX="970.0">
+                        <VBox.margin>
+                           <Insets left="20.0" />
+                        </VBox.margin>
+                     </Line>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Fecha de Inicio">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="390.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Fecha de Fin">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="fechaInicio" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="fechaFin" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <Label text="Suma Asegurada">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="25.0" top="10.0" />
+                        </VBox.margin>
+                     </Label>
+                     <TextField fx:id="sumaAsegurada">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets left="20.0" right="20.0" />
+                        </VBox.margin>
+                     </TextField>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Premio">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="445.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Importe por Descuentos">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="premio" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="importePorDescuentos" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                  </children>
+                  <padding>
+                     <Insets top="20.0" />
+                  </padding>
+               </VBox>
+               <VBox fx:id="vboxPagoMensual" layoutY="650.0" prefHeight="600.0" prefWidth="1015.0">
+                  <children>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto a abonar por cada mes">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiaDePago1" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalPorMes1" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto a abonar por cada mes">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiaDePago2" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalPorMes2" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto a abonar por cada mes">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiaDePago3" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalPorMes3" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto a abonar por cada mes">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiaDePago4" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalPorMes4" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto a abonar por cada mes">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiaDePago5" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalPorMes5" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto a abonar por cada mes">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiaDePago6" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalPorMes6" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Monto Total">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="520.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="montoTotalPorMes7" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="520.0" />
+                              </HBox.margin>
+                           </TextField>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <HBox fx:id="botonera" layoutY="1190.0">
+                  <children>
+                     <Button fx:id="botonCancelar1" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="150.0" text="CANCELAR">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <HBox.margin>
+                           <Insets left="340.0" right="30.0" />
+                        </HBox.margin>
+                     </Button>
+                     <Button fx:id="botonConfirmar1" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#confirmarGeneracionPoliza" prefHeight="40.0" prefWidth="150.0" text="CONFIRMAR">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <HBox.margin>
+                           <Insets right="340.0" />
+                        </HBox.margin>
+                     </Button>
+                  </children>
+               </HBox>
+               <VBox fx:id="vboxPagoSemestral" layoutY="650.0" prefHeight="80.0" prefWidth="1015.0">
+                  <children>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <Label text="Último día de Pago">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="25.0" right="360.0" top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                           <Label text="Monto total a abonar">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets top="10.0" />
+                              </HBox.margin>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="30.0" prefWidth="200.0">
+                        <children>
+                           <TextField fx:id="ultimoDiadePagoSemestral" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                              <HBox.margin>
+                                 <Insets left="20.0" right="20.0" />
+                              </HBox.margin>
+                           </TextField>
+                           <TextField fx:id="montoTotalSemestral" prefHeight="30.0" prefWidth="480.0">
+                              <font>
+                                 <Font size="16.0" />
+                              </font>
+                           </TextField>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+         </Pane>
       </AnchorPane>
    </content>
 </ScrollPane>

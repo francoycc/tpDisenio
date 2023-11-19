@@ -82,22 +82,54 @@ public class AltaPolizaCargandoDatosControlador {
     private final ObservableList<datosClienteTabla> clientesList = FXCollections.observableArrayList();
 
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("EL ASEGURADO");
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Alert messageWindows = new Alert(Alert.AlertType.WARNING);
+        messageWindows.setTitle("Advertencia");
+        messageWindows.setHeaderText("");
+        messageWindows.setContentText("¿Desea cancelar el Alta de Póliza? Si cancela el Alta de Póliza perderá todo su progreso");
+        // Agrega los botones OK y Cancelar al diálogo
+        ButtonType botonCancelar = new ButtonType("Continuar Alta Póliza");
+        ButtonType botonConfirmar = new ButtonType("Cancelar Alta Póliza");
+        messageWindows.getButtonTypes().setAll(botonCancelar, botonConfirmar);
+        // Muestra el diálogo y captura la respuesta del usuario
+        Optional<ButtonType> result = messageWindows.showAndWait();
+        if (result.isPresent() && result.get() == botonConfirmar) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     @FXML void buscarCliente(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AltaPoliza.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("EL ASEGURADO");
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Alert messageWindows = new Alert(Alert.AlertType.WARNING);
+        messageWindows.setTitle("Advertencia");
+        messageWindows.setHeaderText("");
+        messageWindows.setContentText("¿Desea cancelar el Alta de Póliza para este Cliente y dar de Alta a otro?");
+        // Agrega los botones OK y Cancelar al diálogo
+        ButtonType botonCancelar = new ButtonType("Continuar con este Cliente");
+        ButtonType botonConfirmar = new ButtonType("Dar de Alta otro Cliente");
+        messageWindows.getButtonTypes().setAll(botonCancelar, botonConfirmar);
+        // Muestra el diálogo y captura la respuesta del usuario
+        Optional<ButtonType> result = messageWindows.showAndWait();
+        if (result.isPresent() && result.get() == botonConfirmar) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AltaPoliza.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     public static int calcularEdad(LocalDate fechaNacimiento) {
         LocalDate fechaActual = LocalDate.now();
@@ -232,13 +264,29 @@ public class AltaPolizaCargandoDatosControlador {
         }
     }
     @FXML void cancelar(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("EL ASEGURADO");
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        Alert messageWindows = new Alert(Alert.AlertType.WARNING);
+        messageWindows.setTitle("Advertencia");
+        messageWindows.setHeaderText("");
+        messageWindows.setContentText("¿Desea cancelar el Alta de Póliza?");
+        // Agrega los botones OK y Cancelar al diálogo
+        ButtonType botonCancelar = new ButtonType("Continuar Alta Póliza");
+        ButtonType botonConfirmar = new ButtonType("Cancelar Alta Póliza");
+        messageWindows.getButtonTypes().setAll(botonCancelar, botonConfirmar);
+        // Muestra el diálogo y captura la respuesta del usuario
+        Optional<ButtonType> result = messageWindows.showAndWait();
+        if (result.isPresent() && result.get() == botonConfirmar) {
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     AltaPolizaCargandoDatosControlador instanciaCargandoDatos;
     @FXML void siguiente(ActionEvent event) throws IOException {
@@ -276,7 +324,12 @@ public class AltaPolizaCargandoDatosControlador {
             ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = (AltaPolizaEligiendoPolizaControlador)loader.getController();
-            //instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, txt_stage2.getText());
+            instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, clientesList,
+                    apellidoYnombreColumna.getCellData(tablaMostrarClientes.getItems().get(0)),
+                    idProvincia.getValue(), idCiudad.getValue(), idMarca.getValue(), idModelo.getValue(), idAnio.getValue(),
+                    idSumaAsegurada.getText(), idMotor.getText(), idChasis.getText(), idPatente.getText(), idKmRealizados.getText(),
+                    idGarage.getValue(), idDispositivoRastreo.getValue(), idAlarma.getValue(), idTuercaAntirrobo.getValue(),
+                    idNroSiniestros.getValue(), hijosList);
             stage.setTitle("EL ASEGURADO");
             Scene scene = new Scene(root, 1280, 720);
             stage.setResizable(false);
@@ -299,6 +352,32 @@ public class AltaPolizaCargandoDatosControlador {
         datosClienteTabla cliente = new datosClienteTabla(c.getNroCliente(),tipoYnroDoc,nya, "9 de Julio 570");
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
+    }
+    public void recibeParametrosDeVolver(ObservableList<datosClienteTabla> cliente, String provincia, String ciudad, String marca,
+                                         String modeloDelVehículoText, String anio, String sumaAseguradaText, String motorText,
+                                         String chasisText, String patenteText, String kmRealizadosV, String garageV,
+                                         String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
+                                         ObservableList<TablaHijos> listaDeHijos) {
+        ///////////////////////esto desp lo implemento me dio paja//////////////////////
+        //clientesList.add(cliente);
+        //tablaMostrarClientes.setItems(clientesList);
+        idProvincia.setValue(provincia);
+        idCiudad.setValue(ciudad);
+        idMarca.setValue(marca);
+        idModelo.setValue(modeloDelVehículoText);
+        idAnio.setValue(anio);
+        idSumaAsegurada.setText(sumaAseguradaText);
+        idMotor.setText(motorText);
+        idChasis.setText(chasisText);
+        idPatente.setText(patenteText);
+        idKmRealizados.setText(kmRealizadosV);
+        idGarage.setValue(garageV);
+        idDispositivoRastreo.setValue(dispositivoRastreoV);
+        idAlarma.setValue(alarmaV);
+        idTuercaAntirrobo.setValue(tuercaAntirroboV);
+        idNroSiniestros.setValue(nroSiniestrosV);
+        //hijosList.add(listaDeHijos);
+        //tablaHijos.setItems(hijosList);
     }
     public class datosClienteTabla {
         String nroCliente;
@@ -436,7 +515,7 @@ public class AltaPolizaCargandoDatosControlador {
 
 
         idProvincia.getItems().addAll(ProvinciaDAOPSQL.getStringsProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
-        //idCiudad.getItems().addAll("Santa Fe"); //PARA ESTO PEDIR CONSULTA A LEO
+        idCiudad.getItems().addAll("Santa Fe"); //PARA ESTO PEDIR CONSULTA A LEO
         idMarca.getItems().addAll(MarcaDAOPSQL.getStringsMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
         idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
         idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
@@ -445,6 +524,8 @@ public class AltaPolizaCargandoDatosControlador {
         idAlarma.getItems().addAll("SI","NO");
         idTuercaAntirrobo.getItems().addAll("SI","NO");
         idNroSiniestros.getItems().addAll("Ninguno","Uno","Dos", "Más de dos");
+        idNroSiniestros.setValue("Ninguno");
+        idSumaAsegurada.setText("1000000");
 
         comboBoxSexo.getItems().addAll("MASCULINO","FEMENINO");
         comboBoxEstadoCivil.getItems().addAll(EstadoCivilDAOPSQL.getStringEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
