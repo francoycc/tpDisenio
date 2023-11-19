@@ -12,9 +12,10 @@ import org.hibernate.query.Query;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MarcaDAOPSQL {
+public class MarcaDAOPSQL implements MarcaDao{
 
-    public static List<Marca> getMarcas(){
+    @Override
+    public List<Marca> getMarcas(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Marca> cr = cb.createQuery(Marca.class);
         Root<Marca> root = cr.from(Marca.class);
@@ -25,7 +26,8 @@ public class MarcaDAOPSQL {
         return query.getResultList();
     }
 
-    public static List<String> getStringsMarcas(){
+    @Override
+    public List<String> getStringsMarcas(){
         List<String> marcas = new LinkedList<>();
         for (Marca m : getMarcas())
             marcas.add(m.getNombre());

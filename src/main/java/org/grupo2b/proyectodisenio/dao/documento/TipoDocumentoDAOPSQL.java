@@ -1,29 +1,29 @@
 package org.grupo2b.proyectodisenio.dao.documento;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-public class TipoDocumentoDAOPSQL {
+import java.util.List;
 
-    public static void save(TipoDocumento o) {
-        Transaction tx = DAOManager.getSession().beginTransaction();
-        DAOManager.getSession().persist(o);
-        tx.commit();
-    }
+public class TipoDocumentoDAOPSQL implements TipoDocumentoDAO{
 
-    public static void merge(TipoDocumento o){
-        Transaction tx = DAOManager.getSession().beginTransaction();
-        TipoDocumento c = DAOManager.getSession().merge(o);
-        tx.commit();
-    }
+    @Override
+    public List<TipoDocumento> getTiposDocumento(){
+        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaQuery<TipoDocumento> cr = cb.createQuery(TipoDocumento.class);
+        Root<TipoDocumento> root = cr.from(TipoDocumento.class);
 
-    public static TipoDocumento get(int id) {
-        Transaction tx = DAOManager.getSession().beginTransaction();
-        TipoDocumento obj = DAOManager.getSession().get(TipoDocumento.class, 1);
-        tx.commit();
-        return obj;
+        cr.select(root);
+
+        Query<TipoDocumento> query = DAOManager.getSession().createQuery(cr);
+        return query.getResultList();
     }
 
 }

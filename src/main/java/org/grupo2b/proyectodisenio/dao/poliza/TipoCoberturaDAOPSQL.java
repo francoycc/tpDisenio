@@ -10,9 +10,10 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class TipoCoberturaDAOPSQL {
+public class TipoCoberturaDAOPSQL implements TipoCoberturaDAO{
 
-    public static List<TipoCobertura> getTiposCobertura(){
+    @Override
+    public List<TipoCobertura> getTiposCobertura(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<TipoCobertura> cr = cb.createQuery(TipoCobertura.class);
         Root<TipoCobertura> root = cr.from(TipoCobertura.class);

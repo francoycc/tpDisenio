@@ -11,9 +11,10 @@ import org.hibernate.query.Query;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EstadoCivilDAOPSQL {
+public class EstadoCivilDAOPSQL implements EstadoCivilDAO{
 
-    public static List<EstadoCivil> getEstadosCiviles(){
+    @Override
+    public List<EstadoCivil> getEstadosCiviles(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<EstadoCivil> cr = cb.createQuery(EstadoCivil.class);
         Root<EstadoCivil> root = cr.from(EstadoCivil.class);
@@ -24,7 +25,8 @@ public class EstadoCivilDAOPSQL {
         return query.getResultList();
     }
 
-    public static List<String> getStringEstadosCiviles(){
+    @Override
+    public List<String> getStringEstadosCiviles(){
         List<String> strings = new LinkedList<>();
         for (EstadoCivil e : getEstadosCiviles())
             strings.add(e.getTipo());

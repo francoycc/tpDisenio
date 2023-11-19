@@ -1,6 +1,24 @@
 package org.grupo2b.proyectodisenio.dao;
 
 import jakarta.persistence.Entity;
+import org.grupo2b.proyectodisenio.dao.cliente.ClienteDAO;
+import org.grupo2b.proyectodisenio.dao.cliente.ClienteDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAO;
+import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.direccion.*;
+import org.grupo2b.proyectodisenio.dao.documento.DocumentoDAO;
+import org.grupo2b.proyectodisenio.dao.documento.DocumentoDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.documento.TipoDocumentoDAO;
+import org.grupo2b.proyectodisenio.dao.documento.TipoDocumentoDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAO;
+import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.historial.HistorialDAO;
+import org.grupo2b.proyectodisenio.dao.historial.HistorialDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.poliza.EstadoCivilDAO;
+import org.grupo2b.proyectodisenio.dao.poliza.EstadoCivilDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.poliza.TipoCoberturaDAO;
+import org.grupo2b.proyectodisenio.dao.poliza.TipoCoberturaDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.vehiculo.*;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.CondicionIva;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
@@ -21,29 +39,64 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.Hashtable;
 import java.util.Properties;
 
 public class DAOManager {
 
     private static Session session;
-    private static Properties getProperties() {
+    public static Session getSession() {
+        return session;
+    }
+    public enum TipoBaseDeDatos{
+        PSQL,
+        MYSQL
+    }
+    private static TipoBaseDeDatos tipoBaseDeDatos = TipoBaseDeDatos.PSQL;
+
+    static {
+        switch (tipoBaseDeDatos){
+            case PSQL -> PSQLInit();
+            case MYSQL -> MYSQLInit();
+        }
+    }
+
+    //DAOS
+    private static LocalidadDAO localidadDAO;
+    private static PaisDAO paisDAO;
+    private static ProvinciaDAO provinciaDAO;
+    private static ClienteDAO clienteDAO;
+    private static CuentaDAO cuentaDAO;
+    private static DocumentoDAO documentoDAO;
+    private static TipoDocumentoDAO tipoDocumentoDAO;
+    private static EntradaHistorialDAO entradaHistorialDAO;
+    private static HistorialDAO historialDAO;
+    private static EstadoCivilDAO estadoCivilDAO;
+    private static TipoCoberturaDAO tipoCoberturaDAO;
+    private static AnioFabricacionDAO anioFabricacionDAO;
+    private static MarcaDao marcaDao;
+    private static ModeloDAO modeloDAO;
+
+
+    public static void init(){}
+
+
+
+    private static void PSQLInit(){
         Properties properties = new Properties();
-        properties.put("hibernate.connection.driver_class","org.postgresql.Driver");
-        properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.connection.url","jdbc:postgresql://190.7.1.188:5432/proyecto_disenio");
-        properties.put("hibernate.connection.username","Manager");
-        properties.put("hibernate.connection.password","s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;\";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[");
-        properties.put("show_sql","true");
-        properties.put("hibernate.hbm2ddl.auto","create");
-        properties.put("hibernate.jdbc.time_zone","UTC");
-        return properties;
+        properties.putAll(new Hashtable<>(){{
+            put("hibernate.connection.driver_class","org.postgresql.Driver");
+            put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
+            put("hibernate.connection.url","jdbc:postgresql://190.7.1.188:5432/proyecto_disenio");
+            put("hibernate.connection.username","Manager");
+            put("hibernate.connection.password","s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;\";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[");
+            put("show_sql","true");
+            put("hibernate.hbm2ddl.auto","update");
+            put("hibernate.jdbc.time_zone","UTC");
+        }});
         //];4A9LPW(+rxm.ohTz&(8ruB6V?rUJQgcMQVt~I782'cq]ha8C72xHRGzK_+fc)&B__Yp5kIj/m*hfUzwO'PNcZEI4#z10}8p
         //server.key dp5SVa32d3y9N7G1qX5EgcxXXcWJBCls0D79qc1tChT57sSWVh
         //manager pass s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[
-
-    }
-    static {
-        Properties properties = getProperties();
         Configuration con = new Configuration().setProperties(properties)
                 .addAnnotatedClass(TipoCobertura.class)
                 .addAnnotatedClass(EntradaHistorialFactores.class)
@@ -76,18 +129,92 @@ public class DAOManager {
                 .addAnnotatedClass(TipoCuenta.class);
         ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(properties).build();
         session = con.buildSessionFactory(reg).openSession();
+
+        localidadDAO = new LocalidadDAOPSQL();
+        paisDAO = new PaisDAOPSQL();
+        provinciaDAO = new ProvinciaDAOPSQL();
+        clienteDAO = new ClienteDAOPSQL();
+        cuentaDAO = new CuentaDAOPSQL();
+        documentoDAO = new DocumentoDAOPSQL();
+        tipoDocumentoDAO = new TipoDocumentoDAOPSQL();
+        historialDAO = new HistorialDAOPSQL();
+        entradaHistorialDAO = new EntradaHistorialDAOPSQL();
+        estadoCivilDAO = new EstadoCivilDAOPSQL();
+        tipoCoberturaDAO = new TipoCoberturaDAOPSQL();
+        anioFabricacionDAO = new AnioFabricacionDAOPSQL();
+        marcaDao = new MarcaDAOPSQL();
+        modeloDAO = new ModeloDAOPSQL();
     }
 
-    public static Session getSession() {
-        return session;
+
+
+    //DAO GETTERS
+
+
+    public static TipoBaseDeDatos tipoBaseDeDatos() {
+        return tipoBaseDeDatos;
     }
 
-    public static void setSession(Session session) {
-        DAOManager.session = session;
+    public static LocalidadDAO localidadDAO() {
+        return localidadDAO;
     }
 
+    public static PaisDAO paisDAO() {
+        return paisDAO;
+    }
 
+    public static ProvinciaDAO provinciaDAO() {
+        return provinciaDAO;
+    }
 
+    public static ClienteDAO clienteDAO() {
+        return clienteDAO;
+    }
+
+    public static CuentaDAO cuentaDAO() {
+        return cuentaDAO;
+    }
+
+    public static DocumentoDAO documentoDAO() {
+        return documentoDAO;
+    }
+
+    public static TipoDocumentoDAO tipoDocumentoDAO() {
+        return tipoDocumentoDAO;
+    }
+
+    public static EntradaHistorialDAO entradaHistorialDAO() {
+        return entradaHistorialDAO;
+    }
+
+    public static HistorialDAO historialDAO() {
+        return historialDAO;
+    }
+
+    public static EstadoCivilDAO estadoCivilDAO() {
+        return estadoCivilDAO;
+    }
+
+    public static TipoCoberturaDAO tipoCoberturaDAO() {
+        return tipoCoberturaDAO;
+    }
+
+    public static AnioFabricacionDAO anioFabricacionDAO() {
+        return anioFabricacionDAO;
+    }
+
+    public static MarcaDao marcaDao() {
+        return marcaDao;
+    }
+
+    public static ModeloDAO modeloDAO() {
+        return modeloDAO;
+    }
+
+    private static void MYSQLInit(){
+        //Ejemplo
+        throw new RuntimeException("Tipo de base de datos no implementado");
+    }
     public static <T> T save(T o) {
         Transaction tx = session.beginTransaction();
         T o2 = session.merge(o);
@@ -95,17 +222,4 @@ public class DAOManager {
         return o2;
     }
 
-
-    public static <T> T recover(Class<T> o, int id) {
-        Transaction tx = session.beginTransaction();
-        T obj = session.get(o, 1);
-        tx.commit();
-        return obj;
-    }
-
-
-
-
-
-    //TODO DEBERIAMOS USAR CASCADE, QUE HACE A LOS DAO REDUNDANTES O NO
 }

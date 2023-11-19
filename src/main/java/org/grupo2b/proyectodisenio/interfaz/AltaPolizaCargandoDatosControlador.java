@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dao.direccion.ProvinciaDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.poliza.EstadoCivilDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.vehiculo.MarcaDAOPSQL;
@@ -514,9 +515,9 @@ public class AltaPolizaCargandoDatosControlador {
         domicilioColumna.setCellValueFactory(new PropertyValueFactory<>("domicilio"));
 
 
-        idProvincia.getItems().addAll(ProvinciaDAOPSQL.getStringsProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
+        idProvincia.getItems().addAll(DAOManager.provinciaDAO().getStringsProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
         idCiudad.getItems().addAll("Santa Fe"); //PARA ESTO PEDIR CONSULTA A LEO
-        idMarca.getItems().addAll(MarcaDAOPSQL.getStringsMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
+        idMarca.getItems().addAll(DAOManager.marcaDao().getStringsMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
         idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
         idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
         idGarage.getItems().addAll("SI","NO");
@@ -528,7 +529,7 @@ public class AltaPolizaCargandoDatosControlador {
         idSumaAsegurada.setText("1000000");
 
         comboBoxSexo.getItems().addAll("MASCULINO","FEMENINO");
-        comboBoxEstadoCivil.getItems().addAll(EstadoCivilDAOPSQL.getStringEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
+        comboBoxEstadoCivil.getItems().addAll(DAOManager.estadoCivilDAO().getStringEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
 
         this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
         this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));

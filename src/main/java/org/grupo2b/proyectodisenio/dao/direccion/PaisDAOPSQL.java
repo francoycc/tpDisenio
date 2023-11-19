@@ -9,13 +9,10 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class PaisDAOPSQL {
+public class PaisDAOPSQL implements PaisDAO {
 
-    /**
-     *
-     * @return lista de todos los paises
-     */
-    public static List<Pais> getPaises(){
+    @Override
+    public List<Pais> getPaises(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Pais> cr = cb.createQuery(Pais.class);
         Root<Pais> root = cr.from(Pais.class);

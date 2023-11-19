@@ -10,9 +10,10 @@ import org.hibernate.query.Query;
 
 import java.util.Optional;
 
-public class CuentaDAOPSQL {
+public class CuentaDAOPSQL implements CuentaDAO{
 
-    public static Optional<Cuenta> getCuentaWithLoginInfo(String nombre, String pass) {
+    @Override
+    public Optional<Cuenta> getCuentaWithLoginInfo(String nombre, String pass) {
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Cuenta> cr = cb.createQuery(Cuenta.class);
         Root<Cuenta> root = cr.from(Cuenta.class);

@@ -10,13 +10,10 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class LocalidadDAOPSQL {
+public class LocalidadDAOPSQL implements LocalidadDAO{
 
-    /**
-     * @param id Id de la provincia
-     * @return Lista de localidades en dicha provincia
-     */
-    public static List<Localidad> getLocalidadesFromIdProvincia(int id){
+    @Override
+    public List<Localidad> getLocalidadesFromIdProvincia(int id){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Localidad> cr = cb.createQuery(Localidad.class);
         Root<Localidad> root = cr.from(Localidad.class);
@@ -26,10 +23,5 @@ public class LocalidadDAOPSQL {
         Query<Localidad> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();
     }
-
-    /*public static List<String> getStringLocalidadesFromIdProvincia(int id){
-        for (Localidad p : getLocalidadesFromIdProvincia())
-            strings.add(p.getNombre());
-    }*/
 
 }

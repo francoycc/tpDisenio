@@ -10,9 +10,10 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class ModeloDAOPSQL {
+public class ModeloDAOPSQL implements ModeloDAO{
 
-    public static List<Modelo> getModelos(){
+    @Override
+    public List<Modelo> getModelos(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
         Root<Modelo> root = cr.from(Modelo.class);
@@ -23,7 +24,8 @@ public class ModeloDAOPSQL {
         return query.getResultList();
     }
 
-    public static List<Modelo> getModelosFromMarca(Marca m){
+    @Override
+    public List<Modelo> getModelosFromMarca(Marca m){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
         Root<Modelo> root = cr.from(Modelo.class);

@@ -11,9 +11,10 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class AnioFabricacionDAOPSQL {
+public class AnioFabricacionDAOPSQL implements AnioFabricacionDAO{
 
-    public static List<AnioFabricacion> getAnioFromModelo(Modelo m){
+    @Override
+    public List<AnioFabricacion> getAnioFromModelo(Modelo m){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<AnioFabricacion> criteriaQuery = cb.createQuery(AnioFabricacion.class);
 

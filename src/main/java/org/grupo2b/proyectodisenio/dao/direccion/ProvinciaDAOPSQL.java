@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ProvinciaDAOPSQL {
+public class ProvinciaDAOPSQL implements ProvinciaDAO{
 
-    public static List<Provincia> getProvincias(){
+    @Override
+    public List<Provincia> getProvincias(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Provincia> cr = cb.createQuery(Provincia.class);
         Root<Provincia> root = cr.from(Provincia.class);
@@ -24,7 +25,8 @@ public class ProvinciaDAOPSQL {
         return query.getResultList();
     }
 
-    public static List<String> getStringsProvincias(){
+    @Override
+    public List<String> getStringsProvincias(){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Provincia> cr = cb.createQuery(Provincia.class);
         Root<Provincia> root = cr.from(Provincia.class);
@@ -39,7 +41,8 @@ public class ProvinciaDAOPSQL {
         return strings;
     }
 
-    public static Provincia getFromNombre(String nombre){
+    @Override
+    public Provincia getFromNombre(String nombre){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Provincia> cr = cb.createQuery(Provincia.class);
         Root<Provincia> root = cr.from(Provincia.class);
