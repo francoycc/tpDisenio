@@ -13,7 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxFactory;
+import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
+import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
@@ -49,18 +50,18 @@ public class AltaPolizaControlador {
     @FXML private TableColumn<datosClienteTabla, String> nroClienteColumna;
     @FXML private TableColumn<datosClienteTabla, String> apellidoColumna;
     @FXML private TableColumn<datosClienteTabla, String> nombreColumna;
-    @FXML private TableColumn<datosClienteTabla, String> tipoDocColumna;
+    @FXML private TableColumn<datosClienteTabla, TipoDocumento> tipoDocColumna;
     @FXML private TableColumn<datosClienteTabla, String> nroDocColumna;
     private final ObservableList<datosClienteTabla> clientesList = FXCollections.observableArrayList();
     public static class datosClienteTabla {
         String nroCliente;
         String nombre;
         String apellido;
-        String tipoDoc;
+        TipoDocumento tipoDoc;
         int nroDocumento;
         Hyperlink botonSelect;
         public datosClienteTabla(){}
-        public datosClienteTabla(String nroCliente, String nombre, String apellido, String tipoDoc, int nroDocumento) {
+        public datosClienteTabla(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, int nroDocumento) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -68,7 +69,7 @@ public class AltaPolizaControlador {
             this.nroDocumento = nroDocumento;
             this.botonSelect = new Hyperlink("Select");
         }
-        public datosClienteTabla(String nroCliente, String tipoDoc, String nombre, String apellido) {
+        public datosClienteTabla(String nroCliente, TipoDocumento tipoDoc, String nombre, String apellido) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -92,10 +93,10 @@ public class AltaPolizaControlador {
         public void setApellido(String apellido) {
             this.apellido = apellido;
         }
-        public String getTipoDoc() {
+        public TipoDocumento getTipoDoc() {
             return tipoDoc;
         }
-        public void setTipoDoc(String tipoDoc) {
+        public void setTipoDoc(TipoDocumento tipoDoc) {
             this.tipoDoc = tipoDoc;
         }
         public int getNroDocumento() {
@@ -183,7 +184,7 @@ public class AltaPolizaControlador {
                     c.getNroCliente(),
                     c.getNombre(),
                     c.getApellido(),
-                    c.getDocumento().getTipoDocumento().getNombre(),
+                    c.getDocumento().getTipoDocumento(),
                     c.getDocumento().getNumero());
             clientesList.add(cliente);
             tablaMostrarClientes.setItems(clientesList);
@@ -293,7 +294,7 @@ public class AltaPolizaControlador {
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
         tablaMostrarClientes.setVisible(false);
-        ComboBoxFactory<TipoDocumento> factory = new ComboBoxFactory<>(TipoDocumento::getNombre);
+        ComboBoxCellFactory<TipoDocumento> factory = new ComboBoxCellFactory<>(TipoDocumento::getNombre);
         tipoDocumento.setButtonCell(factory.call(null));
         tipoDocumento.setCellFactory(factory);
         tipoDocumento.getItems().addAll(DAOManager.tipoDocumentoDAO().getTiposDocumento());
@@ -305,7 +306,9 @@ public class AltaPolizaControlador {
         tipoDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoDoc"));
         nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDocumento"));
 
-        datosClienteTabla cliente = new datosClienteTabla("", "","","",1);
+        tipoDocColumna.setCellFactory(new TableCellFactory<>(TipoDocumento::getNombre));
+
+        datosClienteTabla cliente = new datosClienteTabla("", "","",new TipoDocumento("DNI"),1);
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }

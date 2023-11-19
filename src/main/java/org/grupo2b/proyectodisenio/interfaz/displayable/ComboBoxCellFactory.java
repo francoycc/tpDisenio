@@ -6,9 +6,9 @@ import javafx.util.Callback;
 
 import java.util.function.Function;
 
-public class ComboBoxFactory<T> implements Callback<ListView<T>, ListCell<T>> {
+public class ComboBoxCellFactory<T> implements Callback<ListView<T>, ListCell<T>> {
     Function<T, String> function;
-    public ComboBoxFactory(Function<T, String> function){
+    public ComboBoxCellFactory(Function<T, String> function){
         this.function = function;
     }
     @Override
