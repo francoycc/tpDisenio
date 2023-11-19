@@ -4,6 +4,7 @@ import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClienteDAO {
 
@@ -17,4 +18,5 @@ public interface ClienteDAO {
      * @return Lista de clientes que cumplen con las condiciones
      */
     List<Cliente> getClientes(String nombre, String apellido, String nroCliente, String nroDoc, TipoDocumento tipoDoc);
+    Optional<Cliente> getClienteFromNroCliente(String nroCliente);
 }

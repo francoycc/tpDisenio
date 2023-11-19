@@ -30,4 +30,9 @@ public class Documento {
     public void setTipoDocumento(TipoDocumento tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
+
+    @Override
+    public String toString() {
+        return tipoDocumento.getNombre()+" "+numero;
+    }
 }

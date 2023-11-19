@@ -16,6 +16,7 @@ import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
 import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
 import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.io.IOException;
@@ -45,23 +46,23 @@ public class AltaPolizaControlador {
     @FXML private TextField nroDocumento;
     @FXML private ComboBox<TipoDocumento> tipoDocumento;
 
-    @FXML private TableView<datosClienteTabla> tablaMostrarClientes;
-    @FXML private TableColumn<datosClienteTabla, Hyperlink> botonesElegirCliente;
-    @FXML private TableColumn<datosClienteTabla, String> nroClienteColumna;
-    @FXML private TableColumn<datosClienteTabla, String> apellidoColumna;
-    @FXML private TableColumn<datosClienteTabla, String> nombreColumna;
-    @FXML private TableColumn<datosClienteTabla, TipoDocumento> tipoDocColumna;
-    @FXML private TableColumn<datosClienteTabla, String> nroDocColumna;
-    private final ObservableList<datosClienteTabla> clientesList = FXCollections.observableArrayList();
-    public static class datosClienteTabla {
+    @FXML private TableView<DatosClienteTabla> tablaMostrarClientes;
+    @FXML private TableColumn<DatosClienteTabla, Hyperlink> botonesElegirCliente;
+    @FXML private TableColumn<DatosClienteTabla, String> nroClienteColumna;
+    @FXML private TableColumn<DatosClienteTabla, String> apellidoColumna;
+    @FXML private TableColumn<DatosClienteTabla, String> nombreColumna;
+    @FXML private TableColumn<DatosClienteTabla, TipoDocumento> tipoDocColumna;
+    @FXML private TableColumn<DatosClienteTabla, Documento> nroDocColumna;
+    private final ObservableList<DatosClienteTabla> clientesList = FXCollections.observableArrayList();
+    public static class DatosClienteTabla {
         String nroCliente;
         String nombre;
         String apellido;
         TipoDocumento tipoDoc;
-        int nroDocumento;
+        Documento nroDocumento;
         Hyperlink botonSelect;
-        public datosClienteTabla(){}
-        public datosClienteTabla(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, int nroDocumento) {
+        public DatosClienteTabla(){}
+        public DatosClienteTabla(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, Documento nroDocumento) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -69,7 +70,7 @@ public class AltaPolizaControlador {
             this.nroDocumento = nroDocumento;
             this.botonSelect = new Hyperlink("Select");
         }
-        public datosClienteTabla(String nroCliente, TipoDocumento tipoDoc, String nombre, String apellido) {
+        public DatosClienteTabla(String nroCliente, TipoDocumento tipoDoc, String nombre, String apellido) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -99,10 +100,10 @@ public class AltaPolizaControlador {
         public void setTipoDoc(TipoDocumento tipoDoc) {
             this.tipoDoc = tipoDoc;
         }
-        public int getNroDocumento() {
+        public Documento getNroDocumento() {
             return nroDocumento;
         }
-        public void setNroDocumento(int nroDocumento) { this.nroDocumento = nroDocumento; }
+        public void setNroDocumento(Documento nroDocumento) { this.nroDocumento = nroDocumento; }
     }
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
@@ -133,7 +134,7 @@ public class AltaPolizaControlador {
         int flag = 0;
 
         //validaciones de formato
-        if (!validarFormato(nroCliente.getText()) && !nroCliente.getText().isEmpty()) {
+        if (!validarNroCliente(nroCliente.getText()) && !nroCliente.getText().isEmpty()) {
             errorNroCliente.setText("Ingrese un Nro de Cliente válido.");
             flag = 1;
         } else {
@@ -175,22 +176,22 @@ public class AltaPolizaControlador {
             }
         }
     }
-    AltaPolizaControlador instanciaBuscandoCliente;
     public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, String nroDocumento) {
 
         List<Cliente> results = DAOManager.clienteDAO().getClientes(nombre,apellido,nroCliente,nroDocumento,tipoDoc);
         for (Cliente c : results){
-            datosClienteTabla cliente = new datosClienteTabla(
+            DatosClienteTabla cliente = new DatosClienteTabla(
                     c.getNroCliente(),
                     c.getNombre(),
                     c.getApellido(),
                     c.getDocumento().getTipoDocumento(),
-                    c.getDocumento().getNumero());
+                    c.getDocumento());
             clientesList.add(cliente);
             tablaMostrarClientes.setItems(clientesList);
         }
-        for (datosClienteTabla c: clientesList) {
-            c.getBotonSelect().setOnAction(new EventHandler<ActionEvent>() {
+        for (DatosClienteTabla c: clientesList) {
+            AltaPolizaControlador local = this;
+            c.getBotonSelect().setOnAction(new EventHandler<>() {
                 public void handle(ActionEvent event) {
                     Alert messageWindows = new Alert(Alert.AlertType.CONFIRMATION);
                     messageWindows.setTitle("Confirmación");
@@ -206,10 +207,10 @@ public class AltaPolizaControlador {
                     if (result.isPresent() && result.get() == botonConfirmar) {
                         try {
                             FXMLLoader loader = new FXMLLoader();
-                            ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaCargandoDatos.fxml")).openStream());
+                            ScrollPane root = loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaCargandoDatos.fxml")).openStream());
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            AltaPolizaCargandoDatosControlador instanciaCargandoDatos = (AltaPolizaCargandoDatosControlador) loader.getController();
-                            instanciaCargandoDatos.recibeParametros(instanciaBuscandoCliente, c);
+                            AltaPolizaCargandoDatosControlador instanciaCargandoDatos = loader.getController();
+                            instanciaCargandoDatos.recibeParametros(local, c);
                             stage.setTitle("EL ASEGURADO");
                             Scene scene = new Scene(root, 1280, 720);
                             stage.setResizable(false);
@@ -263,7 +264,7 @@ public class AltaPolizaControlador {
         tablaMostrarClientes.getItems().clear();
         tablaMostrarClientes.setVisible(false);
     }
-    public static boolean validarFormato(String cadena) {
+    public static boolean validarNroCliente(String cadena) {
         // Definir la expresión regular para el formato "99-99999999"
         String regex = "\\d{2}-\\d{8}";
 
@@ -277,7 +278,6 @@ public class AltaPolizaControlador {
         return matcher.matches();
     }
     @FXML void initialize() {
-        instanciaBuscandoCliente=this;
         assert apellido != null : "fx:id=\"apellido\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
         assert botonBuscar != null : "fx:id=\"botonBuscar\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
         assert botonCancelar != null : "fx:id=\"botonCancelar\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
@@ -306,10 +306,9 @@ public class AltaPolizaControlador {
         tipoDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoDoc"));
         nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDocumento"));
 
-        tipoDocColumna.setCellFactory(new TableCellFactory<>(TipoDocumento::getNombre));
+        //tipoDocColumna.setCellFactory(new TableCellFactory<>(TipoDocumento::getNombre));
+        nroDocColumna.setCellFactory(new TableCellFactory<>(t -> String.valueOf(t.getNumero())));
 
-        datosClienteTabla cliente = new datosClienteTabla("", "","",new TipoDocumento("DNI"),1);
-        clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
 }

@@ -12,8 +12,8 @@ public class Direccion {
     private String calle;
     @Column(nullable = false)
     private int numero;
-    private int piso;
-    private int departamento;
+    private int piso=-1;
+    private int departamento=-1;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_localidad")
     private Localidad localidad;

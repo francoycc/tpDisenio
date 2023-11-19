@@ -20,9 +20,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.dao.direccion.ProvinciaDAOPSQL;
-import org.grupo2b.proyectodisenio.dao.poliza.EstadoCivilDAOPSQL;
-import org.grupo2b.proyectodisenio.dao.vehiculo.MarcaDAOPSQL;
+import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
+import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
+import org.grupo2b.proyectodisenio.logica.documento.Documento;
 
 public class AltaPolizaCargandoDatosControlador {
     @FXML private ResourceBundle resources;
@@ -75,14 +75,14 @@ public class AltaPolizaCargandoDatosControlador {
     @FXML private TableColumn<TablaHijos,String> sexoColumna;
     private ObservableList<TablaHijos> hijosList = FXCollections.observableArrayList();
 
-    @FXML private TableView<datosClienteTabla> tablaMostrarClientes;
-    @FXML private TableColumn<datosClienteTabla, String> nroClienteColumna;
-    @FXML private TableColumn<datosClienteTabla, String> tipoYNroDocColumna;
-    @FXML private TableColumn<datosClienteTabla, String> apellidoYnombreColumna;
-    @FXML private TableColumn<datosClienteTabla, String> domicilioColumna;
-    private final ObservableList<datosClienteTabla> clientesList = FXCollections.observableArrayList();
+    @FXML private TableView<DatosClienteTabla> tablaMostrarClientes;
+    @FXML private TableColumn<DatosClienteTabla, String> nroClienteColumna;
+    @FXML private TableColumn<DatosClienteTabla, Documento> tipoYNroDocColumna;
+    @FXML private TableColumn<DatosClienteTabla, String> apellidoYnombreColumna;
+    @FXML private TableColumn<DatosClienteTabla, Direccion> domicilioColumna;
+    private final ObservableList<DatosClienteTabla> clientesList = FXCollections.observableArrayList();
 
-    @FXML void irInterfazInicio(ActionEvent event) throws IOException {
+    @FXML void irInterfazInicio(ActionEvent event) {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
         messageWindows.setTitle("Advertencia");
         messageWindows.setHeaderText("");
@@ -107,7 +107,7 @@ public class AltaPolizaCargandoDatosControlador {
             }
         }
     }
-    @FXML void buscarCliente(ActionEvent event) throws IOException {
+    @FXML void buscarCliente(ActionEvent event) {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
         messageWindows.setTitle("Advertencia");
         messageWindows.setHeaderText("");
@@ -324,7 +324,7 @@ public class AltaPolizaCargandoDatosControlador {
             FXMLLoader loader = new FXMLLoader();
             ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = (AltaPolizaEligiendoPolizaControlador)loader.getController();
+            AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = loader.getController();
             instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, clientesList,
                     apellidoYnombreColumna.getCellData(tablaMostrarClientes.getItems().get(0)),
                     idProvincia.getValue(), idCiudad.getValue(), idMarca.getValue(), idModelo.getValue(), idAnio.getValue(),
@@ -346,15 +346,14 @@ public class AltaPolizaCargandoDatosControlador {
 
     }
     AltaPolizaControlador instanciaBuscandoCliente_en_instanciaCargadoDatos;
-    public void recibeParametros(AltaPolizaControlador instanciaCargandoDatos, AltaPolizaControlador.datosClienteTabla c) {
+    public void recibeParametros(AltaPolizaControlador instanciaCargandoDatos, AltaPolizaControlador.DatosClienteTabla c) {
         instanciaBuscandoCliente_en_instanciaCargadoDatos=instanciaCargandoDatos;
-        String tipoYnroDoc = ""+c.getTipoDoc()+" - "+c.getNroDocumento();
         String nya = ""+c.getApellido()+" "+c.getNombre();
-        datosClienteTabla cliente = new datosClienteTabla(c.getNroCliente(),tipoYnroDoc,nya, "9 de Julio 570");
+        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),c.getNroDocumento(),nya, DAOManager.clienteDAO().getClienteFromNroCliente(c.nroCliente).get().getDomicilio());
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
-    public void recibeParametrosDeVolver(ObservableList<datosClienteTabla> cliente, String provincia, String ciudad, String marca,
+    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, String provincia, String ciudad, String marca,
                                          String modeloDelVehículoText, String anio, String sumaAseguradaText, String motorText,
                                          String chasisText, String patenteText, String kmRealizadosV, String garageV,
                                          String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
@@ -380,12 +379,12 @@ public class AltaPolizaCargandoDatosControlador {
         //hijosList.add(listaDeHijos);
         //tablaHijos.setItems(hijosList);
     }
-    public class datosClienteTabla {
+    public class DatosClienteTabla {
         String nroCliente;
-        String tipoynroDoc;
+        Documento tipoynroDoc;
         String nombreyapellido;
-        String domicilio;
-        public datosClienteTabla(String nroCliente, String tipoynroDoc, String nombreyapellido, String domicilio) {
+        Direccion domicilio;
+        public DatosClienteTabla(String nroCliente, Documento tipoynroDoc, String nombreyapellido, Direccion domicilio) {
             this.nroCliente = nroCliente;
             this.tipoynroDoc = tipoynroDoc;
             this.nombreyapellido = nombreyapellido;
@@ -397,10 +396,10 @@ public class AltaPolizaCargandoDatosControlador {
         public void setNroCliente(String nroCliente) {
             this.nroCliente = nroCliente;
         }
-        public String getTipoynroDoc() {
+        public Documento getTipoynroDoc() {
             return tipoynroDoc;
         }
-        public void setTipoynroDoc(String tipoynroDoc) {
+        public void setTipoynroDoc(Documento tipoynroDoc) {
             this.tipoynroDoc = tipoynroDoc;
         }
         public String getNombreyapellido() {
@@ -409,10 +408,10 @@ public class AltaPolizaCargandoDatosControlador {
         public void setNombreyapellido(String nombreyapellido) {
             this.nombreyapellido = nombreyapellido;
         }
-        public String getDomicilio() {
+        public Direccion getDomicilio() {
             return domicilio;
         }
-        public void setDomicilio(String domicilio) {
+        public void setDomicilio(Direccion domicilio) {
             this.domicilio = domicilio;
         }
     }
@@ -513,6 +512,8 @@ public class AltaPolizaCargandoDatosControlador {
         tipoYNroDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoynroDoc"));
         apellidoYnombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombreyapellido"));
         domicilioColumna.setCellValueFactory(new PropertyValueFactory<>("domicilio"));
+
+        domicilioColumna.setCellFactory(new TableCellFactory<>(a-> a.getLocalidad().getNombre()+", "+a.getCalle()+" "+a.getNumero()));
 
 
         idProvincia.getItems().addAll(DAOManager.provinciaDAO().getStringsProvincias()); //PARA ESTO PEDIR CONSULTA A LEO

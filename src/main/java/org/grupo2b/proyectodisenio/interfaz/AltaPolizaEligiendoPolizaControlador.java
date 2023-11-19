@@ -13,7 +13,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -110,7 +109,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         }
     }
     public class volverConParametros {
-        ObservableList<AltaPolizaCargandoDatosControlador.datosClienteTabla> cliente;
+        ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente;
         String provincia;
         String ciudad;
         String anio;
@@ -122,7 +121,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         String nroSiniestrosV;
         ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos;
 
-        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.datosClienteTabla> cliente, String provincia, String ciudad, String anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
+        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, String provincia, String ciudad, String anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
             this.cliente = cliente;
             this.provincia = provincia;
             this.ciudad = ciudad;
@@ -136,11 +135,11 @@ public class AltaPolizaEligiendoPolizaControlador {
             this.listaDeHijos = listaDeHijos;
         }
 
-        public ObservableList<AltaPolizaCargandoDatosControlador.datosClienteTabla> getCliente() {
+        public ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> getCliente() {
             return cliente;
         }
 
-        public void setCliente(ObservableList<AltaPolizaCargandoDatosControlador.datosClienteTabla> cliente) {
+        public void setCliente(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente) {
             this.cliente = cliente;
         }
 
@@ -443,7 +442,7 @@ public class AltaPolizaEligiendoPolizaControlador {
     boolean seEligioTipoCobertura = false;
     AltaPolizaCargandoDatosControlador instancia_1_en_2;
     public void recibeParametros(AltaPolizaCargandoDatosControlador instanciaCargandoDatos,
-                                 ObservableList<AltaPolizaCargandoDatosControlador.datosClienteTabla> cliente,
+                                 ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente,
                                  String apellidoynombre, String provincia, String ciudad, String marca, String modelo,
                                  String anio, String sumaAseguradaV, String motorVehiculo, String chasisV, String patenteV,
                                  String kmRealizadosV, String garageV, String dispositivoRastreoV,
