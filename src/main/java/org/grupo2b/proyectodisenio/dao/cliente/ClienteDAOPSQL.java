@@ -14,7 +14,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class ClienteDAOPSQL {
-    public static List<Cliente> getCliente(String nombre, String apellido, String nroCliente, String nroDoc, TipoDocumento tipoDoc){
+    public static List<Cliente> getCliente(String nombre, String apellido, String nroCliente, String nroDoc, String tipoDoc){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
         Root<Cliente> root = cr.from(Cliente.class);
