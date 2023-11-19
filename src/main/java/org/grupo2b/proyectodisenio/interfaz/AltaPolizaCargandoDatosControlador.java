@@ -436,7 +436,7 @@ public class AltaPolizaCargandoDatosControlador {
 
 
         idProvincia.getItems().addAll(ProvinciaDAOPSQL.getStringsProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
-        idCiudad.getItems().addAll("Santa Fe"); //PARA ESTO PEDIR CONSULTA A LEO
+        //idCiudad.getItems().addAll("Santa Fe"); //PARA ESTO PEDIR CONSULTA A LEO
         idMarca.getItems().addAll(MarcaDAOPSQL.getStringsMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
         idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
         idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
