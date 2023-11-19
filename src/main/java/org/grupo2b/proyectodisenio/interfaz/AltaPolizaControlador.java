@@ -1,8 +1,5 @@
 package org.grupo2b.proyectodisenio.interfaz;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +16,6 @@ import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxFactory;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
-import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.net.URL;
@@ -297,7 +293,7 @@ public class AltaPolizaControlador {
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
         tablaMostrarClientes.setVisible(false);
-        ComboBoxFactory<TipoDocumento> factory = new ComboBoxFactory<>();
+        ComboBoxFactory<TipoDocumento> factory = new ComboBoxFactory<>(TipoDocumento::getNombre);
         tipoDocumento.setButtonCell(factory.call(null));
         tipoDocumento.setCellFactory(factory);
         tipoDocumento.getItems().addAll(DAOManager.tipoDocumentoDAO().getTiposDocumento());

@@ -4,7 +4,13 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-public class ComboBoxFactory <T extends Displayable> implements Callback<ListView<T>, ListCell<T>> {
+import java.util.function.Function;
+
+public class ComboBoxFactory<T> implements Callback<ListView<T>, ListCell<T>> {
+    Function<T, String> function;
+    public ComboBoxFactory(Function<T, String> function){
+        this.function = function;
+    }
     @Override
     public ListCell<T> call(ListView<T> claseListView) {
         return new ListCell<>(){
@@ -14,7 +20,7 @@ public class ComboBoxFactory <T extends Displayable> implements Callback<ListVie
                 if (item == null || empty) {
                     setGraphic(null);
                 } else {
-                    setText(item.getDisplayString());
+                    setText(function.apply(item));
                 }
             }
         };
