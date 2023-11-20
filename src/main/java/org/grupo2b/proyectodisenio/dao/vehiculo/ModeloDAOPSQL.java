@@ -19,6 +19,7 @@ public class ModeloDAOPSQL implements ModeloDAO{
         Root<Modelo> root = cr.from(Modelo.class);
 
         cr.select(root);
+        cr.orderBy(cb.asc(root.get("nombre")));
 
         Query<Modelo> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();
@@ -31,6 +32,7 @@ public class ModeloDAOPSQL implements ModeloDAO{
         Root<Modelo> root = cr.from(Modelo.class);
 
         cr.select(root).where(cb.equal(root.join("marca").get("id") ,m.getId()));
+        cr.orderBy(cb.asc(root.get("nombre")));
 
         Query<Modelo> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();

@@ -386,12 +386,35 @@ public class AltaPolizaEligiendoPolizaControlador {
 
         Cliente c = DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
         c.getVehiculos().add(vehiculo);
-        System.out.println(c.getVehiculos().size());
 
-        Poliza p = new Poliza(fechaFinalVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
-                14, new DerechoEmision(Objetos.getHistorial()), new Descuento("D", Objetos.getHistorial()), tipoCoberturaObj, cuotasObj,
+        Poliza p = new Poliza(fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
+                Integer.parseInt(premio.getText()), new DerechoEmision(Objetos.getHistorial()), new Descuento("D", Objetos.getHistorial()), tipoCoberturaObj, cuotasObj,
                 medidasSeguridad, vehiculo, declaraciones, DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get(), instanciaParaVolver.nroSiniestrosV);
         DAOManager.save(p);
+
+        Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
+        messageWindows.setTitle("Información");
+        messageWindows.setHeaderText("");
+        messageWindows.setContentText("Operacion Exitosa");
+        // Agrega los botones OK y Cancelar al diálogo
+        ButtonType botonConfirmar = new ButtonType("Confirmar");
+        messageWindows.getButtonTypes().setAll(botonConfirmar);
+        // Muestra el diálogo y captura la respuesta del usuario
+        Optional<ButtonType> result = messageWindows.showAndWait();
+        // Maneja la respuesta del usuario
+        if (result.isPresent() && result.get() == botonConfirmar) {
+            try {
+                AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root, 1280, 720);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     @FXML void initialize() {
         assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'AltaPolizaEligiendoPoliza.fxml'.";

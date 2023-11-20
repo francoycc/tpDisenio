@@ -21,6 +21,7 @@ public class NumeroSiniestrosDAOPSQL implements NumeroSiniestrosDAO{
         Root<NumeroSiniestros> root = cr.from(NumeroSiniestros.class);
 
         cr.select(root);
+        cr.orderBy(cb.asc(root.get("cantSiniestrosInicial")));
 
         Query<NumeroSiniestros> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();

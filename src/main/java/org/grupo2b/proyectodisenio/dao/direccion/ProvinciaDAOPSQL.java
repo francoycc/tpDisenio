@@ -22,6 +22,7 @@ public class ProvinciaDAOPSQL implements ProvinciaDAO{
         Root<Provincia> root = cr.from(Provincia.class);
 
         cr.select(root);
+        cr.orderBy(cb.asc(root.get("nombre")));
 
         Query<Provincia> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();

@@ -21,6 +21,7 @@ public class MarcaDAOPSQL implements MarcaDao{
         Root<Marca> root = cr.from(Marca.class);
 
         cr.select(root);
+        cr.orderBy(cb.asc(root.get("nombre")));
 
         Query<Marca> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();

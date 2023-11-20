@@ -45,7 +45,7 @@ public class Poliza {
     @JoinColumn(name = "id_descuento")
     private Descuento descuento;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "tipo_cobertura")
+    @JoinColumn(name = "id_tipo_cobertura")
     private TipoCobertura tipoCobertura;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_poliza", nullable = false)

@@ -23,6 +23,7 @@ public class AnioFabricacionDAOPSQL implements AnioFabricacionDAO{
 
         criteriaQuery.select(anioFabricacionJoin)
                 .where(cb.equal(modeloRoot.get("id"), m.getId()));
+        criteriaQuery.orderBy(cb.asc(anioFabricacionJoin.get("anioModelo")));
 
         Query<AnioFabricacion> query = DAOManager.getSession().createQuery(criteriaQuery);
         return query.getResultList();
