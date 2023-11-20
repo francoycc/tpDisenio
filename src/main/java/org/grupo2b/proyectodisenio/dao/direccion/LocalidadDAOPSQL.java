@@ -18,7 +18,7 @@ public class LocalidadDAOPSQL implements LocalidadDAO{
         CriteriaQuery<Localidad> cr = cb.createQuery(Localidad.class);
         Root<Localidad> root = cr.from(Localidad.class);
 
-        cr.select(root).where(cb.equal(root.join("provincia").get("id"), 1));
+        cr.select(root).where(cb.equal(root.join("provincia").get("id"), id));
 
         Query<Localidad> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();

@@ -61,4 +61,10 @@ public class Localidad {
     public void setHistorialFactor(HistorialFactor historialFactor) {
         this.historialFactor = historialFactor;
     }
+
+
+    @Override
+    public String toString() {
+        return getNombre()+", "+provincia.getNombre();
+    }
 }

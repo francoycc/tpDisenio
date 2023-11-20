@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -20,8 +21,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
 import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
+import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
+import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
 
 public class AltaPolizaCargandoDatosControlador {
@@ -52,13 +56,13 @@ public class AltaPolizaCargandoDatosControlador {
     @FXML private DatePicker datePickerFechaNacimiento;
     @FXML private ComboBox<String> idAlarma;
     @FXML private ComboBox<String> idAnio;
-    @FXML private ComboBox<String> idCiudad;
+    @FXML private ComboBox<Localidad> idCiudad;
     @FXML private ComboBox<String> idDispositivoRastreo;
     @FXML private ComboBox<String> idGarage;
     @FXML private ComboBox<String> idMarca;
     @FXML private ComboBox<String> idModelo;
     @FXML private ComboBox<String> idNroSiniestros;
-    @FXML private ComboBox<String> idProvincia;
+    @FXML private ComboBox<Provincia> idProvincia;
     @FXML private ComboBox<String> idTuercaAntirrobo;
     @FXML private ComboBox<String> comboBoxEstadoCivil;
     @FXML private ComboBox<String> comboBoxSexo;
@@ -353,7 +357,7 @@ public class AltaPolizaCargandoDatosControlador {
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
-    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, String provincia, String ciudad, String marca,
+    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, String marca,
                                          String modeloDelVehículoText, String anio, String sumaAseguradaText, String motorText,
                                          String chasisText, String patenteText, String kmRealizadosV, String garageV,
                                          String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
@@ -516,8 +520,11 @@ public class AltaPolizaCargandoDatosControlador {
         domicilioColumna.setCellFactory(new TableCellFactory<>(a-> a.getLocalidad().getNombre()+", "+a.getCalle()+" "+a.getNumero()));
 
 
-        idProvincia.getItems().addAll(DAOManager.provinciaDAO().getStringsProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
-        idCiudad.getItems().addAll("Santa Fe"); //PARA ESTO PEDIR CONSULTA A LEO
+        ComboBoxCellFactory<Localidad> factoryLoc = new ComboBoxCellFactory<>(Localidad::getNombre);
+        idCiudad.setButtonCell(factoryLoc.call(null));
+        idCiudad.setCellFactory(factoryLoc);
+
+        idProvincia.getItems().addAll(DAOManager.provinciaDAO().getProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
         idMarca.getItems().addAll(DAOManager.marcaDao().getStringsMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
         idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
         idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
@@ -539,7 +546,8 @@ public class AltaPolizaCargandoDatosControlador {
 
     @FXML
     public void onProvinciaCambio(){
-
+        List<Localidad> localidades = DAOManager.localidadDAO().getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().getId());
+        idCiudad.setItems(FXCollections.observableArrayList(localidades));
     }
 
 }

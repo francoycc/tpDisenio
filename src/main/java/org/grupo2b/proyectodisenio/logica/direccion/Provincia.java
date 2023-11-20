@@ -42,4 +42,9 @@ public class Provincia {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+    @Override
+    public String toString() {
+        return getNombre()+", "+pais.toString();
+    }
 }

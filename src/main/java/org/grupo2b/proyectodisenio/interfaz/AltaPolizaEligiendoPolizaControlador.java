@@ -27,6 +27,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
+import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 
 public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ResourceBundle resources;
@@ -110,8 +112,8 @@ public class AltaPolizaEligiendoPolizaControlador {
     }
     public class volverConParametros {
         ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente;
-        String provincia;
-        String ciudad;
+        Provincia provincia;
+        Localidad ciudad;
         String anio;
         String kmRealizadosV;
         String garageV;
@@ -121,7 +123,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         String nroSiniestrosV;
         ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos;
 
-        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, String provincia, String ciudad, String anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
+        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, String anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
             this.cliente = cliente;
             this.provincia = provincia;
             this.ciudad = ciudad;
@@ -143,19 +145,19 @@ public class AltaPolizaEligiendoPolizaControlador {
             this.cliente = cliente;
         }
 
-        public String getProvincia() {
+        public Provincia getProvincia() {
             return provincia;
         }
 
-        public void setProvincia(String provincia) {
+        public void setProvincia(Provincia provincia) {
             this.provincia = provincia;
         }
 
-        public String getCiudad() {
+        public Localidad getCiudad() {
             return ciudad;
         }
 
-        public void setCiudad(String ciudad) {
+        public void setCiudad(Localidad ciudad) {
             this.ciudad = ciudad;
         }
 
@@ -443,7 +445,7 @@ public class AltaPolizaEligiendoPolizaControlador {
     AltaPolizaCargandoDatosControlador instancia_1_en_2;
     public void recibeParametros(AltaPolizaCargandoDatosControlador instanciaCargandoDatos,
                                  ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente,
-                                 String apellidoynombre, String provincia, String ciudad, String marca, String modelo,
+                                 String apellidoynombre, Provincia provincia, Localidad ciudad, String marca, String modelo,
                                  String anio, String sumaAseguradaV, String motorVehiculo, String chasisV, String patenteV,
                                  String kmRealizadosV, String garageV, String dispositivoRastreoV,
                                  String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
