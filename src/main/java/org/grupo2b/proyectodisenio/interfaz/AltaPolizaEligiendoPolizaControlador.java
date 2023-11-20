@@ -29,6 +29,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
+import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 
 public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ResourceBundle resources;
@@ -84,6 +85,8 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private AnchorPane idAnchorPane;
     @FXML private Pane anchorPaneLuegoQpresioneConfirmar;
     @FXML private ScrollPane idScrollPane;
+
+    private Marca marcaObj;
 
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
@@ -244,7 +247,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 instancia_1_en_2 = (AltaPolizaCargandoDatosControlador)loader.getController();
                 instancia_1_en_2.recibeParametrosDeVolver(instanciaParaVolver.getCliente(), instanciaParaVolver.getProvincia(),
-                        instanciaParaVolver.getCiudad(), marcaDelVehículo.getText(), modeloDelVehículo.getText(),
+                        instanciaParaVolver.getCiudad(), marcaObj, modeloDelVehículo.getText(),
                         instanciaParaVolver.getAnio(), sumaAsegurada.getText(), motor.getText(), chasis.getText(),
                         patente.getText(), instanciaParaVolver.getKmRealizadosV(), instanciaParaVolver.getGarageV(),
                         instanciaParaVolver.getDispositivoRastreoV(), instanciaParaVolver.getAlarmaV(),
@@ -447,14 +450,15 @@ public class AltaPolizaEligiendoPolizaControlador {
     AltaPolizaCargandoDatosControlador instancia_1_en_2;
     public void recibeParametros(AltaPolizaCargandoDatosControlador instanciaCargandoDatos,
                                  ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente,
-                                 String apellidoynombre, Provincia provincia, Localidad ciudad, String marca, String modelo,
+                                 String apellidoynombre, Provincia provincia, Localidad ciudad, Marca marca, String modelo,
                                  String anio, String sumaAseguradaV, String motorVehiculo, String chasisV, String patenteV,
                                  String kmRealizadosV, String garageV, String dispositivoRastreoV,
                                  String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
                                  ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
         instancia_1_en_2=instanciaCargandoDatos;
         titularDelSeguro.setText(apellidoynombre);
-        marcaDelVehículo.setText(marca);
+        marcaDelVehículo.setText(marca.getNombre());
+        marcaObj=marca;
         modeloDelVehículo.setText(modelo);
         motor.setText(motorVehiculo);
         chasis.setText(chasisV);

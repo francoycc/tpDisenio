@@ -158,7 +158,7 @@
                            <Insets right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idMarca" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
+                     <ComboBox fx:id="idMarca" onAction="#onMarcaChange" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
                      <Label fx:id="faltaModelo" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />

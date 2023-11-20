@@ -27,6 +27,7 @@ import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
+import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 
 public class AltaPolizaCargandoDatosControlador {
     @FXML private ResourceBundle resources;
@@ -59,7 +60,7 @@ public class AltaPolizaCargandoDatosControlador {
     @FXML private ComboBox<Localidad> idCiudad;
     @FXML private ComboBox<String> idDispositivoRastreo;
     @FXML private ComboBox<String> idGarage;
-    @FXML private ComboBox<String> idMarca;
+    @FXML private ComboBox<Marca> idMarca;
     @FXML private ComboBox<String> idModelo;
     @FXML private ComboBox<String> idNroSiniestros;
     @FXML private ComboBox<Provincia> idProvincia;
@@ -357,7 +358,7 @@ public class AltaPolizaCargandoDatosControlador {
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
-    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, String marca,
+    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, Marca marca,
                                          String modeloDelVehículoText, String anio, String sumaAseguradaText, String motorText,
                                          String chasisText, String patenteText, String kmRealizadosV, String garageV,
                                          String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
@@ -524,8 +525,14 @@ public class AltaPolizaCargandoDatosControlador {
         idCiudad.setButtonCell(factoryLoc.call(null));
         idCiudad.setCellFactory(factoryLoc);
 
+        ComboBoxCellFactory<Marca> factory = new ComboBoxCellFactory<>(obj-> {
+            return "Marca: "+obj.getNombre();
+        });
+        idMarca.setButtonCell(factory.call(null));
+        idMarca.setCellFactory(factory);
+
         idProvincia.getItems().addAll(DAOManager.provinciaDAO().getProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
-        idMarca.getItems().addAll(DAOManager.marcaDao().getStringsMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
+        idMarca.getItems().addAll(DAOManager.marcaDao().getMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
         idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
         idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
         idGarage.getItems().addAll("SI","NO");
@@ -546,8 +553,11 @@ public class AltaPolizaCargandoDatosControlador {
 
     @FXML
     public void onProvinciaCambio(){
-        List<Localidad> localidades = DAOManager.localidadDAO().getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().getId());
-        idCiudad.setItems(FXCollections.observableArrayList(localidades));
+        idCiudad.setItems(FXCollections.observableArrayList(DAOManager.localidadDAO().getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().getId())));
+    }
+
+    @FXML void onMarcaChange(){
+        //idModelo.setItems(FXCollections.observableArrayList(DAOManager.modeloDAO().getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
     }
 
 }
