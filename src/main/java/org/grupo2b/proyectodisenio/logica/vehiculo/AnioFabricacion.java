@@ -22,4 +22,5 @@ public class AnioFabricacion {
     public void setAnioModelo(int anioModelo) {
         this.anioModelo = anioModelo;
     }
+    @Override public String toString() {return String.valueOf(getAnioModelo());}
 }

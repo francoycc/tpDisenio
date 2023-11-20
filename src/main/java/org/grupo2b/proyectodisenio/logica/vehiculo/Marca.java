@@ -35,8 +35,5 @@ public class Marca {
     }
 
 
-    @Override
-    public String toString() {
-        return getNombre();
-    }
+    @Override public String toString() {return getNombre();}
 }

@@ -63,4 +63,5 @@ public class Modelo{
     public void setAniosFabricacion(List<AnioFabricacion> aniosFabricacion) {
         this.aniosFabricacion = aniosFabricacion;
     }
+    @Override public String toString() {return getNombre();}
 }

@@ -29,7 +29,9 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
+import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
+import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
 
 public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ResourceBundle resources;
@@ -87,6 +89,8 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ScrollPane idScrollPane;
 
     private Marca marcaObj;
+    private Modelo modeloObj;
+    private AnioFabricacion anioObj;
 
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
@@ -117,7 +121,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente;
         Provincia provincia;
         Localidad ciudad;
-        String anio;
+        AnioFabricacion anio;
         String kmRealizadosV;
         String garageV;
         String dispositivoRastreoV;
@@ -126,7 +130,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         String nroSiniestrosV;
         ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos;
 
-        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, String anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
+        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, AnioFabricacion anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
             this.cliente = cliente;
             this.provincia = provincia;
             this.ciudad = ciudad;
@@ -147,83 +151,63 @@ public class AltaPolizaEligiendoPolizaControlador {
         public void setCliente(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente) {
             this.cliente = cliente;
         }
-
         public Provincia getProvincia() {
             return provincia;
         }
-
         public void setProvincia(Provincia provincia) {
             this.provincia = provincia;
         }
-
         public Localidad getCiudad() {
             return ciudad;
         }
-
         public void setCiudad(Localidad ciudad) {
             this.ciudad = ciudad;
         }
-
-        public String getAnio() {
+        public AnioFabricacion getAnio() {
             return anio;
         }
-
-        public void setAnio(String anio) {
+        public void setAnio(AnioFabricacion anio) {
             this.anio = anio;
         }
-
         public String getKmRealizadosV() {
             return kmRealizadosV;
         }
-
         public void setKmRealizadosV(String kmRealizadosV) {
             this.kmRealizadosV = kmRealizadosV;
         }
-
         public String getGarageV() {
             return garageV;
         }
-
         public void setGarageV(String garageV) {
             this.garageV = garageV;
         }
-
         public String getDispositivoRastreoV() {
             return dispositivoRastreoV;
         }
-
         public void setDispositivoRastreoV(String dispositivoRastreoV) {
             this.dispositivoRastreoV = dispositivoRastreoV;
         }
-
         public String getAlarmaV() {
             return alarmaV;
         }
-
         public void setAlarmaV(String alarmaV) {
             this.alarmaV = alarmaV;
         }
-
         public String getTuercaAntirroboV() {
             return tuercaAntirroboV;
         }
-
         public void setTuercaAntirroboV(String tuercaAntirroboV) {
             this.tuercaAntirroboV = tuercaAntirroboV;
         }
-
         public String getNroSiniestrosV() {
             return nroSiniestrosV;
         }
-
         public void setNroSiniestrosV(String nroSiniestrosV) {
             this.nroSiniestrosV = nroSiniestrosV;
         }
-
         public ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> getListaDeHijos() {
             return listaDeHijos;
         }
-
         public void setListaDeHijos(ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
             this.listaDeHijos = listaDeHijos;
         }
@@ -247,11 +231,11 @@ public class AltaPolizaEligiendoPolizaControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 instancia_1_en_2 = (AltaPolizaCargandoDatosControlador)loader.getController();
                 instancia_1_en_2.recibeParametrosDeVolver(instanciaParaVolver.getCliente(), instanciaParaVolver.getProvincia(),
-                        instanciaParaVolver.getCiudad(), marcaObj, modeloDelVehículo.getText(),
-                        instanciaParaVolver.getAnio(), sumaAsegurada.getText(), motor.getText(), chasis.getText(),
-                        patente.getText(), instanciaParaVolver.getKmRealizadosV(), instanciaParaVolver.getGarageV(),
-                        instanciaParaVolver.getDispositivoRastreoV(), instanciaParaVolver.getAlarmaV(),
-                        instanciaParaVolver.getTuercaAntirroboV(), instanciaParaVolver.getNroSiniestrosV(), instanciaParaVolver.getListaDeHijos());
+                        instanciaParaVolver.getCiudad(), marcaObj, modeloObj, anioObj, sumaAsegurada.getText(),
+                        motor.getText(), chasis.getText(), patente.getText(), instanciaParaVolver.getKmRealizadosV(),
+                        instanciaParaVolver.getGarageV(), instanciaParaVolver.getDispositivoRastreoV(),
+                        instanciaParaVolver.getAlarmaV(), instanciaParaVolver.getTuercaAntirroboV(),
+                        instanciaParaVolver.getNroSiniestrosV(), instanciaParaVolver.getListaDeHijos());
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root, 1280, 720);
                 stage.setResizable(false);
@@ -450,16 +434,18 @@ public class AltaPolizaEligiendoPolizaControlador {
     AltaPolizaCargandoDatosControlador instancia_1_en_2;
     public void recibeParametros(AltaPolizaCargandoDatosControlador instanciaCargandoDatos,
                                  ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente,
-                                 String apellidoynombre, Provincia provincia, Localidad ciudad, Marca marca, String modelo,
-                                 String anio, String sumaAseguradaV, String motorVehiculo, String chasisV, String patenteV,
-                                 String kmRealizadosV, String garageV, String dispositivoRastreoV,
+                                 String apellidoynombre, Provincia provincia, Localidad ciudad, Marca marca, Modelo modelo,
+                                 AnioFabricacion anio, String sumaAseguradaV, String motorVehiculo, String chasisV,
+                                 String patenteV, String kmRealizadosV, String garageV, String dispositivoRastreoV,
                                  String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
                                  ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
         instancia_1_en_2=instanciaCargandoDatos;
         titularDelSeguro.setText(apellidoynombre);
         marcaDelVehículo.setText(marca.getNombre());
         marcaObj=marca;
-        modeloDelVehículo.setText(modelo);
+        modeloDelVehículo.setText(modelo.getNombre());
+        modeloObj=modelo;
+        anioObj=anio;
         motor.setText(motorVehiculo);
         chasis.setText(chasisV);
         patente.setText(patenteV);
