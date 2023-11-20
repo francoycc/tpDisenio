@@ -14,8 +14,6 @@ public class Pais {
     @Column(length = 20, nullable = false)
     private String nombre;
 
-//TODO CODIGO DE PAIS?
-
     public Pais() {}
     public Pais(String nombre) {
         this.nombre = nombre;

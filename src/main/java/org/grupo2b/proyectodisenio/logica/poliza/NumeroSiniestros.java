@@ -11,16 +11,19 @@ public class NumeroSiniestros { //TODO MEJORAR ESTA CAGADA. Si todo se maneja co
     @GeneratedValue
     @Column(name = "id_numeroSiniestros")
     private int id;
-    @Column(name = "cantidad_siniestros", nullable = false)
-    private int cantSiniestros;
+    @Column(name = "cantidad_siniestros_inicial", nullable = false)
+    private int cantSiniestrosInicial;
+    @Column(name = "cantidad_siniestros_final", nullable = false)
+    private int cantSiniestrosFinal;
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
     private HistorialFactor historial;
 
 
     public NumeroSiniestros(){}
-    public NumeroSiniestros(int cantSiniestros, HistorialFactor historialFactor) {
-        this.cantSiniestros = cantSiniestros;
+    public NumeroSiniestros(int cantSiniestrosInicial, int cantSiniestrosFinal, HistorialFactor historialFactor) {
+        this.cantSiniestrosInicial = cantSiniestrosInicial;
+        this.cantSiniestrosFinal = cantSiniestrosFinal;
         this.historial = historialFactor;
     }
 
@@ -31,16 +34,34 @@ public class NumeroSiniestros { //TODO MEJORAR ESTA CAGADA. Si todo se maneja co
     public void setId(int id) {
         this.id = id;
     }
-    public int getCantSiniestros() {
-        return cantSiniestros;
-    }
-    public void setCantSiniestros(int cantSiniestros) {
-        this.cantSiniestros = cantSiniestros;
-    }
     public HistorialFactor getHistorialFactor() {
         return historial;
     }
     public void setHistorialFactor(HistorialFactor historialFactor) {
         this.historial = historialFactor;
+    }
+
+    public int getCantSiniestrosInicial() {
+        return cantSiniestrosInicial;
+    }
+
+    public void setCantSiniestrosInicial(int cantSiniestrosInicial) {
+        this.cantSiniestrosInicial = cantSiniestrosInicial;
+    }
+
+    public int getCantSiniestrosFinal() {
+        return cantSiniestrosFinal;
+    }
+
+    public void setCantSiniestrosFinal(int cantSiniestrosFinal) {
+        this.cantSiniestrosFinal = cantSiniestrosFinal;
+    }
+
+    public HistorialFactor getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(HistorialFactor historial) {
+        this.historial = historial;
     }
 }

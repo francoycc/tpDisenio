@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="c">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/poliza/MedidaDeSeguridadDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/poliza/MedidaDeSeguridadDAOPSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatosControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Marca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/Marca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Objetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/Objetos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Pais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/direccion/Pais.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/MedidaDeSeguridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/MedidaDeSeguridad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/NumeroSiniestros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/NumeroSiniestros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/carga_datos/LocalidadesR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/carga_datos/LocalidadesR.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700488749045</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="c">
+      <option name="closed" value="true" />
+      <created>1700490054284</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1700490054284</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

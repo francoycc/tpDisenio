@@ -14,10 +14,7 @@ import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAO;
 import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.historial.HistorialDAO;
 import org.grupo2b.proyectodisenio.dao.historial.HistorialDAOPSQL;
-import org.grupo2b.proyectodisenio.dao.poliza.EstadoCivilDAO;
-import org.grupo2b.proyectodisenio.dao.poliza.EstadoCivilDAOPSQL;
-import org.grupo2b.proyectodisenio.dao.poliza.TipoCoberturaDAO;
-import org.grupo2b.proyectodisenio.dao.poliza.TipoCoberturaDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.poliza.*;
 import org.grupo2b.proyectodisenio.dao.vehiculo.*;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.CondicionIva;
@@ -77,6 +74,7 @@ public class DAOManager {
     private static AnioFabricacionDAO anioFabricacionDAO;
     private static MarcaDao marcaDao;
     private static ModeloDAO modeloDAO;
+    private static MedidaDeSeguridadDAO medidaDeSeguridadDAO;
 
 
     public static void init(){}
@@ -148,6 +146,10 @@ public class DAOManager {
     }
 
 
+    private static void MYSQLInit(){
+        //Ejemplo
+        throw new RuntimeException("Tipo de base de datos no implementado");
+    }
 
     //DAO GETTERS
 
@@ -212,10 +214,11 @@ public class DAOManager {
         return modeloDAO;
     }
 
-    private static void MYSQLInit(){
-        //Ejemplo
-        throw new RuntimeException("Tipo de base de datos no implementado");
+    public static MedidaDeSeguridadDAO medidaDeSeguridadDAO() {
+        return medidaDeSeguridadDAO;
     }
+
+
     public static <T> T save(T o) {
         Transaction tx = session.beginTransaction();
         T o2 = session.merge(o);
