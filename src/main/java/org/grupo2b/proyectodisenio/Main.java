@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.dao.vehiculo.VehiculoDAOPSQL;
 import org.grupo2b.proyectodisenio.logica.Objetos;
 
 import java.util.Objects;

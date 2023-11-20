@@ -11,11 +11,11 @@ public class Vehiculo {
     private int id;
     @Column(name = "suma_asegurada", nullable = false)
     private int sumaAsegurada;
-    @Column(length = 30, nullable = false)
+    @Column(length = 30, nullable = false, unique = true)
     private String motor;
-    @Column(length = 30, nullable = false)
+    @Column(length = 30, nullable = false, unique = true)
     private String chasis;
-    @Column(length = 10,nullable = false)
+    @Column(length = 10,nullable = false, unique = true)
     private String patente;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_modelo")

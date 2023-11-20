@@ -64,4 +64,17 @@ public class NumeroSiniestros { //TODO MEJORAR ESTA CAGADA. Si todo se maneja co
     public void setHistorial(HistorialFactor historial) {
         this.historial = historial;
     }
+
+    @Override
+    public String toString() {
+        if(cantSiniestrosFinal==cantSiniestrosInicial) {
+            if (cantSiniestrosFinal == 0)
+                return "Ninguno";
+            return String.valueOf(cantSiniestrosInicial);
+        }
+        else if (cantSiniestrosFinal==Integer.MAX_VALUE)
+            return "Mas de "+cantSiniestrosInicial;
+        else
+            return cantSiniestrosInicial +" a "+cantSiniestrosFinal;
+    }
 }

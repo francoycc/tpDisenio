@@ -75,6 +75,9 @@ public class DAOManager {
     private static MarcaDao marcaDao;
     private static ModeloDAO modeloDAO;
     private static MedidaDeSeguridadDAO medidaDeSeguridadDAO;
+    private static VehiculoDAO vehiculoDAO;
+    private static NumeroSiniestrosDAO numeroSiniestrosDAO;
+    private static KmPorAnioDAO kmPorAnioDAO;
 
 
     public static void init(){}
@@ -143,6 +146,10 @@ public class DAOManager {
         anioFabricacionDAO = new AnioFabricacionDAOPSQL();
         marcaDao = new MarcaDAOPSQL();
         modeloDAO = new ModeloDAOPSQL();
+        medidaDeSeguridadDAO = new MedidaDeSeguridadDAOPSQL();
+        vehiculoDAO = new VehiculoDAOPSQL();
+        numeroSiniestrosDAO = new NumeroSiniestrosDAOPSQL();
+        kmPorAnioDAO = new KmPorAnioDAOPSQL();
     }
 
 
@@ -218,11 +225,23 @@ public class DAOManager {
         return medidaDeSeguridadDAO;
     }
 
+    public static VehiculoDAO vehiculoDAO() {
+        return vehiculoDAO;
+    }
+
+    public static NumeroSiniestrosDAO numeroSiniestrosDAO() {
+        return numeroSiniestrosDAO;
+    }
+
+    public static KmPorAnioDAO kmPorAnioDAO() {
+        return kmPorAnioDAO;
+    }
 
     public static <T> T save(T o) {
         Transaction tx = session.beginTransaction();
         T o2 = session.merge(o);
         tx.commit();
+        session.clear();
         return o2;
     }
 

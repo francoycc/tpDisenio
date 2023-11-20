@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class DeclaracionHijo {
     @Column(name = "id_declaracion")
     private int id;
     @Column(name = "fecha_nacimiento", nullable = false)
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Sexo sexo;
@@ -26,7 +27,7 @@ public class DeclaracionHijo {
 
 
     public DeclaracionHijo(){}
-    public DeclaracionHijo(Date fechaNacimiento, Sexo sexo, EstadoCivil estadoCivilHijo) {
+    public DeclaracionHijo(LocalDate fechaNacimiento, Sexo sexo, EstadoCivil estadoCivilHijo) {
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.estadoCivilHijo = estadoCivilHijo;
@@ -41,10 +42,10 @@ public class DeclaracionHijo {
     public void setId(int id) {
         this.id = id;
     }
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
     public Sexo getSexo() {

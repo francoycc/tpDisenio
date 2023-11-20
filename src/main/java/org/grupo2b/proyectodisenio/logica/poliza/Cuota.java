@@ -3,6 +3,7 @@ package org.grupo2b.proyectodisenio.logica.poliza;
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class Cuota {
     @Column(name = "id_cuota")
     private int id;
     @Column(name = "fecha_vencimiento", nullable = false)
-    private Date fechaVencimiento;
+    private LocalDate fechaVencimiento;
     @Column(nullable = false)
     private float monto;
     @Column(nullable = false)
@@ -29,7 +30,7 @@ public class Cuota {
 
 
     public Cuota(){}
-    public Cuota(Date fechaVencimiento, float monto, EstadoCuota estado, float recargaMora, float bonificacion, Recibo recibo) {
+    public Cuota(LocalDate fechaVencimiento, float monto, EstadoCuota estado, float recargaMora, float bonificacion, Recibo recibo) {
         this.fechaVencimiento = fechaVencimiento;
         this.monto = monto;
         this.estado = estado;
@@ -48,10 +49,10 @@ public class Cuota {
     public void setId(int id) {
         this.id = id;
     }
-    public Date getFechaVencimiento() {
+    public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
-    public void setFechaVencimiento(Date fechaVencimiento) {
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
     public float getMonto() {

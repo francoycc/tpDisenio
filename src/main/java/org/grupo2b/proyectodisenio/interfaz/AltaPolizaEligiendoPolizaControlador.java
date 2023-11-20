@@ -3,9 +3,7 @@ package org.grupo2b.proyectodisenio.interfaz;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -27,11 +25,19 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.Objetos;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
+import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
+import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
+import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
+import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
+import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
 public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ResourceBundle resources;
@@ -49,8 +55,7 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private TableView<tablaTipoCobertura> tablaConTipoCobertura;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaCheck;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaDescripcion;
-    @FXML private TableColumn<tablaTipoCobertura, String> columnaTipoCobertura;
-    private final ObservableList<tablaTipoCobertura> tipoCoberturaList = FXCollections.observableArrayList();
+    @FXML private TableColumn<tablaTipoCobertura, TipoCobertura> columnaTipoCobertura;
 
     @FXML private TextField titularDelSeguro;
     @FXML private TextField marcaDelVehículo;
@@ -88,9 +93,15 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private Pane anchorPaneLuegoQpresioneConfirmar;
     @FXML private ScrollPane idScrollPane;
 
+    //DATOS GENERACION POLIZA
     private Marca marcaObj;
     private Modelo modeloObj;
     private AnioFabricacion anioObj;
+    private LocalDate fechaInicioVigenciaObj;
+    private LocalDate fechaFinalVigenciaObj;
+    private FormaPago formaPagoObj;
+    private TipoCobertura tipoCoberturaObj;
+    private List<Cuota> cuotasObj = new ArrayList<>();
 
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
@@ -127,10 +138,10 @@ public class AltaPolizaEligiendoPolizaControlador {
         String dispositivoRastreoV;
         String alarmaV;
         String tuercaAntirroboV;
-        String nroSiniestrosV;
+        NumeroSiniestros nroSiniestrosV;
         ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos;
 
-        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, AnioFabricacion anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
+        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, AnioFabricacion anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
             this.cliente = cliente;
             this.provincia = provincia;
             this.ciudad = ciudad;
@@ -199,10 +210,10 @@ public class AltaPolizaEligiendoPolizaControlador {
         public void setTuercaAntirroboV(String tuercaAntirroboV) {
             this.tuercaAntirroboV = tuercaAntirroboV;
         }
-        public String getNroSiniestrosV() {
+        public NumeroSiniestros getNroSiniestrosV() {
             return nroSiniestrosV;
         }
-        public void setNroSiniestrosV(String nroSiniestrosV) {
+        public void setNroSiniestrosV(NumeroSiniestros nroSiniestrosV) {
             this.nroSiniestrosV = nroSiniestrosV;
         }
         public ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> getListaDeHijos() {
@@ -303,8 +314,19 @@ public class AltaPolizaEligiendoPolizaControlador {
             idAnchorPane.setPrefHeight(1730);
             idScrollPane.setPrefHeight(1730);
 
-            fechaInicio.setText(fechaInicioVigencia.getValue().toString());
-            fechaFin.setText(fechaInicioVigencia.getValue().plusMonths(6).toString());
+            formaPagoObj = FormaPago.MENSUAL;
+            fechaInicioVigenciaObj = fechaInicioVigencia.getValue();
+            fechaFinalVigenciaObj = fechaInicioVigencia.getValue().plusMonths(6);
+            fechaInicio.setText(fechaInicioVigenciaObj.toString());
+            fechaFin.setText(fechaFinalVigenciaObj.toString());
+
+            cuotasObj.clear();
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(1), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(2), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(3), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(4), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(5), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
             ultimoDiaDePago1.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(1).toString());
             ultimoDiaDePago2.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(2).toString());
             ultimoDiaDePago3.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(3).toString());
@@ -328,13 +350,49 @@ public class AltaPolizaEligiendoPolizaControlador {
             idAnchorPane.setPrefHeight(1300);
             idScrollPane.setPrefHeight(1300);
 
-            fechaInicio.setText(fechaInicioVigencia.getValue().toString());
-            fechaFin.setText(fechaInicioVigencia.getValue().plusMonths(6).toString());
+            formaPagoObj = FormaPago.SEMESTRAL;
+            fechaInicioVigenciaObj = fechaInicioVigencia.getValue();
+            fechaFinalVigenciaObj = fechaInicioVigencia.getValue().plusMonths(6);
+            fechaInicio.setText(fechaInicioVigenciaObj.toString());
+            fechaFin.setText(fechaFinalVigenciaObj.toString());
+
+            cuotasObj.clear();
+            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
             ultimoDiadePagoSemestral.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6).toString());
             montoTotalSemestral.setText("30000");
         }
     }
-    @FXML void confirmarGeneracionPoliza(ActionEvent event) {}
+    @FXML void confirmarGeneracionPoliza(ActionEvent event) {
+        List<MedidaDeSeguridad> medidasSeguridad = new ArrayList<>();
+        if(instanciaParaVolver.dispositivoRastreoV.equals("SI"))
+            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Rastreo").get());
+        if(instanciaParaVolver.garageV.equals("SI"))
+            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Garage").get());
+        if(instanciaParaVolver.tuercaAntirroboV.equals("SI"))
+            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Tuercas Antirrobo").get());
+        if(instanciaParaVolver.alarmaV.equals("SI"))
+            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Alarma").get());
+
+        List<DeclaracionHijo> declaraciones = new ArrayList<>();
+        for (AltaPolizaCargandoDatosControlador.TablaHijos t : instanciaParaVolver.listaDeHijos){
+            declaraciones.add(new DeclaracionHijo(t.fechaNacimiento, t.sexo, t.estadoCivil));
+        }
+
+        Vehiculo vehiculo = new Vehiculo(0, motor.getText(), chasis.getText(), patente.getText(), modeloObj, DAOManager.kmPorAnioDAO().getFromRango(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get(), DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get().getDomicilio());
+        Optional<Vehiculo> vOpt = DAOManager.vehiculoDAO().getVehiculoFromPatente(patente.getText());
+        if(vOpt.isPresent()){
+            //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE
+        }
+
+        Cliente c = DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
+        c.getVehiculos().add(vehiculo);
+        System.out.println(c.getVehiculos().size());
+
+        Poliza p = new Poliza(fechaFinalVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
+                14, new DerechoEmision(Objetos.getHistorial()), new Descuento("D", Objetos.getHistorial()), tipoCoberturaObj, cuotasObj,
+                medidasSeguridad, vehiculo, declaraciones, DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get(), instanciaParaVolver.nroSiniestrosV);
+        DAOManager.save(p);
+    }
     @FXML void initialize() {
         assert botonVolver != null : "fx:id=\"botonVolver\" was not injected: check your FXML file 'AltaPolizaEligiendoPoliza.fxml'.";
         assert columnaCheck != null : "fx:id=\"columnaCheck\" was not injected: check your FXML file 'AltaPolizaEligiendoPoliza.fxml'.";
@@ -375,20 +433,25 @@ public class AltaPolizaEligiendoPolizaControlador {
                 }
             };
             cell.setGraphic(radioButton);
+
+            radioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    // Obtener el ítem actual de la fila
+                    tablaTipoCobertura item = tablaConTipoCobertura.getItems().get(cell.getIndex());
+
+                    tipoCoberturaObj=item.getTipoCobertura();
+                }
+            });
+
             return cell;
         });
-        tablaTipoCobertura tipo1 = new tablaTipoCobertura("Responsabilidad Civil","Dirigida hacia terceros transportados y no transportados, con límite de $23.000.000 en la Argentina y $3.200.000 para países limítrofes");
-        tablaTipoCobertura tipo2 = new tablaTipoCobertura("Resp. Civil, Robo o incendio total","Resp. Civil + Robo Total (apoderamiento ilegítimo del vehículo con violencia) + Incendio Total (daños provocados por incendio o explosión interna o externa, siempre que haya fuego)");
-        tablaTipoCobertura tipo3 = new tablaTipoCobertura("Todo Total","Resp. Civil + Robo Total, Hurto Total (apoderamiento ilegítimo del vehículo sin violencia) + Incendio Total + Destrucción Total (los restos no deben superar el 20% del valor del vehículo)");
-        tablaTipoCobertura tipo4 = new tablaTipoCobertura("Terceros Completos","Resp. Civil + Robo Parcial, Hurto Total y Parcial (incluye partes integrantes del vehículo Ej.: partes fijas y accesorios) + Incendio Total y Parcial + Destrucción Total.");
-        tablaTipoCobertura tipo5 = new tablaTipoCobertura("Todo Riesgo con Franquicia","Resp. Civil + Robo, Hurto é Incendio Total y Parcial + Daños Totales y Parciales (incluye daños parciales con una franquicia a cargo del asegurado)");
-        /*tablaTipoCobertura tipo6 = new tablaTipoCobertura("nuevoTipo1","hola1");
-        tablaTipoCobertura tipo7 = new tablaTipoCobertura("nuevoTipo2","hola2");
-        tablaTipoCobertura tipo8 = new tablaTipoCobertura("nuevoTipo3","hola3");
-        tablaTipoCobertura tipo9 = new tablaTipoCobertura("nuevoTipo4","hola4");
-        tablaTipoCobertura tipo10 = new tablaTipoCobertura("nuevoTipo5","hola5");*/
-        tipoCoberturaList.addAll(tipo1,tipo2,tipo3,tipo4,tipo5/*,tipo6,tipo7,tipo8,tipo9,tipo10*/);
-        tablaConTipoCobertura.setItems(tipoCoberturaList);
+
+        Collection<TipoCobertura> tiposCobertura = DAOManager.tipoCoberturaDAO().getTiposCobertura();
+        List<tablaTipoCobertura> listaTabla = new ArrayList<>();
+        for(TipoCobertura t : tiposCobertura)
+            listaTabla.add(new tablaTipoCobertura(t, t.getDescripcion()));
+
+        tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 RadioButton selectedRadioButton = (RadioButton) newValue;
@@ -437,7 +500,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                                  String apellidoynombre, Provincia provincia, Localidad ciudad, Marca marca, Modelo modelo,
                                  AnioFabricacion anio, String sumaAseguradaV, String motorVehiculo, String chasisV,
                                  String patenteV, String kmRealizadosV, String garageV, String dispositivoRastreoV,
-                                 String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
+                                 String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV,
                                  ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
         instancia_1_en_2=instanciaCargandoDatos;
         titularDelSeguro.setText(apellidoynombre);
@@ -454,17 +517,17 @@ public class AltaPolizaEligiendoPolizaControlador {
     }
     public class tablaTipoCobertura {
         RadioButton checkBox;
-        String tipoCobertura;
+        TipoCobertura tipoCobertura;
         String descripcion;
-        public tablaTipoCobertura(String tipoCobertura, String descripcion) {
+        public tablaTipoCobertura(TipoCobertura tipoCobertura, String descripcion) {
             this.checkBox = new RadioButton();
             this.tipoCobertura = tipoCobertura;
             this.descripcion = descripcion;
         }
         public RadioButton getCheckBox() {return checkBox;}
         public void setCheckBox(RadioButton checkBox) {this.checkBox = checkBox;}
-        public String getTipoCobertura() {return tipoCobertura;}
-        public void setTipoCobertura(String tipoCobertura) {this.tipoCobertura = tipoCobertura;}
+        public TipoCobertura getTipoCobertura() {return tipoCobertura;}
+        public void setTipoCobertura(TipoCobertura tipoCobertura) {this.tipoCobertura = tipoCobertura;}
         public String getDescripcion() {return descripcion;}
         public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
     }

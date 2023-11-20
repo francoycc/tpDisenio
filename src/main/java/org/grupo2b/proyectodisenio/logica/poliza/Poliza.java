@@ -6,6 +6,7 @@ import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,11 +25,11 @@ public class Poliza {
         nroPoliza = "" + id;
     }
     @Column(name = "inicio_vigencia", nullable = false)
-    private Date inicioVigencia;
+    private LocalDate inicioVigencia;
     @Column(name = "fin_vigencia", nullable = false)
-    private Date finVigencia;
+    private LocalDate finVigencia;
     @Column(name = "fecha_registro", nullable = false)
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro;
     @Enumerated(EnumType.STRING)
     @Column(name = "forma_pago", nullable = false)
     private FormaPago formaPago;
@@ -68,7 +69,7 @@ public class Poliza {
 
 
     public Poliza() {}
-    public Poliza(Date inicioVigencia, Date finVigencia, Date fechaRegistro, FormaPago formaPago, EstadoPoliza estadoPoliza,
+    public Poliza(LocalDate inicioVigencia, LocalDate finVigencia, LocalDate fechaRegistro, FormaPago formaPago, EstadoPoliza estadoPoliza,
                   float premio, DerechoEmision derechoEmision, Descuento descuento, TipoCobertura tipoCobertura, List<Cuota> cuotas,
                   List<MedidaDeSeguridad> medidasDeSeguridad, Vehiculo vehiculo, List<DeclaracionHijo> declaracionesHijos, Cliente cliente, NumeroSiniestros nroSiniestros){
         this.inicioVigencia = inicioVigencia;
@@ -104,22 +105,22 @@ public class Poliza {
     public void setNroPoliza(String nroPoliza) {
         this.nroPoliza = nroPoliza;
     }
-    public Date getInicioVigencia() {
+    public LocalDate getInicioVigencia() {
         return inicioVigencia;
     }
-    public void setInicioVigencia(Date inicioVigencia) {
+    public void setInicioVigencia(LocalDate inicioVigencia) {
         this.inicioVigencia = inicioVigencia;
     }
-    public Date getFinVigencia() {
+    public LocalDate getFinVigencia() {
         return finVigencia;
     }
-    public void setFinVigencia(Date finVigencia) {
+    public void setFinVigencia(LocalDate finVigencia) {
         this.finVigencia = finVigencia;
     }
-    public Date getFechaRegistro() {
+    public LocalDate getFechaRegistro() {
         return fechaRegistro;
     }
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(LocalDate fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
     public FormaPago getFormaPago() {

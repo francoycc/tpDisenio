@@ -26,6 +26,9 @@ import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
+import org.grupo2b.proyectodisenio.logica.enums.Sexo;
+import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
+import org.grupo2b.proyectodisenio.logica.poliza.NumeroSiniestros;
 import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
@@ -64,11 +67,11 @@ public class AltaPolizaCargandoDatosControlador {
     //medidas de seguridad
     @FXML private ComboBox<String> idAlarma;
     @FXML private ComboBox<String> idGarage;
-    @FXML private ComboBox<String> idNroSiniestros;
+    @FXML private ComboBox<NumeroSiniestros> idNroSiniestros;
     @FXML private ComboBox<String> idDispositivoRastreo;
     @FXML private ComboBox<String> idTuercaAntirrobo;
-    @FXML private ComboBox<String> comboBoxEstadoCivil;
-    @FXML private ComboBox<String> comboBoxSexo;
+    @FXML private ComboBox<EstadoCivil> comboBoxEstadoCivil;
+    @FXML private ComboBox<Sexo> comboBoxSexo;
 
     @FXML private TextField idSumaAsegurada;
     @FXML private TextField idChasis;
@@ -147,8 +150,8 @@ public class AltaPolizaCargandoDatosControlador {
         try {
             // Obtengo los datos del formulario
             LocalDate fc = datePickerFechaNacimiento.getValue();
-            String s = this.comboBoxSexo.getValue();
-            String ec = this.comboBoxEstadoCivil.getValue();
+            Sexo s = this.comboBoxSexo.getValue();
+            EstadoCivil ec = this.comboBoxEstadoCivil.getValue();
             // Creo una persona
             TablaHijos hijo = new TablaHijos(fc, s, ec);
             // Compruebo si la persona esta en la lista
@@ -216,8 +219,8 @@ public class AltaPolizaCargandoDatosControlador {
             try {
                 // Obtengo los datos del formulario
                 LocalDate fc = datePickerFechaNacimiento.getValue();
-                String s = this.comboBoxSexo.getValue();
-                String ec = this.comboBoxEstadoCivil.getValue();
+                Sexo s = this.comboBoxSexo.getValue();
+                EstadoCivil ec = this.comboBoxEstadoCivil.getValue();
                 // Creo una persona
                 TablaHijos aux = new TablaHijos(fc, s, ec);
                 // Compruebo si la persona esta en el lista
@@ -328,21 +331,29 @@ public class AltaPolizaCargandoDatosControlador {
         if(idNroSiniestros.getValue()==null) { faltaNroSiniestros.setVisible(true); flag = 1;}
         //flag = 0;
         if(flag == 0) {
-            FXMLLoader loader = new FXMLLoader();
-            ScrollPane root = (ScrollPane)loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = loader.getController();
-            instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, clientesList,
-                    apellidoYnombreColumna.getCellData(tablaMostrarClientes.getItems().get(0)),
-                    idProvincia.getValue(), idCiudad.getValue(), idMarca.getValue(), idModelo.getValue(), idAnio.getValue(),
-                    idSumaAsegurada.getText(), idMotor.getText(), idChasis.getText(), idPatente.getText(), idKmRealizados.getText(),
-                    idGarage.getValue(), idDispositivoRastreo.getValue(), idAlarma.getValue(), idTuercaAntirrobo.getValue(),
-                    idNroSiniestros.getValue(), hijosList);
-            stage.setTitle("EL ASEGURADO");
-            Scene scene = new Scene(root, 1280, 720);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+            if(!DAOManager.vehiculoDAO().existeVehiculoAsociado(idPatente.getText(), idMotor.getText(), idChasis.getText())) {
+                FXMLLoader loader = new FXMLLoader();
+                ScrollPane root = (ScrollPane) loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = loader.getController();
+                instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, clientesList,
+                        apellidoYnombreColumna.getCellData(tablaMostrarClientes.getItems().get(0)),
+                        idProvincia.getValue(), idCiudad.getValue(), idMarca.getValue(), idModelo.getValue(), idAnio.getValue(),
+                        idSumaAsegurada.getText(), idMotor.getText(), idChasis.getText(), idPatente.getText(), idKmRealizados.getText(),
+                        idGarage.getValue(), idDispositivoRastreo.getValue(), idAlarma.getValue(), idTuercaAntirrobo.getValue(),
+                        idNroSiniestros.getValue(), hijosList);
+                stage.setTitle("EL ASEGURADO");
+                Scene scene = new Scene(root, 1280, 720);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
+            }else {
+                Alert messageWindows = new Alert(Alert.AlertType.ERROR);
+                messageWindows.setTitle("Error");
+                messageWindows.setHeaderText("");
+                messageWindows.setContentText("Ya existe una póliza para alguno de los siguientes valores: Patente, Motor o Chasis");
+                messageWindows.showAndWait();
+            }
         } else {
             Alert messageWindows = new Alert(Alert.AlertType.ERROR);
             messageWindows.setTitle("Advertencia");
@@ -362,7 +373,7 @@ public class AltaPolizaCargandoDatosControlador {
     public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, Marca marca,
                                          Modelo modeloDelVehículoText, AnioFabricacion anio, String sumaAseguradaText, String motorText,
                                          String chasisText, String patenteText, String kmRealizadosV, String garageV,
-                                         String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, String nroSiniestrosV,
+                                         String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV,
                                          ObservableList<TablaHijos> listaDeHijos) {
         ///////////////////////esto desp lo implemento me dio paja//////////////////////
         //clientesList.add(cliente);
@@ -420,22 +431,32 @@ public class AltaPolizaCargandoDatosControlador {
         public void setDomicilio(Direccion domicilio) {
             this.domicilio = domicilio;
         }
+
+        @Override
+        public String toString() {
+            return "DatosClienteTabla{" +
+                    "nroCliente='" + nroCliente + '\'' +
+                    ", tipoynroDoc=" + tipoynroDoc +
+                    ", nombreyapellido='" + nombreyapellido + '\'' +
+                    ", domicilio=" + domicilio +
+                    '}';
+        }
     }
     public class TablaHijos {
         LocalDate fechaNacimiento;
-        String sexo;
-        String estadoCivil;
-        public TablaHijos(LocalDate fechaNacimiento, String sexo, String estadoCivil) {
+        Sexo sexo;
+        EstadoCivil estadoCivil;
+        public TablaHijos(LocalDate fechaNacimiento, Sexo sexo, EstadoCivil estadoCivil) {
             this.fechaNacimiento = fechaNacimiento;
             this.sexo = sexo;
             this.estadoCivil = estadoCivil;
         }
         public LocalDate getFechaNacimiento() {return fechaNacimiento;}
         public void setFechaNacimiento(LocalDate fechaNacimiento) {this.fechaNacimiento = fechaNacimiento;}
-        public String getSexo() {return sexo;}
-        public void setSexo(String sexo) {this.sexo = sexo;}
-        public String getEstadoCivil() {return estadoCivil;}
-        public void setEstadoCivil(String estadoCivil) {this.estadoCivil = estadoCivil;}
+        public Sexo getSexo() {return sexo;}
+        public void setSexo(Sexo sexo) {this.sexo = sexo;}
+        public EstadoCivil getEstadoCivil() {return estadoCivil;}
+        public void setEstadoCivil(EstadoCivil estadoCivil) {this.estadoCivil = estadoCivil;}
 
         @Override
         public boolean equals(Object o) {
@@ -546,12 +567,12 @@ public class AltaPolizaCargandoDatosControlador {
         idDispositivoRastreo.getItems().addAll("SI","NO");
         idAlarma.getItems().addAll("SI","NO");
         idTuercaAntirrobo.getItems().addAll("SI","NO");
-        idNroSiniestros.getItems().addAll("Ninguno","Uno","Dos", "Más de dos");
-        idNroSiniestros.setValue("Ninguno");
+        idNroSiniestros.getItems().addAll(DAOManager.numeroSiniestrosDAO().getNumeroSiniestrosList());
+        idNroSiniestros.setValue(DAOManager.numeroSiniestrosDAO().getNumeroSiniestros(0,0).get());
         idSumaAsegurada.setText("1000000");
 
-        comboBoxSexo.getItems().addAll("MASCULINO","FEMENINO");
-        comboBoxEstadoCivil.getItems().addAll(DAOManager.estadoCivilDAO().getStringEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
+        comboBoxSexo.getItems().addAll(Sexo.MASCULINO,Sexo.FEMENINO);
+        comboBoxEstadoCivil.getItems().addAll(DAOManager.estadoCivilDAO().getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
 
         this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
         this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));
@@ -563,6 +584,7 @@ public class AltaPolizaCargandoDatosControlador {
         idCiudad.setItems(FXCollections.observableArrayList(DAOManager.localidadDAO().getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().getId())));
     }
     @FXML void onMarcaChange(){
+        idAnio.setItems(FXCollections.observableArrayList());
         idModelo.setItems(FXCollections.observableArrayList(DAOManager.modeloDAO().getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
     }
     @FXML void onModeloCambio(){
