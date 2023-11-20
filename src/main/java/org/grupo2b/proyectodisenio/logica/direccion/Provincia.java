@@ -21,6 +21,11 @@ public class Provincia {
         this.nombre = nombre;
         this.pais = pais;
     }
+    public Provincia(int id, String nombre, Pais pais) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pais = pais;
+    }
 
 
 

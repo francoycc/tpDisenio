@@ -39,6 +39,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Properties;
 
@@ -220,6 +221,13 @@ public class DAOManager {
         T o2 = session.merge(o);
         tx.commit();
         return o2;
+    }
+
+    public static <T> void saveBatch(Collection<T> objs) {
+        Transaction tx = session.beginTransaction();
+        for (T obj : objs)
+            session.merge(obj);
+        tx.commit();
     }
 
 }

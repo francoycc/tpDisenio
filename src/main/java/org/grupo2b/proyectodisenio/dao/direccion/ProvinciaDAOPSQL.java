@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.dao.direccion;
 
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -9,6 +10,7 @@ import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class ProvinciaDAOPSQL implements ProvinciaDAO{
@@ -23,6 +25,22 @@ public class ProvinciaDAOPSQL implements ProvinciaDAO{
 
         Query<Provincia> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();
+    }
+
+    @Override
+    public Optional<Provincia> getProvincia(int id) {
+        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaQuery<Provincia> cr = cb.createQuery(Provincia.class);
+        Root<Provincia> root = cr.from(Provincia.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<Provincia> query = DAOManager.getSession().createQuery(cr);
+        try{
+            return Optional.of(query.getSingleResult());
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
     }
 
     @Override

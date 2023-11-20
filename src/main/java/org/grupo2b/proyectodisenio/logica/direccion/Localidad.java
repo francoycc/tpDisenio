@@ -9,7 +9,7 @@ public class Localidad {
     @GeneratedValue
     @Column(name = "id_localidad")
     private int id;
-    @Column(length = 20, nullable = false)
+    @Column(length = 50, nullable = false)
     private String nombre;
     @Column(nullable = false)
     private int codigoPostal;
@@ -24,6 +24,13 @@ public class Localidad {
 
     public Localidad(){}
     public Localidad(String nombre, int codigoPostal, Provincia provincia, HistorialFactor historialFactor) {
+        this.nombre = nombre;
+        this.codigoPostal = codigoPostal;
+        this.provincia = provincia;
+        this.historialFactor = historialFactor;
+    }
+    public Localidad(int id, String nombre, int codigoPostal, Provincia provincia, HistorialFactor historialFactor) {
+        this.id = id;
         this.nombre = nombre;
         this.codigoPostal = codigoPostal;
         this.provincia = provincia;

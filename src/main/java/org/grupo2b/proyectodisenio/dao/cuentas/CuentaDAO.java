@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface CuentaDAO {
     Optional<Cuenta> getCuentaWithLoginInfo(String nombre, String pass);
+    Optional<Cuenta> getCuenta(int id);
 }

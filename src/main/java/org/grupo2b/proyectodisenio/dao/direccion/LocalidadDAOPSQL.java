@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.dao.direccion;
 
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -9,6 +10,7 @@ import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public class LocalidadDAOPSQL implements LocalidadDAO{
 
@@ -24,4 +26,22 @@ public class LocalidadDAOPSQL implements LocalidadDAO{
         return query.getResultList();
     }
 
+    @Override
+    public Optional<Localidad> getLocalidad(int id) {
+        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaQuery<Localidad> cr = cb.createQuery(Localidad.class);
+        Root<Localidad> root = cr.from(Localidad.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<Localidad> query = DAOManager.getSession().createQuery(cr);
+
+        Localidad res;
+        try {
+            res = query.getSingleResult();
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
+        return Optional.of(res);
+    }
 }

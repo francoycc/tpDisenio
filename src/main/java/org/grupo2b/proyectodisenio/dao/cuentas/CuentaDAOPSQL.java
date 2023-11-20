@@ -31,4 +31,21 @@ public class CuentaDAOPSQL implements CuentaDAO{
             return Optional.empty();
         return Optional.of(res);
     }
+
+    @Override
+    public Optional<Cuenta> getCuenta(int id) {
+        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaQuery<Cuenta> cr = cb.createQuery(Cuenta.class);
+        Root<Cuenta> root = cr.from(Cuenta.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<Cuenta> query = DAOManager.getSession().createQuery(cr);
+        Cuenta res;
+        try {
+            return Optional.of(query.getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
 }
