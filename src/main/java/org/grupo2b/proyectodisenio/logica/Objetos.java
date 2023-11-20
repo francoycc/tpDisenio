@@ -41,10 +41,10 @@ public class Objetos{
     public static CondicionIva CONDICION_IVA2 = new CondicionIva("Responsable Inscripto");
     public static CondicionIva CONDICION_IVA3 = new CondicionIva("Consumidor Final");
     //MEDIDAS DE SEGURIDAD
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_ALARMA = new MedidaDeSeguridad("Alarma", getHistorial());
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_GARAGE = new MedidaDeSeguridad("Garage", getHistorial());
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_TUERCAS = new MedidaDeSeguridad("Tuercas Antirrobo", getHistorial());
-    public static MedidaDeSeguridad MEDIDASEGURIDAD_RASTREO = new MedidaDeSeguridad("Rastreo", getHistorial());
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_ALARMA = new MedidaDeSeguridad("Alarma", getHistorial(),"¿Tiene Alarma?");
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_GARAGE = new MedidaDeSeguridad("Garage", getHistorial(), "¿Se guarda en Garage?");
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_TUERCAS = new MedidaDeSeguridad("Tuercas Antirrobo", getHistorial(), "¿Posee tuercas antirrobo en las cuatro ruedas?");
+    public static MedidaDeSeguridad MEDIDASEGURIDAD_RASTREO = new MedidaDeSeguridad("Rastreo", getHistorial(), "Posee dispositivo de rastreo vehicular");
     //TIPOS COBERTURA
     public static TipoCobertura COBERTURA_RESP_CIVIL = new TipoCobertura("Responsabilidad Civil", "Dirigida hacia terceros transportados y no transportados, con límite de $23.000.000, en la Argentina y $3.200.000 para países limítrofes", 999999, getHistorial());
     public static TipoCobertura COBERTURA_RESP_TOTAL = new TipoCobertura("Resp. Civil, Robo o incendio total", "Resp. Civil + Robo Total (apoderamiento ilegítimo del vehículo con violencia) + Incendio Total (daños provocados por incendio o explosión interna o externa, siempre que haya fuego)", 10, getHistorial());
@@ -178,7 +178,7 @@ public class Objetos{
         recibo1.setCuotas(cuotas1);
         Poliza poliza1 = new Poliza(new Date(2023, Calendar.OCTOBER, 2), new Date(2024, Calendar.APRIL, 2), new Date(2011, Calendar.OCTOBER, 10),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), COBERTURA_RESP_CIVIL,
-                cuotas1, medidas1, VEHICULO1, declaracionHijos1, CLIENTE1, new NumeroSiniestros(2, Objetos.getHistorial()));
+                cuotas1, medidas1, VEHICULO1, declaracionHijos1, CLIENTE1, new NumeroSiniestros(2,2, Objetos.getHistorial()));
         return poliza1;
     }
     public static Poliza getPoliza2() {
@@ -204,7 +204,7 @@ public class Objetos{
         recibo2.setCuotas(cuotas2);
         Poliza poliza2 = new Poliza(new Date(2023, Calendar.SEPTEMBER, 11), new Date(2024, Calendar.MARCH, 15), new Date(2011, Calendar.OCTOBER, 10),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_5000, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), COBERTURA_TERCEROS,
-                cuotas2, medidas2, VEHICULO3, declaracionHijos2, CLIENTE3, new NumeroSiniestros(0, Objetos.getHistorial()));
+                cuotas2, medidas2, VEHICULO3, declaracionHijos2, CLIENTE3, new NumeroSiniestros(0,0, Objetos.getHistorial()));
         return poliza2;
     }
     public static Poliza getPoliza3() {
@@ -252,7 +252,7 @@ public class Objetos{
         recibo33.setNroAnio(2023);
         recibo33.setNroMes(9);
         recibo33.setCuotas(cuotas3);
-        Poliza poliza3 = new Poliza(new Date(2023, Calendar.JUNE, 11), new Date(2023, Calendar.NOVEMBER, 15), new Date(2015, Calendar.OCTOBER, 23), FormaPago.MENSUAL, EstadoPoliza.SUSPENDIDA, 1_500, new DerechoEmision(Objetos.getHistorial()), null, COBERTURA_TODO_TOTAL, cuotas3, medidas3, VEHICULO4, null, CLIENTE4, new NumeroSiniestros(10, Objetos.getHistorial()));
+        Poliza poliza3 = new Poliza(new Date(2023, Calendar.JUNE, 11), new Date(2023, Calendar.NOVEMBER, 15), new Date(2015, Calendar.OCTOBER, 23), FormaPago.MENSUAL, EstadoPoliza.SUSPENDIDA, 1_500, new DerechoEmision(Objetos.getHistorial()), null, COBERTURA_TODO_TOTAL, cuotas3, medidas3, VEHICULO4, null, CLIENTE4, new NumeroSiniestros(3,999, Objetos.getHistorial()));
         return poliza3;
     }
     public static Poliza getPoliza4() {
@@ -274,7 +274,7 @@ public class Objetos{
         recibo4.setCuotas(cuotas4);
         Poliza poliza4 = new Poliza(new Date(2022, Calendar.SEPTEMBER, 11), new Date(2023, Calendar.FEBRUARY, 10), new Date(2015, Calendar.DECEMBER, 3),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), COBERTURA_RESP_TOTAL,
-                cuotas4, medidas4, VEHICULO5, declaracionHijos4, CLIENTE5, new NumeroSiniestros(1, Objetos.getHistorial()));
+                cuotas4, medidas4, VEHICULO5, declaracionHijos4, CLIENTE5, new NumeroSiniestros(1,1, Objetos.getHistorial()));
         return poliza4;
     }
     public static Poliza getPoliza5() {
@@ -295,7 +295,7 @@ public class Objetos{
         recibo5.setCuotas(cuotas5);
         Poliza poliza5 = new Poliza(new Date(2023, Calendar.OCTOBER, 26), new Date(2024, Calendar.APRIL, 26), new Date(2011, Calendar.OCTOBER, 25),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 2_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), COBERTURA_RESP_CIVIL,
-                cuotas5, medidas5, VEHICULO6, declaracionHijos5, CLIENTE6, new NumeroSiniestros(6, Objetos.getHistorial()));
+                cuotas5, medidas5, VEHICULO6, declaracionHijos5, CLIENTE6, new NumeroSiniestros(3,999, Objetos.getHistorial()));
 
         return poliza5;
     }
@@ -316,7 +316,7 @@ public class Objetos{
         recibo61.setCuotas(cuotas61);
         Poliza poliza61 = new Poliza(new Date(2023, Calendar.MARCH, 2), new Date(2024, Calendar.SEPTEMBER, 10), new Date(2017, Calendar.OCTOBER, 16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_700, new DerechoEmision(Objetos.getHistorial()), new Descuento("Doble Unidad", Objetos.getHistorial()), COBERTURA_RESP_CIVIL,
-                cuotas61, medidas61, VEHICULO71, null, CLIENTE7, new NumeroSiniestros(1, Objetos.getHistorial()));
+                cuotas61, medidas61, VEHICULO71, null, CLIENTE7, new NumeroSiniestros(1,1, Objetos.getHistorial()));
         return poliza61;
     }
     public static Poliza getPoliza62() {
@@ -335,7 +335,7 @@ public class Objetos{
         recibo62.setCuotas(cuotas62);
         Poliza poliza62 = new Poliza(new Date(2023, Calendar.MARCH,2),new Date(2024, Calendar.SEPTEMBER,10), new Date(2017, Calendar.OCTOBER,16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_600, new DerechoEmision(Objetos.getHistorial()), new Descuento("Doble Unidad", Objetos.getHistorial()), COBERTURA_TODO_RIESGO,
-                cuotas62, medidas62, VEHICULO72, null, CLIENTE7, new NumeroSiniestros(3, Objetos.getHistorial()));
+                cuotas62, medidas62, VEHICULO72, null, CLIENTE7, new NumeroSiniestros(3,999, Objetos.getHistorial()));
         return poliza62;
     }
     public static Poliza getPoliza7() {
@@ -354,7 +354,7 @@ public class Objetos{
         recibo7.setCuotas(cuotas7);
         Poliza poliza7 = new Poliza(new Date(2023, Calendar.JANUARY, 12), new Date(2024, Calendar.JULY, 15), new Date(2019, Calendar.OCTOBER, 16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_500, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), COBERTURA_TERCEROS,
-                cuotas7, medidas7, VEHICULO8, null, CLIENTE8, new NumeroSiniestros(2, Objetos.getHistorial()));
+                cuotas7, medidas7, VEHICULO8, null, CLIENTE8, new NumeroSiniestros(2,2, Objetos.getHistorial()));
         return poliza7;
     }
     public static Poliza getPoliza8() {
@@ -373,7 +373,7 @@ public class Objetos{
         recibo8.setCuotas(cuotas8);
         Poliza poliza8 = new Poliza(new Date(2022, Calendar.AUGUST, 11), new Date(2023, Calendar.JANUARY, 14), new Date(2019, Calendar.OCTOBER, 16),
                 FormaPago.SEMESTRAL, EstadoPoliza.VIGENTE, 1_600, new DerechoEmision(Objetos.getHistorial()), new Descuento("Semestral", Objetos.getHistorial()), COBERTURA_TERCEROS,
-                cuotas8, medidas8, VEHICULO9, null, CLIENTE8, new NumeroSiniestros(1, Objetos.getHistorial()));
+                cuotas8, medidas8, VEHICULO9, null, CLIENTE8, new NumeroSiniestros(1,1, Objetos.getHistorial()));
         return poliza8;
     }
 
