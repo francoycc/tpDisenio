@@ -285,7 +285,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         }
     }
     @FXML void confirmarTipoPoliza(ActionEvent event) {
-        if (!seEligioTipoCobertura || fechaInicioVigencia.getValue().isBefore(LocalDate.now()) || (comboBoxFormaPago.getValue() == null)) {
+        if (!seEligioTipoCobertura || fechaInicioVigencia.getValue().isBefore(LocalDate.now().plusDays(1)) || (comboBoxFormaPago.getValue() == null)) {
             if(!seEligioTipoCobertura) {
                 Alert messageWindows = new Alert(Alert.AlertType.ERROR);
                 messageWindows.setTitle("Error");
@@ -293,7 +293,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                 messageWindows.setContentText("Elija un Tipo de Cobertura");
                 messageWindows.showAndWait();
             }
-            if(fechaInicioVigencia.getValue().isBefore(LocalDate.now())) {
+            if(fechaInicioVigencia.getValue().isBefore(LocalDate.now().plusDays(1))) {
                 Alert messageWindows = new Alert(Alert.AlertType.ERROR);
                 messageWindows.setTitle("Error");
                 messageWindows.setHeaderText("");
@@ -362,6 +362,8 @@ public class AltaPolizaEligiendoPolizaControlador {
         columnaTipoCobertura.setCellValueFactory(new PropertyValueFactory<>("tipoCobertura"));
         columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         columnaDescripcion.setCellFactory(WRAPPING_CELL_FACTORY);
+
+        idAnchorPane.setPrefHeight(720);
 
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {

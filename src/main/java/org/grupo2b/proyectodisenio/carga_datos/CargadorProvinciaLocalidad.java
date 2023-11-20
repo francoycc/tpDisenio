@@ -1,6 +1,7 @@
 package org.grupo2b.proyectodisenio.carga_datos;
 
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.logica.Objetos;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
@@ -14,7 +15,8 @@ import java.util.*;
 public class CargadorProvinciaLocalidad {
     public static Pais PAIS_ARG = new Pais("Argentina");
     public static HashMap<Integer, Provincia> mapaProvincias = new HashMap<>();
-    public static HashMap<Integer, List<Localidad>> mapaLocalidades = new HashMap<>();
+    private static HashMap<Integer, List<Localidad>> mapaProvLocalidades = new HashMap<>();
+    public static HashMap<Integer, Localidad> mapaLocalidades= new HashMap<>();
     public static void cargar(){
         cargarProvincias();
         cargarLocalidades();
@@ -30,22 +32,25 @@ public class CargadorProvinciaLocalidad {
         }
 
         for(int key : mapaProvincias.keySet())
-            mapaLocalidades.put(key, new ArrayList<>());
+            mapaProvLocalidades.put(key, new ArrayList<>());
 
         localidades.lines().forEach(a -> {
             String[] elemento = a.split(",");
-            List<Localidad> listaLocalidades = mapaLocalidades.get(Integer.parseInt(elemento[1]));
-            listaLocalidades.add(new Localidad(
+            List<Localidad> listaLocalidades = mapaProvLocalidades.get(Integer.parseInt(elemento[1]));
+            Localidad loc = new Localidad(
                     Integer.parseInt(elemento[0]),
                     elemento[2],
                     Integer.parseInt(elemento[3]),
                     mapaProvincias.get(Integer.parseInt(elemento[1])),
                     getHistorial()
-            ));
+            );
+            listaLocalidades.add(loc);
+            //System.out.println("ID: "+loc.getId()+", "+loc.getNombre());
+            mapaLocalidades.put(loc.getId(),loc);
         });
-        for(Integer i : mapaLocalidades.keySet()) {
-            System.out.println(i +" "+mapaLocalidades.get(i).size());
-            DAOManager.saveBatch(mapaLocalidades.get(i));
+        for(Integer i : mapaProvLocalidades.keySet()) {
+            System.out.println("Size: "+i +" "+mapaProvLocalidades.get(i).size());
+            DAOManager.saveBatch(mapaProvLocalidades.get(i));
         }
     }
     private static void cargarProvincias(){
@@ -69,7 +74,7 @@ public class CargadorProvinciaLocalidad {
         EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CargadorCuentas.CUENTA_ADMIN);
         EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1), CargadorCuentas.CUENTA_ADMIN);
         EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CargadorCuentas.CUENTA_ADMIN);
-        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33), CargadorCuentas.CUENTA_ADMIN);
+        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33),CargadorCuentas.CUENTA_ADMIN);
         EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12), CargadorCuentas.CUENTA_ADMIN);
         HistorialFactor historial = new HistorialFactor();
         LinkedList<EntradaHistorialFactores> entradasList = new LinkedList<>();

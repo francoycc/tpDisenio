@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Objetos;
 
@@ -25,6 +26,8 @@ public class Main extends Application {
         }
     }
     public static void main(String[] args) {
+        CargadorProvinciaLocalidad.cargar();
+        //System.out.println(CargadorProvinciaLocalidad.mapaLocalidades.get(445));
         DAOManager.init();
 
         Objetos.save();

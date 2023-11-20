@@ -1,5 +1,7 @@
 package org.grupo2b.proyectodisenio.logica;
 
+import org.grupo2b.proyectodisenio.carga_datos.CargadorCuentas;
+import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
 import org.grupo2b.proyectodisenio.logica.cuentas.TipoCuenta;
@@ -19,12 +21,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Objetos{
-    //TIPO CUENTAS
-    public static TipoCuenta TIPOCUENTA_GERENTE= new TipoCuenta("Gerente");
-    public static TipoCuenta TIPOCUENTA_COBRADOR= new TipoCuenta("Cobrador");
-    public static TipoCuenta TIPOCUENTA_PRODUCTOR_SEGUROS= new TipoCuenta("ProductorSeguros");
-    //CUENTAS
-    public static Cuenta CUENTA_ADMIN = new Cuenta("admin", "1234", TIPOCUENTA_PRODUCTOR_SEGUROS);
     //TIPOS DE DOCUMENTO
     public static TipoDocumento TIPO_DOCUMENTO_DNI = new TipoDocumento("DNI");
     public static TipoDocumento TIPO_DOCUMENTO_PASAPORTE = new TipoDocumento("PASAPORTE");
@@ -63,13 +59,13 @@ public class Objetos{
     //PAISES
     public static Pais PAIS1 = new Pais("Argentina");
     //PROVINCIAS
-    public static Provincia PROVINCIA1 = new Provincia("Santa Fe", PAIS1);
-    public static Provincia PROVINCIA2 = new Provincia("Cordoba", PAIS1);
+    public static Provincia PROVINCIA1 = CargadorProvinciaLocalidad.mapaProvincias.get(13);
+    public static Provincia PROVINCIA2 = CargadorProvinciaLocalidad.mapaProvincias.get(4);
     //LOCALIDADES
-    public static Localidad LOCALIDAD1 = new Localidad("Santa Fe", 3000, PROVINCIA1, Objetos.getHistorial());
-    public static Localidad LOCALIDAD2 = new Localidad("Rosario", 2000, PROVINCIA1, Objetos.getHistorial());
-    public static Localidad LOCALIDAD3 = new Localidad("Cordoba", 5000, PROVINCIA2, Objetos.getHistorial());
-    public static Localidad LOCALIDAD4 = new Localidad("Santo Tome", 3016, PROVINCIA1, Objetos.getHistorial());
+    public static Localidad LOCALIDAD1 = CargadorProvinciaLocalidad.mapaLocalidades.get(12452);
+    public static Localidad LOCALIDAD2 = CargadorProvinciaLocalidad.mapaLocalidades.get(16549);
+    public static Localidad LOCALIDAD3 = CargadorProvinciaLocalidad.mapaLocalidades.get(21415);
+    public static Localidad LOCALIDAD4 = CargadorProvinciaLocalidad.mapaLocalidades.get(445);
     public static Direccion DIRECCION1 = new Direccion("Javier de la Rosa", 1560, 0, 0, LOCALIDAD1);
     public static Direccion DIRECCION2 = new Direccion("Echague", 6504, 1, 1, LOCALIDAD1);
     public static Direccion DIRECCION3 = new Direccion("Las Rosas", 683, 4, 4, LOCALIDAD2);
@@ -175,7 +171,7 @@ public class Objetos{
         List<Cuota> cuotas1 = new ArrayList<>();
         cuotas1.add(cuota1);
         recibo1.setFecha(new Date(2023, Calendar.OCTOBER, 17));
-        recibo1.setOperador(CUENTA_ADMIN);
+        recibo1.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo1.setNroRecibo(136542);
         recibo1.setNroAnio(2023);
         recibo1.setNroMes(4);
@@ -201,7 +197,7 @@ public class Objetos{
         List<Cuota> cuotas2 = new ArrayList<>();
         cuotas2.add(cuota2);
         recibo2.setFecha(new Date(2023, Calendar.OCTOBER, 12));
-        recibo2.setOperador(CUENTA_ADMIN);
+        recibo2.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo2.setNroRecibo(134655);
         recibo2.setNroAnio(2023);
         recibo2.setNroMes(8);
@@ -233,25 +229,25 @@ public class Objetos{
         cuotas3.add(cuota34);
         cuotas3.add(cuota35);
         recibo30.setFecha(new Date(2023, Calendar.JUNE, 17));
-        recibo30.setOperador(CUENTA_ADMIN);
+        recibo30.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo30.setNroRecibo(136545);
         recibo30.setNroAnio(2023);
         recibo30.setNroMes(8);
         recibo30.setCuotas(cuotas3);
         recibo31.setFecha(new Date(2023, Calendar.JULY, 17));
-        recibo31.setOperador(CUENTA_ADMIN);
+        recibo31.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo31.setNroRecibo(145135);
         recibo31.setNroAnio(2023);
         recibo31.setNroMes(7);
         recibo31.setCuotas(cuotas3);
         recibo32.setFecha(new Date(2023, Calendar.AUGUST, 17));
-        recibo32.setOperador(CUENTA_ADMIN);
+        recibo32.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo32.setNroRecibo(141323);
         recibo32.setNroAnio(2023);
         recibo32.setNroMes(8);
         recibo32.setCuotas(cuotas3);
         recibo33.setFecha(new Date(2023, Calendar.SEPTEMBER, 17));
-        recibo33.setOperador(CUENTA_ADMIN);
+        recibo33.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo33.setNroRecibo(141324);
         recibo33.setNroAnio(2023);
         recibo33.setNroMes(9);
@@ -271,7 +267,7 @@ public class Objetos{
         List<Cuota> cuotas4 = new ArrayList();
         cuotas4.add(cuota4);
         recibo4.setFecha(new Date(2022, Calendar.SEPTEMBER, 11));
-        recibo4.setOperador(CUENTA_ADMIN);
+        recibo4.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo4.setNroRecibo(211345);
         recibo4.setNroAnio(2022);
         recibo4.setNroMes(5);
@@ -292,7 +288,7 @@ public class Objetos{
         List<Cuota> cuotas5 = new ArrayList();
         cuotas5.add(cuota5);
         recibo5.setFecha(new Date(2023, Calendar.OCTOBER, 25));
-        recibo5.setOperador(CUENTA_ADMIN);
+        recibo5.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo5.setNroRecibo(141378);
         recibo5.setNroAnio(2023);
         recibo5.setNroMes(10);
@@ -313,7 +309,7 @@ public class Objetos{
         List<Cuota> cuotas61 = new ArrayList<>();
         cuotas61.add(cuota61);
         recibo61.setFecha(new Date(2023, Calendar.OCTOBER, 17));
-        recibo61.setOperador(CUENTA_ADMIN);
+        recibo61.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo61.setNroRecibo(131345);
         recibo61.setNroAnio(2023);
         recibo61.setNroMes(6);
@@ -332,7 +328,7 @@ public class Objetos{
         List<Cuota> cuotas62 = new ArrayList<>();
         cuotas62.add(cuota62);
         recibo62.setFecha(new Date(2023, Calendar.OCTOBER, 17));
-        recibo62.setOperador(CUENTA_ADMIN);
+        recibo62.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo62.setNroRecibo(131346);
         recibo62.setNroAnio(2023);
         recibo62.setNroMes(6);
@@ -351,7 +347,7 @@ public class Objetos{
         List<Cuota> cuotas7 = new ArrayList<>();
         cuotas7.add(cuota7);
         recibo7.setFecha(new Date(2023, Calendar.JANUARY, 17));
-        recibo7.setOperador(CUENTA_ADMIN);
+        recibo7.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo7.setNroRecibo(131655);
         recibo7.setNroAnio(2023);
         recibo7.setNroMes(1);
@@ -370,7 +366,7 @@ public class Objetos{
         List<Cuota> cuotas8 = new ArrayList<>();
         cuotas8.add(cuota8);
         recibo8.setFecha(new Date(2022, Calendar.AUGUST, 11));
-        recibo8.setOperador(CUENTA_ADMIN);
+        recibo8.setOperador(CargadorCuentas.CUENTA_ADMIN);
         recibo8.setNroRecibo(131656);
         recibo8.setNroAnio(2023);
         recibo8.setNroMes(9);
@@ -383,11 +379,11 @@ public class Objetos{
 
 
     public static HistorialFactor getHistorial() {
-        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CUENTA_ADMIN);
-        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1), CUENTA_ADMIN);
-        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CUENTA_ADMIN);
-        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33), CUENTA_ADMIN);
-        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12), CUENTA_ADMIN);
+        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CargadorCuentas.CUENTA_ADMIN);
+        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1), CargadorCuentas.CUENTA_ADMIN);
+        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), CargadorCuentas.CUENTA_ADMIN);
+        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33), CargadorCuentas.CUENTA_ADMIN);
+        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12), CargadorCuentas.CUENTA_ADMIN);
         HistorialFactor historial = new HistorialFactor();
         LinkedList<EntradaHistorialFactores> entradasList = new LinkedList<>();
         entradasList.add(entrada1);
