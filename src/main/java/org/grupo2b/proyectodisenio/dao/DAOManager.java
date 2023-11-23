@@ -31,6 +31,7 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -43,6 +44,7 @@ import java.util.Properties;
 public class DAOManager {
 
     private static Session session;
+    private static SessionFactory sessionFactory;
     public static Session getSession() {
         return session;
     }
@@ -94,7 +96,7 @@ public class DAOManager {
             put("hibernate.connection.username","Manager");
             put("hibernate.connection.password","s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;\";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[");
             put("show_sql","true");
-            put("hibernate.hbm2ddl.auto","create");
+            put("hibernate.hbm2ddl.auto","update");
             put("hibernate.jdbc.time_zone","UTC");
         }});
         //];4A9LPW(+rxm.ohTz&(8ruB6V?rUJQgcMQVt~I782'cq]ha8C72xHRGzK_+fc)&B__Yp5kIj/m*hfUzwO'PNcZEI4#z10}8p
@@ -131,6 +133,7 @@ public class DAOManager {
                 .addAnnotatedClass(Recibo.class)
                 .addAnnotatedClass(TipoCuenta.class);
         ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(properties).build();
+        sessionFactory = con.buildSessionFactory(reg);
         session = con.buildSessionFactory(reg).openSession();
 
         localidadDAO = new LocalidadDAOPSQL();
@@ -250,11 +253,21 @@ public class DAOManager {
         return o2;
     }
 
+    public static <T> void saveOrUpdate(T o){
+        Transaction tx = session.beginTransaction();
+        session.saveOrUpdate(o);
+        tx.commit();
+        session.clear();
+    }
+
     public static <T> void saveBatch(Collection<T> objs) {
         Transaction tx = session.beginTransaction();
         for (T obj : objs)
             session.merge(obj);
         tx.commit();
     }
-
+    public static void resetSession(){
+        session.close();
+        session = sessionFactory.openSession();
+    }
 }

@@ -3,6 +3,7 @@ package org.grupo2b.proyectodisenio.carga_datos;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.logica.CondicionIva;
+import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
@@ -408,6 +409,24 @@ public class Objetos{
         return historial;
     }
 
+    public static HistorialFactor getHistorial(Cuenta c) {
+        EntradaHistorialFactores entrada1 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), c);
+        EntradaHistorialFactores entrada2 = new EntradaHistorialFactores(1.5f, LocalDateTime.of(2023, 8, 8, 8, 52), LocalDateTime.of(2023, 8, 8, 12, 1), c);
+        EntradaHistorialFactores entrada3 = new EntradaHistorialFactores(1.1f, LocalDateTime.of(2023, 5, 4, 10, 6), LocalDateTime.of(2023, 5, 4, 12, 33), c);
+        EntradaHistorialFactores entrada4 = new EntradaHistorialFactores(1.15f, LocalDateTime.of(2023, 10, 15, 11, 6), LocalDateTime.of(2023, 10, 15, 12, 33), c);
+        EntradaHistorialFactores entrada5 = new EntradaHistorialFactores(1.2f, LocalDateTime.of(2023, 11, 3, 8, 48), LocalDateTime.of(2023, 11, 3, 12, 12), c);
+        HistorialFactor historial = new HistorialFactor();
+        LinkedList<EntradaHistorialFactores> entradasList = new LinkedList<>();
+        entradasList.add(entrada1);
+        entradasList.add(entrada2);
+        entradasList.add(entrada3);
+        entradasList.add(entrada4);
+        entradasList.add(entrada5);
+        historial.setEntradas(entradasList);
+        historial.setValorActualFactor(2f);
+        historial.setUltimaFecha(LocalDateTime.of(2023, 11, 12, 8, 48));
+        return historial;
+    }
 
     public static void save(){
         DAOManager.save(CLIENTE2);

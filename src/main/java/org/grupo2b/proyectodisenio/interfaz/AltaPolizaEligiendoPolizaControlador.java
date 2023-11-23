@@ -29,6 +29,8 @@ import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.carga_datos.Objetos;
 import org.grupo2b.proyectodisenio.logica.GestorClientes;
+import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
+import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
@@ -387,10 +389,9 @@ public class AltaPolizaEligiendoPolizaControlador {
         Cliente cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
         cliente.getVehiculos().add(vehiculo);
 
-
-
+        Cuenta c = GestorCuentas.getCuentaActiva();
         GestorPoliza.darAltaPoliza(fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
-                Integer.parseInt(premio.getText()), new DerechoEmision(Objetos.getHistorial()), new Descuento("D", Objetos.getHistorial()), tipoCoberturaObj, cuotasObj,
+                Integer.parseInt(premio.getText()), new DerechoEmision(Objetos.getHistorial(c)), new Descuento("D", Objetos.getHistorial(c)), tipoCoberturaObj, cuotasObj,
                 medidasSeguridad, vehiculo, declaraciones, cliente, instanciaParaVolver.nroSiniestrosV);
 
         Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
