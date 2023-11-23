@@ -12,4 +12,13 @@ public class GestorProvincia {
     public static List<Localidad> getLocalidadesFromProvincia(Provincia prov){
         return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(prov.getId());
     }
+    public static List<Localidad> getLocalidadesFromIdProvincia(int id){
+        return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(id);
+    }
+    public static List<Localidad> getLocalidadesFromProvincia(Provincia prov, int pageSize, int pageNumber){
+        return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(prov.getId(), pageSize, pageNumber);
+    }
+    public static List<Localidad> getLocalidadesFromIdProvincia(int id, int pageSize, int pageNumber){
+        return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(id, pageSize, pageNumber);
+    }
 }

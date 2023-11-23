@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -589,7 +591,28 @@ public class AltaPolizaCargandoDatosControlador {
 
     @FXML
     public void onProvinciaCambio(){
-        idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem())));
+        idCiudad.setItems(FXCollections.observableArrayList());
+        Thread t = new Thread(){
+            List<Localidad> l;
+            @Override
+            public void run() {
+                super.run();
+                for (int i=1; l==null||!l.isEmpty(); i++){
+                    l = GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem(), 25, i);
+                    System.out.println(i+" "+ l.size());
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            System.out.println("A");
+                            idCiudad.getItems().addAll(l);
+                        }
+                    });
+                }
+            }
+        };
+        t.start();
+        //List<Localidad> l =GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem(), 100, 1);
+        //idCiudad.setItems(FXCollections.observableArrayList(l));
     }
     @FXML void onMarcaChange(){
         idAnio.setItems(FXCollections.observableArrayList());

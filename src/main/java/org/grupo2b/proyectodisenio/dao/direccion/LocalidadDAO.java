@@ -11,5 +11,6 @@ public interface LocalidadDAO {
      * @return Lista de localidades en dicha provincia
      */
     List<Localidad> getLocalidadesFromIdProvincia(int id);
+    List<Localidad> getLocalidadesFromIdProvincia(int id, int pageSize, int pageNumber);
     Optional<Localidad> getLocalidad(int id);
 }

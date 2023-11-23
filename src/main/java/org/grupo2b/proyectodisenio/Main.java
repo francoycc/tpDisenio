@@ -13,6 +13,7 @@ import javafx.stage.StageStyle;
 import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
 import org.grupo2b.proyectodisenio.carga_datos.Objetos;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.logica.direccion.GestorProvincia;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -24,7 +25,7 @@ public class Main extends Application {
             StackPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("interfaz/PantallaCarga.fxml")));
             Scene scene = new Scene(root);
             stage.initStyle(StageStyle.TRANSPARENT);
-            stage.setAlwaysOnTop(false);
+            stage.setAlwaysOnTop(true);
             scene.setFill(Color.TRANSPARENT);
             stage.getIcons().add(new Image("/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces/logott.png"));
             stage.setTitle("EL ASEGURADO");
@@ -69,6 +70,6 @@ public class Main extends Application {
         t.start();
     }
     public static void main(String[] args) {
-         launch();
+        launch();
     }
 }
