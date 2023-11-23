@@ -1,7 +1,6 @@
 package org.grupo2b.proyectodisenio.carga_datos;
 
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.logica.Objetos;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;

@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class KmPorAnioDAOPSQL implements KmPorAnioDAO{
     @Override
-    public Optional<KmPorAnio> getFromRango(int km) {
+    public Optional<KmPorAnio> getFromNumero(int km) {
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<KmPorAnio> cr = cb.createQuery(KmPorAnio.class);
         Root<KmPorAnio> root = cr.from(KmPorAnio.class);

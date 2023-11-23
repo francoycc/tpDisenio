@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -19,19 +20,20 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
 import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
+import org.grupo2b.proyectodisenio.logica.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
+import org.grupo2b.proyectodisenio.logica.direccion.GestorProvincia;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
 import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
+import org.grupo2b.proyectodisenio.logica.poliza.GestorEstadosCiviles;
+import org.grupo2b.proyectodisenio.logica.poliza.GestorNumeroSiniestros;
 import org.grupo2b.proyectodisenio.logica.poliza.NumeroSiniestros;
-import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
+import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 
 public class AltaPolizaCargandoDatosControlador {
     @FXML private ResourceBundle resources;
@@ -331,7 +333,7 @@ public class AltaPolizaCargandoDatosControlador {
         if(idNroSiniestros.getValue()==null) { faltaNroSiniestros.setVisible(true); flag = 1;}
         //flag = 0;
         if(flag == 0) {
-            if(!DAOManager.vehiculoDAO().existeVehiculoAsociado(idPatente.getText(), idMotor.getText(), idChasis.getText())) {
+            if(!GestorVehiculos.existeVehiculoAsociado(idPatente.getText(), idMotor.getText(), idChasis.getText())) {
                 FXMLLoader loader = new FXMLLoader();
                 ScrollPane root = (ScrollPane) loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -366,7 +368,7 @@ public class AltaPolizaCargandoDatosControlador {
     public void recibeParametros(AltaPolizaControlador instanciaCargandoDatos, AltaPolizaControlador.DatosClienteTabla c) {
         instanciaBuscandoCliente_en_instanciaCargadoDatos=instanciaCargandoDatos;
         String nya = ""+c.getApellido()+" "+c.getNombre();
-        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),c.getNroDocumento(),nya, DAOManager.clienteDAO().getClienteFromNroCliente(c.nroCliente).get().getDomicilio());
+        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),c.getNroDocumento(),nya, GestorClientes.getClienteFromNroCliente(c.nroCliente).get().getDomicilio());
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
@@ -559,20 +561,26 @@ public class AltaPolizaCargandoDatosControlador {
         idAnio.setButtonCell(factoryAnio.call(null));
         idAnio.setCellFactory(factoryAnio);
 
-        idProvincia.getItems().addAll(DAOManager.provinciaDAO().getProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
-        idMarca.getItems().addAll(DAOManager.marcaDao().getMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
+        idProvincia.getItems().addAll(GestorProvincia.getProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
+        idMarca.getItems().addAll(GestorMarca.getMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
         //idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
         //idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
         idGarage.getItems().addAll("SI","NO");
         idDispositivoRastreo.getItems().addAll("SI","NO");
         idAlarma.getItems().addAll("SI","NO");
         idTuercaAntirrobo.getItems().addAll("SI","NO");
-        idNroSiniestros.getItems().addAll(DAOManager.numeroSiniestrosDAO().getNumeroSiniestrosList());
-        idNroSiniestros.setValue(DAOManager.numeroSiniestrosDAO().getNumeroSiniestros(0,0).get());
+
+        List<NumeroSiniestros> numeroSiniestros = GestorNumeroSiniestros.getNumeroSiniestrosList();
+        idNroSiniestros.getItems().addAll(numeroSiniestros);
+        for(NumeroSiniestros s : numeroSiniestros){
+            if(s.getCantSiniestrosInicial()==0)
+                idNroSiniestros.setValue(s);
+        }
+
         idSumaAsegurada.setText("1000000");
 
         comboBoxSexo.getItems().addAll(Sexo.MASCULINO,Sexo.FEMENINO);
-        comboBoxEstadoCivil.getItems().addAll(DAOManager.estadoCivilDAO().getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
+        comboBoxEstadoCivil.getItems().addAll(GestorEstadosCiviles.getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
 
         this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
         this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));
@@ -581,14 +589,14 @@ public class AltaPolizaCargandoDatosControlador {
 
     @FXML
     public void onProvinciaCambio(){
-        idCiudad.setItems(FXCollections.observableArrayList(DAOManager.localidadDAO().getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().getId())));
+        idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem())));
     }
     @FXML void onMarcaChange(){
         idAnio.setItems(FXCollections.observableArrayList());
-        idModelo.setItems(FXCollections.observableArrayList(DAOManager.modeloDAO().getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
+        idModelo.setItems(FXCollections.observableArrayList(GestorModelos.getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
     }
     @FXML void onModeloCambio(){
-        idAnio.setItems(FXCollections.observableArrayList(DAOManager.anioFabricacionDAO().getAnioFromModelo(idModelo.getSelectionModel().getSelectedItem())));
+        idAnio.setItems(FXCollections.observableArrayList(GestorAniosFabricacion.getAniosFabricacionFromModelo(idModelo.getSelectionModel().getSelectedItem())));
     }
 
 }

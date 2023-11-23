@@ -6,5 +6,5 @@ import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
 import java.util.List;
 
 public interface AnioFabricacionDAO {
-    List<AnioFabricacion> getAnioFromModelo(Modelo m);
+    List<AnioFabricacion> getAniosFromModelo(Modelo m);
 }

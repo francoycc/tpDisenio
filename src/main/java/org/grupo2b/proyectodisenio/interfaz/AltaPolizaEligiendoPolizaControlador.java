@@ -27,17 +27,15 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.Objetos;
+import org.grupo2b.proyectodisenio.carga_datos.Objetos;
+import org.grupo2b.proyectodisenio.logica.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
 import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
-import org.grupo2b.proyectodisenio.logica.vehiculo.AnioFabricacion;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
+import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 
 public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ResourceBundle resources;
@@ -363,7 +361,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         }
     }
     @FXML void confirmarGeneracionPoliza(ActionEvent event) {
-        List<MedidaDeSeguridad> medidasSeguridad = new ArrayList<>();
+        List<MedidaDeSeguridad> medidasSeguridad = new ArrayList<>();//TODO CARGA POR BASE DE DATOS PLS
         if(instanciaParaVolver.dispositivoRastreoV.equals("SI"))
             medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Rastreo").get());
         if(instanciaParaVolver.garageV.equals("SI"))
@@ -378,19 +376,22 @@ public class AltaPolizaEligiendoPolizaControlador {
             declaraciones.add(new DeclaracionHijo(t.fechaNacimiento, t.sexo, t.estadoCivil));
         }
 
-        Vehiculo vehiculo = new Vehiculo(0, motor.getText(), chasis.getText(), patente.getText(), modeloObj, DAOManager.kmPorAnioDAO().getFromRango(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get(), DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get().getDomicilio());
-        Optional<Vehiculo> vOpt = DAOManager.vehiculoDAO().getVehiculoFromPatente(patente.getText());
+        Vehiculo vehiculo = new Vehiculo(0, motor.getText(), chasis.getText(), patente.getText(), modeloObj, GestorKmPorAnio.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get(), GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get().getDomicilio());//TODO DOMICILIO RIESGO, NO EL DEL CLIENTE
+        Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
         if(vOpt.isPresent()){
-            //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE
+            if(vOpt.get().equals(vehiculo)){
+                //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE???
+            }
         }
 
-        Cliente c = DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
-        c.getVehiculos().add(vehiculo);
+        Cliente cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
+        cliente.getVehiculos().add(vehiculo);
 
-        Poliza p = new Poliza(fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
+
+
+        GestorPoliza.darAltaPoliza(fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
                 Integer.parseInt(premio.getText()), new DerechoEmision(Objetos.getHistorial()), new Descuento("D", Objetos.getHistorial()), tipoCoberturaObj, cuotasObj,
-                medidasSeguridad, vehiculo, declaraciones, DAOManager.clienteDAO().getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get(), instanciaParaVolver.nroSiniestrosV);
-        DAOManager.save(p);
+                medidasSeguridad, vehiculo, declaraciones, cliente, instanciaParaVolver.nroSiniestrosV);
 
         Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
         messageWindows.setTitle("Información");
@@ -434,12 +435,9 @@ public class AltaPolizaEligiendoPolizaControlador {
         idAnchorPane.setPrefHeight(720);
 
         ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                if (newValue == null) {
-                    toggleGroup.selectToggle(oldValue);
-                }
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                toggleGroup.selectToggle(oldValue);
             }
         });
         columnaCheck.setCellFactory(col -> {
@@ -469,7 +467,7 @@ public class AltaPolizaEligiendoPolizaControlador {
             return cell;
         });
 
-        Collection<TipoCobertura> tiposCobertura = DAOManager.tipoCoberturaDAO().getTiposCobertura();
+        Collection<TipoCobertura> tiposCobertura = GestorTiposCobertura.getTiposCobertura();
         List<tablaTipoCobertura> listaTabla = new ArrayList<>();
         for(TipoCobertura t : tiposCobertura)
             listaTabla.add(new tablaTipoCobertura(t, t.getDescripcion()));
@@ -555,10 +553,12 @@ public class AltaPolizaEligiendoPolizaControlador {
         public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
     }
     public static final Callback<TableColumn<tablaTipoCobertura,String>, TableCell<tablaTipoCobertura,String>> WRAPPING_CELL_FACTORY =
-            new Callback<TableColumn<tablaTipoCobertura,String>, TableCell<tablaTipoCobertura,String>>() {
-                @Override public TableCell<tablaTipoCobertura,String> call(TableColumn<tablaTipoCobertura,String> param) {
-                    TableCell<tablaTipoCobertura,String> tableCell = new TableCell<tablaTipoCobertura,String>() {
-                        @Override protected void updateItem(String item, boolean empty) {
+            new Callback<>() {
+                @Override
+                public TableCell<tablaTipoCobertura, String> call(TableColumn<tablaTipoCobertura, String> param) {
+                    TableCell<tablaTipoCobertura, String> tableCell = new TableCell<>() {
+                        @Override
+                        protected void updateItem(String item, boolean empty) {
                             if (item == getItem()) return;
                             super.updateItem(item, empty);
                             if (item == null) {
@@ -569,9 +569,9 @@ public class AltaPolizaEligiendoPolizaControlador {
                                 Label l = new Label(item);
                                 l.setWrapText(true);
                                 VBox box = new VBox(l);
-                                l.heightProperty().addListener((observable,oldValue,newValue)-> {
-                                    box.setPrefHeight(newValue.doubleValue()+7);
-                                    Platform.runLater(()->this.getTableRow().requestLayout());
+                                l.heightProperty().addListener((observable, oldValue, newValue) -> {
+                                    box.setPrefHeight(newValue.doubleValue() + 7);
+                                    Platform.runLater(() -> this.getTableRow().requestLayout());
                                 });
                                 super.setGraphic(box);
                             }

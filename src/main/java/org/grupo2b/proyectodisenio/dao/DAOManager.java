@@ -78,6 +78,7 @@ public class DAOManager {
     private static VehiculoDAO vehiculoDAO;
     private static NumeroSiniestrosDAO numeroSiniestrosDAO;
     private static KmPorAnioDAO kmPorAnioDAO;
+    private static PolizaDAO polizaDAO;
 
 
     public static void init(){}
@@ -150,6 +151,7 @@ public class DAOManager {
         vehiculoDAO = new VehiculoDAOPSQL();
         numeroSiniestrosDAO = new NumeroSiniestrosDAOPSQL();
         kmPorAnioDAO = new KmPorAnioDAOPSQL();
+        polizaDAO = new PolizaDAOPSQL();
     }
 
 
@@ -235,6 +237,9 @@ public class DAOManager {
 
     public static KmPorAnioDAO kmPorAnioDAO() {
         return kmPorAnioDAO;
+    }
+    public static PolizaDAO polizaDAO() {
+        return polizaDAO;
     }
 
     public static <T> T save(T o) {

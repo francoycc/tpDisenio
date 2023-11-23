@@ -14,7 +14,7 @@ import java.util.List;
 public class AnioFabricacionDAOPSQL implements AnioFabricacionDAO{
 
     @Override
-    public List<AnioFabricacion> getAnioFromModelo(Modelo m){
+    public List<AnioFabricacion> getAniosFromModelo(Modelo m){
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<AnioFabricacion> criteriaQuery = cb.createQuery(AnioFabricacion.class);
 

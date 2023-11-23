@@ -12,11 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
 import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
 import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.documento.Documento;
+import org.grupo2b.proyectodisenio.logica.documento.GestorDocumentos;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.io.IOException;
@@ -153,7 +154,10 @@ public class AltaPolizaControlador {
             errorApellido.setText("");
         }
         if (tipoDocumento.getValue()==null) {
-            tipoDocumento.setValue(DAOManager.tipoDocumentoDAO().getTipoDocumentoFromName("DNI").get());
+            for(TipoDocumento t : tipoDocumento.getItems()){
+                if(t.getNombre().equals("DNI"))
+                    tipoDocumento.setValue(t);
+            }
         }
         if (!nroDocumento.getText().matches("\\d+") && !nroDocumento.getText().isEmpty()) {
             errorNroDocumento.setText("Ingrese un Nro de Documento válido.");
@@ -178,7 +182,7 @@ public class AltaPolizaControlador {
     }
     public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, String nroDocumento) {
 
-        List<Cliente> results = DAOManager.clienteDAO().getClientes(nombre,apellido,nroCliente,nroDocumento,tipoDoc);
+        List<Cliente> results = GestorClientes.buscarClientes(nombre, apellido,nroCliente,tipoDoc, nroDocumento);
         for (Cliente c : results){
             DatosClienteTabla cliente = new DatosClienteTabla(
                     c.getNroCliente(),
@@ -297,7 +301,7 @@ public class AltaPolizaControlador {
         ComboBoxCellFactory<TipoDocumento> factory = new ComboBoxCellFactory<>(TipoDocumento::getNombre);
         tipoDocumento.setButtonCell(factory.call(null));
         tipoDocumento.setCellFactory(factory);
-        tipoDocumento.getItems().addAll(DAOManager.tipoDocumentoDAO().getTiposDocumento());
+        tipoDocumento.getItems().addAll(GestorDocumentos.getTiposDocumento());
 
         botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>("botonSelect"));
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));

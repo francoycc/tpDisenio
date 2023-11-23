@@ -5,5 +5,5 @@ import org.grupo2b.proyectodisenio.logica.vehiculo.KmPorAnio;
 import java.util.Optional;
 
 public interface KmPorAnioDAO {
-    Optional<KmPorAnio> getFromRango(int km);
+    Optional<KmPorAnio> getFromNumero(int km);
 }

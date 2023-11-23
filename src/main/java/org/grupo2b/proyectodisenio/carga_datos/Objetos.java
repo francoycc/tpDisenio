@@ -1,10 +1,8 @@
-package org.grupo2b.proyectodisenio.logica;
+package org.grupo2b.proyectodisenio.carga_datos;
 
-import org.grupo2b.proyectodisenio.carga_datos.CargadorCuentas;
-import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
-import org.grupo2b.proyectodisenio.logica.cuentas.TipoCuenta;
+import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.CondicionIva;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
