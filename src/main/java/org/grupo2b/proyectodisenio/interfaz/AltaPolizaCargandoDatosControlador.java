@@ -599,11 +599,9 @@ public class AltaPolizaCargandoDatosControlador {
                 super.run();
                 for (int i=1; l==null||!l.isEmpty(); i++){
                     l = GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem(), 25, i);
-                    System.out.println(i+" "+ l.size());
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            System.out.println("A");
                             idCiudad.getItems().addAll(l);
                         }
                     });
