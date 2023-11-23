@@ -57,7 +57,7 @@ public class Main extends Application {
                         stage2.setScene(scene);
                         stage2.show();
                         stage2.setAlwaysOnTop(false);
-                        stage2.getIcons().add(new Image("/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces/logot.png"));
+                        stage2.getIcons().add(new Image("/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces/logott.png"));
                         stage.close();
                     }
                 });

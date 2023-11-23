@@ -10,7 +10,7 @@
       <Image url="@zImagenesParaInterfaces/banner.jpg" />
    </ImageView>
    <ImageView fitHeight="355.0" fitWidth="328.0" layoutX="928.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@zImagenesParaInterfaces/logot.png" />
+      <Image url="@zImagenesParaInterfaces/logott.png" />
    </ImageView>
    <VBox layoutX="291.0" layoutY="323.0" prefHeight="328.0" prefWidth="630.0">
       <Text strokeType="INSIDE" strokeWidth="0.0" text="P r i m e r o   l a s   p e r s o n a s" wrappingWidth="578.4000244140625">
