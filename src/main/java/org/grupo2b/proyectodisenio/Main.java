@@ -4,36 +4,25 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.carga_datos.Objetos;
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
-import org.grupo2b.proyectodisenio.logica.poliza.DerechoEmision;
-import org.grupo2b.proyectodisenio.logica.poliza.Descuento;
-import org.grupo2b.proyectodisenio.logica.poliza.GestorPoliza;
-import org.grupo2b.proyectodisenio.logica.vehiculo.GestorKmPorAnio;
-import org.grupo2b.proyectodisenio.logica.vehiculo.GestorVehiculos;
-import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Optional;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws InterruptedException {
+    public void start(Stage stage) {
         try {
             StackPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("interfaz/PantallaCarga.fxml")));
             Scene scene = new Scene(root);
             stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setAlwaysOnTop(true);
             scene.setFill(Color.TRANSPARENT);
             stage.setTitle("EL ASEGURADO");
             stage.setResizable(false);
@@ -62,10 +51,13 @@ public class Main extends Application {
                         }
                         Scene scene = new Scene(root);
                         Stage stage2 = new Stage();
+                        stage2.setAlwaysOnTop(true);
                         stage2.setTitle("EL ASEGURADO");
                         stage2.setResizable(false);
                         stage2.setScene(scene);
                         stage2.show();
+                        stage2.setAlwaysOnTop(false);
+                        stage2.getIcons().add(new Image("/org/grupo2b/proyectodisenio/interfaz/zImagenesParaInterfaces/logot.png"));
                         stage.close();
                     }
                 });
