@@ -2,6 +2,7 @@ package org.grupo2b.proyectodisenio.logica.vehiculo;
 
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
+import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 
 @Entity
 public class Vehiculo {
@@ -25,20 +26,20 @@ public class Vehiculo {
     private KmPorAnio kmPorAnio;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_direccion")
-    private Direccion direccion;
+    private Localidad localidad;
 
 
 
 
     public Vehiculo(){}
-    public Vehiculo(int sumaAsegurada, String motor, String chasis, String patente, Modelo modelo, KmPorAnio kmPorAnio, Direccion direccion) {
+    public Vehiculo(int sumaAsegurada, String motor, String chasis, String patente, Modelo modelo, KmPorAnio kmPorAnio, Localidad localidad) {
         this.sumaAsegurada = sumaAsegurada;
         this.motor = motor;
         this.chasis = chasis;
         this.patente = patente;
         this.modelo = modelo;
         this.kmPorAnio = kmPorAnio;
-        this.direccion = direccion;
+        this.localidad = localidad;
     }
 
 
@@ -86,10 +87,10 @@ public class Vehiculo {
     public void setKmPorAnio(KmPorAnio kmPorAnio) {
         this.kmPorAnio = kmPorAnio;
     }
-    public Direccion getDireccion() {
-        return direccion;
+    public Localidad getLocalidad() {
+        return localidad;
     }
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
+    public void setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
     }
 }

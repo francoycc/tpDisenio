@@ -378,7 +378,7 @@ public class AltaPolizaEligiendoPolizaControlador {
             declaraciones.add(new DeclaracionHijo(t.fechaNacimiento, t.sexo, t.estadoCivil));
         }
 
-        Vehiculo vehiculo = new Vehiculo(0, motor.getText(), chasis.getText(), patente.getText(), modeloObj, GestorKmPorAnio.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get(), GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get().getDomicilio());//TODO DOMICILIO RIESGO, NO EL DEL CLIENTE
+        Vehiculo vehiculo = new Vehiculo(0, motor.getText(), chasis.getText(), patente.getText(), modeloObj, GestorKmPorAnio.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get(), instanciaParaVolver.ciudad);//TODO DOMICILIO RIESGO, NO EL DEL CLIENTE
         Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
         if(vOpt.isPresent()){
             if(vOpt.get().equals(vehiculo)){
