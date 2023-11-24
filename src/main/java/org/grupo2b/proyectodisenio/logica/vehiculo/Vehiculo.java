@@ -22,6 +22,9 @@ public class Vehiculo {
     @JoinColumn(name = "id_modelo")
     private Modelo modelo;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "id_aniofabricacion")
+    private AnioFabricacion anioFabricacion;
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_kmAnio")
     private KmPorAnio kmPorAnio;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
@@ -32,12 +35,13 @@ public class Vehiculo {
 
 
     public Vehiculo(){}
-    public Vehiculo(int sumaAsegurada, String motor, String chasis, String patente, Modelo modelo, KmPorAnio kmPorAnio, Localidad localidad) {
+    public Vehiculo(int sumaAsegurada, String motor, String chasis, String patente, Modelo modelo, AnioFabricacion anioFabricacion, KmPorAnio kmPorAnio, Localidad localidad) {
         this.sumaAsegurada = sumaAsegurada;
         this.motor = motor;
         this.chasis = chasis;
         this.patente = patente;
         this.modelo = modelo;
+        this.anioFabricacion = anioFabricacion;
         this.kmPorAnio = kmPorAnio;
         this.localidad = localidad;
     }
@@ -80,6 +84,12 @@ public class Vehiculo {
     }
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
+    }
+    public AnioFabricacion getAnioFabricacion() {
+        return anioFabricacion;
+    }
+    public void setAnioFabricacion(AnioFabricacion anioFabricacion) {
+        this.anioFabricacion = anioFabricacion;
     }
     public KmPorAnio getKmPorAnio() {
         return kmPorAnio;
