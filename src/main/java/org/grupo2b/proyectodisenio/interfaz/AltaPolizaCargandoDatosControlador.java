@@ -382,9 +382,8 @@ public class AltaPolizaCargandoDatosControlador {
                                          String chasisText, String patenteText, String kmRealizadosV, String garageV,
                                          String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV,
                                          ObservableList<TablaHijos> listaDeHijos) {
-        ///////////////////////esto desp lo implemento me dio paja//////////////////////
-        //clientesList.add(cliente);
-        //tablaMostrarClientes.setItems(clientesList);
+        clientesList.add(cliente.getFirst());
+        tablaMostrarClientes.setItems(clientesList);
         idProvincia.setValue(provincia);
         idCiudad.setValue(ciudad);
         idMarca.setValue(marca);
@@ -400,8 +399,10 @@ public class AltaPolizaCargandoDatosControlador {
         idAlarma.setValue(alarmaV);
         idTuercaAntirrobo.setValue(tuercaAntirroboV);
         idNroSiniestros.setValue(nroSiniestrosV);
-        //hijosList.add(listaDeHijos);
-        //tablaHijos.setItems(hijosList);
+        for(TablaHijos i: listaDeHijos) {
+            hijosList.add(i);
+        }
+        tablaHijos.setItems(hijosList);
         onProvinciaCambio();
         onMarcaChange();
         onModeloCambio();
