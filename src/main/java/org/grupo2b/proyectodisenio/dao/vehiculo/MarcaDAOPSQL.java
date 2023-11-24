@@ -4,6 +4,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.dao.DAOPSQL;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
@@ -16,14 +17,14 @@ public class MarcaDAOPSQL implements MarcaDao{
 
     @Override
     public List<Marca> getMarcas(){
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
         CriteriaQuery<Marca> cr = cb.createQuery(Marca.class);
         Root<Marca> root = cr.from(Marca.class);
 
         cr.select(root);
         cr.orderBy(cb.asc(root.get("nombre")));
 
-        Query<Marca> query = DAOManager.getSession().createQuery(cr);
+        Query<Marca> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         return query.getResultList();
     }
 

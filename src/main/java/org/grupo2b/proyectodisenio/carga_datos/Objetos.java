@@ -429,16 +429,16 @@ public class Objetos{
     }
 
     public static void save(){
-        DAOManager.save(CLIENTE2);
-        DAOManager.save(POLIZA1);
-        DAOManager.save(POLIZA2);
-        DAOManager.save(POLIZA3);
-        DAOManager.save(POLIZA4);
-        DAOManager.save(POLIZA5);
-        DAOManager.save(POLIZA61);
-        DAOManager.save(POLIZA62);
-        DAOManager.save(POLIZA8);
-        DAOManager.save(POLIZA7);
+        DAOManager.dao().save(CLIENTE2);
+        DAOManager.dao().save(POLIZA1);
+        DAOManager.dao().save(POLIZA2);
+        DAOManager.dao().save(POLIZA3);
+        DAOManager.dao().save(POLIZA4);
+        DAOManager.dao().save(POLIZA5);
+        DAOManager.dao().save(POLIZA61);
+        DAOManager.dao().save(POLIZA62);
+        DAOManager.dao().save(POLIZA8);
+        DAOManager.dao().save(POLIZA7);
     }
 }
 

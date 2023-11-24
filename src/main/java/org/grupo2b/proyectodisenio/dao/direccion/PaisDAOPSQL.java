@@ -4,6 +4,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.dao.DAOPSQL;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.hibernate.query.Query;
 
@@ -13,13 +14,13 @@ public class PaisDAOPSQL implements PaisDAO {
 
     @Override
     public List<Pais> getPaises(){
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
         CriteriaQuery<Pais> cr = cb.createQuery(Pais.class);
         Root<Pais> root = cr.from(Pais.class);
 
         cr.select(root);
 
-        Query<Pais> query = DAOManager.getSession().createQuery(cr);
+        Query<Pais> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
        return query.getResultList();
     }
 }
