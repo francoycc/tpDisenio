@@ -15,9 +15,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaCargandoDatosControlador">
+<ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="980.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaCargandoDatosControlador">
    <content>
-      <AnchorPane fx:id="anchorPane" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0" stylesheets="@estilos.css">
+      <AnchorPane fx:id="anchorPane" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="980.0" prefWidth="1280.0" stylesheets="@estilos.css">
          <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
             <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" text="INICIO" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #ff0000; -fx-border-color: black;" text="ALTA PÓLIZA" />
@@ -96,21 +96,30 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaProvincia" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaProvincia" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idProvincia" onAction="#onProvinciaCambio" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
-                     <Label fx:id="faltaCiudad" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <ComboBox fx:id="idProvincia" onAction="#onProvinciaCambio" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar">
+                        <HBox.margin>
+                           <Insets left="5.0" />
+                        </HBox.margin></ComboBox>
+                     <Label fx:id="faltaCiudad" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idCiudad" prefHeight="20.0" prefWidth="446.0" promptText="Seleccionar" />
@@ -162,30 +171,39 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaMarca" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaMarca" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idMarca" onAction="#onMarcaChange" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
-                     <Label fx:id="faltaModelo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaModelo" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idModelo" onAction="#onModeloCambio" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
-                     <Label fx:id="faltaAnio" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaAnio" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idAnio" prefHeight="20.0" prefWidth="280.0" promptText="Seleccionar" />
@@ -236,21 +254,27 @@
                         </padding>
                      </Label>
                      <TextField fx:id="idSumaAsegurada" prefHeight="20.0" prefWidth="300.0" />
-                     <Label fx:id="faltaMotor" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaMotor" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <TextField fx:id="idMotor" prefWidth="300.0" />
-                     <Label fx:id="faltaChasis" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaChasis" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <TextField fx:id="idChasis" prefWidth="280.0" />
@@ -290,12 +314,15 @@
                         </padding>
                      </Label>
                      <TextField fx:id="idPatente" prefHeight="20.0" prefWidth="467.5" />
-                     <Label fx:id="faltaKmRealizados" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaKmRealizados" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <TextField fx:id="idKmRealizados" prefHeight="20.0" prefWidth="446.0" />
@@ -339,21 +366,27 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaGarage" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaGarage" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idGarage" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
-                     <Label fx:id="faltaDispositivoRastreo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaDispositivoRastreo" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idDispositivoRastreo" prefHeight="20.0" prefWidth="446.0" promptText="Seleccionar" />
@@ -384,21 +417,27 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaAlarma" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaAlarma" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idAlarma" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
-                     <Label fx:id="faltaTuercaAntirrobo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaTuercaAntirrobo" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets left="10.0" right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets left="10.0" right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idTuercaAntirrobo" prefHeight="20.0" prefWidth="446.0" promptText="Seleccionar" />
@@ -424,12 +463,15 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaNroSiniestros" style="-fx-text-fill: red;" text="⛔" textFill="RED">
+                     <Label fx:id="faltaNroSiniestros" style="-fx-text-fill: red; -fx-background-color: black;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
+                        <HBox.margin>
+                           <Insets right="5.0" top="4.0" />
+                        </HBox.margin>
                         <padding>
-                           <Insets right="5.0" />
+                           <Insets bottom="-4.0" top="-4.0" />
                         </padding>
                      </Label>
                      <ComboBox fx:id="idNroSiniestros" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />

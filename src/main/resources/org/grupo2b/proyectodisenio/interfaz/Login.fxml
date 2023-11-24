@@ -11,14 +11,26 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.LoginControlador">
    <children>
-      <VBox alignment="CENTER" layoutX="440.0" layoutY="210.0" maxHeight="300.0" maxWidth="400.0" minHeight="300.0" minWidth="400.0" prefHeight="300.0" prefWidth="400.0" spacing="20.0" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0" AnchorPane.topAnchor="210.0">
+      <VBox alignment="CENTER" layoutX="370.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="300.0" minWidth="540.0" prefHeight="300.0" prefWidth="400.0" spacing="20.0">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <TextField fx:id="idusuario" prefWidth="0.0" promptText="Usuario (*)" />
-            <PasswordField fx:id="idcontrasenia" promptText="Contraseña(*)" />
-            <Label fx:id="textoDeError" style="-fx-text-fill: red; -fx-background-color: black;" textFill="#f40000" />
+            <TextField fx:id="idusuario" prefWidth="0.0" promptText="Usuario (*)">
+               <VBox.margin>
+                  <Insets left="80.0" right="80.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="idcontrasenia" promptText="Contraseña(*)">
+               <VBox.margin>
+                  <Insets left="80.0" right="80.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Label fx:id="textoDeError" style="-fx-text-fill: #8b0000;" stylesheets="@../../../../../../../../TP2023/src/main/resources/ds/tp2023/estilos.css" text="Usuario o Contraseña no válidos, Por favor, inténtalo de nuevo." textFill="#f40000">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
             <Button fx:id="idbotonlogin" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="180.0" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />

@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -318,8 +319,8 @@ public class AltaPolizaEligiendoPolizaControlador {
             vboxPagoSemestral.setVisible(false);
             botonera.setVisible(true);
             botonera.setLayoutY(1190);
-            idAnchorPane.setPrefHeight(1730);
-            idScrollPane.setPrefHeight(1730);
+            idAnchorPane.setPrefHeight(1750);
+            idScrollPane.setPrefHeight(1750);
 
             formaPagoObj = FormaPago.MENSUAL;
             fechaInicioVigenciaObj = fechaInicioVigencia.getValue();
@@ -349,14 +350,13 @@ public class AltaPolizaEligiendoPolizaControlador {
             montoTotalPorMes7.setText("30000");
         } else if(Objects.equals(comboBoxFormaPago.getValue(), "Semestral")) {
             mostrarProgresBar();
-            anchorPaneLuegoQpresioneConfirmar.setVisible(true);
             vboxPagoMensual.setVisible(false);
             vboxPagoSemestral.setVisible(true);
             vboxPagoSemestral.setLayoutY(650);
             botonera.setVisible(true);
             botonera.setLayoutY(750);
-            idAnchorPane.setPrefHeight(1300);
-            idScrollPane.setPrefHeight(1300);
+            idAnchorPane.setPrefHeight(1320);
+            idScrollPane.setPrefHeight(1320);
 
             formaPagoObj = FormaPago.SEMESTRAL;
             fechaInicioVigenciaObj = fechaInicioVigencia.getValue();
@@ -544,6 +544,19 @@ public class AltaPolizaEligiendoPolizaControlador {
         ultimoDiaDePago6.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
         montoTotalSemestral.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
         ultimoDiadePagoSemestral.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        chichesParaComboBoxs(comboBoxFormaPago);
+    }
+    public void chichesParaComboBoxs(ComboBox combo) {
+        combo.addEventFilter(KeyEvent.KEY_PRESSED, evt -> {
+            if (evt.getCode() == KeyCode.ENTER || evt.getCode() == KeyCode.UP || evt.getCode() == KeyCode.DOWN) {
+                combo.show();
+            }
+        });
+        combo.setOnKeyPressed(evt -> {
+            if (evt.getCode() == KeyCode.ENTER) {
+                combo.setValue(combo.getSelectionModel().getSelectedItem());
+            }
+        });
     }
     boolean seEligioTipoCobertura = false;
     AltaPolizaCargandoDatosControlador instancia_1_en_2;

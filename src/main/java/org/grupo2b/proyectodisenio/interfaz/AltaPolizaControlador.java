@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
@@ -345,6 +346,19 @@ public class AltaPolizaControlador {
         tipoDocumento.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 textAux.setVisible(false);
+            }
+        });
+        chichesParaComboBoxs(tipoDocumento);
+    }
+    public void chichesParaComboBoxs(ComboBox combo) {
+        combo.addEventFilter(KeyEvent.KEY_PRESSED, evt -> {
+            if (evt.getCode() == KeyCode.ENTER || evt.getCode() == KeyCode.UP || evt.getCode() == KeyCode.DOWN) {
+                combo.show();
+            }
+        });
+        combo.setOnKeyPressed(evt -> {
+            if (evt.getCode() == KeyCode.ENTER) {
+                combo.setValue(combo.getSelectionModel().getSelectedItem());
             }
         });
     }

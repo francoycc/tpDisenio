@@ -2,6 +2,7 @@ package org.grupo2b.proyectodisenio.interfaz;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -17,17 +18,14 @@ import java.util.Objects;
 
 
 public class LoginControlador {
-    public TextField idusuario;
-    public TextField idcontrasenia;
-    public Button idbotonlogin;
+    @FXML private TextField idusuario;
+    @FXML private TextField idcontrasenia;
+    @FXML private Button idbotonlogin;
+    @FXML private Label textoDeError;
     String UsuarioField, ContraseniaField;
-
-    public Label textoDeError;
-
     public void login(ActionEvent event) throws IOException {
         UsuarioField = idusuario.getText();
         ContraseniaField = idcontrasenia.getText();
-
 
         if (GestorCuentas.login(UsuarioField, ContraseniaField)) {
             if (GestorCuentas.getTipoCuenta().getNombre().equals("ProductorSeguros")) {
@@ -42,7 +40,15 @@ public class LoginControlador {
             }else
                 throw new RuntimeException("No Implementado");
         } else {
-            textoDeError.setText("Usuario o Contraseña no válidos, Por favor, inténtalo de nuevo.");
+            textoDeError.setVisible(true);
         }
+    }
+
+    @FXML void initialize() {
+        assert idbotonlogin != null : "fx:id=\"idbotonlogin\" was not injected: check your FXML file 'Login.fxml'.";
+        assert idcontrasenia != null : "fx:id=\"idcontrasenia\" was not injected: check your FXML file 'Login.fxml'.";
+        assert idusuario != null : "fx:id=\"idusuario\" was not injected: check your FXML file 'Login.fxml'.";
+        assert textoDeError != null : "fx:id=\"textoDeError\" was not injected: check your FXML file 'Login.fxml'.";
+        textoDeError.setVisible(false);
     }
 }

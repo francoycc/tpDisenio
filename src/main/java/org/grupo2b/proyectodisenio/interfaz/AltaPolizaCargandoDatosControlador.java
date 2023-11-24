@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -599,6 +600,30 @@ public class AltaPolizaCargandoDatosControlador {
             if (!inputChar.matches("\\d")) {
                 event.consume();
             }});
+        chichesParaComboBoxs(idProvincia);
+        chichesParaComboBoxs(idCiudad);
+        chichesParaComboBoxs(idMarca);
+        chichesParaComboBoxs(idModelo);
+        chichesParaComboBoxs(idAnio);
+        chichesParaComboBoxs(idGarage);
+        chichesParaComboBoxs(idAlarma);
+        chichesParaComboBoxs(idTuercaAntirrobo);
+        chichesParaComboBoxs(idDispositivoRastreo);
+        chichesParaComboBoxs(idNroSiniestros);
+        chichesParaComboBoxs(comboBoxSexo);
+        chichesParaComboBoxs(comboBoxEstadoCivil);
+    }
+    public void chichesParaComboBoxs(ComboBox combo) {
+        combo.addEventFilter(KeyEvent.KEY_PRESSED, evt -> {
+            if (evt.getCode() == KeyCode.ENTER || evt.getCode() == KeyCode.UP || evt.getCode() == KeyCode.DOWN) {
+                combo.show();
+            }
+        });
+        combo.setOnKeyPressed(evt -> {
+            if (evt.getCode() == KeyCode.ENTER) {
+                combo.setValue(combo.getSelectionModel().getSelectedItem());
+            }
+        });
     }
     @FXML public void onProvinciaCambio(){
         idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem())));
