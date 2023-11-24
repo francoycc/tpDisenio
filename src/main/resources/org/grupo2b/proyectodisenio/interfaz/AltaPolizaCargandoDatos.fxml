@@ -104,7 +104,7 @@
                            <Insets right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idProvincia" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
+                     <ComboBox fx:id="idProvincia" onAction="#onProvinciaCambio" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
                      <Label fx:id="faltaCiudad" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
@@ -170,7 +170,7 @@
                            <Insets right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idMarca" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
+                     <ComboBox fx:id="idMarca" onAction="#onMarcaChange" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
                      <Label fx:id="faltaModelo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
@@ -179,7 +179,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idModelo" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
+                     <ComboBox fx:id="idModelo" onAction="#onModeloCambio" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
                      <Label fx:id="faltaAnio" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
