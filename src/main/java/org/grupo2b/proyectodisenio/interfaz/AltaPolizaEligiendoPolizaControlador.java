@@ -5,9 +5,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 
+import javafx.animation.Animation;
+import javafx.animation.PauseTransition;
+import javafx.animation.Transition;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.carga_datos.Objetos;
@@ -93,6 +95,8 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private Pane anchorPaneLuegoQpresioneConfirmar;
     @FXML private ScrollPane idScrollPane;
 
+    @FXML private ProgressIndicator progreesBar;
+
     //DATOS GENERACION POLIZA
     private Marca marcaObj;
     private Modelo modeloObj;
@@ -120,6 +124,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -249,6 +254,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                         instanciaParaVolver.getNroSiniestrosV(), instanciaParaVolver.getListaDeHijos());
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root, 1280, 720);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -274,6 +280,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -306,7 +313,7 @@ public class AltaPolizaEligiendoPolizaControlador {
                 messageWindows.showAndWait();
             }
         } else if(Objects.equals(comboBoxFormaPago.getValue(), "Mensual")) {
-            anchorPaneLuegoQpresioneConfirmar.setVisible(true);
+            mostrarProgresBar();
             vboxPagoMensual.setVisible(true);
             vboxPagoSemestral.setVisible(false);
             botonera.setVisible(true);
@@ -341,6 +348,7 @@ public class AltaPolizaEligiendoPolizaControlador {
             montoTotalPorMes6.setText("5000");
             montoTotalPorMes7.setText("30000");
         } else if(Objects.equals(comboBoxFormaPago.getValue(), "Semestral")) {
+            mostrarProgresBar();
             anchorPaneLuegoQpresioneConfirmar.setVisible(true);
             vboxPagoMensual.setVisible(false);
             vboxPagoSemestral.setVisible(true);
@@ -361,6 +369,25 @@ public class AltaPolizaEligiendoPolizaControlador {
             ultimoDiadePagoSemestral.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6).toString());
             montoTotalSemestral.setText("30000");
         }
+    }
+    private void mostrarProgresBar() {
+        anchorPaneLuegoQpresioneConfirmar.setVisible(false);
+        progreesBar.setVisible(true);
+        progreesBar.setProgress(0);
+        progreesBar.setStyle("-fx-progress-color: #800000");
+        progreesBar.setVisible(true);
+        Animation animation = new Transition() {
+            {setCycleDuration(Duration.seconds(2));}
+            protected void interpolate(double frac) {progreesBar.setProgress(frac);}};
+        animation.setOnFinished(event -> {
+            PauseTransition delay = new PauseTransition(Duration.seconds(1));
+            delay.setOnFinished( e ->  {
+                progreesBar.setVisible(false);
+                anchorPaneLuegoQpresioneConfirmar.setVisible(true);
+            });
+            delay.play();
+        });
+        animation.play();
     }
     @FXML void confirmarGeneracionPoliza(ActionEvent event) {
         List<MedidaDeSeguridad> medidasSeguridad = new ArrayList<>();//TODO CARGA POR BASE DE DATOS PLS
@@ -434,6 +461,8 @@ public class AltaPolizaEligiendoPolizaControlador {
         columnaDescripcion.setCellFactory(WRAPPING_CELL_FACTORY);
 
         idAnchorPane.setPrefHeight(720);
+        idScrollPane.setPrefHeight(720);
+        progreesBar.setVisible(false);
 
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {

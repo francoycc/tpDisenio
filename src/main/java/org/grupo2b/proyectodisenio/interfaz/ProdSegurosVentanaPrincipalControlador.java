@@ -25,12 +25,12 @@ public class ProdSegurosVentanaPrincipalControlador {
     @FXML
     private Button idBotonAltaPoliza;
 
-    @FXML
-    void irInterfazAltaPoliza(Event event) throws IOException {
+    @FXML void irInterfazAltaPoliza(Event event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AltaPoliza.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("EL ASEGURADO");
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

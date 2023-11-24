@@ -17,27 +17,30 @@
 
 <ScrollPane hbarPolicy="NEVER" maxHeight="1200.0" minHeight="900.0" prefHeight="1000.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaCargandoDatosControlador">
    <content>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0">
-         <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
-            <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="INICIO" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="ALTA PÓLIZA" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA CLIENTE" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR CLIENTE" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="GENERAR PROPUESTAS RENOVACIÓN" />
+      <AnchorPane fx:id="anchorPane" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1280.0" stylesheets="@estilos.css">
+         <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" text="INICIO" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #ff0000; -fx-border-color: black;" text="ALTA PÓLIZA" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR PÓLIZA" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ALTA CLIENTE" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR CLIENTE" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ACTUALIZAR FACTORES" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERAR PROPUESTAS RENOVACIÓN" />
          </VBox>
-         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="250.0" text="ALTA PÓLIZA" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="250.0" style="-fx-text-fill: #ffffff; -fx-background-color: #720000; -fx-border-color: white; -fx-border-radius: 5px; -fx-border-insets: -1px; -fx-border-width: 3px;" text="ALTA PÓLIZA" textFill="WHITE" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="0.0">
             <font>
-               <Font size="16.0" />
+               <Font name="System Bold Italic" size="16.0" />
             </font>
+            <padding>
+               <Insets left="20.0" />
+            </padding>
          </Label>
-         <Button fx:id="idBotonBuscarCliente" layoutX="1146.0" layoutY="13.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #0000ff; -fx-border-color: #000000; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.45), 6, 0, 0, 0);" text="🔍BUSCAR CLIENTE" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Button fx:id="idBotonBuscarCliente" layoutX="1146.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="24.0" prefWidth="250.0" text="🔍BUSCAR CLIENTE" textFill="WHITE" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="3.0">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <TableView fx:id="tablaMostrarClientes" editable="true" layoutX="250.0" layoutY="30.0" prefHeight="60.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <TableView fx:id="tablaMostrarClientes" editable="true" layoutX="250.0" layoutY="30.0" prefHeight="62.0" prefWidth="1030.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="30.0">
             <columns>
                <TableColumn fx:id="nroClienteColumna" maxWidth="257.5" minWidth="257.5" prefWidth="257.5" text="Nro Cliente" />
                <TableColumn fx:id="tipoYNroDocColumna" maxWidth="257.5" minWidth="257.5" prefWidth="257.5" text="Tipo y Nro de Documento" />
@@ -48,14 +51,14 @@
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
          </TableView>
-         <VBox layoutX="296.0" layoutY="469.0" prefHeight="400.0" prefWidth="1030.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+         <VBox layoutX="296.0" layoutY="469.0" prefHeight="400.0" prefWidth="1030.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="88.0">
             <children>
-               <Label prefWidth="1030.0" style="-fx-background-color: dcdcdc;" text="      INGRESE DATOS DE PÓLIZA">
+               <Label prefHeight="12.0" prefWidth="1030.0" style="-fx-background-color: #800000; -fx-text-fill: #ffffff;" text="      INGRESE DATOS DE PÓLIZA" textFill="WHITE">
                   <VBox.margin>
-                     <Insets />
+                     <Insets left="2.0" />
                   </VBox.margin>
                   <font>
-                     <Font size="16.0" />
+                     <Font name="System Bold Italic" size="16.0" />
                   </font>
                </Label>
                <Label prefWidth="1030.0" text="Domicilio de Riesgo                   ">
@@ -93,7 +96,7 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaProvincia" text="⛔" textFill="RED">
+                     <Label fx:id="faltaProvincia" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -101,8 +104,8 @@
                            <Insets right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idProvincia" onAction="#onProvinciaCambio" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
-                     <Label fx:id="faltaCiudad" text="⛔" textFill="RED">
+                     <ComboBox fx:id="idProvincia" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
+                     <Label fx:id="faltaCiudad" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -110,7 +113,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idCiudad" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
+                     <ComboBox fx:id="idCiudad" prefHeight="20.0" prefWidth="446.0" promptText="Seleccionar" />
                   </children>
                   <VBox.margin>
                      <Insets left="20.0" />
@@ -159,7 +162,7 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaMarca" text="⛔" textFill="RED">
+                     <Label fx:id="faltaMarca" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -167,8 +170,8 @@
                            <Insets right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idMarca" onAction="#onMarcaChange" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
-                     <Label fx:id="faltaModelo" text="⛔" textFill="RED">
+                     <ComboBox fx:id="idMarca" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
+                     <Label fx:id="faltaModelo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -176,8 +179,8 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idModelo" onAction="#onModeloCambio" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
-                     <Label fx:id="faltaAnio" text="⛔" textFill="RED">
+                     <ComboBox fx:id="idModelo" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
+                     <Label fx:id="faltaAnio" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -185,7 +188,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idAnio" prefHeight="20.0" prefWidth="300.0" promptText="Seleccionar" />
+                     <ComboBox fx:id="idAnio" prefHeight="20.0" prefWidth="280.0" promptText="Seleccionar" />
                   </children>
                   <VBox.margin>
                      <Insets left="20.0" />
@@ -233,7 +236,7 @@
                         </padding>
                      </Label>
                      <TextField fx:id="idSumaAsegurada" prefHeight="20.0" prefWidth="300.0" />
-                     <Label fx:id="faltaMotor" text="⛔" textFill="RED">
+                     <Label fx:id="faltaMotor" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -242,7 +245,7 @@
                         </padding>
                      </Label>
                      <TextField fx:id="idMotor" prefWidth="300.0" />
-                     <Label fx:id="faltaChasis" text="⛔" textFill="RED">
+                     <Label fx:id="faltaChasis" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -250,7 +253,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <TextField fx:id="idChasis" prefWidth="300.0" />
+                     <TextField fx:id="idChasis" prefWidth="280.0" />
                   </children>
                   <VBox.margin>
                      <Insets left="20.0" />
@@ -287,7 +290,7 @@
                         </padding>
                      </Label>
                      <TextField fx:id="idPatente" prefHeight="20.0" prefWidth="467.5" />
-                     <Label fx:id="faltaKmRealizados" text="⛔" textFill="RED">
+                     <Label fx:id="faltaKmRealizados" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -295,7 +298,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <TextField fx:id="idKmRealizados" prefHeight="20.0" prefWidth="467.5" />
+                     <TextField fx:id="idKmRealizados" prefHeight="20.0" prefWidth="446.0" />
                   </children>
                   <VBox.margin>
                      <Insets left="20.0" />
@@ -336,7 +339,7 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaGarage" text="⛔" textFill="RED">
+                     <Label fx:id="faltaGarage" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -345,7 +348,7 @@
                         </padding>
                      </Label>
                      <ComboBox fx:id="idGarage" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
-                     <Label fx:id="faltaDispositivoRastreo" text="⛔" textFill="RED">
+                     <Label fx:id="faltaDispositivoRastreo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -353,7 +356,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idDispositivoRastreo" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
+                     <ComboBox fx:id="idDispositivoRastreo" prefHeight="20.0" prefWidth="446.0" promptText="Seleccionar" />
                   </children>
                   <VBox.margin>
                      <Insets left="20.0" />
@@ -381,7 +384,7 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaAlarma" text="⛔" textFill="RED">
+                     <Label fx:id="faltaAlarma" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -390,7 +393,7 @@
                         </padding>
                      </Label>
                      <ComboBox fx:id="idAlarma" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
-                     <Label fx:id="faltaTuercaAntirrobo" text="⛔" textFill="RED">
+                     <Label fx:id="faltaTuercaAntirrobo" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -398,7 +401,7 @@
                            <Insets left="10.0" right="5.0" />
                         </padding>
                      </Label>
-                     <ComboBox fx:id="idTuercaAntirrobo" prefHeight="20.0" prefWidth="467.5" promptText="Seleccionar" />
+                     <ComboBox fx:id="idTuercaAntirrobo" prefHeight="20.0" prefWidth="446.0" promptText="Seleccionar" />
                   </children>
                   <VBox.margin>
                      <Insets left="20.0" />
@@ -421,7 +424,7 @@
                </HBox>
                <HBox prefHeight="20.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="faltaNroSiniestros" text="⛔" textFill="RED">
+                     <Label fx:id="faltaNroSiniestros" style="-fx-text-fill: red;" text="⛔" textFill="RED">
                         <font>
                            <Font name="System Bold" size="18.0" />
                         </font>
@@ -501,17 +504,20 @@
                            </ComboBox>
                         </children>
                      </VBox>
-                     <TableView fx:id="tablaHijos" minHeight="150.0" minWidth="750.0" onMouseClicked="#seleccionar" prefHeight="150.0" prefWidth="750.0">
+                     <TableView fx:id="tablaHijos" minHeight="150.0" minWidth="-Infinity" onMouseClicked="#seleccionar" prefHeight="150.0" prefWidth="660.0">
                         <columns>
-                           <TableColumn fx:id="fechaNacimientoColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Fecha de Nacimiento" />
-                           <TableColumn fx:id="sexoColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Sexo" />
-                           <TableColumn fx:id="estadoCivilColumna" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Estado Civil" />
+                           <TableColumn fx:id="fechaNacimientoColumna" maxWidth="-Infinity" minWidth="200.0" prefWidth="250.0" text="Fecha de Nacimiento" />
+                           <TableColumn fx:id="sexoColumna" maxWidth="-Infinity" minWidth="210.0" prefWidth="250.0" text="Sexo" />
+                           <TableColumn fx:id="estadoCivilColumna" maxWidth="-Infinity" minWidth="246.0" prefWidth="230.0" text="Estado Civil" />
                         </columns>
                         <HBox.margin>
-                           <Insets top="20.0" />
+                           <Insets left="40.0" top="20.0" />
                         </HBox.margin>
                      </TableView>
                   </children>
+                  <VBox.margin>
+                     <Insets right="16.0" />
+                  </VBox.margin>
                </HBox>
                <HBox minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0">
                   <children>
@@ -522,7 +528,7 @@
                      </Button>
                      <Button fx:id="botonModificarHijo" mnemonicParsing="false" onAction="#modificarHijo" prefHeight="20.0" prefWidth="130.0" text="MODIFICAR HIJO">
                         <HBox.margin>
-                           <Insets left="20.0" right="20.0" />
+                           <Insets left="40.0" right="20.0" />
                         </HBox.margin>
                      </Button>
                      <Button fx:id="botonEliminarHijo" mnemonicParsing="false" onAction="#eliminarHijo" prefHeight="20.0" prefWidth="130.0" text="ELIMINAR HIJO">
@@ -532,7 +538,7 @@
                      </Button>
                      <Button fx:id="botonCancelar" mnemonicParsing="false" onAction="#cancelar" prefHeight="20.0" prefWidth="85.0" text="CANCELAR">
                         <HBox.margin>
-                           <Insets left="150.0" right="20.0" />
+                           <Insets left="120.0" right="20.0" />
                         </HBox.margin>
                      </Button>
                      <Button fx:id="botonSiguiente" mnemonicParsing="false" onAction="#siguiente" prefHeight="20.0" prefWidth="85.0" text="SIGUIENTE">

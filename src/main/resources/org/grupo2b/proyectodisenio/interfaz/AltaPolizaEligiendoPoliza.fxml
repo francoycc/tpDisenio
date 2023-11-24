@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,39 +17,42 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="idScrollPane" hbarPolicy="NEVER" maxHeight="1200.0" minHeight="-Infinity" prefHeight="1850.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+<ScrollPane fx:id="idScrollPane" hbarPolicy="NEVER" maxHeight="1200.0" minHeight="-Infinity" prefHeight="1750.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaEligiendoPolizaControlador">
    <content>
-      <AnchorPane fx:id="idAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1850.0" prefWidth="1280.0">
-         <VBox prefHeight="356.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
-            <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="INICIO" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="ALTA PÓLIZA" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA CLIENTE" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR CLIENTE" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" VBox.vgrow="NEVER" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="GENERAR PROPUESTAS RENOVACIÓN" />
+      <AnchorPane fx:id="idAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1750.0" prefWidth="1280.0" stylesheets="@estilos.css">
+         <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" text="INICIO" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #ff0000; -fx-border-color: black;" text="ALTA PÓLIZA" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR PÓLIZA" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ALTA CLIENTE" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR CLIENTE" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ACTUALIZAR FACTORES" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERAR PROPUESTAS RENOVACIÓN" />
          </VBox>
-         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #CDCDCD;" text="Seleccione el Tipo de Cobertura que se asociará a la Póliza" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="260.0" layoutY="11.0" prefHeight="30.0" prefWidth="500.0" style="-fx-text-fill: #ffffff; -fx-background-color: #720000; -fx-border-color: white; -fx-border-radius: 5px; -fx-border-insets: -1px; -fx-border-width: 3px;" text="Seleccione el Tipo de Cobertura que se asociará a la Póliza" textFill="WHITE" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="0.0">
             <font>
-               <Font size="16.0" />
+               <Font name="System Bold Italic" size="16.0" />
             </font>
             <padding>
-               <Insets left="10.0" />
+               <Insets left="20.0" />
             </padding>
          </Label>
-         <Button fx:id="botonVolver" layoutX="1090.0" mnemonicParsing="false" onAction="#volver" prefHeight="30.0" prefWidth="150.0" text="VOLVER" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0" />
-         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" prefHeight="230.0" prefWidth="1015.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="30.0">
+         <Button fx:id="botonVolver" layoutX="1090.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#volver" prefHeight="24.0" prefWidth="200.0" text="VOLVER" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="3.0">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
+         <TableView fx:id="tablaConTipoCobertura" editable="true" layoutX="250.0" layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="1013.0" style="-fx-alignment: CENTER;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="30.0">
             <columns>
                <TableColumn fx:id="columnaCheck" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" style="-fx-alignment: CENTER;" />
-               <TableColumn fx:id="columnaTipoCobertura" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" style="-fx-alignment: CENTER;" text="Tipo Cobertura" />
-               <TableColumn fx:id="columnaDescripcion" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" sortType="DESCENDING" style="-fx-alignment: CENTER;" text="Descripción" />
+               <TableColumn fx:id="columnaTipoCobertura" maxWidth="-Infinity" minWidth="280.0" prefWidth="220.0" text="Tipo Cobertura" />
+               <TableColumn fx:id="columnaDescripcion" maxWidth="-Infinity" minWidth="700.0" prefWidth="600.0" sortType="DESCENDING" text="Descripción" />
             </columns>
             <columnResizePolicy>
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
          </TableView>
-         <HBox layoutX="250.0" layoutY="261.0" prefHeight="100.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="260.0">
+         <HBox layoutX="250.0" layoutY="275.2" prefHeight="85.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="310.0">
             <children>
                <VBox prefHeight="200.0" prefWidth="515.0">
                   <children>
@@ -96,7 +100,7 @@
                </VBox>
             </children>
          </HBox>
-         <Pane layoutX="260.0" layoutY="371.0" prefHeight="40.0" prefWidth="1010.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="375.0">
+         <Pane layoutX="260.0" layoutY="371.0" prefHeight="40.0" prefWidth="1010.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="425.0">
             <children>
                <Button fx:id="botonCancelar" layoutX="339.0" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="150.0" text="CANCELAR">
                   <font>
@@ -110,14 +114,14 @@
                </Button>
             </children>
          </Pane>
-         <Line endX="1012.0" layoutX="395.0" layoutY="443.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="1010.0" AnchorPane.topAnchor="440.0" />
-         <Line endY="440.0" layoutX="343.0" layoutY="475.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="0.0" />
-         <Line endY="440.0" layoutX="175.0" layoutY="358.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
-         <Pane fx:id="anchorPaneLuegoQpresioneConfirmar" layoutX="33.0" layoutY="499.0" prefHeight="1400.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="470.0">
+         <Line endX="1012.0" layoutX="395.0" layoutY="300.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="1010.0" AnchorPane.topAnchor="480.0" />
+         <Line endY="480.0" layoutX="343.0" layoutY="475.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="0.0" />
+         <Line endY="480.0" layoutX="175.0" layoutY="358.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
+         <Pane fx:id="anchorPaneLuegoQpresioneConfirmar" layoutX="33.0" layoutY="499.0" prefHeight="1400.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="500.0">
             <children>
-               <Label prefHeight="30.0" prefWidth="1000.0" style="-fx-background-color: #CDCDCD;" text="PÓLIZA A GENERAR">
+               <Label prefHeight="30.0" prefWidth="1012.0" style="-fx-background-color: #800000; -fx-text-fill: #ffffff;" text="PÓLIZA A GENERAR" textFill="WHITE">
                   <font>
-                     <Font size="16.0" />
+                     <Font name="System Bold Italic" size="16.0" />
                   </font>
                   <padding>
                      <Insets left="10.0" />
@@ -247,7 +251,7 @@
                            <Insets left="20.0" top="10.0" />
                         </VBox.margin>
                      </Label>
-                     <TextField fx:id="patente">
+                     <TextField fx:id="patente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="980.0">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -676,6 +680,7 @@
                </VBox>
             </children>
          </Pane>
+         <ProgressIndicator fx:id="progreesBar" layoutX="665.0" layoutY="490.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="200.0" minWidth="200.0" progress="0.0" style="-fx-progress-color: #800000;" />
       </AnchorPane>
    </content>
 </ScrollPane>

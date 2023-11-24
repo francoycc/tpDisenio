@@ -1,0 +1,98 @@
+/*---------------------------------PANTALLAS---------------------------------*/
+#anchorPane {-fx-background-color: #808080;}
+#idAnchorPane {-fx-background-color: #808080;}
+.root {-fx-background-color: #808080;}
+.label {-fx-text-fill: black;}
+
+/*---------------------------------BOTONES---------------------------------*/
+.button {
+    -fx-border-color: black;
+    -fx-background-color: #720000;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-border-insets: -1px;
+}
+.button:hover {-fx-background-color: #ff0000;}
+
+#idBotonBuscarCliente {
+-fx-background-color: #000000;
+-fx-border-color: #000000;
+}
+#idBotonBuscarCliente:hover {-fx-background-color: #ff0000;}
+
+#botonVolver {
+-fx-background-color: #000000;
+-fx-border-color: #000000;
+}
+#botonVolver:hover {-fx-background-color: #ff0000;}
+
+/*---------------------------------TABLAS---------------------------------*/
+// formato para las celdas del tableview
+.table-cell {
+-fx-padding: 0.5em 0.5em 0.1em 0.3em;
+-fx-font: 14px "Segoe UI";
+-fx-background-color: #808080;
+-fx-border-color: black;
+-fx-text-fill: white;
+-fx-alignment: CENTER;
+-fx-border-insets: 0px;
+-fx-border-width: 0.5px;
+}
+
+.table-row-cell:empty, .table-cell:empty:hover {-fx-background-color: #808080;}
+
+/* color de fondo para cuando el raton este sobre la celda*/
+.table-cell:hover {-fx-background-color: #dcdcdc;}
+/* color de fondo del titulo de columna cuando en roton esta sobre ella*/
+.table-view .column-header:hover {-fx-background-color: #dcdcdc;}
+/* tamaño, bordes y color de fondo de los titulos*/
+.table-view .column-header, .table-view .filler {
+-fx-background-color: #808080;
+-fx-size: 30;
+-fx-border-color: black;
+}
+
+#tablaHijos {
+-fx-padding: 0.5em 0.5em 0.1em 0.3em;
+-fx-font: 14px "Segoe UI";
+-fx-background-color: #720000;
+-fx-border-color: black;
+-fx-text-fill: white;
+-fx-alignment: CENTER;}
+
+#tablaHijos .table-row-cell:empty, #tablaHijos .table-cell:empty:hover {-fx-background-color: #800000;}
+#tablaHijos .table-cell, #tablaHijos .table-cell:hover {-fx-background-color: #800000;}
+#tablaHijos .table-cell:hover {-fx-background-color: #ff0000;}
+#tablaHijos .column-header:hover {-fx-background-color: #ff0000;}
+
+#tablaHijos .column-header, #tablaHijos .filler {
+    -fx-background-color: #808080;
+    -fx-size: 30;
+    -fx-border-color: black;}
+/*---------------------------------COMBO BOX---------------------------------*/
+.combo-box {
+    -fx-border-color: black;
+    -fx-background-color: #720000;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-border-insets: -1px;
+}
+.combo-box:hover {-fx-background-color: #ff0000;}
+
+.combo-box .list-cell {
+    -fx-background-color: #720000;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-border-insets: -1px;
+}
+.combo-box .list-cell:hover {-fx-background-color: #ff0000;}
+
+/*---------------------------------TEXT LABEL---------------------------------*/
+.text-field {
+    -fx-border-color: black;
+    -fx-background-color: #720000;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-border-insets: -1px;
+}
+.text-field:hover {-fx-background-color: #ff0000;}

@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
 import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
@@ -40,6 +41,7 @@ public class AltaPolizaControlador {
     @FXML private Label errorNroCliente;
     @FXML private Label errorNroDocumento;
     @FXML private Label errorTipoDocumento;
+    @FXML private Label textAux;
     @FXML private Button idBotonInicio;
     @FXML private TextField nombre;
     @FXML private TextField apellido;
@@ -61,7 +63,7 @@ public class AltaPolizaControlador {
         String apellido;
         TipoDocumento tipoDoc;
         Documento nroDocumento;
-        Hyperlink botonSelect;
+        RadioButton botonSelect;
         public DatosClienteTabla(){}
         public DatosClienteTabla(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, Documento nroDocumento) {
             this.nroCliente = nroCliente;
@@ -69,7 +71,7 @@ public class AltaPolizaControlador {
             this.apellido = apellido;
             this.tipoDoc = tipoDoc;
             this.nroDocumento = nroDocumento;
-            this.botonSelect = new Hyperlink("Select");
+            this.botonSelect = new RadioButton();
         }
         public DatosClienteTabla(String nroCliente, TipoDocumento tipoDoc, String nombre, String apellido) {
             this.nroCliente = nroCliente;
@@ -77,8 +79,8 @@ public class AltaPolizaControlador {
             this.apellido = apellido;
             this.tipoDoc = tipoDoc;
         }
-        public Hyperlink getBotonSelect() { return botonSelect; }
-        public void setBotonSelect(Hyperlink botonSelect) { this.botonSelect = botonSelect; }
+        public RadioButton getBotonSelect() { return botonSelect; }
+        public void setBotonSelect(RadioButton botonSelect) { this.botonSelect = botonSelect; }
         public String getNroCliente() {
             return nroCliente;
         }
@@ -123,6 +125,7 @@ public class AltaPolizaControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -133,7 +136,7 @@ public class AltaPolizaControlador {
     }
     @FXML void buscar(ActionEvent event) {
         int flag = 0;
-
+        textAux.setVisible(false);
         //validaciones de formato
         if (!validarNroCliente(nroCliente.getText()) && !nroCliente.getText().isEmpty()) {
             errorNroCliente.setText("Ingrese un Nro de Cliente válido.");
@@ -217,6 +220,7 @@ public class AltaPolizaControlador {
                             instanciaCargandoDatos.recibeParametros(local, c);
                             stage.setTitle("EL ASEGURADO");
                             Scene scene = new Scene(root, 1280, 720);
+                            scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                             stage.setResizable(false);
                             stage.setScene(scene);
                             stage.show();
@@ -246,6 +250,7 @@ public class AltaPolizaControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -259,8 +264,8 @@ public class AltaPolizaControlador {
         nombre.setText("");
         apellido.setText("");
         nroDocumento.setText("");
-        tipoDocumento.setValue(null);
-        tipoDocumento.setPromptText("Tipo Documento");
+        tipoDocumento.getSelectionModel().clearSelection();
+        textAux.setVisible(true);
         errorNroCliente.setText("");
         errorNombre.setText("");
         errorApellido.setText("");
@@ -314,5 +319,33 @@ public class AltaPolizaControlador {
         nroDocColumna.setCellFactory(new TableCellFactory<>(t -> String.valueOf(t.getNumero())));
 
         tablaMostrarClientes.setItems(clientesList);
+
+        nroCliente.addEventHandler(KeyEvent.KEY_TYPED, event -> {
+            String inputChar = event.getCharacter();
+            if (!inputChar.matches("[0-9\\\\-]")) {
+                event.consume();
+            }
+        });
+        nroDocumento.addEventHandler(KeyEvent.KEY_TYPED, event -> {
+            String inputChar = event.getCharacter();
+            if (!inputChar.matches("\\d")) {
+                event.consume();
+            }});
+        apellido.addEventHandler(KeyEvent.KEY_TYPED, event -> {
+            String inputChar = event.getCharacter();
+            if (!inputChar.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*")) {
+                event.consume();
+            }});
+        nombre.addEventHandler(KeyEvent.KEY_TYPED, event -> {
+            String inputChar = event.getCharacter();
+            if (!inputChar.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*")) {
+                event.consume();
+            }});
+        textAux.setVisible(false);
+        tipoDocumento.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                textAux.setVisible(false);
+            }
+        });
     }
 }

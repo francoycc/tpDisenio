@@ -35,6 +35,7 @@ public class LoginControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();

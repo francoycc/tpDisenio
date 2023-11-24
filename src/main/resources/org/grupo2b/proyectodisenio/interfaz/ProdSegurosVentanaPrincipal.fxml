@@ -44,15 +44,15 @@
          </font>
       </Text>
    </VBox>
-   <VBox prefHeight="727.0" prefWidth="250.0" style="-fx-background-color: #aebffc;">
-      <children>
-         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="INICIO" />
-         <Button fx:id="idBotonAltaPoliza" mnemonicParsing="false" onAction="#irInterfazAltaPoliza" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA PÓLIZA" />
-         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
-         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="GENERAR PROPUESTAS RENOVACIÓN" />
-         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" />
-         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA CLIENTE" />
-         <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR CLIENTE" />
-      </children>
+   <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0"
+              style="-fx-background-color: #ff0000; -fx-border-color: black;" text="INICIO" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazAltaPoliza"
+              prefHeight="50.0" prefWidth="250.0" text="ALTA PÓLIZA" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR PÓLIZA" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ALTA CLIENTE" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR CLIENTE" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ACTUALIZAR FACTORES" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERAR PROPUESTAS RENOVACIÓN" />
    </VBox>
 </AnchorPane>

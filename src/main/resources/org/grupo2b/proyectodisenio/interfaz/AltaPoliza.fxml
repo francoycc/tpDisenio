@@ -15,14 +15,14 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaControlador">
-   <VBox prefHeight="350.0" prefWidth="260.0">
-      <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="INICIO" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #A6ACAF;" text="ALTA PÓLIZA" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR PÓLIZA" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ALTA CLIENTE" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="CONSULTAR CLIENTE" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="ACTUALIZAR FACTORES" />
-      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-border-color: #000000; -fx-background-color: #F2F3F4;" text="GENERAR PROPUESTAS RENOVACIÓN" />
+   <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" text="INICIO" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #ff0000; -fx-border-color: black;" text="ALTA PÓLIZA" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR PÓLIZA" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ALTA CLIENTE" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="CONSULTAR CLIENTE" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="ACTUALIZAR FACTORES" />
+      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="GENERAR PROPUESTAS RENOVACIÓN" />
    </VBox>
    <Label layoutX="260.0" layoutY="11.0" prefHeight="18.0" prefWidth="250.0" text=" Alta Póliza &gt; Buscar Cliente">
       <font>
@@ -30,7 +30,7 @@
       </font>
    </Label>
    <Button layoutX="1116.0" layoutY="14.0" mnemonicParsing="false" text="Agregar Nuevo Cliente" />
-   <Line endX="885.0" layoutX="395.0" layoutY="350.0" startX="-143.8000030517578" />
+   <Line endX="885.0" layoutX="394.0" layoutY="350.2" startX="-143.8000030517578" />
    <Line endX="885.0" layoutX="368.0" layoutY="324.0" startX="-78.89996337890625" />
    <Line endX="13.60003662109375" endY="-112.5" layoutX="275.0" layoutY="436.0" startX="13.60003662109375" startY="-362.79998779296875" />
    <Line endX="885.0" layoutX="394.0" layoutY="49.0" startX="-143.8000030517578" />
@@ -52,7 +52,7 @@
          <Label fx:id="errorApellido" prefHeight="18.0" prefWidth="364.0" textFill="RED" />
          <HBox prefHeight="27.0" prefWidth="938.0">
             <children>
-               <ComboBox fx:id="tipoDocumento" prefHeight="26.0" prefWidth="496.0" promptText="Tipo Documento" />
+               <ComboBox fx:id="tipoDocumento" accessibleText="COMBO_BOX" prefHeight="26.0" prefWidth="496.0" promptText="Tipo Documento" />
                <Label prefHeight="18.0" prefWidth="96.0" />
                <TextField fx:id="nroDocumento" prefHeight="26.0" prefWidth="550.0" promptText="Nro Documento" />
             </children>
@@ -83,4 +83,6 @@
          <TableColumn fx:id="nroDocColumna" maxWidth="240.0" minWidth="240.0" prefWidth="240.0" text="Nro Documento" />
       </columns>
    </TableView>
+   <Label id="auxTipoDoc" fx:id="textAux" style="-fx-text-fill: #ffffff;" text="Tipo Documento" textFill="WHITE" AnchorPane.leftAnchor="319.0" AnchorPane.topAnchor="236.0" />
+   <Line endX="1280.0" strokeWidth="2.0" />
 </AnchorPane>

@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
@@ -111,6 +112,7 @@ public class AltaPolizaCargandoDatosControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -136,6 +138,7 @@ public class AltaPolizaCargandoDatosControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -293,6 +296,7 @@ public class AltaPolizaCargandoDatosControlador {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -346,6 +350,7 @@ public class AltaPolizaCargandoDatosControlador {
                         idNroSiniestros.getValue(), hijosList);
                 stage.setTitle("EL ASEGURADO");
                 Scene scene = new Scene(root, 1280, 720);
+                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.show();
@@ -397,6 +402,9 @@ public class AltaPolizaCargandoDatosControlador {
         idNroSiniestros.setValue(nroSiniestrosV);
         //hijosList.add(listaDeHijos);
         //tablaHijos.setItems(hijosList);
+        onProvinciaCambio();
+        onMarcaChange();
+        onModeloCambio();
     }
     public class DatosClienteTabla {
         String nroCliente;
@@ -561,10 +569,8 @@ public class AltaPolizaCargandoDatosControlador {
         idAnio.setButtonCell(factoryAnio.call(null));
         idAnio.setCellFactory(factoryAnio);
 
-        idProvincia.getItems().addAll(GestorProvincia.getProvincias()); //PARA ESTO PEDIR CONSULTA A LEO
-        idMarca.getItems().addAll(GestorMarca.getMarcas()); //PARA ESTO PEDIR CONSULTA A LEO
-        //idModelo.getItems().addAll("Ranger"); //PARA ESTO PEDIR CONSULTA A LEO
-        //idAnio.getItems().addAll("2022"); //PARA ESTO PEDIR CONSULTA A LEO
+        idProvincia.getItems().addAll(GestorProvincia.getProvincias());
+        idMarca.getItems().addAll(GestorMarca.getMarcas());
         idGarage.getItems().addAll("SI","NO");
         idDispositivoRastreo.getItems().addAll("SI","NO");
         idAlarma.getItems().addAll("SI","NO");
@@ -585,10 +591,15 @@ public class AltaPolizaCargandoDatosControlador {
         this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
         this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));
         this.estadoCivilColumna.setCellValueFactory(new PropertyValueFactory("estadoCivil"));
-    }
 
-    @FXML
-    public void onProvinciaCambio(){
+        idSumaAsegurada.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
+        idKmRealizados.addEventHandler(KeyEvent.KEY_TYPED, event -> {
+            String inputChar = event.getCharacter();
+            if (!inputChar.matches("\\d")) {
+                event.consume();
+            }});
+    }
+    @FXML public void onProvinciaCambio(){
         idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem())));
     }
     @FXML void onMarcaChange(){
