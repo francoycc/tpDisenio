@@ -54,6 +54,7 @@ public class Main extends Application {
                             throw new RuntimeException(e);
                         }
                         Scene scene = new Scene(root);
+                        scene.getStylesheets().add(getClass().getResource("interfaz/estilos.css").toExternalForm());
                         Stage stage2 = new Stage();
                         stage2.setAlwaysOnTop(true);
                         stage2.setTitle("EL ASEGURADO");

@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.grupo2b.proyectodisenio.interfaz.LoginControlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.LoginControlador">
    <children>
       <VBox alignment="CENTER" layoutX="440.0" layoutY="210.0" maxHeight="300.0" maxWidth="400.0" minHeight="300.0" minWidth="400.0" prefHeight="300.0" prefWidth="400.0" spacing="20.0" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0" AnchorPane.topAnchor="210.0">
          <padding>
@@ -20,7 +19,7 @@
             <TextField fx:id="idusuario" prefWidth="0.0" promptText="Usuario (*)" />
             <PasswordField fx:id="idcontrasenia" promptText="Contraseña(*)" />
             <Label fx:id="textoDeError" textFill="#f40000" />
-            <Button fx:id="idbotonlogin" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="180.0" style="-fx-background-color: #0000cd;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="idbotonlogin" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="180.0" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
