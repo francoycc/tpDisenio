@@ -28,6 +28,21 @@ public class LocalidadDAOPSQL implements LocalidadDAO{
     }
 
     @Override
+    public List<Localidad> getLocalidadesFromIdProvincia(int id, int pageSize, int pageNumber){
+        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaQuery<Localidad> cr = cb.createQuery(Localidad.class);
+        Root<Localidad> root = cr.from(Localidad.class);
+
+        cr.select(root).where(cb.equal(root.join("provincia").get("id"), id));
+        cr.orderBy(cb.asc(root.get("nombre")));
+
+        Query<Localidad> query = DAOManager.getSession().createQuery(cr);
+        query.setMaxResults(pageSize);
+        query.setFirstResult((pageNumber-1)*pageSize);
+        return query.getResultList();
+    }
+
+    @Override
     public Optional<Localidad> getLocalidad(int id) {
         CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
         CriteriaQuery<Localidad> cr = cb.createQuery(Localidad.class);

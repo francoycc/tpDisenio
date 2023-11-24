@@ -37,4 +37,18 @@ public class ModeloDAOPSQL implements ModeloDAO{
         Query<Modelo> query = DAOManager.getSession().createQuery(cr);
         return query.getResultList();
     }
+    @Override
+    public List<Modelo> getModelosFromMarca(Marca m, int pageSize, int pageNumber){
+        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
+        Root<Modelo> root = cr.from(Modelo.class);
+
+        cr.select(root).where(cb.equal(root.join("marca").get("id") ,m.getId()));
+        cr.orderBy(cb.asc(root.get("nombre")));
+
+        Query<Modelo> query = DAOManager.getSession().createQuery(cr);
+        query.setFirstResult((pageNumber-1)*pageSize);
+        query.setMaxResults(pageSize);
+        return query.getResultList();
+    }
 }

@@ -8,4 +8,7 @@ public class GestorModelos {
     public static List<Modelo> getModelosFromMarca(Marca marca){
         return DAOManager.modeloDAO().getModelosFromMarca(marca);
     }
+    public static List<Modelo> getModelosFromMarca(Marca marca, int pageSize, int pageNumber){
+        return DAOManager.modeloDAO().getModelosFromMarca(marca);
+    }
 }
