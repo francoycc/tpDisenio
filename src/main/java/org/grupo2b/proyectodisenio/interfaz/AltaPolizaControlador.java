@@ -55,7 +55,7 @@ public class AltaPolizaControlador {
     @FXML private TableColumn<DatosClienteTabla, String> apellidoColumna;
     @FXML private TableColumn<DatosClienteTabla, String> nombreColumna;
     @FXML private TableColumn<DatosClienteTabla, TipoDocumento> tipoDocColumna;
-    @FXML private TableColumn<DatosClienteTabla, Documento> nroDocColumna;
+    @FXML private TableColumn<DatosClienteTabla, Documento> nroDocColumna; //xd
     private final ObservableList<DatosClienteTabla> clientesList = FXCollections.observableArrayList();
     public static class DatosClienteTabla {
         String nroCliente;
