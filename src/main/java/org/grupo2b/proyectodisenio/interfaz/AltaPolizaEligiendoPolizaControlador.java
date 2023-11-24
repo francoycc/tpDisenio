@@ -392,13 +392,13 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML void confirmarGeneracionPoliza(ActionEvent event) {
         List<MedidaDeSeguridad> medidasSeguridad = new ArrayList<>();//TODO CARGA POR BASE DE DATOS PLS
         if(instanciaParaVolver.dispositivoRastreoV.equals("SI"))
-            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Rastreo").get());
+            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Rastreo").get());
         if(instanciaParaVolver.garageV.equals("SI"))
-            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Garage").get());
+            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Garage").get());
         if(instanciaParaVolver.tuercaAntirroboV.equals("SI"))
-            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Tuercas Antirrobo").get());
+            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Tuercas Antirrobo").get());
         if(instanciaParaVolver.alarmaV.equals("SI"))
-            medidasSeguridad.add(DAOManager.medidaDeSeguridadDAO().getTipoCobertura("Alarma").get());
+            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Alarma").get());
 
         List<DeclaracionHijo> declaraciones = new ArrayList<>();
         for (AltaPolizaCargandoDatosControlador.TablaHijos t : instanciaParaVolver.listaDeHijos){
