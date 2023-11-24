@@ -18,7 +18,7 @@
          <children>
             <TextField fx:id="idusuario" prefWidth="0.0" promptText="Usuario (*)" />
             <PasswordField fx:id="idcontrasenia" promptText="Contraseña(*)" />
-            <Label fx:id="textoDeError" textFill="#f40000" />
+            <Label fx:id="textoDeError" style="-fx-text-fill: red; -fx-background-color: black;" textFill="#f40000" />
             <Button fx:id="idbotonlogin" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="180.0" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />

@@ -335,7 +335,7 @@ public class AltaPolizaCargandoDatosControlador {
         if(idAlarma.getValue()==null) { faltaAlarma.setVisible(true); flag = 1;}
         if(idTuercaAntirrobo.getValue()==null) { faltaTuercaAntirrobo.setVisible(true); flag = 1;}
         if(idNroSiniestros.getValue()==null) { faltaNroSiniestros.setVisible(true); flag = 1;}
-        //flag = 0;
+        flag = 0;
         if(flag == 0) {
             if(!GestorVehiculos.existeVehiculoAsociado(idPatente.getText(), idMotor.getText(), idChasis.getText())) {
                 FXMLLoader loader = new FXMLLoader();
