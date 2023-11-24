@@ -43,11 +43,6 @@ import java.util.Properties;
 
 public class DAOManager {
 
-    private static Session session;
-    private static SessionFactory sessionFactory;
-    public static Session getSession() {
-        return session;
-    }
     public enum TipoBaseDeDatos{
         PSQL,
         MYSQL
@@ -62,6 +57,7 @@ public class DAOManager {
     }
 
     //DAOS
+    private static DAO dao;
     private static LocalidadDAO localidadDAO;
     private static PaisDAO paisDAO;
     private static ProvinciaDAO provinciaDAO;
@@ -88,54 +84,7 @@ public class DAOManager {
 
 
     private static void PSQLInit(){
-        Properties properties = new Properties();
-        properties.putAll(new Hashtable<>(){{
-            put("hibernate.connection.driver_class","org.postgresql.Driver");
-            put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
-            put("hibernate.connection.url","jdbc:postgresql://190.7.1.188:5432/proyecto_disenio");
-            put("hibernate.connection.username","Manager");
-            put("hibernate.connection.password","s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;\";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[");
-            put("show_sql","true");
-            put("hibernate.hbm2ddl.auto","update");
-            put("hibernate.jdbc.time_zone","UTC");
-        }});
-        //];4A9LPW(+rxm.ohTz&(8ruB6V?rUJQgcMQVt~I782'cq]ha8C72xHRGzK_+fc)&B__Yp5kIj/m*hfUzwO'PNcZEI4#z10}8p
-        //server.key dp5SVa32d3y9N7G1qX5EgcxXXcWJBCls0D79qc1tChT57sSWVh
-        //manager pass s~p5K%~Y:@`)PAHWZA)`gO{_th.'788nKWE32MKaqZvt#<;";><?0]TL5zS;-epsRU3<la2u&iTJ`n.£1WF3uz;NL@/BTs#k^3[
-        Configuration con = new Configuration().setProperties(properties)
-                .addAnnotatedClass(TipoCobertura.class)
-                .addAnnotatedClass(EntradaHistorialFactores.class)
-                .addAnnotatedClass(Cuenta.class)
-                .addAnnotatedClass(HistorialFactor.class)
-                .addAnnotatedClass(ValorFactorPorHijo.class)
-                .addAnnotatedClass(DerechoEmision.class)
-                .addAnnotatedClass(Descuento.class)
-                .addAnnotatedClass(MedidaDeSeguridad.class)
-                .addAnnotatedClass(NumeroSiniestros.class)
-                .addAnnotatedClass(KmPorAnio.class)
-                .addAnnotatedClass(Modelo.class)
-                .addAnnotatedClass(Marca.class)
-                .addAnnotatedClass(AnioFabricacion.class)
-                .addAnnotatedClass(Localidad.class)
-                .addAnnotatedClass(Provincia.class)
-                .addAnnotatedClass(Pais.class)
-                .addAnnotatedClass(Direccion.class)
-                .addAnnotatedClass(TipoDocumento.class)
-                .addAnnotatedClass(Documento.class)
-                .addAnnotatedClass(CondicionIva.class)
-                .addAnnotatedClass(Cliente.class)
-                .addAnnotatedClass(EstadoCivil.class)
-                .addAnnotatedClass(Vehiculo.class)
-                .addAnnotatedClass(DeclaracionHijo.class)
-                .addAnnotatedClass(Poliza.class)
-                .addAnnotatedClass(DatosParaRenovacion.class)
-                .addAnnotatedClass(Cuota.class)
-                .addAnnotatedClass(Recibo.class)
-                .addAnnotatedClass(TipoCuenta.class);
-        ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(properties).build();
-        sessionFactory = con.buildSessionFactory(reg);
-        session = con.buildSessionFactory(reg).openSession();
-
+        dao = new DAOPSQL();
         localidadDAO = new LocalidadDAOPSQL();
         paisDAO = new PaisDAOPSQL();
         provinciaDAO = new ProvinciaDAOPSQL();
@@ -166,6 +115,9 @@ public class DAOManager {
     //DAO GETTERS
 
 
+    public static DAO dao() {
+        return dao;
+    }
     public static TipoBaseDeDatos tipoBaseDeDatos() {
         return tipoBaseDeDatos;
     }
@@ -245,29 +197,4 @@ public class DAOManager {
         return polizaDAO;
     }
 
-    public static <T> T save(T o) {
-        Transaction tx = session.beginTransaction();
-        T o2 = session.merge(o);
-        tx.commit();
-        session.clear();
-        return o2;
-    }
-
-    public static <T> void saveOrUpdate(T o){
-        Transaction tx = session.beginTransaction();
-        session.saveOrUpdate(o);
-        tx.commit();
-        session.clear();
-    }
-
-    public static <T> void saveBatch(Collection<T> objs) {
-        Transaction tx = session.beginTransaction();
-        for (T obj : objs)
-            session.merge(obj);
-        tx.commit();
-    }
-    public static void resetSession(){
-        session.close();
-        session = sessionFactory.openSession();
-    }
 }

@@ -49,7 +49,7 @@ public class CargadorProvinciaLocalidad {
         });
         for(Integer i : mapaProvLocalidades.keySet()) {
             System.out.println("Size: "+i +" "+mapaProvLocalidades.get(i).size());
-            DAOManager.saveBatch(mapaProvLocalidades.get(i));
+            DAOManager.dao().saveBatch(mapaProvLocalidades.get(i));
         }
     }
     private static void cargarProvincias(){
@@ -65,7 +65,7 @@ public class CargadorProvinciaLocalidad {
             mapaProvincias.put(Integer.parseInt(elemento[0]),new Provincia(Integer.parseInt(elemento[0]),elemento[1], PAIS_ARG));
         });
         for(Integer i : mapaProvincias.keySet())
-            DAOManager.save(mapaProvincias.get(i));
+            DAOManager.dao().save(mapaProvincias.get(i));
     }
 
 

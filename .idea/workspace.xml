@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="aplicado el css3" />
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="aplicado el css3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/carga_datos/CargadorProvinciaLocalidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/carga_datos/CargadorProvinciaLocalidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/carga_datos/Objetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/carga_datos/Objetos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/ClienteDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/ClienteDAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cuentas/CuentaDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cuentas/CuentaDAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/poliza/PolizaDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/poliza/PolizaDAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/KmPorAnioDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/KmPorAnioDAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/ModeloDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/ModeloDAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/VehiculoDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/VehiculoDAOPSQL.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +26,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>

@@ -4,6 +4,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.dao.DAOPSQL;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Marca;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
 import org.hibernate.query.Query;
@@ -14,39 +15,39 @@ public class ModeloDAOPSQL implements ModeloDAO{
 
     @Override
     public List<Modelo> getModelos(){
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
         CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
         Root<Modelo> root = cr.from(Modelo.class);
 
         cr.select(root);
         cr.orderBy(cb.asc(root.get("nombre")));
 
-        Query<Modelo> query = DAOManager.getSession().createQuery(cr);
+        Query<Modelo> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         return query.getResultList();
     }
 
     @Override
     public List<Modelo> getModelosFromMarca(Marca m){
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
         CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
         Root<Modelo> root = cr.from(Modelo.class);
 
         cr.select(root).where(cb.equal(root.join("marca").get("id") ,m.getId()));
         cr.orderBy(cb.asc(root.get("nombre")));
 
-        Query<Modelo> query = DAOManager.getSession().createQuery(cr);
+        Query<Modelo> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         return query.getResultList();
     }
     @Override
     public List<Modelo> getModelosFromMarca(Marca m, int pageSize, int pageNumber){
-        CriteriaBuilder cb = DAOManager.getSession().getCriteriaBuilder();
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
         CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
         Root<Modelo> root = cr.from(Modelo.class);
 
         cr.select(root).where(cb.equal(root.join("marca").get("id") ,m.getId()));
         cr.orderBy(cb.asc(root.get("nombre")));
 
-        Query<Modelo> query = DAOManager.getSession().createQuery(cr);
+        Query<Modelo> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         query.setFirstResult((pageNumber-1)*pageSize);
         query.setMaxResults(pageSize);
         return query.getResultList();
