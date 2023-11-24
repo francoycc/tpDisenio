@@ -607,7 +607,11 @@ public class AltaPolizaCargandoDatosControlador {
         idModelo.setItems(FXCollections.observableArrayList(GestorModelos.getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
     }
     @FXML void onModeloCambio(){
-        idAnio.setItems(FXCollections.observableArrayList(GestorAniosFabricacion.getAniosFabricacionFromModelo(idModelo.getSelectionModel().getSelectedItem())));
+        if(idModelo.getSelectionModel().isEmpty())
+            idAnio.setItems(FXCollections.observableArrayList());
+        else
+
+            idAnio.setItems(FXCollections.observableArrayList(GestorAniosFabricacion.getAniosFabricacionFromModelo(idModelo.getSelectionModel().getSelectedItem())));
     }
 
 }
