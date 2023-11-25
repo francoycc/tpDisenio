@@ -29,14 +29,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import org.grupo2b.proyectodisenio.dto.*;
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.carga_datos.Objetos;
-import org.grupo2b.proyectodisenio.logica.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
-import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
-import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
-import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
-import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
+import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
 import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
@@ -55,10 +48,10 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ComboBox<String> comboBoxFormaPago;
     @FXML private DatePicker fechaInicioVigencia;
 
-    @FXML private TableView<tablaTipoCobertura> tablaConTipoCobertura;
-    @FXML private TableColumn<tablaTipoCobertura, String> columnaCheck;
-    @FXML private TableColumn<tablaTipoCobertura, String> columnaDescripcion;
-    @FXML private TableColumn<tablaTipoCobertura, TipoCoberturaDTO> columnaTipoCobertura;
+    @FXML private TableView<TablaTipoCobertura> tablaConTipoCobertura;
+    @FXML private TableColumn<TablaTipoCobertura, String> columnaCheck;
+    @FXML private TableColumn<TablaTipoCobertura, String> columnaDescripcion;
+    @FXML private TableColumn<TablaTipoCobertura, TipoCoberturaDTO> columnaTipoCobertura;
 
     @FXML private TextField titularDelSeguro;
     @FXML private TextField marcaDelVehículo;
@@ -395,7 +388,7 @@ public class AltaPolizaEligiendoPolizaControlador {
             declaraciones.add(new DeclaracionHijoDTO(1, t.estadoCivil, t.fechaNacimiento, t.sexo));
         }
 
-        VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorKmPorAnio.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
+        VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorVehiculos.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
         Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
         //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE???
 
@@ -403,6 +396,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         PolizaDTO poliza = new PolizaDTO(-1, fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
                 tipoCoberturaObj.id(), idsMedidasSeguridad, vehiculo, declaraciones, cliente.id(), instanciaParaVolver.nroSiniestrosV.id());
 
+        GestorPolizas.darAltaPoliza(poliza);
 
         Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
         messageWindows.setTitle("Información");
@@ -448,51 +442,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         idScrollPane.setPrefHeight(720);
         progreesBar.setVisible(false);
 
-        ToggleGroup toggleGroup = new ToggleGroup();
-        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null) {
-                toggleGroup.selectToggle(oldValue);
-            }
-        });
-        columnaCheck.setCellFactory(col -> {
-            RadioButton radioButton = new RadioButton();
-            radioButton.setToggleGroup(toggleGroup);
-            TableCell<tablaTipoCobertura, String> cell = new TableCell<tablaTipoCobertura, String>() {
-                void updateItem(RadioButton item, boolean empty) {
-                    super.updateItem(String.valueOf(item), empty);
-                    if (empty) {
-                        setGraphic(null);
-                    } else {
-                        setGraphic(item);
-                    }
-                }
-            };
-            cell.setGraphic(radioButton);
 
-            radioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue) {
-                    // Obtener el ítem actual de la fila
-                    tablaTipoCobertura item = tablaConTipoCobertura.getItems().get(cell.getIndex());
-
-                    tipoCoberturaObj=item.getTipoCobertura();
-                }
-            });
-
-            return cell;
-        });
-
-        Collection<TipoCoberturaDTO> tiposCobertura = GestorTiposCobertura.getTiposCobertura();
-        List<tablaTipoCobertura> listaTabla = new ArrayList<>();
-        for(TipoCoberturaDTO t : tiposCobertura)
-            listaTabla.add(new tablaTipoCobertura(t, t.descripcion()));
-
-        tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
-        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                RadioButton selectedRadioButton = (RadioButton) newValue;
-                seEligioTipoCobertura = true;
-            }
-        });
         fechaInicioVigencia.setValue(LocalDate.now().plusDays(1));
         premio.setText("0");
         importePorDescuentos.setText("0");
@@ -528,6 +478,54 @@ public class AltaPolizaEligiendoPolizaControlador {
         montoTotalSemestral.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
         ultimoDiadePagoSemestral.addEventHandler(KeyEvent.KEY_TYPED, event -> {event.consume();});
         chichesParaComboBoxs(comboBoxFormaPago);
+
+
+        ToggleGroup toggleGroup = new ToggleGroup();
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                toggleGroup.selectToggle(oldValue);
+            }
+        });
+        columnaCheck.setCellFactory(col -> {
+            RadioButton radioButton = new RadioButton();
+            radioButton.setToggleGroup(toggleGroup);
+            TableCell<TablaTipoCobertura, String> cell = new TableCell<TablaTipoCobertura, String>() {
+                void updateItem(RadioButton item, boolean empty) {
+                    super.updateItem(String.valueOf(item), empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(item);
+                    }
+                }
+            };
+            cell.setGraphic(radioButton);
+
+            radioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    // Obtener el ítem actual de la fila
+                    TablaTipoCobertura item = tablaConTipoCobertura.getItems().get(cell.getIndex());
+
+                    tipoCoberturaObj=item.getTipoCobertura();
+                }
+            });
+
+            return cell;
+        });
+
+        Collection<TipoCoberturaDTO> tiposCobertura = GestorPolizas.getTiposCobertura();
+        List<TablaTipoCobertura> listaTabla = new ArrayList<>();
+        for(TipoCoberturaDTO t : tiposCobertura)
+            //if((LocalDate.now().getYear()-anio)<=t.maxAniosVehiculo())
+                listaTabla.add(new TablaTipoCobertura(t, t.descripcion()));//TODO PROBLEMAS SI CARGAN POCOS
+
+        tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                RadioButton selectedRadioButton = (RadioButton) newValue;
+                seEligioTipoCobertura = true;
+            }
+        });
     }
     public void chichesParaComboBoxs(ComboBox combo) {
         combo.addEventFilter(KeyEvent.KEY_PRESSED, evt -> {
@@ -563,11 +561,11 @@ public class AltaPolizaEligiendoPolizaControlador {
         sumaAsegurada.setText(sumaAseguradaV);
         instanciaParaVolver = new volverConParametros(cliente,provincia,ciudad,anio,kmRealizadosV,garageV,dispositivoRastreoV,alarmaV,tuercaAntirroboV,nroSiniestrosV,listaDeHijos);
     }
-    public class tablaTipoCobertura {
+    public class TablaTipoCobertura {
         RadioButton checkBox;
         TipoCoberturaDTO tipoCobertura;
         String descripcion;
-        public tablaTipoCobertura(TipoCoberturaDTO tipoCobertura, String descripcion) {
+        public TablaTipoCobertura(TipoCoberturaDTO tipoCobertura, String descripcion) {
             this.checkBox = new RadioButton();
             this.tipoCobertura = tipoCobertura;
             this.descripcion = descripcion;
@@ -579,11 +577,11 @@ public class AltaPolizaEligiendoPolizaControlador {
         public String getDescripcion() {return descripcion;}
         public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
     }
-    public static final Callback<TableColumn<tablaTipoCobertura,String>, TableCell<tablaTipoCobertura,String>> WRAPPING_CELL_FACTORY =
+    public static final Callback<TableColumn<TablaTipoCobertura,String>, TableCell<TablaTipoCobertura,String>> WRAPPING_CELL_FACTORY =
             new Callback<>() {
                 @Override
-                public TableCell<tablaTipoCobertura, String> call(TableColumn<tablaTipoCobertura, String> param) {
-                    TableCell<tablaTipoCobertura, String> tableCell = new TableCell<>() {
+                public TableCell<TablaTipoCobertura, String> call(TableColumn<TablaTipoCobertura, String> param) {
+                    TableCell<TablaTipoCobertura, String> tableCell = new TableCell<>() {
                         @Override
                         protected void updateItem(String item, boolean empty) {
                             if (item == getItem()) return;

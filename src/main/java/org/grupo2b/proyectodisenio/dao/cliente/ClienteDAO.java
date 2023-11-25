@@ -1,7 +1,6 @@
 package org.grupo2b.proyectodisenio.dao.cliente;
 
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
+import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 
 import java.util.List;
 import java.util.Optional;

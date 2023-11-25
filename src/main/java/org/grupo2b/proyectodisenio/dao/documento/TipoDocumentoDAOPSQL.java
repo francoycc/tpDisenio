@@ -6,10 +6,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dao.DAOPSQL;
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;

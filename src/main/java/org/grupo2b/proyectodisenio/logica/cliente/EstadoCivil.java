@@ -1,4 +1,4 @@
-package org.grupo2b.proyectodisenio.logica.poliza;
+package org.grupo2b.proyectodisenio.logica.cliente;
 
 import jakarta.persistence.*;
 

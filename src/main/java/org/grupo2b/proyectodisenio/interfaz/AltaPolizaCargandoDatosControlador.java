@@ -23,15 +23,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dto.*;
-import org.grupo2b.proyectodisenio.logica.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.direccion.GestorProvincia;
+import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
+import org.grupo2b.proyectodisenio.logica.direccion.GestorUbicaciones;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
-import org.grupo2b.proyectodisenio.logica.poliza.GestorEstadosCiviles;
-import org.grupo2b.proyectodisenio.logica.poliza.GestorNumeroSiniestros;
-import org.grupo2b.proyectodisenio.logica.vehiculo.GestorAniosFabricacion;
-import org.grupo2b.proyectodisenio.logica.vehiculo.GestorMarca;
-import org.grupo2b.proyectodisenio.logica.vehiculo.GestorModelos;
+import org.grupo2b.proyectodisenio.logica.poliza.GestorPolizas;
 import org.grupo2b.proyectodisenio.logica.vehiculo.GestorVehiculos;
+import org.grupo2b.proyectodisenio.subsistemas.SubsistemaSumaAsegurada;
 
 public class AltaPolizaCargandoDatosControlador {
     @FXML private ResourceBundle resources;
@@ -548,24 +545,22 @@ public class AltaPolizaCargandoDatosControlador {
         apellidoYnombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombreyapellido"));
         domicilioColumna.setCellValueFactory(new PropertyValueFactory<>("domicilio"));
 
-        idProvincia.getItems().addAll(GestorProvincia.getProvincias());
-        idMarca.getItems().addAll(GestorMarca.getMarcas());
+        idProvincia.getItems().addAll(GestorUbicaciones.getProvincias());
+        idMarca.getItems().addAll(GestorVehiculos.getMarcas());
         idGarage.getItems().addAll("SI","NO");
         idDispositivoRastreo.getItems().addAll("SI","NO");
         idAlarma.getItems().addAll("SI","NO");
         idTuercaAntirrobo.getItems().addAll("SI","NO");
 
-        List<NumeroSiniestrosDTO> numeroSiniestros = GestorNumeroSiniestros.getNumeroSiniestrosList();
+        List<NumeroSiniestrosDTO> numeroSiniestros = GestorPolizas.getNumeroSiniestrosList();
         idNroSiniestros.getItems().addAll(numeroSiniestros);
         for(NumeroSiniestrosDTO s : numeroSiniestros){
             if(s.minimo()==0)
                 idNroSiniestros.setValue(s);
         }
 
-        idSumaAsegurada.setText("1000000");
-
         comboBoxSexo.getItems().addAll(Sexo.MASCULINO,Sexo.FEMENINO);
-        comboBoxEstadoCivil.getItems().addAll(GestorEstadosCiviles.getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
+        comboBoxEstadoCivil.getItems().addAll(GestorClientes.getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
 
         this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
         this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));
@@ -603,18 +598,21 @@ public class AltaPolizaCargandoDatosControlador {
         });
     }
     @FXML public void onProvinciaCambio(){
-        idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().id())));
+        idCiudad.setItems(FXCollections.observableArrayList(GestorUbicaciones.getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().id())));
     }
     @FXML void onMarcaChange(){
         idAnio.setItems(FXCollections.observableArrayList());
-        idModelo.setItems(FXCollections.observableArrayList(GestorModelos.getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
+        idModelo.setItems(FXCollections.observableArrayList(GestorVehiculos.getModelosFromMarca(idMarca.getSelectionModel().getSelectedItem())));
+        idSumaAsegurada.setText("");
     }
     @FXML void onModeloCambio(){
         if(idModelo.getSelectionModel().isEmpty())
             idAnio.setItems(FXCollections.observableArrayList());
         else
-
-            idAnio.setItems(FXCollections.observableArrayList(GestorAniosFabricacion.getAniosFabricacionFromModelo(idModelo.getSelectionModel().getSelectedItem())));
+            idAnio.setItems(FXCollections.observableArrayList(GestorVehiculos.getAniosFabricacionFromModelo(idModelo.getSelectionModel().getSelectedItem())));
+    }
+    @FXML void onAnioCambio(){
+        idSumaAsegurada.setText(String.valueOf(SubsistemaSumaAsegurada.getSumaAsegurada(idModelo.getSelectionModel().getSelectedItem().id(), idAnio.getSelectionModel().getSelectedItem())));
     }
 
 }

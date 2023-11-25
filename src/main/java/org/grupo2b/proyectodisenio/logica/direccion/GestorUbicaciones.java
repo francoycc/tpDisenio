@@ -7,7 +7,7 @@ import org.grupo2b.proyectodisenio.dto.ProvinciaDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GestorProvincia {
+public class GestorUbicaciones {
     public static List<ProvinciaDTO> getProvincias(){
         return DAOManager.provinciaDAO().getProvincias().stream().map(o -> new ProvinciaDTO(o.getId(), o.getPais().getId(), o.getNombre())).collect(Collectors.toList());
     }

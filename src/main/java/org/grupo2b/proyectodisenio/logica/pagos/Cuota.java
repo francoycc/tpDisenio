@@ -1,10 +1,10 @@
-package org.grupo2b.proyectodisenio.logica.poliza;
+package org.grupo2b.proyectodisenio.logica.pagos;
 
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
+import org.grupo2b.proyectodisenio.logica.pagos.Recibo;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Cuota {

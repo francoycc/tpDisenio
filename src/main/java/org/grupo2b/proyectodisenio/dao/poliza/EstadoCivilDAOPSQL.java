@@ -5,8 +5,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dao.DAOPSQL;
-import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
-import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
+import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.hibernate.query.Query;
 
 import java.util.LinkedList;

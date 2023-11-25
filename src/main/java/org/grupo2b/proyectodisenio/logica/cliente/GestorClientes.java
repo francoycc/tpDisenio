@@ -1,10 +1,10 @@
-package org.grupo2b.proyectodisenio.logica;
+package org.grupo2b.proyectodisenio.logica.cliente;
 
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dto.ClienteDTO;
 import org.grupo2b.proyectodisenio.dto.DireccionDTO;
 import org.grupo2b.proyectodisenio.dto.DocumentoDTO;
-import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
+import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,5 +29,13 @@ public class GestorClientes {
 
     public static Optional<Cliente> getCliente(String nroCliente){
         return DAOManager.clienteDAO().getClienteFromNroCliente(nroCliente);
+    }
+
+
+
+
+
+    public static List<String> getEstadosCiviles(){
+        return DAOManager.estadoCivilDAO().getEstadosCiviles().stream().map(EstadoCivil::getTipo).collect(Collectors.toList());
     }
 }

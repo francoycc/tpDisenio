@@ -25,7 +25,7 @@ public class CargadorProvinciaLocalidad {
     private static void cargarLocalidades(){
         String localidades;
         try {
-            localidades = new String(Objects.requireNonNull(CargadorProvinciaLocalidad.class.getResourceAsStream("/org/grupo2b/proyectodisenio/carga_datos/Localidades.csv").readAllBytes()));
+            localidades = new String(Objects.requireNonNull(CargadorProvinciaLocalidad.class.getResourceAsStream("/org/grupo2b/proyectodisenio/carga_datos/LocalidadesR.csv").readAllBytes()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

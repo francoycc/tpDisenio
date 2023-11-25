@@ -3,11 +3,12 @@ package org.grupo2b.proyectodisenio.logica.poliza;
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
 import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
-import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
+import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
+import org.grupo2b.proyectodisenio.logica.vehiculo.MedidaDeSeguridad;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity

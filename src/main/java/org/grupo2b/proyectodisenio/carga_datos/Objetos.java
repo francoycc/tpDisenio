@@ -1,8 +1,10 @@
 package org.grupo2b.proyectodisenio.carga_datos;
 
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.CondicionIva;
+import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
+import org.grupo2b.proyectodisenio.logica.cliente.CondicionIva;
+import org.grupo2b.proyectodisenio.logica.poliza.DeclaracionHijo;
+import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
@@ -13,6 +15,8 @@ import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.grupo2b.proyectodisenio.logica.enums.*;
 import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
+import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
+import org.grupo2b.proyectodisenio.logica.pagos.Recibo;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 
@@ -87,6 +91,7 @@ public class Objetos{
     public static Marca MARCA_TOYOTA = new Marca("Toyota");
     public static Marca MARCA_CITROEN = new Marca("Citroen");
     //AÑOS DE FABRICACION
+    public static AnioFabricacion ANIO_2010 = new AnioFabricacion(2010);
     public static AnioFabricacion ANIO_2013 = new AnioFabricacion(2013);
     public static AnioFabricacion ANIO_2014 = new AnioFabricacion(2014);
     public static AnioFabricacion ANIO_2016 = new AnioFabricacion(2016);
@@ -102,7 +107,7 @@ public class Objetos{
     public static Modelo MODELO_ETIOS = new Modelo("Etios", MARCA_TOYOTA, Objetos.getHistorial(), List.of(ANIO_2020));
     public static Modelo MODELO_C4 = new Modelo("C4", MARCA_CITROEN, Objetos.getHistorial(), List.of(ANIO_2013, ANIO_2020));
     public static Modelo MODELO_CLIO = new Modelo("Clio", MARCA_RENAULT, Objetos.getHistorial(), List.of(ANIO_2018, ANIO_2020));
-    public static Modelo MODELO_CORSA = new Modelo("Corsa", MARCA_CHEVROLET, Objetos.getHistorial(), List.of(ANIO_2014));
+    public static Modelo MODELO_CORSA = new Modelo("Corsa", MARCA_CHEVROLET, Objetos.getHistorial(), List.of(ANIO_2010));
     //KM POR ANIUO
     public static KmPorAnio KM0_5000 = new KmPorAnio(0, 4999, getHistorial());
     public static KmPorAnio KM5000_10000 = new KmPorAnio(5000, 9999, getHistorial());

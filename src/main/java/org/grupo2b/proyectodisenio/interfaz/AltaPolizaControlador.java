@@ -15,7 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dto.ClienteDTO;
-import org.grupo2b.proyectodisenio.logica.GestorClientes;
+import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.documento.GestorDocumentos;
 
 import java.io.IOException;

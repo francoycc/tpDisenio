@@ -1,7 +1,9 @@
 package org.grupo2b.proyectodisenio.dao;
 
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.CondicionIva;
+import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
+import org.grupo2b.proyectodisenio.logica.cliente.CondicionIva;
+import org.grupo2b.proyectodisenio.logica.poliza.DeclaracionHijo;
+import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
 import org.grupo2b.proyectodisenio.logica.cuentas.TipoCuenta;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
@@ -12,6 +14,8 @@ import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
+import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
+import org.grupo2b.proyectodisenio.logica.pagos.Recibo;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
 import org.hibernate.Session;

@@ -1,11 +1,10 @@
 package org.grupo2b.proyectodisenio.logica.poliza;
 
 import jakarta.persistence.*;
+import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
-import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "DECLARACION_HIJO")

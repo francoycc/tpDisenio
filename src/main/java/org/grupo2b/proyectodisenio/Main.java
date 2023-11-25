@@ -10,10 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
-import org.grupo2b.proyectodisenio.carga_datos.Objetos;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
-import org.grupo2b.proyectodisenio.logica.direccion.GestorProvincia;
 
 import java.io.IOException;
 import java.util.Objects;

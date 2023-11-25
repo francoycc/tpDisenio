@@ -1,6 +1,5 @@
 package org.grupo2b.proyectodisenio.dao;
 
-import jakarta.persistence.Entity;
 import org.grupo2b.proyectodisenio.dao.cliente.ClienteDAO;
 import org.grupo2b.proyectodisenio.dao.cliente.ClienteDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAO;
@@ -16,30 +15,6 @@ import org.grupo2b.proyectodisenio.dao.historial.HistorialDAO;
 import org.grupo2b.proyectodisenio.dao.historial.HistorialDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.poliza.*;
 import org.grupo2b.proyectodisenio.dao.vehiculo.*;
-import org.grupo2b.proyectodisenio.logica.Cliente;
-import org.grupo2b.proyectodisenio.logica.CondicionIva;
-import org.grupo2b.proyectodisenio.logica.cuentas.Cuenta;
-import org.grupo2b.proyectodisenio.logica.cuentas.TipoCuenta;
-import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
-import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
-import org.grupo2b.proyectodisenio.logica.direccion.Pais;
-import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
-import org.grupo2b.proyectodisenio.logica.documento.Documento;
-import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
-import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
-import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
-import org.grupo2b.proyectodisenio.logica.poliza.*;
-import org.grupo2b.proyectodisenio.logica.vehiculo.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-
-import java.util.Collection;
-import java.util.Hashtable;
-import java.util.Properties;
 
 public class DAOManager {
 
