@@ -14,13 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
-import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
-import org.grupo2b.proyectodisenio.logica.Cliente;
+import org.grupo2b.proyectodisenio.dto.ClienteDTO;
 import org.grupo2b.proyectodisenio.logica.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.documento.GestorDocumentos;
-import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,25 +44,25 @@ public class AltaPolizaControlador {
     @FXML private TextField apellido;
     @FXML private TextField nroCliente;
     @FXML private TextField nroDocumento;
-    @FXML private ComboBox<TipoDocumento> tipoDocumento;
+    @FXML private ComboBox<String> tipoDocumento;
 
     @FXML private TableView<DatosClienteTabla> tablaMostrarClientes;
     @FXML private TableColumn<DatosClienteTabla, Hyperlink> botonesElegirCliente;
     @FXML private TableColumn<DatosClienteTabla, String> nroClienteColumna;
     @FXML private TableColumn<DatosClienteTabla, String> apellidoColumna;
     @FXML private TableColumn<DatosClienteTabla, String> nombreColumna;
-    @FXML private TableColumn<DatosClienteTabla, TipoDocumento> tipoDocColumna;
-    @FXML private TableColumn<DatosClienteTabla, Documento> nroDocColumna; //xd7
+    @FXML private TableColumn<DatosClienteTabla, String> tipoDocColumna;
+    @FXML private TableColumn<DatosClienteTabla, String> nroDocColumna;
     private final ObservableList<DatosClienteTabla> clientesList = FXCollections.observableArrayList();
     public static class DatosClienteTabla {
         String nroCliente;
         String nombre;
         String apellido;
-        TipoDocumento tipoDoc;
-        Documento nroDocumento;
+        String tipoDoc;
+        String nroDocumento;
         RadioButton botonSelect;
         public DatosClienteTabla(){}
-        public DatosClienteTabla(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, Documento nroDocumento) {
+        public DatosClienteTabla(String nroCliente, String nombre, String apellido, String tipoDoc, String nroDocumento) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -74,7 +70,7 @@ public class AltaPolizaControlador {
             this.nroDocumento = nroDocumento;
             this.botonSelect = new RadioButton();
         }
-        public DatosClienteTabla(String nroCliente, TipoDocumento tipoDoc, String nombre, String apellido) {
+        public DatosClienteTabla(String nroCliente, String tipoDoc, String nombre, String apellido) {
             this.nroCliente = nroCliente;
             this.nombre = nombre;
             this.apellido = apellido;
@@ -98,16 +94,16 @@ public class AltaPolizaControlador {
         public void setApellido(String apellido) {
             this.apellido = apellido;
         }
-        public TipoDocumento getTipoDoc() {
+        public String getTipoDoc() {
             return tipoDoc;
         }
-        public void setTipoDoc(TipoDocumento tipoDoc) {
+        public void setTipoDoc(String tipoDoc) {
             this.tipoDoc = tipoDoc;
         }
-        public Documento getNroDocumento() {
+        public String getNroDocumento() {
             return nroDocumento;
         }
-        public void setNroDocumento(Documento nroDocumento) { this.nroDocumento = nroDocumento; }
+        public void setNroDocumento(String nroDocumento) { this.nroDocumento = nroDocumento; }
     }
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
@@ -158,8 +154,8 @@ public class AltaPolizaControlador {
             errorApellido.setText("");
         }
         if (tipoDocumento.getValue()==null) {
-            for(TipoDocumento t : tipoDocumento.getItems()){
-                if(t.getNombre().equals("DNI"))
+            for(String t : tipoDocumento.getItems()){
+                if(t.equals("DNI"))
                     tipoDocumento.setValue(t);
             }
         }
@@ -184,16 +180,16 @@ public class AltaPolizaControlador {
             }
         }
     }
-    public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, TipoDocumento tipoDoc, String nroDocumento) {
+    public int buscarYmostrarClientes(String nroCliente, String nombre, String apellido, String tipoDoc, String nroDocumento) {
 
-        List<Cliente> results = GestorClientes.buscarClientes(nombre, apellido,nroCliente,tipoDoc, nroDocumento);
-        for (Cliente c : results){
+        List<ClienteDTO> results = GestorClientes.buscarClientes(nombre, apellido,nroCliente, tipoDoc, nroDocumento);
+        for (ClienteDTO c : results){
             DatosClienteTabla cliente = new DatosClienteTabla(
-                    c.getNroCliente(),
-                    c.getNombre(),
-                    c.getApellido(),
-                    c.getDocumento().getTipoDocumento(),
-                    c.getDocumento());
+                    c.nroCliente(),
+                    c.nombre(),
+                    c.apellido(),
+                    c.documentoDTO().tipo(),
+                    c.documentoDTO().numero());
             clientesList.add(cliente);
             tablaMostrarClientes.setItems(clientesList);
         }
@@ -304,9 +300,6 @@ public class AltaPolizaControlador {
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
         tablaMostrarClientes.setVisible(false);
-        ComboBoxCellFactory<TipoDocumento> factory = new ComboBoxCellFactory<>(TipoDocumento::getNombre);
-        tipoDocumento.setButtonCell(factory.call(null));
-        tipoDocumento.setCellFactory(factory);
         tipoDocumento.getItems().addAll(GestorDocumentos.getTiposDocumento());
 
         botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>("botonSelect"));
@@ -317,8 +310,6 @@ public class AltaPolizaControlador {
         nroDocColumna.setCellValueFactory(new PropertyValueFactory<>("nroDocumento"));
 
         //tipoDocColumna.setCellFactory(new TableCellFactory<>(TipoDocumento::getNombre));
-        nroDocColumna.setCellFactory(new TableCellFactory<>(t -> String.valueOf(t.getNumero())));
-
         tablaMostrarClientes.setItems(clientesList);
 
         nroCliente.addEventHandler(KeyEvent.KEY_TYPED, event -> {

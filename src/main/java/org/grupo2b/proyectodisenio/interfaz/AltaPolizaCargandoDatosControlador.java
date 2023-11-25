@@ -22,20 +22,16 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.grupo2b.proyectodisenio.interfaz.displayable.ComboBoxCellFactory;
-import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
+import org.grupo2b.proyectodisenio.dto.*;
 import org.grupo2b.proyectodisenio.logica.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
-import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.GestorProvincia;
-import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
-import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
-import org.grupo2b.proyectodisenio.logica.poliza.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.poliza.GestorEstadosCiviles;
 import org.grupo2b.proyectodisenio.logica.poliza.GestorNumeroSiniestros;
-import org.grupo2b.proyectodisenio.logica.poliza.NumeroSiniestros;
-import org.grupo2b.proyectodisenio.logica.vehiculo.*;
+import org.grupo2b.proyectodisenio.logica.vehiculo.GestorAniosFabricacion;
+import org.grupo2b.proyectodisenio.logica.vehiculo.GestorMarca;
+import org.grupo2b.proyectodisenio.logica.vehiculo.GestorModelos;
+import org.grupo2b.proyectodisenio.logica.vehiculo.GestorVehiculos;
 
 public class AltaPolizaCargandoDatosControlador {
     @FXML private ResourceBundle resources;
@@ -63,18 +59,18 @@ public class AltaPolizaCargandoDatosControlador {
     @FXML private Label faltaTuercaAntirrobo;
 
     @FXML private DatePicker datePickerFechaNacimiento;
-    @FXML private ComboBox<Provincia> idProvincia;
-    @FXML private ComboBox<Localidad> idCiudad;
-    @FXML private ComboBox<Marca> idMarca;
-    @FXML private ComboBox<Modelo> idModelo;
-    @FXML private ComboBox<AnioFabricacion> idAnio;
+    @FXML private ComboBox<ProvinciaDTO> idProvincia;
+    @FXML private ComboBox<LocalidadDTO> idCiudad;
+    @FXML private ComboBox<MarcaDTO> idMarca;
+    @FXML private ComboBox<ModeloDTO> idModelo;
+    @FXML private ComboBox<Integer> idAnio;
     //medidas de seguridad
     @FXML private ComboBox<String> idAlarma;
     @FXML private ComboBox<String> idGarage;
-    @FXML private ComboBox<NumeroSiniestros> idNroSiniestros;
+    @FXML private ComboBox<NumeroSiniestrosDTO> idNroSiniestros;
     @FXML private ComboBox<String> idDispositivoRastreo;
     @FXML private ComboBox<String> idTuercaAntirrobo;
-    @FXML private ComboBox<EstadoCivil> comboBoxEstadoCivil;
+    @FXML private ComboBox<String> comboBoxEstadoCivil;
     @FXML private ComboBox<Sexo> comboBoxSexo;
 
     @FXML private TextField idSumaAsegurada;
@@ -91,9 +87,9 @@ public class AltaPolizaCargandoDatosControlador {
 
     @FXML private TableView<DatosClienteTabla> tablaMostrarClientes;
     @FXML private TableColumn<DatosClienteTabla, String> nroClienteColumna;
-    @FXML private TableColumn<DatosClienteTabla, Documento> tipoYNroDocColumna;
+    @FXML private TableColumn<DatosClienteTabla, DocumentoDTO> tipoYNroDocColumna;
     @FXML private TableColumn<DatosClienteTabla, String> apellidoYnombreColumna;
-    @FXML private TableColumn<DatosClienteTabla, Direccion> domicilioColumna;
+    @FXML private TableColumn<DatosClienteTabla, DireccionDTO> domicilioColumna;
     private final ObservableList<DatosClienteTabla> clientesList = FXCollections.observableArrayList();
 
     @FXML void irInterfazInicio(ActionEvent event) {
@@ -157,7 +153,7 @@ public class AltaPolizaCargandoDatosControlador {
             // Obtengo los datos del formulario
             LocalDate fc = datePickerFechaNacimiento.getValue();
             Sexo s = this.comboBoxSexo.getValue();
-            EstadoCivil ec = this.comboBoxEstadoCivil.getValue();
+            String ec = this.comboBoxEstadoCivil.getValue();
             // Creo una persona
             TablaHijos hijo = new TablaHijos(fc, s, ec);
             // Compruebo si la persona esta en la lista
@@ -226,7 +222,7 @@ public class AltaPolizaCargandoDatosControlador {
                 // Obtengo los datos del formulario
                 LocalDate fc = datePickerFechaNacimiento.getValue();
                 Sexo s = this.comboBoxSexo.getValue();
-                EstadoCivil ec = this.comboBoxEstadoCivil.getValue();
+                String ec = this.comboBoxEstadoCivil.getValue();
                 // Creo una persona
                 TablaHijos aux = new TablaHijos(fc, s, ec);
                 // Compruebo si la persona esta en el lista
@@ -374,14 +370,14 @@ public class AltaPolizaCargandoDatosControlador {
     public void recibeParametros(AltaPolizaControlador instanciaCargandoDatos, AltaPolizaControlador.DatosClienteTabla c) {
         instanciaBuscandoCliente_en_instanciaCargadoDatos=instanciaCargandoDatos;
         String nya = ""+c.getApellido()+" "+c.getNombre();
-        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),c.getNroDocumento(),nya, GestorClientes.getClienteFromNroCliente(c.nroCliente).get().getDomicilio());
+        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),new DocumentoDTO(c.getNroDocumento(), c.getTipoDoc()),nya, GestorClientes.getClienteFromNroCliente(c.nroCliente).get().domicilio());
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
-    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, Marca marca,
-                                         Modelo modeloDelVehículoText, AnioFabricacion anio, String sumaAseguradaText, String motorText,
+    public void recibeParametrosDeVolver(ObservableList<DatosClienteTabla> cliente, ProvinciaDTO provincia, LocalidadDTO ciudad, MarcaDTO marca,
+                                         ModeloDTO modeloDelVehículoText, Integer anio, String sumaAseguradaText, String motorText,
                                          String chasisText, String patenteText, String kmRealizadosV, String garageV,
-                                         String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV,
+                                         String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestrosDTO nroSiniestrosV,
                                          ObservableList<TablaHijos> listaDeHijos) {
         clientesList.add(cliente.getFirst());
         tablaMostrarClientes.setItems(clientesList);
@@ -410,10 +406,10 @@ public class AltaPolizaCargandoDatosControlador {
     }
     public class DatosClienteTabla {
         String nroCliente;
-        Documento tipoynroDoc;
+        DocumentoDTO tipoynroDoc;
         String nombreyapellido;
-        Direccion domicilio;
-        public DatosClienteTabla(String nroCliente, Documento tipoynroDoc, String nombreyapellido, Direccion domicilio) {
+        DireccionDTO domicilio;
+        public DatosClienteTabla(String nroCliente, DocumentoDTO tipoynroDoc, String nombreyapellido, DireccionDTO domicilio) {
             this.nroCliente = nroCliente;
             this.tipoynroDoc = tipoynroDoc;
             this.nombreyapellido = nombreyapellido;
@@ -425,10 +421,10 @@ public class AltaPolizaCargandoDatosControlador {
         public void setNroCliente(String nroCliente) {
             this.nroCliente = nroCliente;
         }
-        public Documento getTipoynroDoc() {
+        public DocumentoDTO getTipoynroDoc() {
             return tipoynroDoc;
         }
-        public void setTipoynroDoc(Documento tipoynroDoc) {
+        public void setTipoynroDoc(DocumentoDTO tipoynroDoc) {
             this.tipoynroDoc = tipoynroDoc;
         }
         public String getNombreyapellido() {
@@ -437,10 +433,10 @@ public class AltaPolizaCargandoDatosControlador {
         public void setNombreyapellido(String nombreyapellido) {
             this.nombreyapellido = nombreyapellido;
         }
-        public Direccion getDomicilio() {
+        public DireccionDTO getDomicilio() {
             return domicilio;
         }
-        public void setDomicilio(Direccion domicilio) {
+        public void setDomicilio(DireccionDTO domicilio) {
             this.domicilio = domicilio;
         }
 
@@ -457,8 +453,8 @@ public class AltaPolizaCargandoDatosControlador {
     public class TablaHijos {
         LocalDate fechaNacimiento;
         Sexo sexo;
-        EstadoCivil estadoCivil;
-        public TablaHijos(LocalDate fechaNacimiento, Sexo sexo, EstadoCivil estadoCivil) {
+        String estadoCivil;
+        public TablaHijos(LocalDate fechaNacimiento, Sexo sexo, String estadoCivil) {
             this.fechaNacimiento = fechaNacimiento;
             this.sexo = sexo;
             this.estadoCivil = estadoCivil;
@@ -467,8 +463,8 @@ public class AltaPolizaCargandoDatosControlador {
         public void setFechaNacimiento(LocalDate fechaNacimiento) {this.fechaNacimiento = fechaNacimiento;}
         public Sexo getSexo() {return sexo;}
         public void setSexo(Sexo sexo) {this.sexo = sexo;}
-        public EstadoCivil getEstadoCivil() {return estadoCivil;}
-        public void setEstadoCivil(EstadoCivil estadoCivil) {this.estadoCivil = estadoCivil;}
+        public String getEstadoCivil() {return estadoCivil;}
+        public void setEstadoCivil(String estadoCivil) {this.estadoCivil = estadoCivil;}
 
         @Override
         public boolean equals(Object o) {
@@ -552,25 +548,6 @@ public class AltaPolizaCargandoDatosControlador {
         apellidoYnombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombreyapellido"));
         domicilioColumna.setCellValueFactory(new PropertyValueFactory<>("domicilio"));
 
-        domicilioColumna.setCellFactory(new TableCellFactory<>(a-> a.getLocalidad().getNombre()+", "+a.getCalle()+" "+a.getNumero()));
-
-
-        ComboBoxCellFactory<Localidad> factoryLoc = new ComboBoxCellFactory<>(Localidad::getNombre);
-        idCiudad.setButtonCell(factoryLoc.call(null));
-        idCiudad.setCellFactory(factoryLoc);
-
-        ComboBoxCellFactory<Marca> factory = new ComboBoxCellFactory<>(obj-> obj.getNombre());
-        idMarca.setButtonCell(factory.call(null));
-        idMarca.setCellFactory(factory);
-
-        ComboBoxCellFactory<Modelo> factoryMoodelo = new ComboBoxCellFactory<>(obj-> obj.getNombre());
-        idModelo.setButtonCell(factoryMoodelo.call(null));
-        idModelo.setCellFactory(factoryMoodelo);
-
-        ComboBoxCellFactory<AnioFabricacion> factoryAnio = new ComboBoxCellFactory<>(obj-> String.valueOf(obj.getAnioModelo()));
-        idAnio.setButtonCell(factoryAnio.call(null));
-        idAnio.setCellFactory(factoryAnio);
-
         idProvincia.getItems().addAll(GestorProvincia.getProvincias());
         idMarca.getItems().addAll(GestorMarca.getMarcas());
         idGarage.getItems().addAll("SI","NO");
@@ -578,10 +555,10 @@ public class AltaPolizaCargandoDatosControlador {
         idAlarma.getItems().addAll("SI","NO");
         idTuercaAntirrobo.getItems().addAll("SI","NO");
 
-        List<NumeroSiniestros> numeroSiniestros = GestorNumeroSiniestros.getNumeroSiniestrosList();
+        List<NumeroSiniestrosDTO> numeroSiniestros = GestorNumeroSiniestros.getNumeroSiniestrosList();
         idNroSiniestros.getItems().addAll(numeroSiniestros);
-        for(NumeroSiniestros s : numeroSiniestros){
-            if(s.getCantSiniestrosInicial()==0)
+        for(NumeroSiniestrosDTO s : numeroSiniestros){
+            if(s.minimo()==0)
                 idNroSiniestros.setValue(s);
         }
 
@@ -626,7 +603,7 @@ public class AltaPolizaCargandoDatosControlador {
         });
     }
     @FXML public void onProvinciaCambio(){
-        idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromProvincia(idProvincia.getSelectionModel().getSelectedItem())));
+        idCiudad.setItems(FXCollections.observableArrayList(GestorProvincia.getLocalidadesFromIdProvincia(idProvincia.getSelectionModel().getSelectedItem().id())));
     }
     @FXML void onMarcaChange(){
         idAnio.setItems(FXCollections.observableArrayList());

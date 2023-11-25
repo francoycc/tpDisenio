@@ -17,6 +17,6 @@ public interface ClienteDAO {
      * @param tipoDoc
      * @return Lista de clientes que cumplen con las condiciones
      */
-    List<Cliente> getClientes(String nombre, String apellido, String nroCliente, String nroDoc, TipoDocumento tipoDoc);
+    List<Cliente> getClientes(String nombre, String apellido, String nroCliente, String nroDoc, String tipoDoc);
     Optional<Cliente> getClienteFromNroCliente(String nroCliente);
 }

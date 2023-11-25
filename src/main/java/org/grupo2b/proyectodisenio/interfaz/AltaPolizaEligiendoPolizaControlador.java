@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
-import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.dto.*;
 import org.grupo2b.proyectodisenio.logica.Cliente;
 import org.grupo2b.proyectodisenio.carga_datos.Objetos;
 import org.grupo2b.proyectodisenio.logica.GestorClientes;
@@ -58,7 +58,7 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private TableView<tablaTipoCobertura> tablaConTipoCobertura;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaCheck;
     @FXML private TableColumn<tablaTipoCobertura, String> columnaDescripcion;
-    @FXML private TableColumn<tablaTipoCobertura, TipoCobertura> columnaTipoCobertura;
+    @FXML private TableColumn<tablaTipoCobertura, TipoCoberturaDTO> columnaTipoCobertura;
 
     @FXML private TextField titularDelSeguro;
     @FXML private TextField marcaDelVehículo;
@@ -99,13 +99,13 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private ProgressIndicator progreesBar;
 
     //DATOS GENERACION POLIZA
-    private Marca marcaObj;
-    private Modelo modeloObj;
-    private AnioFabricacion anioObj;
+    private MarcaDTO marcaObj;
+    private ModeloDTO modeloObj;
+    private int anioObj;
     private LocalDate fechaInicioVigenciaObj;
     private LocalDate fechaFinalVigenciaObj;
     private FormaPago formaPagoObj;
-    private TipoCobertura tipoCoberturaObj;
+    private TipoCoberturaDTO tipoCoberturaObj;
     private List<Cuota> cuotasObj = new ArrayList<>();
 
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
@@ -136,18 +136,18 @@ public class AltaPolizaEligiendoPolizaControlador {
     }
     public class volverConParametros {
         ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente;
-        Provincia provincia;
-        Localidad ciudad;
-        AnioFabricacion anio;
+        ProvinciaDTO provincia;
+        LocalidadDTO ciudad;
+        int anio;
         String kmRealizadosV;
         String garageV;
         String dispositivoRastreoV;
         String alarmaV;
         String tuercaAntirroboV;
-        NumeroSiniestros nroSiniestrosV;
+        NumeroSiniestrosDTO nroSiniestrosV;
         ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos;
 
-        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, Provincia provincia, Localidad ciudad, AnioFabricacion anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
+        public volverConParametros(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente, ProvinciaDTO provincia, LocalidadDTO ciudad, int anio, String kmRealizadosV, String garageV, String dispositivoRastreoV, String alarmaV, String tuercaAntirroboV, NumeroSiniestrosDTO nroSiniestrosV, ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
             this.cliente = cliente;
             this.provincia = provincia;
             this.ciudad = ciudad;
@@ -168,22 +168,22 @@ public class AltaPolizaEligiendoPolizaControlador {
         public void setCliente(ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente) {
             this.cliente = cliente;
         }
-        public Provincia getProvincia() {
+        public ProvinciaDTO getProvincia() {
             return provincia;
         }
-        public void setProvincia(Provincia provincia) {
+        public void setProvincia(ProvinciaDTO provincia) {
             this.provincia = provincia;
         }
-        public Localidad getCiudad() {
+        public LocalidadDTO getCiudad() {
             return ciudad;
         }
-        public void setCiudad(Localidad ciudad) {
+        public void setCiudad(LocalidadDTO ciudad) {
             this.ciudad = ciudad;
         }
-        public AnioFabricacion getAnio() {
+        public int getAnio() {
             return anio;
         }
-        public void setAnio(AnioFabricacion anio) {
+        public void setAnio(int anio) {
             this.anio = anio;
         }
         public String getKmRealizadosV() {
@@ -216,10 +216,10 @@ public class AltaPolizaEligiendoPolizaControlador {
         public void setTuercaAntirroboV(String tuercaAntirroboV) {
             this.tuercaAntirroboV = tuercaAntirroboV;
         }
-        public NumeroSiniestros getNroSiniestrosV() {
+        public NumeroSiniestrosDTO getNroSiniestrosV() {
             return nroSiniestrosV;
         }
-        public void setNroSiniestrosV(NumeroSiniestros nroSiniestrosV) {
+        public void setNroSiniestrosV(NumeroSiniestrosDTO nroSiniestrosV) {
             this.nroSiniestrosV = nroSiniestrosV;
         }
         public ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> getListaDeHijos() {
@@ -390,36 +390,29 @@ public class AltaPolizaEligiendoPolizaControlador {
         animation.play();
     }
     @FXML void confirmarGeneracionPoliza(ActionEvent event) {
-        List<MedidaDeSeguridad> medidasSeguridad = new ArrayList<>();//TODO CARGA POR BASE DE DATOS PLS
+        List<String> idsMedidasSeguridad = new ArrayList<>();//TODO CARGA POR BASE DE DATOS PLS
         if(instanciaParaVolver.dispositivoRastreoV.equals("SI"))
-            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Rastreo").get());
+            idsMedidasSeguridad.add("Rastreo");
         if(instanciaParaVolver.garageV.equals("SI"))
-            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Garage").get());
+            idsMedidasSeguridad.add("Garage");
         if(instanciaParaVolver.tuercaAntirroboV.equals("SI"))
-            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Tuercas Antirrobo").get());
+            idsMedidasSeguridad.add("Tuercas Antirrobo");
         if(instanciaParaVolver.alarmaV.equals("SI"))
-            medidasSeguridad.add(GestorMedidasSeguridad.obtenerFromNombre("Alarma").get());
+            idsMedidasSeguridad.add("Alarma");
 
-        List<DeclaracionHijo> declaraciones = new ArrayList<>();
+        List<DeclaracionHijoDTO> declaraciones = new ArrayList<>();
         for (AltaPolizaCargandoDatosControlador.TablaHijos t : instanciaParaVolver.listaDeHijos){
-            declaraciones.add(new DeclaracionHijo(t.fechaNacimiento, t.sexo, t.estadoCivil));
+            declaraciones.add(new DeclaracionHijoDTO(1, t.estadoCivil, t.fechaNacimiento, t.sexo));
         }
 
-        Vehiculo vehiculo = new Vehiculo(0, motor.getText(), chasis.getText(), patente.getText(), modeloObj, anioObj, GestorKmPorAnio.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get(), instanciaParaVolver.ciudad);//TODO DOMICILIO RIESGO, NO EL DEL CLIENTE
+        VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorKmPorAnio.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
         Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
-        if(vOpt.isPresent()){
-            if(vOpt.get().equals(vehiculo)){
-                //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE???
-            }
-        }
+        //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE???
 
-        Cliente cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
-        cliente.getVehiculos().add(vehiculo);
+        ClienteDTO cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
+        PolizaDTO poliza = new PolizaDTO(-1, fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
+                tipoCoberturaObj.id(), idsMedidasSeguridad, vehiculo, declaraciones, cliente.id(), instanciaParaVolver.nroSiniestrosV.id());
 
-        Cuenta c = GestorCuentas.getCuentaActiva();
-        GestorPoliza.darAltaPoliza(fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
-                Integer.parseInt(premio.getText()), new DerechoEmision(Objetos.getHistorial(c)), new Descuento("D", Objetos.getHistorial(c)), tipoCoberturaObj, cuotasObj,
-                medidasSeguridad, vehiculo, declaraciones, cliente, instanciaParaVolver.nroSiniestrosV);
 
         Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
         messageWindows.setTitle("Información");
@@ -498,10 +491,10 @@ public class AltaPolizaEligiendoPolizaControlador {
             return cell;
         });
 
-        Collection<TipoCobertura> tiposCobertura = GestorTiposCobertura.getTiposCobertura();
+        Collection<TipoCoberturaDTO> tiposCobertura = GestorTiposCobertura.getTiposCobertura();
         List<tablaTipoCobertura> listaTabla = new ArrayList<>();
-        for(TipoCobertura t : tiposCobertura)
-            listaTabla.add(new tablaTipoCobertura(t, t.getDescripcion()));
+        for(TipoCoberturaDTO t : tiposCobertura)
+            listaTabla.add(new tablaTipoCobertura(t, t.descripcion()));
 
         tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
@@ -562,16 +555,16 @@ public class AltaPolizaEligiendoPolizaControlador {
     AltaPolizaCargandoDatosControlador instancia_1_en_2;
     public void recibeParametros(AltaPolizaCargandoDatosControlador instanciaCargandoDatos,
                                  ObservableList<AltaPolizaCargandoDatosControlador.DatosClienteTabla> cliente,
-                                 String apellidoynombre, Provincia provincia, Localidad ciudad, Marca marca, Modelo modelo,
-                                 AnioFabricacion anio, String sumaAseguradaV, String motorVehiculo, String chasisV,
+                                 String apellidoynombre, ProvinciaDTO provincia, LocalidadDTO ciudad, MarcaDTO marca, ModeloDTO modelo,
+                                 int anio, String sumaAseguradaV, String motorVehiculo, String chasisV,
                                  String patenteV, String kmRealizadosV, String garageV, String dispositivoRastreoV,
-                                 String alarmaV, String tuercaAntirroboV, NumeroSiniestros nroSiniestrosV,
+                                 String alarmaV, String tuercaAntirroboV, NumeroSiniestrosDTO nroSiniestrosV,
                                  ObservableList<AltaPolizaCargandoDatosControlador.TablaHijos> listaDeHijos) {
         instancia_1_en_2=instanciaCargandoDatos;
         titularDelSeguro.setText(apellidoynombre);
-        marcaDelVehículo.setText(marca.getNombre());
+        marcaDelVehículo.setText(marca.nombre());
         marcaObj=marca;
-        modeloDelVehículo.setText(modelo.getNombre());
+        modeloDelVehículo.setText(modelo.toString());
         modeloObj=modelo;
         anioObj=anio;
         motor.setText(motorVehiculo);
@@ -582,17 +575,17 @@ public class AltaPolizaEligiendoPolizaControlador {
     }
     public class tablaTipoCobertura {
         RadioButton checkBox;
-        TipoCobertura tipoCobertura;
+        TipoCoberturaDTO tipoCobertura;
         String descripcion;
-        public tablaTipoCobertura(TipoCobertura tipoCobertura, String descripcion) {
+        public tablaTipoCobertura(TipoCoberturaDTO tipoCobertura, String descripcion) {
             this.checkBox = new RadioButton();
             this.tipoCobertura = tipoCobertura;
             this.descripcion = descripcion;
         }
         public RadioButton getCheckBox() {return checkBox;}
         public void setCheckBox(RadioButton checkBox) {this.checkBox = checkBox;}
-        public TipoCobertura getTipoCobertura() {return tipoCobertura;}
-        public void setTipoCobertura(TipoCobertura tipoCobertura) {this.tipoCobertura = tipoCobertura;}
+        public TipoCoberturaDTO getTipoCobertura() {return tipoCobertura;}
+        public void setTipoCobertura(TipoCoberturaDTO tipoCobertura) {this.tipoCobertura = tipoCobertura;}
         public String getDescripcion() {return descripcion;}
         public void setDescripcion(String descripcion) {this.descripcion = descripcion;}
     }

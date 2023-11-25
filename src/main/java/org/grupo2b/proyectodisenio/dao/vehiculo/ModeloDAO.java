@@ -8,5 +8,6 @@ import java.util.List;
 public interface ModeloDAO {
     List<Modelo> getModelos();
     List<Modelo> getModelosFromMarca(Marca m);
+    List<Modelo> getModelosFromIdMarca(int id);
     List<Modelo> getModelosFromMarca(Marca m, int pageSize, int pageNumber);
 }

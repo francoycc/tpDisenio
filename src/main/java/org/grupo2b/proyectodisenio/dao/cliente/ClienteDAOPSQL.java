@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class ClienteDAOPSQL implements ClienteDAO{
     @Override
-    public List<Cliente> getClientes(String nombre, String apellido, String nroCliente, String nroDoc, TipoDocumento tipoDoc){
+    public List<Cliente> getClientes(String nombre, String apellido, String nroCliente, String nroDoc, String tipoDoc) {
         CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
         CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
         Root<Cliente> root = cr.from(Cliente.class);
@@ -26,7 +26,7 @@ public class ClienteDAOPSQL implements ClienteDAO{
                         cb.like(root.get("nombre"),nombre+"%"),
                         cb.like(root.get("apellido"),apellido+"%"),
                         cb.like(root.join("documento").get("numero").as(String.class),nroDoc+"%"),
-                        cb.equal(root.join("documento").join("tipoDocumento").get("nombre"), tipoDoc.getNombre())));
+                        cb.equal(root.join("documento").join("tipoDocumento").get("nombre"), tipoDoc)));
 
         Query<Cliente> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         return query.getResultList();
