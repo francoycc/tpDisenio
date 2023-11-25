@@ -106,7 +106,6 @@ public class AltaPolizaEligiendoPolizaControlador {
     private LocalDate fechaFinalVigenciaObj;
     private FormaPago formaPagoObj;
     private TipoCoberturaDTO tipoCoberturaObj;
-    private List<Cuota> cuotasObj = new ArrayList<>();
 
     @FXML void irInterfazInicio(ActionEvent event) throws IOException {
         Alert messageWindows = new Alert(Alert.AlertType.WARNING);
@@ -328,13 +327,6 @@ public class AltaPolizaEligiendoPolizaControlador {
             fechaInicio.setText(fechaInicioVigenciaObj.toString());
             fechaFin.setText(fechaFinalVigenciaObj.toString());
 
-            cuotasObj.clear();
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(1), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(2), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(3), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(4), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(5), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
             ultimoDiaDePago1.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(1).toString());
             ultimoDiaDePago2.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(2).toString());
             ultimoDiaDePago3.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(3).toString());
@@ -364,8 +356,6 @@ public class AltaPolizaEligiendoPolizaControlador {
             fechaInicio.setText(fechaInicioVigenciaObj.toString());
             fechaFin.setText(fechaFinalVigenciaObj.toString());
 
-            cuotasObj.clear();
-            cuotasObj.add(new Cuota(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6), 5000, EstadoCuota.PENDIENTE, 0, 0, null));
             ultimoDiadePagoSemestral.setText(fechaInicioVigencia.getValue().plusDays(-1).plusMonths(6).toString());
             montoTotalSemestral.setText("30000");
         }
