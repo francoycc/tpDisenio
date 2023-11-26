@@ -5,6 +5,7 @@ import org.grupo2b.proyectodisenio.dto.ClienteDTO;
 import org.grupo2b.proyectodisenio.dto.DireccionDTO;
 import org.grupo2b.proyectodisenio.dto.DocumentoDTO;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
+import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,5 +38,12 @@ public class GestorClientes {
 
     public static List<String> getEstadosCiviles(){
         return DAOManager.estadoCivilDAO().getEstadosCiviles().stream().map(EstadoCivil::getTipo).collect(Collectors.toList());
+    }
+
+
+
+    public static List<String> getTiposDocumento(){
+        List<TipoDocumento> tiposDoc = DAOManager.tipoDocumentoDAO().getTiposDocumento();
+        return DAOManager.tipoDocumentoDAO().getTiposDocumento().stream().map(TipoDocumento::getNombre).collect(Collectors.toList());
     }
 }

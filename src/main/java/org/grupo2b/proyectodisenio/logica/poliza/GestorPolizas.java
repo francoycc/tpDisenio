@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 public class GestorPolizas {
 
     public static boolean darAltaPoliza(PolizaDTO polizaDTO){
-        System.out.println("AAAAAAAAAAAA");
         //TODO HARDCODEADOS POR CU16
         final int PREMIO=1000;
         final DerechoEmision derechoEmision=new DerechoEmision(Objetos.getHistorial(GestorCuentas.getCuentaActiva()));
@@ -32,7 +31,7 @@ public class GestorPolizas {
 
         Vehiculo vehiculo;
         try {
-            vehiculo = dtoAVehiculo(polizaDTO.vehiculo());
+            vehiculo = GestorVehiculos.dtoAVehiculo(polizaDTO.vehiculo());
         }catch (IllegalArgumentException e){
             return false;
         }
@@ -103,39 +102,6 @@ public class GestorPolizas {
         return DAOManager.polizaDAO().save(p);
     }
 
-    private static Vehiculo dtoAVehiculo(VehiculoDTO vDTO){
-        Localidad domicilioRiesgo = null;
-        AnioFabricacion anioFabricacion = null;
-        Modelo modelo = null;
-        KmPorAnio kmPorAnio = null;
-
-
-        if(GestorVehiculos.existeVehiculoAsociado(vDTO.patente(), vDTO.motor(), vDTO.chasis()))
-            throw new IllegalArgumentException();//TODO QUE PASA SI YA EXISTE UN VEHICULO PERO NO ESTA ASOCIADO?? QUE PASA SI SON LOS VEHICULOS TIENEN DIFERENCIAS EN LOS DATOS?? SE ACTUALIZA? TIRA ERROR?
-        {
-            Optional<Localidad> domicilioRiesgoOpt = DAOManager.localidadDAO().getLocalidad(vDTO.id_localidad());
-            if (domicilioRiesgoOpt.isEmpty()) throw new IllegalArgumentException();
-            domicilioRiesgo = domicilioRiesgoOpt.get();
-
-            Optional<Modelo> modeloOpt = DAOManager.modeloDAO().get(vDTO.id_modelo());
-            if (modeloOpt.isEmpty()) throw new IllegalArgumentException();
-            modelo = modeloOpt.get();
-
-            for(AnioFabricacion a : modelo.getAniosFabricacion())
-                if(a.getAnioModelo() == vDTO.id_anioFabricacion())
-                    anioFabricacion = a;
-            if(anioFabricacion==null) throw new IllegalArgumentException();
-
-            Optional<KmPorAnio> kmPorAnioOpt = DAOManager.kmPorAnioDAO().get(vDTO.id_kmPorAnio());
-            if(kmPorAnioOpt.isEmpty()) throw new IllegalArgumentException();
-            kmPorAnio=kmPorAnioOpt.get();
-
-            //TODO VALIDAR PATENTE, MOTOR, CHASIS de vDTO
-        }
-
-        return new Vehiculo(SubsistemaSumaAsegurada.getSumaAsegurada(modelo.getId(), anioFabricacion.getAnioModelo()), vDTO.motor(), vDTO.chasis(), vDTO.patente(), modelo, anioFabricacion, kmPorAnio, domicilioRiesgo);
-
-    }
 
 
 

@@ -16,7 +16,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dto.ClienteDTO;
 import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.documento.GestorDocumentos;
 
 import java.io.IOException;
 import java.net.URL;
@@ -300,7 +299,7 @@ public class AltaPolizaControlador {
         assert tipoDocumento != null : "fx:id=\"tipoDocumento\" was not injected: check your FXML file 'AltaPoliza.fxml'.";
 
         tablaMostrarClientes.setVisible(false);
-        tipoDocumento.getItems().addAll(GestorDocumentos.getTiposDocumento());
+        tipoDocumento.getItems().addAll(GestorClientes.getTiposDocumento());
 
         botonesElegirCliente.setCellValueFactory(new PropertyValueFactory<>("botonSelect"));
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));
