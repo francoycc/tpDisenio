@@ -393,34 +393,47 @@ public class AltaPolizaEligiendoPolizaControlador {
         //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE???
 
         ClienteDTO cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
-        PolizaDTO poliza = new PolizaDTO(-1, fechaInicioVigenciaObj, fechaFinalVigenciaObj, LocalDate.now(), formaPagoObj, EstadoPoliza.GENERADA,
-                tipoCoberturaObj.id(), idsMedidasSeguridad, vehiculo, declaraciones, cliente.id(), instanciaParaVolver.nroSiniestrosV.id());
+        PolizaDTO poliza = new PolizaDTO(fechaInicioVigenciaObj, fechaFinalVigenciaObj, formaPagoObj, tipoCoberturaObj.id(),
+                idsMedidasSeguridad, vehiculo, declaraciones, cliente.id(), instanciaParaVolver.nroSiniestrosV.id());
 
-        GestorPolizas.darAltaPoliza(poliza);
 
-        Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
-        messageWindows.setTitle("Información");
-        messageWindows.setHeaderText("");
-        messageWindows.setContentText("Operacion Exitosa");
-        // Agrega los botones OK y Cancelar al diálogo
-        ButtonType botonConfirmar = new ButtonType("Confirmar");
-        messageWindows.getButtonTypes().setAll(botonConfirmar);
-        // Muestra el diálogo y captura la respuesta del usuario
-        Optional<ButtonType> result = messageWindows.showAndWait();
-        // Maneja la respuesta del usuario
-        if (result.isPresent() && result.get() == botonConfirmar) {
-            try {
-                AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("EL ASEGURADO");
-                Scene scene = new Scene(root, 1280, 720);
-                scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        boolean estadoOperacion = GestorPolizas.darAltaPoliza(poliza);
+        System.out.println(estadoOperacion);
+
+        if(estadoOperacion) {
+            Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
+            messageWindows.setTitle("Información");
+            messageWindows.setHeaderText("");
+            messageWindows.setContentText("Operacion Exitosa");
+            // Agrega los botones OK y Cancelar al diálogo
+            ButtonType botonConfirmar = new ButtonType("Confirmar");
+            messageWindows.getButtonTypes().setAll(botonConfirmar);
+            // Muestra el diálogo y captura la respuesta del usuario
+            Optional<ButtonType> result = messageWindows.showAndWait();
+            // Maneja la respuesta del usuario
+            if (result.isPresent() && result.get() == botonConfirmar) {
+                try {
+                    AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setTitle("EL ASEGURADO");
+                    Scene scene = new Scene(root, 1280, 720);
+                    scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
+        }else{
+            Alert messageWindows = new Alert(Alert.AlertType.ERROR);
+            messageWindows.setTitle("Error");
+            messageWindows.setHeaderText("");
+            messageWindows.setContentText("Ha habido un problema con la carga de datos");
+            // Agrega los botones OK y Cancelar al diálogo
+            ButtonType botonConfirmar = new ButtonType("Confirmar");
+            messageWindows.getButtonTypes().setAll(botonConfirmar);
+            Optional<ButtonType> result = messageWindows.showAndWait();
         }
     }
     @FXML void initialize() {

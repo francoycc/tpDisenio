@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.dao.vehiculo;
 
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -10,6 +11,7 @@ import org.grupo2b.proyectodisenio.logica.vehiculo.Modelo;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ModeloDAOPSQL implements ModeloDAO{
 
@@ -24,6 +26,22 @@ public class ModeloDAOPSQL implements ModeloDAO{
 
         Query<Modelo> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         return query.getResultList();
+    }
+
+    @Override
+    public Optional<Modelo> get(int id) {
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
+        CriteriaQuery<Modelo> cr = cb.createQuery(Modelo.class);
+        Root<Modelo> root = cr.from(Modelo.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<Modelo> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
+        try {
+            return Optional.of(query.getSingleResult());
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
     }
 
     @Override

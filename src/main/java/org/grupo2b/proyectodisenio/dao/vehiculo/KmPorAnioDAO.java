@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface KmPorAnioDAO {
     Optional<KmPorAnio> getFromNumero(int km);
+    Optional<KmPorAnio> get(int id);
 }

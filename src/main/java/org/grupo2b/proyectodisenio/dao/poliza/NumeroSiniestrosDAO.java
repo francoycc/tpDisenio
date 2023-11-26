@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface NumeroSiniestrosDAO {
     List<NumeroSiniestros> getNumeroSiniestrosList();
     Optional<NumeroSiniestros> getNumeroSiniestros(int minimo, int maximo);
+    Optional<NumeroSiniestros> get(int id);
 }

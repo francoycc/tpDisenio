@@ -7,6 +7,7 @@ import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dao.DAOPSQL;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
+import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -45,5 +46,24 @@ public class ClienteDAOPSQL implements ClienteDAO{
         }catch (NoResultException e){
             return Optional.empty();
         }
+    }
+
+    @Override
+    public Optional<Cliente> get(int id) {
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
+        CriteriaQuery<Cliente> cr = cb.createQuery(Cliente.class);
+        Root<Cliente> root = cr.from(Cliente.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<Cliente> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
+
+        Cliente res;
+        try {
+            res = query.getSingleResult();
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
+        return Optional.of(res);
     }
 }

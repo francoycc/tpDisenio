@@ -1,5 +1,6 @@
 package org.grupo2b.proyectodisenio.dao;
 
+import jakarta.persistence.RollbackException;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 import org.grupo2b.proyectodisenio.logica.cliente.CondicionIva;
 import org.grupo2b.proyectodisenio.logica.poliza.DeclaracionHijo;
@@ -89,12 +90,18 @@ public class DAOPSQL implements DAO {
     }
 
     @Override
-    public <T> T save(T o) {
+    public <T> boolean save(T o){
         Transaction tx = session.beginTransaction();
         T o2 = session.merge(o);
-        tx.commit();
-        session.clear();
-        return o2;
+        try {
+            tx.commit();
+            session.clear();
+            return true;
+        }catch (RollbackException r){
+            session.clear();
+            tx.rollback();
+            return false;
+        }
     }
 
     @Override

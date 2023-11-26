@@ -9,6 +9,7 @@ import org.grupo2b.proyectodisenio.dao.DAOPSQL;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
 import org.grupo2b.proyectodisenio.logica.poliza.NumeroSiniestros;
+import org.grupo2b.proyectodisenio.logica.vehiculo.KmPorAnio;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -42,5 +43,24 @@ public class NumeroSiniestrosDAOPSQL implements NumeroSiniestrosDAO{
         }catch (NoResultException e){
             return Optional.empty();
         }
+    }
+
+    @Override
+    public Optional<NumeroSiniestros> get(int id) {
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
+        CriteriaQuery<NumeroSiniestros> cr = cb.createQuery(NumeroSiniestros.class);
+        Root<NumeroSiniestros> root = cr.from(NumeroSiniestros.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<NumeroSiniestros> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
+
+        NumeroSiniestros res;
+        try {
+            res = query.getSingleResult();
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
+        return Optional.of(res);
     }
 }

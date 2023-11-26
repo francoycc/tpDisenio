@@ -18,4 +18,5 @@ public interface ClienteDAO {
      */
     List<Cliente> getClientes(String nombre, String apellido, String nroCliente, String nroDoc, String tipoDoc);
     Optional<Cliente> getClienteFromNroCliente(String nroCliente);
+    Optional<Cliente> get(int id);
 }
