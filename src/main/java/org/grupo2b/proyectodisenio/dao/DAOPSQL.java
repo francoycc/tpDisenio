@@ -19,6 +19,7 @@ import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 import org.grupo2b.proyectodisenio.logica.pagos.Recibo;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -85,8 +86,13 @@ public class DAOPSQL implements DAO {
                 .addAnnotatedClass(Recibo.class)
                 .addAnnotatedClass(TipoCuenta.class);
         ServiceRegistry reg = new StandardServiceRegistryBuilder().applySettings(properties).build();
-        sessionFactory = con.buildSessionFactory(reg);
-        session = con.buildSessionFactory(reg).openSession();
+        try {
+            sessionFactory = con.buildSessionFactory(reg);
+            session = con.buildSessionFactory(reg).openSession();
+
+        }catch (Exception e){
+            System.exit(1);
+        }
     }
 
     @Override
