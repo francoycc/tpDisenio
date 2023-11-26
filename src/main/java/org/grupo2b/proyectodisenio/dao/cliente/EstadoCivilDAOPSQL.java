@@ -1,4 +1,4 @@
-package org.grupo2b.proyectodisenio.dao.poliza;
+package org.grupo2b.proyectodisenio.dao.cliente;
 
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -7,7 +7,6 @@ import jakarta.persistence.criteria.Root;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dao.DAOPSQL;
 import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
-import org.grupo2b.proyectodisenio.logica.poliza.NumeroSiniestros;
 import org.hibernate.query.Query;
 
 import java.util.LinkedList;

@@ -2,6 +2,8 @@ package org.grupo2b.proyectodisenio.dao;
 
 import org.grupo2b.proyectodisenio.dao.cliente.ClienteDAO;
 import org.grupo2b.proyectodisenio.dao.cliente.ClienteDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.cliente.EstadoCivilDAO;
+import org.grupo2b.proyectodisenio.dao.cliente.EstadoCivilDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAO;
 import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.direccion.*;

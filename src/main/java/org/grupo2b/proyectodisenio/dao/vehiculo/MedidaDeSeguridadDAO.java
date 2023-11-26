@@ -1,4 +1,4 @@
-package org.grupo2b.proyectodisenio.dao.poliza;
+package org.grupo2b.proyectodisenio.dao.vehiculo;
 
 import org.grupo2b.proyectodisenio.logica.vehiculo.MedidaDeSeguridad;
 

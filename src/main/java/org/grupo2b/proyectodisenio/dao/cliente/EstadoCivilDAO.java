@@ -1,4 +1,4 @@
-package org.grupo2b.proyectodisenio.dao.poliza;
+package org.grupo2b.proyectodisenio.dao.cliente;
 
 import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 
