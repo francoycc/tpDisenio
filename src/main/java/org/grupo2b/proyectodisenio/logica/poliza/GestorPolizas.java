@@ -5,6 +5,7 @@ import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dto.*;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
+import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
@@ -95,7 +96,11 @@ public class GestorPolizas {
                 PREMIO, derechoEmision,  descuento, tipoCobertura, cuotas,
                 medidasDeSeguridad, vehiculo, declaracionesHijos,  cliente,  numeroSiniestros);
 
-        return DAOManager.polizaDAO().save(p);
+        boolean resultado = DAOManager.polizaDAO().save(p);
+        if(resultado) {
+            GestorClientes.actualizarEstadoCliente(cliente.getNroCliente());
+        }
+        return resultado;
     }
 
 

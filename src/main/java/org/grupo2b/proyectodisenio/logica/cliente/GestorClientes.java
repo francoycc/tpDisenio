@@ -6,6 +6,7 @@ import org.grupo2b.proyectodisenio.dto.DireccionDTO;
 import org.grupo2b.proyectodisenio.dto.DocumentoDTO;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
+import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
 import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 
 import java.util.List;
@@ -31,6 +32,20 @@ public class GestorClientes {
 
     public static Optional<Cliente> getCliente(String nroCliente){
         return DAOManager.clienteDAO().getClienteFromNroCliente(nroCliente);
+    }
+    public static void actualizarEstadoCliente(String nroCliente){
+        Optional<Cliente> cOPT = getCliente(nroCliente);
+        if(cOPT.isEmpty()) return;
+        Cliente cliente = cOPT.get();
+
+        //PASA AUTOMATICAMENTE EL CHEQUEO DE NUMERO DE SINIESTROS POR NO ESTAR IMPLEMENTADO
+
+        if(tieneCuotasImpagas(nroCliente)||cliente.getDiasDesdeQueEsClienteActivo()<730) {//DOS AÑOS DE CLIENTE ACTIVO
+            cliente.setCondicionCliente(CondicionCliente.NORMAL);
+            return;
+        }
+
+        cliente.setCondicionCliente(CondicionCliente.PLATA);
     }
 
 

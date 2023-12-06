@@ -7,6 +7,7 @@ import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class Cliente {
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_estado_civil")
     private EstadoCivil estadoCivil;
+    int diasDesdeQueEsClienteActivo;
 
 
 
@@ -77,6 +79,24 @@ public class Cliente {
         this.domicilio = domicilio;
         this.vehiculos = vehiculos;
         this.estadoCivil = estadoCivil;
+        this.diasDesdeQueEsClienteActivo = 0;
+    }
+    public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil, int diasDesdeQueEsClienteActivo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cuil = cuil;
+        this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.correoElectronico = correoElectronico;
+        this.profesion = profesion;
+        this.anioRegistro = anioRegistro;
+        this.condicionCliente = condicionCliente;
+        this.documento = documento;
+        this.condicionIva = condicionIva;
+        this.domicilio = domicilio;
+        this.vehiculos = vehiculos;
+        this.estadoCivil = estadoCivil;
+        this.diasDesdeQueEsClienteActivo = diasDesdeQueEsClienteActivo;
     }
 
     @Override
@@ -218,6 +238,12 @@ public class Cliente {
     }
     public void setEstadoCivil(EstadoCivil estadoCivil) {
         this.estadoCivil = estadoCivil;
+    }
+    public int getDiasDesdeQueEsClienteActivo() {
+        return diasDesdeQueEsClienteActivo;
+    }
+    public void setDiaDesdeQueEsClienteActivo(int diasDesdeQueEsClienteActivo) {
+        this.diasDesdeQueEsClienteActivo = diasDesdeQueEsClienteActivo;
     }
     public int getId() {
         return id;
