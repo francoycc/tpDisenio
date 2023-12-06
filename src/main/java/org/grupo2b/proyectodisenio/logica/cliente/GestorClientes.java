@@ -6,6 +6,7 @@ import org.grupo2b.proyectodisenio.dto.DireccionDTO;
 import org.grupo2b.proyectodisenio.dto.DocumentoDTO;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
+import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public class GestorClientes {
 
     public static Optional<Cliente> getCliente(String nroCliente){
         return DAOManager.clienteDAO().getClienteFromNroCliente(nroCliente);
+    }
+
+
+
+
+    public static boolean tieneCuotasImpagas(String nroCliente){
+        return !DAOManager.cuotaDAO().getCuotasImpagas(nroCliente).isEmpty();
     }
 
 

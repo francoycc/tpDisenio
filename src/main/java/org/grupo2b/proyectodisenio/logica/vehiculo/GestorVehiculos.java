@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 
 public class GestorVehiculos {
 
-    public static Vehiculo dtoAVehiculo(VehiculoDTO vDTO){
+    public static Vehiculo obtenerVehiculo(VehiculoDTO vDTO){
         Localidad domicilioRiesgo = null;
         AnioFabricacion anioFabricacion = null;
         Modelo modelo = null;
         KmPorAnio kmPorAnio = null;
 
 
-        if(GestorVehiculos.existeVehiculoAsociado(vDTO.patente(), vDTO.motor(), vDTO.chasis()))
+        if(existeVehiculoAsociado(vDTO.patente(), vDTO.motor(), vDTO.chasis()))
             throw new IllegalArgumentException();//TODO QUE PASA SI YA EXISTE UN VEHICULO PERO NO ESTA ASOCIADO?? QUE PASA SI SON LOS VEHICULOS TIENEN DIFERENCIAS EN LOS DATOS?? SE ACTUALIZA? TIRA ERROR?
         {
             Optional<Localidad> domicilioRiesgoOpt = DAOManager.localidadDAO().getLocalidad(vDTO.id_localidad());

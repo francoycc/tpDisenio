@@ -15,6 +15,8 @@ import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAO;
 import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.historial.HistorialDAO;
 import org.grupo2b.proyectodisenio.dao.historial.HistorialDAOPSQL;
+import org.grupo2b.proyectodisenio.dao.pagos.CuotaDAO;
+import org.grupo2b.proyectodisenio.dao.pagos.CuotaDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.poliza.*;
 import org.grupo2b.proyectodisenio.dao.vehiculo.*;
 
@@ -54,6 +56,7 @@ public class DAOManager {
     private static NumeroSiniestrosDAO numeroSiniestrosDAO;
     private static KmPorAnioDAO kmPorAnioDAO;
     private static PolizaDAO polizaDAO;
+    private static CuotaDAO cuotaDAO;
 
 
     public static void init(){}
@@ -81,6 +84,7 @@ public class DAOManager {
         numeroSiniestrosDAO = new NumeroSiniestrosDAOPSQL();
         kmPorAnioDAO = new KmPorAnioDAOPSQL();
         polizaDAO = new PolizaDAOPSQL();
+        cuotaDAO = new CuotaDAOPSQL();
     }
 
 
@@ -174,4 +178,7 @@ public class DAOManager {
         return polizaDAO;
     }
 
+    public static CuotaDAO cuotaDAO() {
+        return cuotaDAO;
+    }
 }

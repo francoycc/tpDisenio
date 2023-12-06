@@ -1,19 +1,15 @@
 package org.grupo2b.proyectodisenio.logica.poliza;
 
 import org.grupo2b.proyectodisenio.carga_datos.Objetos;
-import org.grupo2b.proyectodisenio.dao.DAO;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dto.*;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.cuentas.GestorCuentas;
-import org.grupo2b.proyectodisenio.logica.direccion.GestorUbicaciones;
-import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoCuota;
 import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
 import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
-import org.grupo2b.proyectodisenio.subsistemas.SubsistemaSumaAsegurada;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,7 +27,7 @@ public class GestorPolizas {
 
         Vehiculo vehiculo;
         try {
-            vehiculo = GestorVehiculos.dtoAVehiculo(polizaDTO.vehiculo());
+            vehiculo = GestorVehiculos.obtenerVehiculo(polizaDTO.vehiculo());
         }catch (IllegalArgumentException e){
             return false;
         }
