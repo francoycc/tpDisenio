@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Cliente {
+public class Cliente {  // HAY QUE PONER EL DOCUMENTO COMO ATRIBUTO
     @Id
     @GeneratedValue
     private int id;

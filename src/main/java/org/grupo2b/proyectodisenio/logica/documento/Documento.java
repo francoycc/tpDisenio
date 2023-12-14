@@ -3,7 +3,7 @@ package org.grupo2b.proyectodisenio.logica.documento;
 import jakarta.persistence.*;
 
 @Entity
-public class Documento {
+public class Documento {    // HAY QUE SACAR ESTA CLASE
     @Id
     private int numero;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
