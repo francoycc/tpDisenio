@@ -54,4 +54,23 @@ public class EstadoCivilDAOPSQL implements EstadoCivilDAO{
         return Optional.of(res);
     }
 
+    @Override
+    public Optional<EstadoCivil> getFromTipo(String tipo) {
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
+        CriteriaQuery<EstadoCivil> cr = cb.createQuery(EstadoCivil.class);
+        Root<EstadoCivil> root = cr.from(EstadoCivil.class);
+
+        cr.select(root).where(cb.equal(root.get("tipo"), tipo));
+
+        Query<EstadoCivil> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
+
+        EstadoCivil res;
+        try {
+            res = query.getSingleResult();
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
+        return Optional.of(res);
+    }
+
 }

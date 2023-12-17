@@ -57,6 +57,20 @@ public class GestorClientes {
     public static List<String> getEstadosCiviles(){
         return DAOManager.estadoCivilDAO().getEstadosCiviles().stream().map(EstadoCivil::getTipo).collect(Collectors.toList());
     }
+    public static Optional<String> getNombreEstadoCivilFromId(int id){
+        Optional<EstadoCivil> opt = DAOManager.estadoCivilDAO().get(id);
+        if(opt.isEmpty())
+            return Optional.empty();
+        else
+            return Optional.of(opt.get().getTipo());
+    }
+    public static Optional<Integer> getIdEstadoCivilFromTipo(String tipo){
+        Optional<EstadoCivil> opt = DAOManager.estadoCivilDAO().getFromTipo(tipo);
+        if(opt.isEmpty())
+            return Optional.empty();
+        else
+            return Optional.of(opt.get().getId());
+    }
 
 
 

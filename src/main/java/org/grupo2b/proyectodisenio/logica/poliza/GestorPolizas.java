@@ -109,7 +109,7 @@ public class GestorPolizas {
     public static final Function<Poliza, PolizaDTO> conversorADTO = p -> {
         List<DeclaracionHijoDTO> declaracionHijosDTOS = new ArrayList<>();
         for(DeclaracionHijo h: p.getDeclaracionesHijos()) {
-            declaracionHijosDTOS.add(new DeclaracionHijoDTO(h.getId(), String.valueOf(h.getEstadoCivilHijo()),h.getFechaNacimiento(), h.getSexo()));
+            declaracionHijosDTOS.add(new DeclaracionHijoDTO(h.getId(), h.getEstadoCivilHijo().getId(),h.getFechaNacimiento(), h.getSexo()));
         }
         List<String> medidas = new ArrayList<>();
         for (MedidaDeSeguridad m: p.getMedidasDeSeguridad()){

@@ -152,7 +152,7 @@ public class AltaPolizaCargandoDatosControlador {
             Sexo s = this.comboBoxSexo.getValue();
             String ec = this.comboBoxEstadoCivil.getValue();
             // Creo una persona
-            TablaHijos hijo = new TablaHijos(fc, s, ec);
+            TablaHijos hijo = new TablaHijos(fc, s, GestorClientes.getIdEstadoCivilFromTipo(ec).get());
             // Compruebo si la persona esta en la lista
             if (!hijosList.contains(hijo) && !(fc==null || s==null || ec==null) && (calcularEdad(fc)>=18 && calcularEdad(fc)<=30)) {
                 // Lo añado a la lista
@@ -201,7 +201,7 @@ public class AltaPolizaCargandoDatosControlador {
         if (hijo != null) {
             this.datePickerFechaNacimiento.setValue(hijo.getFechaNacimiento());
             this.comboBoxSexo.setValue(hijo.getSexo());
-            this.comboBoxEstadoCivil.setValue(hijo.getEstadoCivil());
+            this.comboBoxEstadoCivil.setValue(GestorClientes.getNombreEstadoCivilFromId(hijo.getEstadoCivil()).get());
         }
     }
     @FXML private void modificarHijo(ActionEvent event) {
@@ -221,7 +221,7 @@ public class AltaPolizaCargandoDatosControlador {
                 Sexo s = this.comboBoxSexo.getValue();
                 String ec = this.comboBoxEstadoCivil.getValue();
                 // Creo una persona
-                TablaHijos aux = new TablaHijos(fc, s, ec);
+                TablaHijos aux = new TablaHijos(fc, s, GestorClientes.getIdEstadoCivilFromTipo(ec).get());
                 // Compruebo si la persona esta en el lista
                 if (!this.hijosList.contains(aux)) {
                     // Modifico el objeto
@@ -422,7 +422,7 @@ public class AltaPolizaCargandoDatosControlador {
         public String getTipoyNroDoc() {
             return tipoyNroDoc;
         }
-        public void setTipoynroDoc(String tipoyNroDoc) {
+        public void setTipoyNroDoc(String tipoyNroDoc) {
             this.tipoyNroDoc = tipoyNroDoc;
         }
         public String getNombreyapellido() {
@@ -451,8 +451,8 @@ public class AltaPolizaCargandoDatosControlador {
     public class TablaHijos {
         LocalDate fechaNacimiento;
         Sexo sexo;
-        String estadoCivil;
-        public TablaHijos(LocalDate fechaNacimiento, Sexo sexo, String estadoCivil) {
+        int estadoCivil;
+        public TablaHijos(LocalDate fechaNacimiento, Sexo sexo, int estadoCivil) {
             this.fechaNacimiento = fechaNacimiento;
             this.sexo = sexo;
             this.estadoCivil = estadoCivil;
@@ -461,8 +461,8 @@ public class AltaPolizaCargandoDatosControlador {
         public void setFechaNacimiento(LocalDate fechaNacimiento) {this.fechaNacimiento = fechaNacimiento;}
         public Sexo getSexo() {return sexo;}
         public void setSexo(Sexo sexo) {this.sexo = sexo;}
-        public String getEstadoCivil() {return estadoCivil;}
-        public void setEstadoCivil(String estadoCivil) {this.estadoCivil = estadoCivil;}
+        public int getEstadoCivil() {return estadoCivil;}
+        public void setEstadoCivil(int estadoCivil) {this.estadoCivil = estadoCivil;}
 
         @Override
         public boolean equals(Object o) {
@@ -540,6 +540,8 @@ public class AltaPolizaCargandoDatosControlador {
         faltaAlarma.setVisible(false);
         faltaTuercaAntirrobo.setVisible(false);
         faltaNroSiniestros.setVisible(false);
+
+
 
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));
         tipoYNroDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoynroDoc"));

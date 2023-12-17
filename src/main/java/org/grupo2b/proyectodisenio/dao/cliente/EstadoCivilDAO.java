@@ -9,4 +9,5 @@ public interface EstadoCivilDAO {
     List<EstadoCivil> getEstadosCiviles();
     List<String> getStringEstadosCiviles();
     Optional<EstadoCivil> get(int id);
+    Optional<EstadoCivil> getFromTipo(String tipo);
 }

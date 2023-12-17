@@ -7,6 +7,7 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 @Table(name = "MEDIDAS_SEGURIDAD")
 public class MedidaDeSeguridad {
     @Id
+    @GeneratedValue
     @Column(name = "id_seguridad")
     private int id;
     @Column(length = 20, name = "nombre")

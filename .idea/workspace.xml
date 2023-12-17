@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="AAA">
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Agregados los id pero hay que cambiar algunas cosas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/ClienteDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/ClienteDAOPSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/EstadoCivilDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/EstadoCivilDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/EstadoCivilDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/cliente/EstadoCivilDAOPSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/MedidaDeSeguridadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/MedidaDeSeguridadDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/MedidaDeSeguridadDAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/vehiculo/MedidaDeSeguridadDAOPSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dto/DeclaracionHijoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dto/DeclaracionHijoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaCargandoDatosControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cliente/GestorClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cliente/GestorClientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/GestorPolizas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/poliza/GestorPolizas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/MedidaDeSeguridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/MedidaDeSeguridad.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -452,15 +453,7 @@
       <option name="project" value="LOCAL" />
       <updated>1702521115971</updated>
     </task>
-    <task id="LOCAL-00042" summary="AAA">
-      <option name="closed" value="true" />
-      <created>1702835488486</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1702835488486</updated>
-    </task>
-    <option name="localTasksCounter" value="43" />
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,6 +468,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Correcion commit anterior" />
     <MESSAGE value="probaConEsta" />
     <MESSAGE value="DAOs como Dios manda" />
     <MESSAGE value="AltaPolizaControlador" />
@@ -499,7 +493,6 @@
     <MESSAGE value="Acomodadas un par de clases" />
     <MESSAGE value="La aplicación cierra si no puede conectar con la base de datos." />
     <MESSAGE value="Agregados los id pero hay que cambiar algunas cosas" />
-    <MESSAGE value="AAA" />
-    <option name="LAST_COMMIT_MESSAGE" value="AAA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregados los id pero hay que cambiar algunas cosas" />
   </component>
 </project>
