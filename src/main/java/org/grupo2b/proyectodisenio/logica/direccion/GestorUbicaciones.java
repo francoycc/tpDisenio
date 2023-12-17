@@ -25,4 +25,7 @@ public class GestorUbicaciones {
     public static List<Localidad> getLocalidadesFromIdProvincia(int id, int pageSize, int pageNumber){
         return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(id, pageSize, pageNumber);
     }
+    public static Optional<String> getNombreLocalidadFromId(int id){
+        return DAOManager.localidadDAO().getLocalidad(id).map(Localidad::getNombre);
+    }
 }

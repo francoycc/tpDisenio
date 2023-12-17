@@ -23,6 +23,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dto.*;
+import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
 import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
 import org.grupo2b.proyectodisenio.logica.direccion.GestorUbicaciones;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
@@ -548,6 +549,8 @@ public class AltaPolizaCargandoDatosControlador {
         apellidoYnombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombreyapellido"));
         domicilioColumna.setCellValueFactory(new PropertyValueFactory<>("domicilio"));
 
+        domicilioColumna.setCellFactory(new TableCellFactory<>(a-> GestorUbicaciones.getNombreLocalidadFromId(a.id_localidad()).get()+", "+a.calle()+" "+a.numero()));
+
         idProvincia.getItems().addAll(GestorUbicaciones.getProvincias());
         idMarca.getItems().addAll(GestorVehiculos.getMarcas());
         idGarage.getItems().addAll("SI","NO");
@@ -615,7 +618,10 @@ public class AltaPolizaCargandoDatosControlador {
             idAnio.setItems(FXCollections.observableArrayList(GestorVehiculos.getAniosFabricacionFromModelo(idModelo.getSelectionModel().getSelectedItem())));
     }
     @FXML void onAnioCambio(){
-        idSumaAsegurada.setText(String.valueOf(SubsistemaSumaAsegurada.getSumaAsegurada(idModelo.getSelectionModel().getSelectedItem().id(), idAnio.getSelectionModel().getSelectedItem())));
+        if(idModelo.getSelectionModel().isEmpty()||idAnio.getSelectionModel().isEmpty())
+            idSumaAsegurada.setText("");
+        else
+            idSumaAsegurada.setText(String.valueOf(SubsistemaSumaAsegurada.getSumaAsegurada(idModelo.getSelectionModel().getSelectedItem().id(), idAnio.getSelectionModel().getSelectedItem())));
     }
 
 }
