@@ -3,6 +3,7 @@ package org.grupo2b.proyectodisenio.logica.poliza;
 import org.grupo2b.proyectodisenio.carga_datos.Objetos;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
 import org.grupo2b.proyectodisenio.dto.*;
+import org.grupo2b.proyectodisenio.interfaz.AltaPolizaCargandoDatosControlador;
 import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
 import org.grupo2b.proyectodisenio.logica.cliente.EstadoCivil;
 import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class GestorPolizas {
@@ -104,8 +106,22 @@ public class GestorPolizas {
 
 
 
-
-
+    public static final Function<Poliza, PolizaDTO> conversorADTO = p -> {
+        List<DeclaracionHijoDTO> declaracionHijosDTOS = new ArrayList<>();
+        for(DeclaracionHijo h: p.getDeclaracionesHijos()) {
+            declaracionHijosDTOS.add(new DeclaracionHijoDTO(h.getId(), String.valueOf(h.getEstadoCivilHijo()),h.getFechaNacimiento(), h.getSexo()));
+        }
+        List<String> medidas = new ArrayList<>();
+        for (MedidaDeSeguridad m: p.getMedidasDeSeguridad()){
+            medidas.add(String.valueOf(m.getNombre()));
+        }
+        PolizaDTO polizaDTO = new PolizaDTO(
+                p.getInicioVigencia(), p.getFinVigencia(), p.getFormaPago(), p.getTipoCobertura().getId(), medidas,
+                new VehiculoDTO(p.getVehiculo().getId(), p.getVehiculo().getMotor(), p.getVehiculo().getChasis(), p.getVehiculo().getPatente(),
+                        p.getVehiculo().getModelo().getId(), p.getVehiculo().getAnioFabricacion().getId(), p.getVehiculo().getKmPorAnio().getId(), p.getVehiculo().getLocalidad().getId())
+                , declaracionHijosDTOS, p.getCliente().getId(), p.getNroSiniestros().getId());
+        return polizaDTO;
+    };
 
     public static List<NumeroSiniestrosDTO> getNumeroSiniestrosList(){
         return DAOManager.numeroSiniestrosDAO().getNumeroSiniestrosList().stream().map(o -> new NumeroSiniestrosDTO(o.getId(), o.getCantSiniestrosInicial(), o.getCantSiniestrosFinal())).collect(Collectors.toList());
@@ -117,4 +133,10 @@ public class GestorPolizas {
     public static List<TipoCoberturaDTO> getTiposCobertura(){
         return DAOManager.tipoCoberturaDAO().getTiposCobertura().stream().map(o -> new TipoCoberturaDTO(o.getId(), o.getNombre(), o.getDescripcion(), o.getMaxAniosVehiculo())).collect(Collectors.toList());
     }
+
+    public static Optional<PolizaDTO> buscarPoliza(String nroPoliza){
+        return DAOManager.polizaDAO().buscarPoliza(nroPoliza).map(conversorADTO);
+    }
+    // public static Optional<Double> calcularBonificacion();
+    // public static Optional<Double> calcularMora();
 }

@@ -84,7 +84,7 @@ public class AltaPolizaCargandoDatosControlador {
 
     @FXML private TableView<DatosClienteTabla> tablaMostrarClientes;
     @FXML private TableColumn<DatosClienteTabla, String> nroClienteColumna;
-    @FXML private TableColumn<DatosClienteTabla, DocumentoDTO> tipoYNroDocColumna;
+    @FXML private TableColumn<DatosClienteTabla, String> tipoYNroDocColumna;
     @FXML private TableColumn<DatosClienteTabla, String> apellidoYnombreColumna;
     @FXML private TableColumn<DatosClienteTabla, DireccionDTO> domicilioColumna;
     private final ObservableList<DatosClienteTabla> clientesList = FXCollections.observableArrayList();
@@ -367,7 +367,8 @@ public class AltaPolizaCargandoDatosControlador {
     public void recibeParametros(AltaPolizaControlador instanciaCargandoDatos, AltaPolizaControlador.DatosClienteTabla c) {
         instanciaBuscandoCliente_en_instanciaCargadoDatos=instanciaCargandoDatos;
         String nya = ""+c.getApellido()+" "+c.getNombre();
-        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),new DocumentoDTO(c.getNroDocumento(), c.getTipoDoc()),nya, GestorClientes.getClienteFromNroCliente(c.nroCliente).get().domicilio());
+        String tipoyNroDoc = ""+c.getTipoDoc()+" "+c.getNroDocumento();
+        DatosClienteTabla cliente = new DatosClienteTabla(c.getNroCliente(),tipoyNroDoc, nya, GestorClientes.getClienteFromNroCliente(c.nroCliente).get().domicilio());
         clientesList.add(cliente);
         tablaMostrarClientes.setItems(clientesList);
     }
@@ -403,12 +404,12 @@ public class AltaPolizaCargandoDatosControlador {
     }
     public class DatosClienteTabla {
         String nroCliente;
-        DocumentoDTO tipoynroDoc;
+        String tipoyNroDoc;
         String nombreyapellido;
         DireccionDTO domicilio;
-        public DatosClienteTabla(String nroCliente, DocumentoDTO tipoynroDoc, String nombreyapellido, DireccionDTO domicilio) {
+        public DatosClienteTabla(String nroCliente, String tipoyNroDoc, String nombreyapellido, DireccionDTO domicilio) {
             this.nroCliente = nroCliente;
-            this.tipoynroDoc = tipoynroDoc;
+            this.tipoyNroDoc = tipoyNroDoc;
             this.nombreyapellido = nombreyapellido;
             this.domicilio = domicilio;
         }
@@ -418,11 +419,11 @@ public class AltaPolizaCargandoDatosControlador {
         public void setNroCliente(String nroCliente) {
             this.nroCliente = nroCliente;
         }
-        public DocumentoDTO getTipoynroDoc() {
-            return tipoynroDoc;
+        public String getTipoyNroDoc() {
+            return tipoyNroDoc;
         }
-        public void setTipoynroDoc(DocumentoDTO tipoynroDoc) {
-            this.tipoynroDoc = tipoynroDoc;
+        public void setTipoynroDoc(String tipoyNroDoc) {
+            this.tipoyNroDoc = tipoyNroDoc;
         }
         public String getNombreyapellido() {
             return nombreyapellido;
@@ -441,7 +442,7 @@ public class AltaPolizaCargandoDatosControlador {
         public String toString() {
             return "DatosClienteTabla{" +
                     "nroCliente='" + nroCliente + '\'' +
-                    ", tipoynroDoc=" + tipoynroDoc +
+                    ", tipoynroDoc=" + tipoyNroDoc +
                     ", nombreyapellido='" + nombreyapellido + '\'' +
                     ", domicilio=" + domicilio +
                     '}';

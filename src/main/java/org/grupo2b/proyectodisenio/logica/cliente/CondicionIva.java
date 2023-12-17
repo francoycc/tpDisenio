@@ -6,7 +6,10 @@ import jakarta.persistence.*;
 @Table(name = "CONDICION_IVA")
 public class CondicionIva {
     @Id
-    @Column(length = 30)
+    @GeneratedValue
+    @Column(name = "id_condicionIVA")
+    private int id;
+    @Column(length = 30, name = "tipo")
     private String tipo;
 
 
@@ -15,7 +18,12 @@ public class CondicionIva {
         this.tipo = tipo;
     }
 
-
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getTipo() {
         return tipo;
     }

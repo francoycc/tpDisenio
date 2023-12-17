@@ -2,17 +2,16 @@ package org.grupo2b.proyectodisenio.logica.cliente;
 
 import jakarta.persistence.*;
 import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
-import org.grupo2b.proyectodisenio.logica.documento.Documento;
+import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.grupo2b.proyectodisenio.logica.enums.CondicionCliente;
 import org.grupo2b.proyectodisenio.logica.enums.Sexo;
 import org.grupo2b.proyectodisenio.logica.vehiculo.Vehiculo;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Cliente {
+public class Cliente {  // HAY QUE PONER EL DOCUMENTO COMO ATRIBUTO
     @Id
     @GeneratedValue
     private int id;
@@ -43,9 +42,11 @@ public class Cliente {
     @Enumerated(EnumType.STRING)
     @Column(name = "condicion_cliente", nullable = false)
     private CondicionCliente condicionCliente;
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "numero_documento")
-    private Documento documento;
+    private int documento;
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "id_tipoDocumento")
+    private TipoDocumento tipoDocumento;
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_condicion_iva")
     private CondicionIva condicionIva;
@@ -62,9 +63,10 @@ public class Cliente {
 
 
 
+
     public Cliente(){}
 
-    public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
+    public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, int documento, TipoDocumento tipoDocumento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuil = cuil;
@@ -75,13 +77,14 @@ public class Cliente {
         this.anioRegistro = anioRegistro;
         this.condicionCliente = condicionCliente;
         this.documento = documento;
+        this.tipoDocumento = tipoDocumento;
         this.condicionIva = condicionIva;
         this.domicilio = domicilio;
         this.vehiculos = vehiculos;
         this.estadoCivil = estadoCivil;
         this.diasDesdeQueEsClienteActivo = 0;
     }
-    public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, Documento documento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil, int diasDesdeQueEsClienteActivo) {
+    public Cliente(String nombre, String apellido, long cuil, Sexo sexo, Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro, CondicionCliente condicionCliente, int documento, TipoDocumento tipoDocumento, CondicionIva condicionIva, Direccion domicilio, List<Vehiculo> vehiculos, EstadoCivil estadoCivil, int diasDesdeQueEsClienteActivo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cuil = cuil;
@@ -92,6 +95,7 @@ public class Cliente {
         this.anioRegistro = anioRegistro;
         this.condicionCliente = condicionCliente;
         this.documento = documento;
+        this.tipoDocumento = tipoDocumento;
         this.condicionIva = condicionIva;
         this.domicilio = domicilio;
         this.vehiculos = vehiculos;
@@ -114,6 +118,7 @@ public class Cliente {
                 ", anioRegistro=" + anioRegistro +
                 ", condicionCliente=" + condicionCliente +
                 ", documento=" + documento +
+                ", tipoDocumento=" + tipoDocumento +
                 ", condicionIva=" + condicionIva +
                 ", domicilio=" + domicilio +
                 ", vehiculos=" + vehiculos +
@@ -201,12 +206,19 @@ public class Cliente {
         this.condicionCliente = condicionCliente;
     }
 
-    public Documento getDocumento() {
+    public int getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Documento documento) {
+    public void setDocumento(int documento) {
         this.documento = documento;
+    }
+
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public CondicionIva getCondicionIva() {

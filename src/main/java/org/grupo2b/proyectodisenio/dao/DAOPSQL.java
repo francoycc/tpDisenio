@@ -11,7 +11,6 @@ import org.grupo2b.proyectodisenio.logica.direccion.Direccion;
 import org.grupo2b.proyectodisenio.logica.direccion.Localidad;
 import org.grupo2b.proyectodisenio.logica.direccion.Pais;
 import org.grupo2b.proyectodisenio.logica.direccion.Provincia;
-import org.grupo2b.proyectodisenio.logica.documento.Documento;
 import org.grupo2b.proyectodisenio.logica.documento.TipoDocumento;
 import org.grupo2b.proyectodisenio.logica.historial.EntradaHistorialFactores;
 import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
@@ -19,7 +18,6 @@ import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 import org.grupo2b.proyectodisenio.logica.pagos.Recibo;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -74,7 +72,6 @@ public class DAOPSQL implements DAO {
                 .addAnnotatedClass(Pais.class)
                 .addAnnotatedClass(Direccion.class)
                 .addAnnotatedClass(TipoDocumento.class)
-                .addAnnotatedClass(Documento.class)
                 .addAnnotatedClass(CondicionIva.class)
                 .addAnnotatedClass(Cliente.class)
                 .addAnnotatedClass(EstadoCivil.class)

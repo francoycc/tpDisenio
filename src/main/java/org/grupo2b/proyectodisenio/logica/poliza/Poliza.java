@@ -17,7 +17,7 @@ public class Poliza {
     @GeneratedValue
     @Column(name = "id_poliza")
     private int id;
-    @Column(name = "nro_poliza", nullable = false)
+    @Column(name = "nroPoliza", nullable = false)
     private String nroPoliza;
 
     @PrePersist
