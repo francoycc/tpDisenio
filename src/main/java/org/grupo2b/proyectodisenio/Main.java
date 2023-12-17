@@ -10,9 +10,14 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.grupo2b.proyectodisenio.carga_datos.CargadorProvinciaLocalidad;
+import org.grupo2b.proyectodisenio.carga_datos.Objetos;
 import org.grupo2b.proyectodisenio.dao.DAOManager;
+import org.grupo2b.proyectodisenio.logica.cliente.Cliente;
+import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -37,9 +42,9 @@ public class Main extends Application {
             @Override
             public void run() {
                 super.run();
-                //CargadorProvinciaLocalidad.cargar();
+                CargadorProvinciaLocalidad.cargar();
                 DAOManager.init();
-                //Objetos.save();
+                Objetos.save();
 
                 Platform.runLater(new Runnable() {
                     @Override

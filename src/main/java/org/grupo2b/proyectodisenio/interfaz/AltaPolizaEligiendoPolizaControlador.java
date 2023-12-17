@@ -398,7 +398,6 @@ public class AltaPolizaEligiendoPolizaControlador {
 
 
         boolean estadoOperacion = GestorPolizas.darAltaPoliza(poliza);
-        System.out.println(estadoOperacion);
 
         if(estadoOperacion) {
             Alert messageWindows = new Alert(Alert.AlertType.INFORMATION);
@@ -429,7 +428,7 @@ public class AltaPolizaEligiendoPolizaControlador {
             Alert messageWindows = new Alert(Alert.AlertType.ERROR);
             messageWindows.setTitle("Error");
             messageWindows.setHeaderText("");
-            messageWindows.setContentText("Ha habido un problema con la carga de datos");
+            messageWindows.setContentText("Ha habido un problema con la carga de datos. Intente de nuevo.");
             // Agrega los botones OK y Cancelar al diálogo
             ButtonType botonConfirmar = new ButtonType("Confirmar");
             messageWindows.getButtonTypes().setAll(botonConfirmar);

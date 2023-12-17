@@ -5,5 +5,5 @@ import org.grupo2b.proyectodisenio.logica.pagos.Cuota;
 import java.util.List;
 
 public interface CuotaDAO {
-    List<Cuota> getCuotasImpagas(String nroCliente);
+    boolean tieneCuotasImpagas(String nroCliente);
 }

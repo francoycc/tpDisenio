@@ -167,6 +167,7 @@ public class AltaPolizaControlador {
         tablaMostrarClientes.setVisible(true);
 
         if (flag == 0) {
+            System.out.println("LOAD");
             tablaMostrarClientes.getItems().clear();
             tablaMostrarClientes.setVisible(true);
             int flag2 = buscarYmostrarClientes(nroCliente.getText(), nombre.getText(), apellido.getText(), tipoDocumento.getValue(), nroDocumento.getText());

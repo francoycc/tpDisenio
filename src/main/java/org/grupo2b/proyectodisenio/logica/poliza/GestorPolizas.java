@@ -84,12 +84,10 @@ public class GestorPolizas {
 
                 declaracionesHijos.add(new DeclaracionHijo(d.fechaNacimiento(), d.sexo(), estadoCivil.get()));
             }
-
             Optional<Cliente> clienteOpt = DAOManager.clienteDAO().get(polizaDTO.id_cliente());
             if(clienteOpt.isEmpty()) return false;
             cliente = clienteOpt.get();
         }
-
 
         cliente.getVehiculos().add(vehiculo);
         Poliza p = new Poliza(polizaDTO.fechaInicioVigencia(), polizaDTO.fechaFinalVigencia(), LocalDate.now(), polizaDTO.formaPago(), EstadoPoliza.GENERADA,
@@ -97,6 +95,7 @@ public class GestorPolizas {
                 medidasDeSeguridad, vehiculo, declaracionesHijos,  cliente,  numeroSiniestros);
 
         boolean resultado = DAOManager.polizaDAO().save(p);
+
         if(resultado) {
             GestorClientes.actualizarEstadoCliente(cliente.getNroCliente());
         }

@@ -127,7 +127,7 @@ public class Objetos{
     public static Vehiculo VEHICULO9 = new Vehiculo(2650000, "QWJENKMASDBN", "IUDAISBDY55A150000", "12PXC13", MODELO_CORSA, ANIO_2014, KM10000_30000, LOCALIDAD1);
     //CLIENTES
     public static Cliente CLIENTE1 = new Cliente("Beatriz", "Salomon", 20226485935L, Sexo.FEMENINO, new Date(85, Calendar.OCTOBER, 15),
-            "beatrizsalo@gmail.com", "Docente", 2011, CondicionCliente.ACTIVO, DOCUMENTO1, CONDICION_IVA1, DIRECCION1,
+            "beatrizsalo@gmail.com", "Docente", 2011, CondicionCliente.NORMAL, DOCUMENTO1, CONDICION_IVA1, DIRECCION1,
             List.of(VEHICULO1), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE2 = new Cliente( "Carlos", "Zapata",23390456329L, Sexo.MASCULINO, new Date(87, Calendar.JANUARY,10),
             "carloszpt@hotmail.com", "Empleado", 2023, CondicionCliente.DADO_DE_BAJA, DOCUMENTO2, CONDICION_IVA1, DIRECCION2,
@@ -136,19 +136,19 @@ public class Objetos{
             "varchialejo@gmail.com", "Contador", 2018, CondicionCliente.PLATA, DOCUMENTO3, CONDICION_IVA2, DIRECCION3,
             List.of(VEHICULO3), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE4 = new Cliente("Sandra", "Barbieri", 20341562475L,Sexo.FEMENINO, new Date(85, Calendar.FEBRUARY, 12),
-            "sandrabarbieri@gmail.com", "Abogada", 2015, CondicionCliente.ACTIVO, DOCUMENTO4, CONDICION_IVA2, DIRECCION4,
+            "sandrabarbieri@gmail.com", "Abogada", 2015, CondicionCliente.NORMAL, DOCUMENTO4, CONDICION_IVA2, DIRECCION4,
             List.of(VEHICULO4), ESTADO_CIVIL_DIVORCIADO);
     public static Cliente CLIENTE5 = new Cliente("Marcos", "Sosa", 20276854321L, Sexo.MASCULINO, new Date(79, Calendar.JUNE, 17),
-            "marcossosa@gmail.com", "Veterinario", 2011, CondicionCliente.ACTIVO, DOCUMENTO5, CONDICION_IVA3, DIRECCION5,
+            "marcossosa@gmail.com", "Veterinario", 2011, CondicionCliente.NORMAL, DOCUMENTO5, CONDICION_IVA3, DIRECCION5,
             List.of(VEHICULO5), ESTADO_CIVIL_VIUDO);
     public static Cliente CLIENTE6 = new Cliente("Gabriela", "Ramos", 27246758903L, Sexo.FEMENINO, new Date(75, Calendar.JANUARY, 12),
-            "gabiramos@gmail.com", "Peluquera", 2014, CondicionCliente.ACTIVO, DOCUMENTO6, CONDICION_IVA2, DIRECCION6,
+            "gabiramos@gmail.com", "Peluquera", 2014, CondicionCliente.NORMAL, DOCUMENTO6, CONDICION_IVA2, DIRECCION6,
             List.of(VEHICULO6), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE7 = new Cliente("Lorena", "Abila", 20364511235L, Sexo.FEMENINO, new Date(87, Calendar.FEBRUARY, 7),
-            "loreabila@gmail.com", "Abogada", 2016, CondicionCliente.ACTIVO, DOCUMENTO7, CONDICION_IVA3, DIRECCION7,
+            "loreabila@gmail.com", "Abogada", 2016, CondicionCliente.NORMAL, DOCUMENTO7, CONDICION_IVA3, DIRECCION7,
             List.of(VEHICULO71, VEHICULO72), ESTADO_CIVIL_CASADO);
     public static Cliente CLIENTE8 = new Cliente("Camila", "Ibarra", 20326541125L, Sexo.FEMENINO, new Date(91, Calendar.APRIL, 21),
-            "camiibarra@gmail.com", "Secretaria", 2018, CondicionCliente.ACTIVO, DOCUMENTO8, CONDICION_IVA1, DIRECCION8,
+            "camiibarra@gmail.com", "Secretaria", 2018, CondicionCliente.NORMAL, DOCUMENTO8, CONDICION_IVA1, DIRECCION8,
             List.of(VEHICULO8, VEHICULO9), ESTADO_CIVIL_SOLTERO);
     //POLIZAS
     public static Poliza POLIZA1;

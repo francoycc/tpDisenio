@@ -52,7 +52,7 @@ public class GestorClientes {
 
 
     public static boolean tieneCuotasImpagas(String nroCliente){
-        return !DAOManager.cuotaDAO().getCuotasImpagas(nroCliente).isEmpty();
+        return DAOManager.cuotaDAO().tieneCuotasImpagas(nroCliente);
     }
 
 
