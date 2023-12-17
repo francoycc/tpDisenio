@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -567,6 +570,39 @@ public class AltaPolizaCargandoDatosControlador {
 
         comboBoxSexo.getItems().addAll(Sexo.MASCULINO,Sexo.FEMENINO);
         comboBoxEstadoCivil.getItems().addAll(GestorClientes.getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
+
+        idMotor.lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() > oldValue.intValue()) {
+                if (idMotor.getText().length() >= 30) {
+                    idMotor.setText(idMotor.getText().substring(0, 30));
+                }
+            }
+        });
+        idChasis.lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() > oldValue.intValue()) {
+
+                if (idChasis.getText().length() >= 30) {
+                    idChasis.setText(idChasis.getText().substring(0, 30));
+                }
+            }
+        });
+        idPatente.lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() > oldValue.intValue()) {
+
+                if (idPatente.getText().length() >= 10) {
+                    idPatente.setText(idPatente.getText().substring(0, 10));
+                }
+            }
+        });
+        idKmRealizados.lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() > oldValue.intValue()) {
+
+                if (idKmRealizados.getText().length() >= 6) {
+                    idKmRealizados.setText(idKmRealizados.getText().substring(0, 6));
+                }
+            }
+        });
+
 
         this.fechaNacimientoColumna.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
         this.sexoColumna.setCellValueFactory(new PropertyValueFactory("sexo"));

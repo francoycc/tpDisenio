@@ -20,7 +20,6 @@ public class GestorVehiculos {
         Modelo modelo = null;
         KmPorAnio kmPorAnio = null;
 
-
         if(existeVehiculoAsociado(vDTO.patente(), vDTO.motor(), vDTO.chasis()))
             throw new IllegalArgumentException();//TODO QUE PASA SI YA EXISTE UN VEHICULO PERO NO ESTA ASOCIADO?? QUE PASA SI SON LOS VEHICULOS TIENEN DIFERENCIAS EN LOS DATOS?? SE ACTUALIZA? TIRA ERROR?
         {
@@ -42,6 +41,13 @@ public class GestorVehiculos {
             kmPorAnio=kmPorAnioOpt.get();
 
             //TODO VALIDAR PATENTE, MOTOR, CHASIS de vDTO
+            if(vDTO.patente().length()>10) throw new IllegalArgumentException();
+
+            if(vDTO.motor().length()>30) throw new IllegalArgumentException();
+
+            if(vDTO.chasis().length()>30) throw new IllegalArgumentException();
+
+            if(vDTO.id_kmPorAnio()>999999) throw new IllegalArgumentException();
         }
 
         return new Vehiculo(SubsistemaSumaAsegurada.getSumaAsegurada(modelo.getId(), anioFabricacion.getAnioModelo()), vDTO.motor(), vDTO.chasis(), vDTO.patente(), modelo, anioFabricacion, kmPorAnio, domicilioRiesgo);
