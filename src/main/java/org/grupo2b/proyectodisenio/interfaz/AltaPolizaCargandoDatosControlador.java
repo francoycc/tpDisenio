@@ -548,7 +548,7 @@ public class AltaPolizaCargandoDatosControlador {
 
 
         nroClienteColumna.setCellValueFactory(new PropertyValueFactory<>("nroCliente"));
-        tipoYNroDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoynroDoc"));
+        tipoYNroDocColumna.setCellValueFactory(new PropertyValueFactory<>("tipoyNroDoc"));
         apellidoYnombreColumna.setCellValueFactory(new PropertyValueFactory<>("nombreyapellido"));
         domicilioColumna.setCellValueFactory(new PropertyValueFactory<>("domicilio"));
 
