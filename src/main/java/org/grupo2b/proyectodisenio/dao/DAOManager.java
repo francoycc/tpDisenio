@@ -7,8 +7,6 @@ import org.grupo2b.proyectodisenio.dao.cliente.EstadoCivilDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAO;
 import org.grupo2b.proyectodisenio.dao.cuentas.CuentaDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.direccion.*;
-import org.grupo2b.proyectodisenio.dao.documento.DocumentoDAO;
-import org.grupo2b.proyectodisenio.dao.documento.DocumentoDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.documento.TipoDocumentoDAO;
 import org.grupo2b.proyectodisenio.dao.documento.TipoDocumentoDAOPSQL;
 import org.grupo2b.proyectodisenio.dao.historial.EntradaHistorialDAO;
@@ -42,7 +40,6 @@ public class DAOManager {
     private static ProvinciaDAO provinciaDAO;
     private static ClienteDAO clienteDAO;
     private static CuentaDAO cuentaDAO;
-    private static DocumentoDAO documentoDAO;
     private static TipoDocumentoDAO tipoDocumentoDAO;
     private static EntradaHistorialDAO entradaHistorialDAO;
     private static HistorialDAO historialDAO;
@@ -70,7 +67,6 @@ public class DAOManager {
         provinciaDAO = new ProvinciaDAOPSQL();
         clienteDAO = new ClienteDAOPSQL();
         cuentaDAO = new CuentaDAOPSQL();
-        documentoDAO = new DocumentoDAOPSQL();
         tipoDocumentoDAO = new TipoDocumentoDAOPSQL();
         historialDAO = new HistorialDAOPSQL();
         entradaHistorialDAO = new EntradaHistorialDAOPSQL();
@@ -123,9 +119,6 @@ public class DAOManager {
         return cuentaDAO;
     }
 
-    public static DocumentoDAO documentoDAO() {
-        return documentoDAO;
-    }
 
     public static TipoDocumentoDAO tipoDocumentoDAO() {
         return tipoDocumentoDAO;

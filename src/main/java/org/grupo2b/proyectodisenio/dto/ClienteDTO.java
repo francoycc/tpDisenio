@@ -7,6 +7,6 @@ import java.util.Date;
 
 public record ClienteDTO(int id, String nroCliente, String nombre, String apellido, long cuil, Sexo sexo,
                          Date fechaNacimiento, String correoElectronico, String profesion, int anioRegistro,
-                         CondicionCliente condicionCliente, DocumentoDTO documentoDTO, String condicionIva,
+                         CondicionCliente condicionCliente, int documento, String tipoDocumento, String condicionIva,
                          DireccionDTO domicilio, String estadoCivil) {
 }

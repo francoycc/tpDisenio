@@ -187,8 +187,8 @@ public class AltaPolizaControlador {
                     c.nroCliente(),
                     c.nombre(),
                     c.apellido(),
-                    c.documentoDTO().tipo(),
-                    c.documentoDTO().numero());
+                    c.tipoDocumento(),
+                    String.valueOf(c.documento()));
             clientesList.add(cliente);
             tablaMostrarClientes.setItems(clientesList);
         }
