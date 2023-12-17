@@ -44,4 +44,22 @@ public class MedidaDeSeguridadDAOPSQL implements MedidaDeSeguridadDAO{
         }
         return Optional.of(res);
     }
+    @Override
+    public Optional<MedidaDeSeguridad> getTipoCobertura(int id) {
+        CriteriaBuilder cb = ((DAOPSQL)DAOManager.dao()).getSession().getCriteriaBuilder();
+        CriteriaQuery<MedidaDeSeguridad> cr = cb.createQuery(MedidaDeSeguridad.class);
+        Root<MedidaDeSeguridad> root = cr.from(MedidaDeSeguridad.class);
+
+        cr.select(root).where(cb.equal(root.get("id"), id));
+
+        Query<MedidaDeSeguridad> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
+
+        MedidaDeSeguridad res;
+        try {
+            res = query.getSingleResult();
+        }catch (NoResultException e){
+            return Optional.empty();
+        }
+        return Optional.of(res);
+    }
 }

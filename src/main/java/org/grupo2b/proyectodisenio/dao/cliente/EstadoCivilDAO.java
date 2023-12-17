@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface EstadoCivilDAO {
     List<EstadoCivil> getEstadosCiviles();
     List<String> getStringEstadosCiviles();
-    Optional<EstadoCivil> get(String id);
+    Optional<EstadoCivil> get(int id);
 }
