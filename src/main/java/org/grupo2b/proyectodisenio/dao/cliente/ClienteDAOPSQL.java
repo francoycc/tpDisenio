@@ -25,8 +25,8 @@ public class ClienteDAOPSQL implements ClienteDAO{
                         cb.like(root.get("nroCliente"),nroCliente+"%"),
                         cb.like(root.get("nombre"),nombre+"%"),
                         cb.like(root.get("apellido"),apellido+"%"),
-                        cb.like(root.join("documento").get("numero").as(String.class),nroDoc+"%"),
-                        cb.equal(root.join("documento").join("tipoDocumento").get("nombre"), tipoDoc)));
+                        cb.like(root.get("documento").as(String.class),nroDoc+"%"),
+                        cb.equal(root.join("tipoDocumento").get("nombre"), tipoDoc)));
 
         Query<Cliente> query = ((DAOPSQL)DAOManager.dao()).getSession().createQuery(cr);
         return query.getResultList();

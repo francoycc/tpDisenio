@@ -7,7 +7,9 @@ import org.grupo2b.proyectodisenio.logica.historial.HistorialFactor;
 @Table(name = "MEDIDAS_SEGURIDAD")
 public class MedidaDeSeguridad {
     @Id
-    @Column(length = 20)
+    @Column(name = "id_seguridad")
+    private int id;
+    @Column(length = 20, name = "nombre")
     private String nombre;
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "id_historial")
@@ -22,7 +24,12 @@ public class MedidaDeSeguridad {
         this.pregunta = pregunta;
     }
 
-
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNombre() {
         return nombre;
     }

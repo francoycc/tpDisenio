@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface MedidaDeSeguridadDAO {
     List<MedidaDeSeguridad> getTiposCobertura();
     Optional<MedidaDeSeguridad> getTipoCobertura(String nombre);
+    Optional<MedidaDeSeguridad> getTipoCobertura(int id);
 }
