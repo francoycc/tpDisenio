@@ -134,12 +134,6 @@ public class AltaPolizaControlador {
         int flag = 0;
         textAux.setVisible(false);
         //validaciones de formato
-        if (!validarNroCliente(nroCliente.getText()) && !nroCliente.getText().isEmpty()) {
-            errorNroCliente.setText("Ingrese un Nro de Cliente válido.");
-            flag = 1;
-        } else {
-            errorNroCliente.setText("");
-        }
         if (!nombre.getText().matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*") && !nombre.getText().isEmpty()) {
             errorNombre.setText("Ingrese un nombre válido.");
             flag = 1;
@@ -164,11 +158,10 @@ public class AltaPolizaControlador {
         } else {
             errorNroDocumento.setText("");
         }
-        tablaMostrarClientes.setVisible(true);
 
         if (flag == 0) {
+            tablaMostrarClientes.setVisible(false);
             tablaMostrarClientes.getItems().clear();
-            tablaMostrarClientes.setVisible(true);
             int flag2 = buscarYmostrarClientes(nroCliente.getText(), nombre.getText(), apellido.getText(), tipoDocumento.getValue(), nroDocumento.getText());
             if (flag2 == 0) {
                 Alert messageWindows = new Alert(Alert.AlertType.ERROR);
@@ -176,6 +169,8 @@ public class AltaPolizaControlador {
                 messageWindows.setHeaderText("");                   // TODOS LOS MENSAJES DE
                 messageWindows.setContentText("No existen clientes para los parámetros ingresados");  // ADVERTENCIA, ERROR E
                 messageWindows.showAndWait();
+            }else {
+                tablaMostrarClientes.setVisible(true);
             }
         }
     }
@@ -311,27 +306,22 @@ public class AltaPolizaControlador {
         //tipoDocColumna.setCellFactory(new TableCellFactory<>(TipoDocumento::getNombre));
         tablaMostrarClientes.setItems(clientesList);
 
-        nroCliente.addEventHandler(KeyEvent.KEY_TYPED, event -> {
-            String inputChar = event.getCharacter();
-            if (!inputChar.matches("[0-9\\\\-]")) {
-                event.consume();
-            }
+        nroCliente.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() >11 || !newValue.matches("[0-9\\\\-]*"))
+                nroCliente.setText(oldValue);
         });
-        nroDocumento.addEventHandler(KeyEvent.KEY_TYPED, event -> {
-            String inputChar = event.getCharacter();
-            if (!inputChar.matches("\\d")) {
-                event.consume();
-            }});
-        apellido.addEventHandler(KeyEvent.KEY_TYPED, event -> {
-            String inputChar = event.getCharacter();
-            if (!inputChar.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*")) {
-                event.consume();
-            }});
-        nombre.addEventHandler(KeyEvent.KEY_TYPED, event -> {
-            String inputChar = event.getCharacter();
-            if (!inputChar.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*")) {
-                event.consume();
-            }});
+        nroDocumento.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() >9 || !newValue.matches("[0-9]*"))
+                nroDocumento.setText(oldValue);
+        });
+        apellido.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length()>40 || !newValue.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*"))
+                apellido.setText(oldValue);
+        });
+        nombre.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length()>40 || !newValue.matches("[a-zA-ZáéíóúüÁÉÍÓÚÜ' ]*"))
+                nombre.setText(oldValue);
+        });
         textAux.setVisible(false);
         tipoDocumento.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {

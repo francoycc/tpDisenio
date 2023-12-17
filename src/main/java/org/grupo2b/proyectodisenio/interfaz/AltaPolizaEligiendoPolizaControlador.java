@@ -390,7 +390,6 @@ public class AltaPolizaEligiendoPolizaControlador {
 
         VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorVehiculos.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
         Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
-        //TODO QUE PASA SI EL VEHICULO YA EXISTE?? HACER QUE SE ACTUALICE???
 
         ClienteDTO cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
         PolizaDTO poliza = new PolizaDTO(fechaInicioVigenciaObj, fechaFinalVigenciaObj, formaPagoObj, tipoCoberturaObj.id(),
@@ -525,13 +524,6 @@ public class AltaPolizaEligiendoPolizaControlador {
             return cell;
         });
 
-        Collection<TipoCoberturaDTO> tiposCobertura = GestorPolizas.getTiposCobertura();
-        List<TablaTipoCobertura> listaTabla = new ArrayList<>();
-        for(TipoCoberturaDTO t : tiposCobertura)
-            //if((LocalDate.now().getYear()-anio)<=t.maxAniosVehiculo())
-                listaTabla.add(new TablaTipoCobertura(t, t.descripcion()));//TODO PROBLEMAS SI CARGAN POCOS
-
-        tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 RadioButton selectedRadioButton = (RadioButton) newValue;
@@ -572,6 +564,17 @@ public class AltaPolizaEligiendoPolizaControlador {
         patente.setText(patenteV);
         sumaAsegurada.setText(sumaAseguradaV);
         instanciaParaVolver = new volverConParametros(cliente,provincia,ciudad,anio,kmRealizadosV,garageV,dispositivoRastreoV,alarmaV,tuercaAntirroboV,nroSiniestrosV,listaDeHijos);
+
+        Collection<TipoCoberturaDTO> tiposCobertura = GestorPolizas.getTiposCobertura();
+        List<TablaTipoCobertura> listaTabla = new ArrayList<>();
+        for(TipoCoberturaDTO t : tiposCobertura)
+            if((LocalDate.now().getYear()-anioObj)<=t.maxAniosVehiculo()) {
+                listaTabla.add(new TablaTipoCobertura(t, t.descripcion()));
+            }
+        if(listaTabla.size()==1)
+            tablaConTipoCobertura.setPrefHeight(85.0);
+
+        tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
     }
     public class TablaTipoCobertura {
         RadioButton checkBox;

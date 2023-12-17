@@ -21,9 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.stage.Stage;
 import org.grupo2b.proyectodisenio.dto.*;
 import org.grupo2b.proyectodisenio.interfaz.displayable.TableCellFactory;
@@ -340,6 +338,7 @@ public class AltaPolizaCargandoDatosControlador {
                 ScrollPane root = (ScrollPane) loader.load(Objects.requireNonNull(getClass().getResource("AltaPolizaEligiendoPoliza.fxml")).openStream());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 AltaPolizaEligiendoPolizaControlador instanciaEligiendoPoliza = loader.getController();
+
                 instanciaEligiendoPoliza.recibeParametros(instanciaCargandoDatos, clientesList,
                         apellidoYnombreColumna.getCellData(tablaMostrarClientes.getItems().get(0)),
                         idProvincia.getValue(), idCiudad.getValue(), idMarca.getValue(), idModelo.getValue(), idAnio.getValue(),
@@ -571,36 +570,22 @@ public class AltaPolizaCargandoDatosControlador {
         comboBoxSexo.getItems().addAll(Sexo.MASCULINO,Sexo.FEMENINO);
         comboBoxEstadoCivil.getItems().addAll(GestorClientes.getEstadosCiviles()); //PARA ESTO PEDIR CONSULTA A LEO
 
-        idMotor.lengthProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.intValue() > oldValue.intValue()) {
-                if (idMotor.getText().length() >= 30) {
-                    idMotor.setText(idMotor.getText().substring(0, 30));
-                }
-            }
+;
+        idMotor.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 30 || !newValue.matches("[a-zA-Z0-9]*"))
+                idMotor.setText(oldValue);
         });
-        idChasis.lengthProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.intValue() > oldValue.intValue()) {
-
-                if (idChasis.getText().length() >= 30) {
-                    idChasis.setText(idChasis.getText().substring(0, 30));
-                }
-            }
+        idChasis.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 30 || !newValue.matches("[a-zA-Z0-9]*"))
+                idChasis.setText(oldValue);
         });
-        idPatente.lengthProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.intValue() > oldValue.intValue()) {
-
-                if (idPatente.getText().length() >= 10) {
-                    idPatente.setText(idPatente.getText().substring(0, 10));
-                }
-            }
+        idKmRealizados.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 6 || !newValue.matches("[0-9]*"))
+                idKmRealizados.setText(oldValue);
         });
-        idKmRealizados.lengthProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.intValue() > oldValue.intValue()) {
-
-                if (idKmRealizados.getText().length() >= 6) {
-                    idKmRealizados.setText(idKmRealizados.getText().substring(0, 6));
-                }
-            }
+        idPatente.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 10 || !newValue.matches("[a-zA-Z0-9]*"))
+                idPatente.setText(oldValue);
         });
 
 

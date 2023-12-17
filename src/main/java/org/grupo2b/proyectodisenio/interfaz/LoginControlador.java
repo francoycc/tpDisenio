@@ -50,5 +50,14 @@ public class LoginControlador {
         assert idusuario != null : "fx:id=\"idusuario\" was not injected: check your FXML file 'Login.fxml'.";
         assert textoDeError != null : "fx:id=\"textoDeError\" was not injected: check your FXML file 'Login.fxml'.";
         textoDeError.setVisible(false);
+
+        idusuario.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length()>50)
+                idusuario.setText(oldValue);
+        });
+        idcontrasenia.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length()>50)
+                idcontrasenia.setText(oldValue);
+        });
     }
 }

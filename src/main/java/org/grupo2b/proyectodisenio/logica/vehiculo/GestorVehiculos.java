@@ -21,7 +21,7 @@ public class GestorVehiculos {
         KmPorAnio kmPorAnio = null;
 
         if(existeVehiculoAsociado(vDTO.patente(), vDTO.motor(), vDTO.chasis()))
-            throw new IllegalArgumentException();//TODO QUE PASA SI YA EXISTE UN VEHICULO PERO NO ESTA ASOCIADO?? QUE PASA SI SON LOS VEHICULOS TIENEN DIFERENCIAS EN LOS DATOS?? SE ACTUALIZA? TIRA ERROR?
+            throw new IllegalArgumentException();
         {
             Optional<Localidad> domicilioRiesgoOpt = DAOManager.localidadDAO().getLocalidad(vDTO.id_localidad());
             if (domicilioRiesgoOpt.isEmpty()) throw new IllegalArgumentException();
