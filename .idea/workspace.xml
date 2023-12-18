@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Validacion de patente, motor y chasis.&#10;Renombrado método par obtener DRO KmPorAnio">
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Cambios varios">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cliente/GestorClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cliente/GestorClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/GestorCuentas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/GestorCuentas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/TipoCuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/cuentas/TipoCuenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/GestorVehiculos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/GestorVehiculos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -492,7 +488,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702860616799</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Cambios varios">
+      <option name="closed" value="true" />
+      <created>1702861015931</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1702861015931</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -507,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Mejorado AltaPolizaControlador" />
     <MESSAGE value="b" />
     <MESSAGE value="c" />
     <MESSAGE value="SIII" />
@@ -532,6 +535,7 @@
     <MESSAGE value="Correjido error AltaPolizaCargandoDatosControlador" />
     <MESSAGE value="Cambio altura tabla de 80p a 85p" />
     <MESSAGE value="Validacion de patente, motor y chasis.&#10;Renombrado método par obtener DRO KmPorAnio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Validacion de patente, motor y chasis.&#10;Renombrado método par obtener DRO KmPorAnio" />
+    <MESSAGE value="Cambios varios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios varios" />
   </component>
 </project>
