@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Eliminado error al cambiar modelo cuando ya se selecciono año.&#10;Arreglado display de domicilio">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Correjido error AltaPolizaCargandoDatosControlador">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -458,7 +456,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702841057313</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Mejorados chequeos interfaz">
+      <option name="closed" value="true" />
+      <created>1702842586744</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1702842586744</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Correjido error AltaPolizaCargandoDatosControlador">
+      <option name="closed" value="true" />
+      <created>1702848250633</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1702848250633</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,8 +487,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="probaConEsta" />
-    <MESSAGE value="DAOs como Dios manda" />
     <MESSAGE value="AltaPolizaControlador" />
     <MESSAGE value="Mejorado ComboBoxFactory" />
     <MESSAGE value="Mejorado AltaPolizaControlador" />
@@ -498,6 +510,8 @@
     <MESSAGE value="La aplicación cierra si no puede conectar con la base de datos." />
     <MESSAGE value="Agregados los id pero hay que cambiar algunas cosas" />
     <MESSAGE value="Eliminado error al cambiar modelo cuando ya se selecciono año.&#10;Arreglado display de domicilio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eliminado error al cambiar modelo cuando ya se selecciono año.&#10;Arreglado display de domicilio" />
+    <MESSAGE value="Mejorados chequeos interfaz" />
+    <MESSAGE value="Correjido error AltaPolizaCargandoDatosControlador" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correjido error AltaPolizaCargandoDatosControlador" />
   </component>
 </project>

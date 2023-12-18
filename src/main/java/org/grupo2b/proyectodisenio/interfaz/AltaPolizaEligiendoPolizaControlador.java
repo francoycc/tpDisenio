@@ -595,7 +595,7 @@ public class AltaPolizaEligiendoPolizaControlador {
         }
         tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
         if(listaTabla.size()==1) {
-            tablaConTipoCobertura.setPrefHeight(80); //para cuando size=1
+            tablaConTipoCobertura.setPrefHeight(85); //para cuando size=1
             hBoxFechaFormaPago.setLayoutY(130); //para cuando size=1
             paneBotones.setLayoutY(270); //para cuando size=1
             lineaHorizontal.setLayoutY(350); //para cuando size=1
