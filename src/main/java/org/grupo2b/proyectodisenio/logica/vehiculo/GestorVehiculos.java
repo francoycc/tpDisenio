@@ -39,18 +39,15 @@ public class GestorVehiculos {
             Optional<KmPorAnio> kmPorAnioOpt = DAOManager.kmPorAnioDAO().get(vDTO.id_kmPorAnio());
             if(kmPorAnioOpt.isEmpty()) throw new IllegalArgumentException();
             kmPorAnio=kmPorAnioOpt.get();
+            
+            if(vDTO.patente().length()>10||!vDTO.patente().matches("[a-zA-Z0-9]*")) throw new IllegalArgumentException();
 
-            //TODO VALIDAR PATENTE, MOTOR, CHASIS de vDTO
-            if(vDTO.patente().length()>10) throw new IllegalArgumentException();
+            if(vDTO.motor().length()>30||!vDTO.motor().matches("[a-zA-Z0-9]*")) throw new IllegalArgumentException();
 
-            if(vDTO.motor().length()>30) throw new IllegalArgumentException();
-
-            if(vDTO.chasis().length()>30) throw new IllegalArgumentException();
-
-            if(vDTO.id_kmPorAnio()>999999) throw new IllegalArgumentException();
+            if(vDTO.chasis().length()>30||!vDTO.chasis().matches("[a-zA-Z0-9]*")) throw new IllegalArgumentException();
         }
 
-        return new Vehiculo(SubsistemaSumaAsegurada.getSumaAsegurada(modelo.getId(), anioFabricacion.getAnioModelo()), vDTO.motor(), vDTO.chasis(), vDTO.patente(), modelo, anioFabricacion, kmPorAnio, domicilioRiesgo);
+        return new Vehiculo(SubsistemaSumaAsegurada.getSumaAsegurada(modelo.getId(), anioFabricacion.getAnioModelo()), vDTO.motor(), vDTO.chasis(), vDTO.patente().toUpperCase(), modelo, anioFabricacion, kmPorAnio, domicilioRiesgo);
 
     }
 
@@ -80,7 +77,7 @@ public class GestorVehiculos {
 
 
 
-    public static Optional<KmPorAnioDTO> getFromNumero(int km){
+    public static Optional<KmPorAnioDTO> getKmPorAnioFromNumero(int km){
         return DAOManager.kmPorAnioDAO().getFromNumero(km).map(o -> new KmPorAnioDTO(o.getId(), o.getKmRealizadosInicial(), o.getKmRealizadosInicial()));
     }
 

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Correjido error AltaPolizaCargandoDatosControlador">
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Cambio altura tabla de 80p a 85p">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/GestorVehiculos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/logica/vehiculo/GestorVehiculos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -472,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702848250633</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Cambio altura tabla de 80p a 85p">
+      <option name="closed" value="true" />
+      <created>1702858156321</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1702858156321</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,7 +496,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AltaPolizaControlador" />
     <MESSAGE value="Mejorado ComboBoxFactory" />
     <MESSAGE value="Mejorado AltaPolizaControlador" />
     <MESSAGE value="b" />
@@ -512,6 +520,7 @@
     <MESSAGE value="Eliminado error al cambiar modelo cuando ya se selecciono año.&#10;Arreglado display de domicilio" />
     <MESSAGE value="Mejorados chequeos interfaz" />
     <MESSAGE value="Correjido error AltaPolizaCargandoDatosControlador" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correjido error AltaPolizaCargandoDatosControlador" />
+    <MESSAGE value="Cambio altura tabla de 80p a 85p" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambio altura tabla de 80p a 85p" />
   </component>
 </project>

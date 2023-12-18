@@ -406,7 +406,7 @@ public class AltaPolizaEligiendoPolizaControlador {
             declaraciones.add(new DeclaracionHijoDTO(1, t.estadoCivil, t.fechaNacimiento, t.sexo));
         }
 
-        VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorVehiculos.getFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
+        VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorVehiculos.getKmPorAnioFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
         Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
 
         ClienteDTO cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
