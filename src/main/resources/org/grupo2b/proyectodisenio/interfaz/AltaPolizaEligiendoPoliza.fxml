@@ -17,9 +17,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="idScrollPane" hbarPolicy="NEVER" maxHeight="1200.0" minHeight="-Infinity" prefHeight="1770.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaEligiendoPolizaControlador">
+<ScrollPane fx:id="idScrollPane" hbarPolicy="NEVER" maxHeight="1200.0" minHeight="-Infinity" prefHeight="1750.0" prefWidth="1280.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.grupo2b.proyectodisenio.interfaz.AltaPolizaEligiendoPolizaControlador">
    <content>
-      <AnchorPane fx:id="idAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1770.0" prefWidth="1280.0" stylesheets="@estilos.css">
+      <AnchorPane fx:id="idAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1750.0" prefWidth="1280.0" stylesheets="@estilos.css">
          <VBox prefHeight="350.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1020.0" AnchorPane.topAnchor="0.0">
             <Button fx:id="idBotonInicio" alignment="CENTER" mnemonicParsing="false" onAction="#irInterfazInicio" prefHeight="50.0" prefWidth="250.0" text="INICIO" />
             <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #ff0000; -fx-border-color: black;" text="ALTA PÓLIZA" />
@@ -51,7 +52,7 @@
                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
          </TableView>
-         <HBox layoutX="250.0" layoutY="275.2" prefHeight="85.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="310.0">
+         <HBox fx:id="hBoxFechaFormaPago" layoutX="250.0" layoutY="310.0" prefHeight="85.0" prefWidth="1030.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0">
             <children>
                <VBox prefHeight="200.0" prefWidth="515.0">
                   <children>
@@ -99,7 +100,7 @@
                </VBox>
             </children>
          </HBox>
-         <Pane layoutX="260.0" layoutY="371.0" prefHeight="40.0" prefWidth="1010.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="425.0">
+         <Pane fx:id="paneBotones" layoutX="260.0" layoutY="425.0" prefHeight="40.0" prefWidth="1010.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="20.0">
             <children>
                <Button fx:id="botonCancelar" layoutX="339.0" maxHeight="40.0" maxWidth="150.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="40.0" prefWidth="150.0" text="CANCELAR">
                   <font>
@@ -113,10 +114,10 @@
                </Button>
             </children>
          </Pane>
-         <Line endX="1012.0" layoutX="395.0" layoutY="300.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="1010.0" AnchorPane.topAnchor="480.0" />
-         <Line endY="480.0" layoutX="343.0" layoutY="475.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="0.0" />
-         <Line endY="480.0" layoutX="175.0" layoutY="358.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
-         <Pane fx:id="anchorPaneLuegoQpresioneConfirmar" layoutX="33.0" layoutY="499.0" prefHeight="1400.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="500.0">
+         <Line fx:id="lineaHorizontal" endX="1012.0" layoutX="395.0" layoutY="480.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="1010.0" />
+         <Line fx:id="lineaV1" endY="480.0" layoutX="343.0" layoutY="475.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="0.0" />
+         <Line fx:id="lineaV2" endY="480.0" layoutX="175.0" layoutY="358.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
+         <Pane fx:id="anchorPaneLuegoQpresioneConfirmar" layoutX="33.0" layoutY="500.0" prefHeight="1400.0" prefWidth="200.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="15.0">
             <children>
                <Label prefHeight="30.0" prefWidth="1012.0" style="-fx-background-color: #800000; -fx-text-fill: #ffffff;" text="PÓLIZA A GENERAR" textFill="WHITE">
                   <font>

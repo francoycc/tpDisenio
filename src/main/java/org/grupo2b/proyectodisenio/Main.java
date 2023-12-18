@@ -73,6 +73,6 @@ public class Main extends Application {
         t.start();
     }
     public static void main(String[] args) {
-        launch();//
+        launch();
     }
 }

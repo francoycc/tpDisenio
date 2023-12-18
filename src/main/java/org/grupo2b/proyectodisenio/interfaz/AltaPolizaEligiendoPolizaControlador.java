@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -88,6 +89,12 @@ public class AltaPolizaEligiendoPolizaControlador {
     @FXML private AnchorPane idAnchorPane;
     @FXML private Pane anchorPaneLuegoQpresioneConfirmar;
     @FXML private ScrollPane idScrollPane;
+
+    @FXML private HBox hBoxFechaFormaPago;
+    @FXML private Pane paneBotones;
+    @FXML private Line lineaHorizontal;
+    @FXML private Line lineaV1;
+    @FXML private Line lineaV2;
 
     @FXML private ProgressIndicator progreesBar;
 
@@ -311,8 +318,13 @@ public class AltaPolizaEligiendoPolizaControlador {
             vboxPagoSemestral.setVisible(false);
             botonera.setVisible(true);
             botonera.setLayoutY(1190);
-            idAnchorPane.setPrefHeight(1750);
-            idScrollPane.setPrefHeight(1750);
+            if(tablaConTipoCobertura.getItems().size()==1) {
+                idScrollPane.setPrefHeight(1620);
+                idAnchorPane.setPrefHeight(1620);
+            } else {
+                idAnchorPane.setPrefHeight(1750);
+                idScrollPane.setPrefHeight(1750);
+            }
 
             formaPagoObj = FormaPago.MENSUAL;
             fechaInicioVigenciaObj = fechaInicioVigencia.getValue();
@@ -340,8 +352,14 @@ public class AltaPolizaEligiendoPolizaControlador {
             vboxPagoSemestral.setLayoutY(650);
             botonera.setVisible(true);
             botonera.setLayoutY(750);
-            idAnchorPane.setPrefHeight(1320);
-            idScrollPane.setPrefHeight(1320);
+
+            if(tablaConTipoCobertura.getItems().size()==1) {
+                idScrollPane.setPrefHeight(1170);
+                idAnchorPane.setPrefHeight(1170);
+            } else {
+                idAnchorPane.setPrefHeight(1320);
+                idScrollPane.setPrefHeight(1320);
+            }
 
             formaPagoObj = FormaPago.SEMESTRAL;
             fechaInicioVigenciaObj = fechaInicioVigencia.getValue();
@@ -452,7 +470,6 @@ public class AltaPolizaEligiendoPolizaControlador {
         idAnchorPane.setPrefHeight(720);
         idScrollPane.setPrefHeight(720);
         progreesBar.setVisible(false);
-
 
         fechaInicioVigencia.setValue(LocalDate.now().plusDays(1));
         premio.setText("0");
@@ -573,8 +590,27 @@ public class AltaPolizaEligiendoPolizaControlador {
             }
         if(listaTabla.size()==1)
             tablaConTipoCobertura.setPrefHeight(85.0);
-
+        if(listaTabla.size()==1) {
+            tablaConTipoCobertura.setPrefHeight(123); //anda probando valores hasta que quede fachero
+        }
         tablaConTipoCobertura.setItems(FXCollections.observableArrayList(listaTabla));
+        if(listaTabla.size()==1) {
+            tablaConTipoCobertura.setPrefHeight(80); //para cuando size=1
+            hBoxFechaFormaPago.setLayoutY(130); //para cuando size=1
+            paneBotones.setLayoutY(270); //para cuando size=1
+            lineaHorizontal.setLayoutY(350); //para cuando size=1
+            lineaV1.setVisible(false); //para cuando size=1
+            lineaV2.setVisible(false); //para cuando size=1
+            anchorPaneLuegoQpresioneConfirmar.setLayoutY(350); //para cuando size=1
+        } else {
+            tablaConTipoCobertura.setPrefHeight(291); //para cuando size>1
+            hBoxFechaFormaPago.setLayoutY(310); //para cuando size>1
+            paneBotones.setLayoutY(425); //para cuando size>1
+            lineaHorizontal.setLayoutY(480); //para cuando size>1
+            lineaV1.setVisible(true); //para cuando size>1
+            lineaV2.setVisible(true); //para cuando size>1
+            anchorPaneLuegoQpresioneConfirmar.setLayoutY(500); //para cuando size>1
+        }
     }
     public class TablaTipoCobertura {
         RadioButton checkBox;
