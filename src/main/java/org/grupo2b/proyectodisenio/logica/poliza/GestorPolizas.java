@@ -24,7 +24,7 @@ public class GestorPolizas {
 
     public static boolean darAltaPoliza(PolizaDTO polizaDTO){
         //TODO HARDCODEADOS POR CU16
-        final int PREMIO=1000;
+        final int PREMIO=30000;
         final DerechoEmision derechoEmision=new DerechoEmision(Objetos.getHistorial(GestorCuentas.getCuentaActiva()));
         final Descuento descuento=new Descuento("Ejemplo", Objetos.getHistorial(GestorCuentas.getCuentaActiva()));
 
