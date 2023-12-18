@@ -12,7 +12,7 @@ public class TipoCuenta {
     @Column(name = "id_tipoCuenta")
     private int id;
     @Column(length = 50, name = "nombre")
-    String nombre;
+    private String nombre;
 
 
     public TipoCuenta(){}

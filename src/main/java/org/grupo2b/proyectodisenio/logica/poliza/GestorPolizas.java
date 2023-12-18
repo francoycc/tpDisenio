@@ -106,7 +106,7 @@ public class GestorPolizas {
 
 
 
-    public static final Function<Poliza, PolizaDTO> conversorADTO = p -> {
+    private static final Function<Poliza, PolizaDTO> conversorADTO = p -> {
         List<DeclaracionHijoDTO> declaracionHijosDTOS = new ArrayList<>();
         for(DeclaracionHijo h: p.getDeclaracionesHijos()) {
             declaracionHijosDTOS.add(new DeclaracionHijoDTO(h.getId(), h.getEstadoCivilHijo().getId(),h.getFechaNacimiento(), h.getSexo()));
@@ -115,12 +115,11 @@ public class GestorPolizas {
         for (MedidaDeSeguridad m: p.getMedidasDeSeguridad()){
             medidas.add(String.valueOf(m.getNombre()));
         }
-        PolizaDTO polizaDTO = new PolizaDTO(
+        return new PolizaDTO(
                 p.getInicioVigencia(), p.getFinVigencia(), p.getFormaPago(), p.getTipoCobertura().getId(), medidas,
                 new VehiculoDTO(p.getVehiculo().getId(), p.getVehiculo().getMotor(), p.getVehiculo().getChasis(), p.getVehiculo().getPatente(),
                         p.getVehiculo().getModelo().getId(), p.getVehiculo().getAnioFabricacion().getId(), p.getVehiculo().getKmPorAnio().getId(), p.getVehiculo().getLocalidad().getId())
                 , declaracionHijosDTOS, p.getCliente().getId(), p.getNroSiniestros().getId());
-        return polizaDTO;
     };
 
     public static List<NumeroSiniestrosDTO> getNumeroSiniestrosList(){
@@ -137,6 +136,5 @@ public class GestorPolizas {
     public static Optional<PolizaDTO> buscarPoliza(String nroPoliza){
         return DAOManager.polizaDAO().buscarPoliza(nroPoliza).map(conversorADTO);
     }
-    // public static Optional<Double> calcularBonificacion();
-    // public static Optional<Double> calcularMora();
+
 }

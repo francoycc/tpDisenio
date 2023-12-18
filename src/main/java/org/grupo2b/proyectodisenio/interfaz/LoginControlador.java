@@ -28,7 +28,7 @@ public class LoginControlador {
         ContraseniaField = idcontrasenia.getText();
 
         if (GestorCuentas.login(UsuarioField, ContraseniaField)) {
-            if (GestorCuentas.getTipoCuenta().getNombre().equals("ProductorSeguros")) {
+            if (GestorCuentas.getNombreTipoCuentaActual().get().equals("ProductorSeguros")) {
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ProdSegurosVentanaPrincipal.fxml")));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("EL ASEGURADO");

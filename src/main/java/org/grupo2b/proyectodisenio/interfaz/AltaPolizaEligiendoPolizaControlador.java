@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
-
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.Transition;
@@ -31,7 +30,6 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 import org.grupo2b.proyectodisenio.dto.*;
 import org.grupo2b.proyectodisenio.logica.cliente.GestorClientes;
-import org.grupo2b.proyectodisenio.logica.enums.EstadoPoliza;
 import org.grupo2b.proyectodisenio.logica.enums.FormaPago;
 import org.grupo2b.proyectodisenio.logica.poliza.*;
 import org.grupo2b.proyectodisenio.logica.vehiculo.*;
@@ -407,7 +405,6 @@ public class AltaPolizaEligiendoPolizaControlador {
         }
 
         VehiculoDTO vehiculo = new VehiculoDTO(-1, motor.getText(), chasis.getText(), patente.getText(), modeloObj.id(), anioObj, GestorVehiculos.getKmPorAnioFromNumero(Integer.parseInt(instanciaParaVolver.kmRealizadosV)).get().id(), instanciaParaVolver.ciudad.id());
-        Optional<Vehiculo> vOpt = GestorVehiculos.getVehiculoFromPatente(patente.getText());
 
         ClienteDTO cliente = GestorClientes.getClienteFromNroCliente(instanciaParaVolver.cliente.get(0).nroCliente).get();
         PolizaDTO poliza = new PolizaDTO(fechaInicioVigenciaObj, fechaFinalVigenciaObj, formaPagoObj, tipoCoberturaObj.id(),

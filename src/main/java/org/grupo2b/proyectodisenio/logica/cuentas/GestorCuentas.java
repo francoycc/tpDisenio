@@ -20,10 +20,11 @@ public class GestorCuentas {
         cuentaActiva=cuentaOPT.get();
         return true;
     }
-    public static TipoCuenta getTipoCuenta(){
+
+    public static Optional<String> getNombreTipoCuentaActual(){
         if (cuentaActiva==null)
-            return null;
-        return cuentaActiva.getTipoCuenta();
+            return Optional.empty();
+        return Optional.of(cuentaActiva.getTipoCuenta().getNombre());
     }
 
     public static void logout(){

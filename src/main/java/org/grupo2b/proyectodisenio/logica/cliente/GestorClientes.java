@@ -25,7 +25,7 @@ public class GestorClientes {
         return DAOManager.clienteDAO().getClienteFromNroCliente(nroCliente).map(conversorADTO);
     }
 
-    public static Optional<Cliente> getCliente(String nroCliente){
+    private static Optional<Cliente> getCliente(String nroCliente){
         return DAOManager.clienteDAO().getClienteFromNroCliente(nroCliente);
     }
     public static void actualizarEstadoCliente(String nroCliente){

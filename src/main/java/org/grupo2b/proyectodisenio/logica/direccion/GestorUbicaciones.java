@@ -12,18 +12,8 @@ public class GestorUbicaciones {
     public static List<ProvinciaDTO> getProvincias(){
         return DAOManager.provinciaDAO().getProvincias().stream().map(o -> new ProvinciaDTO(o.getId(), o.getPais().getId(), o.getNombre())).collect(Collectors.toList());
     }
-
-    public static List<Localidad> getLocalidadesFromProvincia(Provincia prov){
-        return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(prov.getId());
-    }
     public static List<LocalidadDTO> getLocalidadesFromIdProvincia(int id){
         return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(id).stream().map(o -> new LocalidadDTO(o.getId(), o.getProvincia().getId(), o.getNombre(), o.getCodigoPostal())).collect(Collectors.toList());
-    }
-    public static List<Localidad> getLocalidadesFromProvincia(Provincia prov, int pageSize, int pageNumber){
-        return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(prov.getId(), pageSize, pageNumber);
-    }
-    public static List<Localidad> getLocalidadesFromIdProvincia(int id, int pageSize, int pageNumber){
-        return DAOManager.localidadDAO().getLocalidadesFromIdProvincia(id, pageSize, pageNumber);
     }
     public static Optional<String> getNombreLocalidadFromId(int id){
         return DAOManager.localidadDAO().getLocalidad(id).map(Localidad::getNombre);

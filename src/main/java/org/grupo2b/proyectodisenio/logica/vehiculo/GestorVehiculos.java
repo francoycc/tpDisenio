@@ -39,7 +39,7 @@ public class GestorVehiculos {
             Optional<KmPorAnio> kmPorAnioOpt = DAOManager.kmPorAnioDAO().get(vDTO.id_kmPorAnio());
             if(kmPorAnioOpt.isEmpty()) throw new IllegalArgumentException();
             kmPorAnio=kmPorAnioOpt.get();
-            
+
             if(vDTO.patente().length()>10||!vDTO.patente().matches("[a-zA-Z0-9]*")) throw new IllegalArgumentException();
 
             if(vDTO.motor().length()>30||!vDTO.motor().matches("[a-zA-Z0-9]*")) throw new IllegalArgumentException();
@@ -55,10 +55,6 @@ public class GestorVehiculos {
 
     public static boolean existeVehiculoAsociado(String patente, String motor, String chasis){
         return DAOManager.vehiculoDAO().existeVehiculoAsociado(patente, motor, chasis);
-    }
-
-    public static Optional<Vehiculo> getVehiculoFromPatente(String patente){
-        return DAOManager.vehiculoDAO().getVehiculoFromPatente(patente);
     }
 
 
