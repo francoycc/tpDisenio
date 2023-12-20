@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Cambios varios">
+    <list default="true" id="ee01fd4a-de09-49c5-a333-dac245a0882a" name="Changes" comment="Ajustado valor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/AltaPolizaEligiendoPolizaControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOPSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/dao/DAOPSQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -496,7 +497,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702861015931</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Ajustado valor hardcodeado de cuotas para que coincida con la interfaz">
+      <option name="closed" value="true" />
+      <created>1702861285897</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1702861285897</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Ajustado valor">
+      <option name="closed" value="true" />
+      <created>1702861320949</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1702861320949</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -511,9 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="b" />
-    <MESSAGE value="c" />
-    <MESSAGE value="SIII" />
     <MESSAGE value="Gestores" />
     <MESSAGE value="Corregido error en la carga de la poliza" />
     <MESSAGE value="Pantalla de carga" />
@@ -536,6 +550,9 @@
     <MESSAGE value="Cambio altura tabla de 80p a 85p" />
     <MESSAGE value="Validacion de patente, motor y chasis.&#10;Renombrado método par obtener DRO KmPorAnio" />
     <MESSAGE value="Cambios varios" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios varios" />
+    <MESSAGE value="Ajustado valor hardcodeado de cuotas" />
+    <MESSAGE value="Ajustado valor hardcodeado de cuotas para que coincida con la interfaz" />
+    <MESSAGE value="Ajustado valor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustado valor" />
   </component>
 </project>
