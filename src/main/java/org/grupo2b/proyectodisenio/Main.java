@@ -42,9 +42,9 @@ public class Main extends Application {
             @Override
             public void run() {
                 super.run();
-                //CargadorProvinciaLocalidad.cargar();
+                CargadorProvinciaLocalidad.cargar();
                 DAOManager.init();
-                //Objetos.save();
+                Objetos.save();
 
                 Platform.runLater(new Runnable() {
                     @Override

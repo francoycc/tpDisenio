@@ -81,7 +81,7 @@ public class GestorPolizas {
                 if(d.fechaNacimiento().isAfter(LocalDate.now().minusYears(18))||d.fechaNacimiento().isBefore(LocalDate.now().minusYears(30)))
                     return false;
                 if(d.sexo()==null) return false;
-                Optional<EstadoCivil> estadoCivil = DAOManager.estadoCivilDAO().get(d.id_estadoCivil());
+                Optional<EstadoCivil> estadoCivil = DAOManager.estadoCivilDAO().get(d.id());
                 if(estadoCivil.isEmpty()) return false;
 
                 declaracionesHijos.add(new DeclaracionHijo(d.fechaNacimiento(), d.sexo(), estadoCivil.get()));

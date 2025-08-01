@@ -1,0 +1,238 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"92938a8f-020a-474e-9b5e-84c44e4f39a3\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/mvnw\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/mvnw.cmd\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/module-info.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Cliente.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/CondicionIva.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/HelloApplication.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/cuentas/Cuenta.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/cuentas/GestorCuentas.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Direccion.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Localidad.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Pais.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Provincia.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/documento/Documento.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/documento/TipoDocumento.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/CondicionCliente.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/EstadoCuota.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/EstadoPoliza.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/FormaPago.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/Sexo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/historial/EntradaHistorialFactores.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/historial/HistorialFactor.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/HelloController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Cuota.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DatosParaRenovacion.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DeclaracionHijo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DerechoEmision.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Descuentos.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/EstadoCivil.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/MedidaDeSeguridad.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/NumeroSiniestros.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Poliza.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Recibo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/TipoCobertura.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/AnioFabricacion.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/KmPorAnio.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Marca.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Modelo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Vehiculo.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/hello-view.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Pull.Settings\">\r\n    <option name=\"OPTIONS\">\r\n      <set>\r\n        <option value=\"REBASE\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"b6w0y261\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XPfdQwyTKb2XYEWcdUG4oCNeI4\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"92938a8f-020a-474e-9b5e-84c44e4f39a3\" name=\"Changes\" comment=\"\" />\r\n      <created>1698535724124</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698535724124</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,59 +5,59 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="92938a8f-020a-474e-9b5e-84c44e4f39a3" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/Cliente.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/CondicionIva.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/HelloApplication.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/cuentas/Cuenta.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/cuentas/GestorCuentas.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Direccion.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Localidad.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Pais.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/direccion/Provincia.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/documento/Documento.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/documento/TipoDocumento.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/CondicionCliente.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/EstadoCuota.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/EstadoPoliza.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/FormaPago.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/enums/Sexo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/historial/EntradaHistorialFactores.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/historial/HistorialFactor.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/interfaz/HelloController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Cuota.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DatosParaRenovacion.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DeclaracionHijo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/DerechoEmision.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Descuentos.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/EstadoCivil.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/MedidaDeSeguridad.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/NumeroSiniestros.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Poliza.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/Recibo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/poliza/TipoCobertura.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/AnioFabricacion.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/KmPorAnio.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Marca.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Modelo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/grupo2b/proyectodisenio/vehiculo/Vehiculo.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/grupo2b/proyectodisenio/hello-view.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_10_2023_20_49_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_10_2023_20_49__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/Cliente.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/CondicionIva.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/Main.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/cuentas/Cuenta.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/cuentas/GestorCuentas.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Direccion.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Localidad.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Pais.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/direccion/Provincia.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/documento/Documento.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/documento/TipoDocumento.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/CondicionCliente.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/EstadoCuota.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/EstadoPoliza.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/FormaPago.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/enums/Sexo.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/EntradaHistorialFactores.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/historial/HistorialFactor.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Cuota.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DatosParaRenovacion.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DeclaracionHijo.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/DerechoEmision.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Descuentos.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/EstadoCivil.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/MedidaDeSeguridad.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/NumeroSiniestros.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Poliza.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/Recibo.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/poliza/TipoCobertura.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/AnioFabricacion.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/KmPorAnio.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Marca.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Modelo.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/grupoXX/vehiculo/Vehiculo.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/prueba.java" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="package-info" />
++        <option value="module-info" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Pull.Settings">
+     <option name="OPTIONS">
+@@ -67,8 +67,25 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">
++    <option name="selectedUrlAndAccountId">
++      <UrlAndAccount>
++        <option name="accountId" value="940833f4-25b4-4b03-a491-cad96c1eb1e4" />
++        <option name="url" value="https://github.com/NeoLez/TPDisenio.git" />
++      </UrlAndAccount>
++    </option>
++  </component>
+   <component name="MacroExpansionManager">
+     <option name="directoryName" value="b6w0y261" />
+   </component>
+@@ -83,17 +100,24 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "Downloaded.Files.Path.Enabled": "false",
++    "Repository.Attach.Annotations": "false",
++    "Repository.Attach.JavaDocs": "false",
++    "Repository.Attach.Sources": "false",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "git-widget-placeholder": "master",
++    "ignore.virus.scanning.warn.message": "true",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "advanced.settings"
+   }
+-}</component>
++}]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -105,7 +129,26 @@
+     </task>
+     <servers />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="CUSTOM_BOOLEAN_PROPERTIES">
++                <map>
++                  <entry key="Show.Git.Branches" value="false" />
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
++    <MESSAGE value="javafx" />
++    <option name="LAST_COMMIT_MESSAGE" value="" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module com.example.proyectodisenio {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n\r\n\r\n    opens org.grupo2b.proyectodisenio to javafx.fxml;\r\n    exports org.grupo2b.proyectodisenio;\r\n    exports org.grupo2b.proyectodisenio.interfaz;\r\n    opens org.grupo2b.proyectodisenio.interfaz to javafx.fxml;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	
++++ b/src/main/java/module-info.java	
+@@ -1,4 +1,4 @@
+-module com.example.proyectodisenio {
++module org.grupo2b.proyectodisenio {
+     requires javafx.controls;
+     requires javafx.fxml;
+ 
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" project-jdk-name=\"21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -1,4 +1,3 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="MavenProjectsManager">
